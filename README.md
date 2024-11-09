@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# MagentaA11y V2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MagentaA11y V2 is a modern, React-based application designed to simplify the process of accessibility testing for digital experiences. This new version of MagentaA11y incorporates a fresh tech stack and enhances usability, making it easier for product teams to deliver accessible experiences.
+
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Installation](#installation)
+- [Available Scripts](#available-scripts)
+- [Deployment](#deployment)
+
+---
+
+### Getting Started
+
+Follow the steps below to set up and run MagentaA11y V2 on your local machine.
+
+### Features
+
+MagentaA11y V2 enables product teams to:
+
+- Build accessibility testing criteria for web or native app components.
+- Provide easy-to-use testing instructions for keyboard navigation, screen readers, and mobile accessibility.
+- Display guidelines and examples for developers to improve accessibility.
+
+Each entry includes:
+
+- Video demos for screen reader interactions.
+- Code examples and developer notes.
+- References to WCAG and WAI-ARIA documentation.
+
+### Installation
+
+Ensure you have [Node.js](https://nodejs.org/) installed.
+
+To install the dependencies, run:
+
+```bash
+npm install
+```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- **`npm start`**: Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
+- **`npm run generate-theme`**: Generates the application theme based on the color settings.
+- **`npm run build`**: Builds the app for production in the `build` folder.
+- **`npm run deploy`**: Deploys the app to GitHub Pages.
+- **`npm run print-tree`**: Prints the project tree, excluding `node_modules`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deployment
 
-### `npm test`
+This app is deployed via GitHub Pages. To deploy manually, make sure you have GitHub Pages enabled in the repository settings.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Update the `homepage` field in `package.json` to match your GitHub Pages URL:
 
-### `npm run build`
+   ```json
+   "homepage": "https://<username>.github.io/<repository-name>"
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Run:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm run deploy
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The application will be available at your GitHub Pages URL: `https://<username>.github.io/<repository-name>`.
