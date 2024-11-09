@@ -1,0 +1,10 @@
+.side-nav {
+  --side-nav-background-color: #fef5ff;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100vh;
+  // position: absolute;
+  background-color: var(--side-nav-background-color);
+}

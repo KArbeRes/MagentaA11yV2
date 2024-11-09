@@ -1,0 +1,77 @@
+@mixin base-link-styles {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+  color: var(--magentaa11y-color--true-black);
+  letter-spacing: 0.1px;
+  padding: 4px 24px;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 24px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &--logo {
+    width: 27px;
+    height: 27px;
+  }
+
+  &--name {
+    @include base-link-styles;
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    padding-left: 28px;
+
+    &::before {
+      content: 'Magenta';
+      color: var(--md-sys-color-primary);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url('../../assets/images/brand-logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  &--link {
+    @include base-link-styles;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+
+    transition: box-shadow 0.3s ease;
+
+    &.active {
+      box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
+    }
+  }
+}

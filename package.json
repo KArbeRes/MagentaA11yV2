@@ -1,0 +1,68 @@
+{
+  "name": "magentaa11y_v2",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@apollo/client": "^3.11.8",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@material/web": "^2.2.0",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.6",
+    "@sanity/client": "^6.22.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.113",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "graphql": "^16.9.0",
+    "lit": "^3.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.79.4",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "generate-nav-items": "npx tsx src/scripts/generateNavigationItems.ts",
+    "generate-theme": "npx tsx src/scripts/generateTheme.ts",
+    "start": "react-scripts start",
+    "watch-nav-items": "chokidar 'src/content' -c 'npm run generate-nav-items'",
+    "dev": "concurrently -k \"npm run watch-nav-items\" \"npm start\"",
+    "build": "npm run generate-nav-items && react-scripts build",
+    "print-tree": "tree -I 'node_modules'",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.1.0",
+    "kill-port": "^2.0.1",
+    "nodemon": "^3.1.7",
+    "npm-run-all": "^4.1.5",
+    "tsx": "^4.19.2"
+  }
+}
