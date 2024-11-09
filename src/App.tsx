@@ -4,18 +4,6 @@ import './App.scss';
 import Home from './components/home/home';
 import TopNav from './components/top-nav/top-nav';
 
-{
-  /* <md-text-button href="#" aria-label="Navigate to About us">
-          About us
-        </md-text-button>
-        <md-icon-button aria-label="Add to playlist">
-          <md-icon>playlist_add</md-icon>
-        </md-icon-button>
-        <md-icon-button aria-label="Add to playlist">
-          <md-icon>playlist_add</md-icon>
-        </md-icon-button> */
-}
-
 const navItems = [
   { label: 'About us', href: '/about' },
   { label: 'Contact', href: '/contact' },
