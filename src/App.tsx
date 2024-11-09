@@ -2,13 +2,10 @@ import React from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import "./App.scss";
 import Home from "./components/home/home";
+import About from "./components/about-us/about-us";
 import TopNav from "./components/top-nav/top-nav";
 
-const navItems = [
-  { label: "About us", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Services", href: "/services" },
-];
+const navItems = [{ label: "About us", href: "/about", component: About }];
 
 const App: React.FC = () => {
   return (
@@ -20,9 +17,15 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-          </Routes>
 
-          {/* <SideNav /> */}
+            {navItems.map((item, index) => (
+              <Route
+                key={index}
+                path={item.href}
+                element={<item.component />}
+              />
+            ))}
+          </Routes>
         </div>
       </div>
     </Router>
