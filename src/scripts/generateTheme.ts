@@ -24,7 +24,7 @@ interface Token {
 function generateScssContent(tokens: Token[]): string {
   return `@import '@material/web/menu/_menu.scss';
 
-.App {
+.MagentaA11y {
   text-align: center;
 }
 

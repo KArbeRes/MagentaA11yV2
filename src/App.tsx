@@ -11,13 +11,13 @@ const navItems = [{ label: 'About us', href: '/about', component: About }];
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
+      <div className="MagentaA11y">
+        <header className="MagentaA11y-header">
           <TopNav navItems={navItems} />
         </header>
-        <div className="content">
+        <div className="MagentaA11y__content">
           <SideNav />
-          <div className="main">
+          <div className="MagentaA11y__main">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />

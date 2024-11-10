@@ -5,18 +5,18 @@ import { TopNavProps } from './top-nav.types';
 
 const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   return (
-    <div className="top-nav">
-      <div className="brand">
-        <NavLink to="/home" className="brand--name">
+    <div className="MagentaA11y__top-nav">
+      <div className="MagentaA11y__brand">
+        <NavLink to="/home" className="MagentaA11y__brand--name">
           A11y
         </NavLink>
       </div>
-      <div className="nav-items">
+      <div className="MagentaA11y__nav-items">
         {navItems.map((item, index) => (
           <NavLink
             key={index}
             to={item.href}
-            className="nav-items--link"
+            className="MagentaA11y__nav-items--link"
             aria-label={`Navigate to ${item.label}`}>
             {item.label}
           </NavLink>

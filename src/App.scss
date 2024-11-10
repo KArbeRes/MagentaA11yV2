@@ -1,6 +1,6 @@
 @import '@material/web/menu/_menu.scss';
 
-.App {
+.MagentaA11y {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -8,14 +8,15 @@
   text-align: center;
 }
 
-.content {
+.MagentaA11y__content {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
 }
 
-.main {
+.MagentaA11y__main {
   flex-grow: 1;
+  word-break: break-word;
 }
 
 :root {
