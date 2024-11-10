@@ -9,10 +9,12 @@
 }
 
 .top-nav {
+  --top-nav-border-color: #bcbcbc;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 24px;
+  border-bottom: 0.5px solid var(--top-nav-border-color);
 }
 
 .brand {
@@ -35,17 +37,17 @@
     padding-left: 28px;
 
     &::before {
-      content: "Magenta";
+      content: 'Magenta';
       color: var(--md-sys-color-primary);
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      background-image: url("../../assets/svgs/brand-logo-black.svg");
+      background-image: url('../../assets/svgs/brand-logo-black.svg');
       background-size: contain;
       background-repeat: no-repeat;
       width: 24px;

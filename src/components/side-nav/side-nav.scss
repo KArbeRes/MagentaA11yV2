@@ -1,10 +1,11 @@
 .side-nav {
-  --side-nav-background-color: #fef5ff;
+  --side-nav-background-color: #f7f2fa;
+
   width: fit-content;
+  min-width: 226px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 100vh;
-  // position: absolute;
   background-color: var(--side-nav-background-color);
+  padding: 12px;
 }

@@ -30,10 +30,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "generate-nav-items": "npx tsx src/scripts/generateNavigationItems.ts",
     "generate-theme": "npx tsx src/scripts/generateTheme.ts",
     "start": "react-scripts start",
-    "watch-nav-items": "chokidar 'src/content' -c 'npm run generate-nav-items'",
     "dev": "concurrently -k \"npm run watch-nav-items\" \"npm start\"",
     "build": "react-scripts build",
     "predeploy": "npm run build",
