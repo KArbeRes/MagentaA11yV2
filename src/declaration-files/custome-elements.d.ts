@@ -15,5 +15,7 @@ declare namespace JSX {
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     >;
+
+    svg: React.SVGProps<SVGSVGElement> & { slot?: string };
   }
 }

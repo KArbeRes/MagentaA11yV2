@@ -8,4 +8,28 @@
   gap: 10px;
   background-color: var(--side-nav-background-color);
   padding: 12px;
+
+  md-text-button {
+    --md-text-button-icon-size: 24px;
+    --md-text-button-label-text-color: var(--magentaa11y-color--true-black);
+    --md-text-button-icon-color: var(--magentaa11y-color--true-black);
+    --md-text-button-hover-label-text-color: var(
+      --magentaa11y-color--true-black
+    );
+    --md-text-button-hover-icon-color: var(--magentaa11y-color--true-black);
+    --md-text-button-hover-state-layer-color: var(
+      --magentaa11y-color--true-black
+    );
+    --md-text-button-focus-label-text-color: var(
+      --magentaa11y-color--true-black
+    );
+    --md-text-button-focus-icon-color: var(--magentaa11y-color--true-black);
+    --md-text-button-pressed-label-text-color: var(
+      --magentaa11y-color--true-black
+    );
+    --md-text-button-pressed-state-layer-color: var(
+      --magentaa11y-color--true-black
+    );
+    --md-text-button-pressed-icon-color: var(--magentaa11y-color--true-black);
+  }
 }
