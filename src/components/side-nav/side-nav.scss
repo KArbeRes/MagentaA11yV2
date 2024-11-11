@@ -1,5 +1,6 @@
 .MagentaA11y__side-nav {
   --side-nav-background-color: #f7f2fa;
+  --sub-link-visibility: none;
 
   width: fit-content;
   min-width: 226px;
@@ -9,27 +10,69 @@
   background-color: var(--side-nav-background-color);
   padding: 12px;
 
-  md-text-button {
-    --md-text-button-icon-size: 24px;
-    --md-text-button-label-text-color: var(--magentaa11y-color--true-black);
-    --md-text-button-icon-color: var(--magentaa11y-color--true-black);
-    --md-text-button-hover-label-text-color: var(
-      --magentaa11y-color--true-black
-    );
-    --md-text-button-hover-icon-color: var(--magentaa11y-color--true-black);
-    --md-text-button-hover-state-layer-color: var(
-      --magentaa11y-color--true-black
-    );
-    --md-text-button-focus-label-text-color: var(
-      --magentaa11y-color--true-black
-    );
-    --md-text-button-focus-icon-color: var(--magentaa11y-color--true-black);
-    --md-text-button-pressed-label-text-color: var(
-      --magentaa11y-color--true-black
-    );
-    --md-text-button-pressed-state-layer-color: var(
-      --magentaa11y-color--true-black
-    );
-    --md-text-button-pressed-icon-color: var(--magentaa11y-color--true-black);
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    &:has(
+        .MagentaA11y__side-nav--link.active,
+        .MagentaA11y__side-nav--sub-link.active
+      ) {
+      --sub-link-visibility: flex;
+      > .MagentaA11y__side-nav--link > svg {
+        rotate: 180deg;
+      }
+    }
+  }
+
+  &--link {
+    color: var(--magentaa11y-side-nav--link-primary);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 16px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    ~ ul {
+      display: var(--sub-link-visibility);
+    }
+
+    svg {
+      transition: rotate 0.3s ease;
+    }
+
+    &.active {
+      > svg {
+        rotate: 180deg;
+      }
+
+      ~ ul {
+        --sub-link-visibility: flex;
+      }
+    }
+  }
+
+  &--sub-link {
+    width: fit-content;
+    color: var(--magentaa11y-side-nav--link-secondary);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    padding: 16px 24px;
+
+    &.active {
+      color: var(--magentaa11y-side-nav--link-primary);
+    }
   }
 }

@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Header Component",
+    "name": "header-component",
+    "children": []
+  },
+  {
+    "label": "Html Component",
+    "name": "html-component",
+    "children": [
+      {
+        "label": "Basic Web Page",
+        "name": "basic-web-page",
+        "children": []
+      }
+    ]
+  },
+  {
+    "label": "Nav Component",
+    "name": "nav-component",
+    "children": []
+  }
+]

@@ -16,6 +16,21 @@ declare namespace JSX {
       HTMLElement
     >;
 
+    'md-list': React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    >;
+
+    'md-list-item': React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    > & { class?: string };
+
+    'md-icon': React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    > & { slot?: string };
+
     svg: React.SVGProps<SVGSVGElement> & { slot?: string };
   }
 }
