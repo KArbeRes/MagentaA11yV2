@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './top-nav.scss';
-import { TopNavProps } from './top-nav.types';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./top-nav.scss";
+import { TopNavProps } from "./top-nav.types";
 
 const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   return (
@@ -17,7 +17,8 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
             key={index}
             to={item.href}
             className="MagentaA11y__nav-items--link"
-            aria-label={`Navigate to ${item.label}`}>
+            aria-label={`Navigate to ${item.label}`}
+          >
             {item.label}
           </NavLink>
         ))}

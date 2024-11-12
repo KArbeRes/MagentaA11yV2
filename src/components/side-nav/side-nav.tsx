@@ -3,13 +3,21 @@ import { NavLink, useLocation } from "react-router-dom";
 import contentData from "../../shared/content.json";
 import "./side-nav.scss";
 
+interface NavItem {
+  label: string;
+  name: string;
+  type?: "file";
+  children?: NavItem[];
+}
+
 const SideNav: React.FC = () => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname.includes(path);
 
   const renderNavItems = (
-    items: any[],
+    items: NavItem[],
+    parentPath = "", // Add parentPath as an argument
     parentActive = false,
     isTopLevel = false
   ) => (
@@ -21,7 +29,8 @@ const SideNav: React.FC = () => {
       }
     >
       {items.map((item) => {
-        const itemActive = isActive(item.name);
+        const fullPath = `${parentPath}/${item.name}`; // Build the full path
+        const itemActive = isActive(fullPath);
         const activeState = parentActive || itemActive;
 
         return (
@@ -34,7 +43,7 @@ const SideNav: React.FC = () => {
             }
           >
             <NavLink
-              to={item.name}
+              to={fullPath}
               className={`MagentaA11y__side-nav--link ${
                 !isTopLevel ? "MagentaA11y__side-nav--sub-link" : ""
               }`}
@@ -55,7 +64,7 @@ const SideNav: React.FC = () => {
             </NavLink>
             {item.children &&
               item.children.length > 0 &&
-              renderNavItems(item.children, activeState, false)}
+              renderNavItems(item.children, fullPath, activeState, false)}
           </li>
         );
       })}
@@ -64,7 +73,7 @@ const SideNav: React.FC = () => {
 
   return (
     <div className="MagentaA11y__side-nav">
-      {renderNavItems(contentData, false, true)}
+      {renderNavItems(contentData as NavItem[], "", false, true)}
       <md-filled-button>Collapse All</md-filled-button>
     </div>
   );

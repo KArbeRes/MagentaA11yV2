@@ -7,3 +7,10 @@ export interface NavItem {
 export interface TopNavProps {
   navItems: NavItem[];
 }
+
+export interface SideNavItem {
+  label: string;
+  name: string;
+  type?: "file";
+  children?: SideNavItem[];
+}
