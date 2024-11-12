@@ -1,6 +1,7 @@
 .MagentaA11y__side-nav {
   --side-nav-background-color: #f7f2fa;
-  --sub-link-visibility: none;
+  --sub-link-height: 0px;
+  --sub-link-opacity: 0;
 
   width: fit-content;
   min-width: 226px;
@@ -10,18 +11,18 @@
   background-color: var(--side-nav-background-color);
   padding: 12px;
 
-  ul {
+  &--list,
+  &--sub-list {
     margin: 0;
     padding: 0;
     list-style-type: none;
   }
 
-  li {
+  &--item {
     &:has(
         .MagentaA11y__side-nav--link.active,
         .MagentaA11y__side-nav--sub-link.active
       ) {
-      --sub-link-visibility: flex;
       > .MagentaA11y__side-nav--link > svg {
         rotate: 180deg;
       }
@@ -42,8 +43,18 @@
     justify-content: space-between;
     align-items: center;
 
-    ~ ul {
-      display: var(--sub-link-visibility);
+    ~ ul > li {
+      max-height: var(--sub-link-height);
+      opacity: var(--sub-link-opacity);
+
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+
+      &:has(.MagentaA11y__side-nav--sub-link.active) {
+        --sub-link-height: 52px;
+        --sub-link-opacity: 1;
+        --sub-link-visibility: flex;
+      }
     }
 
     svg {
@@ -55,7 +66,9 @@
         rotate: 180deg;
       }
 
-      ~ ul {
+      ~ ul > li {
+        --sub-link-height: 52px;
+        --sub-link-opacity: 1;
         --sub-link-visibility: flex;
       }
     }
