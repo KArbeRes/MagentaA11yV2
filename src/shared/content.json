@@ -2,7 +2,13 @@
   {
     "label": "Header Component",
     "name": "header-component",
-    "children": []
+    "children": [
+      {
+        "label": "Header Landmark",
+        "name": "header-landmark",
+        "type": "file"
+      }
+    ]
   },
   {
     "label": "Html Component",
@@ -11,13 +17,8 @@
       {
         "label": "Basic Web Page",
         "name": "basic-web-page",
-        "children": []
+        "type": "file"
       }
     ]
-  },
-  {
-    "label": "Nav Component",
-    "name": "nav-component",
-    "children": []
   }
 ]
