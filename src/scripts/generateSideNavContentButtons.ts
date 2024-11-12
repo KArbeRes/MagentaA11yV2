@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const contentDir = path.join(__dirname, "../content/web");
+const contentDir = path.join(__dirname, "../public/content/web");
 const outputPath = path.join(__dirname, "../shared/content.json");
 
 // Function to format names to a label format
