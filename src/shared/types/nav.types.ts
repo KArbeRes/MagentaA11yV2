@@ -13,4 +13,8 @@ export interface SideNavItem {
   name: string;
   type?: "file";
   children?: SideNavItem[];
+  generalNotes?: string | null;
+  gherkin?: string | null;
+  condensed?: string | null;
+  otherContent?: string | null;
 }

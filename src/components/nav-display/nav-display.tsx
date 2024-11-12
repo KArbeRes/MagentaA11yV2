@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import contentData from "../../shared/content.json";
 import "./nav-display.scss";
@@ -24,7 +24,6 @@ const findItemByPath = (
 
 const NavDisplay: React.FC = () => {
   const location = useLocation();
-  const [markdownContent, setMarkdownContent] = useState<string | null>(null);
 
   // Get the item matching the current path
   const mainItem = findItemByPath(
@@ -32,35 +31,22 @@ const NavDisplay: React.FC = () => {
     location.pathname
   );
 
-  useEffect(() => {
-    // Clear previous markdown content on path change
-    setMarkdownContent(null);
-
-    // If the item is a markdown file, load its contents
-    if (mainItem && mainItem.type === "file") {
-      const markdownPath = `${process.env.PUBLIC_URL}/content/web/${mainItem.name}.md`;
-
-      fetch(markdownPath)
-        .then((response) => {
-          if (!response.ok) throw new Error(`Failed to fetch ${markdownPath}`);
-          return response.text();
-        })
-        .then((text) => setMarkdownContent(text))
-        .catch((error) => console.error("Error loading markdown file:", error));
-    }
-  }, [location.pathname, mainItem]);
-
   if (!mainItem) return <div>Item not found</div>;
+
+  const { generalNotes, gherkin, condensed, otherContent } = mainItem;
 
   return (
     <div className="MagentaA11y__nav-display">
       <h1 className="MagentaA11y__nav-display--title">{mainItem.label}</h1>
 
-      {/* Render markdown content if it exists */}
-      {markdownContent ? (
-        <ReactMarkdown>{markdownContent}</ReactMarkdown>
-      ) : (
-        <div>Loading content...</div>
+      {/* Render each section in order, if it exists */}
+      {generalNotes && <ReactMarkdown>{generalNotes}</ReactMarkdown>}
+      {/* {gherkin && <ReactMarkdown>{gherkin}</ReactMarkdown>}
+      {condensed && <ReactMarkdown>{condensed}</ReactMarkdown>*/}
+      {otherContent && (
+        <div className="MagentaA11y__nav-display--other-content">
+          <ReactMarkdown>{otherContent}</ReactMarkdown>
+        </div>
       )}
 
       {/* List of sub-items, if any */}
