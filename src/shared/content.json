@@ -5,7 +5,7 @@
     "children": [
       {
         "label": "Header Landmark",
-        "name": "header-landmark",
+        "name": "header-component/header-landmark",
         "type": "file"
       }
     ]
@@ -16,7 +16,7 @@
     "children": [
       {
         "label": "Basic Web Page",
-        "name": "basic-web-page",
+        "name": "html-component/basic-web-page",
         "type": "file"
       }
     ]

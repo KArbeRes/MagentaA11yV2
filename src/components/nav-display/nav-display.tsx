@@ -38,10 +38,13 @@ const NavDisplay: React.FC = () => {
 
     // If the item is a markdown file, load its contents
     if (mainItem && mainItem.type === "file") {
-      const markdownPath = require(`../../content/web/${mainItem.name}.md`);
+      const markdownPath = `${process.env.PUBLIC_URL}/content/web/${mainItem.name}.md`;
 
       fetch(markdownPath)
-        .then((response) => response.text())
+        .then((response) => {
+          if (!response.ok) throw new Error(`Failed to fetch ${markdownPath}`);
+          return response.text();
+        })
         .then((text) => setMarkdownContent(text))
         .catch((error) => console.error("Error loading markdown file:", error));
     }
