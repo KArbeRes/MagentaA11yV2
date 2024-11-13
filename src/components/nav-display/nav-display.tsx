@@ -33,7 +33,8 @@ const NavDisplay: React.FC = () => {
 
   if (!mainItem) return <div>Item not found</div>;
 
-  const { generalNotes, gherkin, condensed, otherContent } = mainItem;
+  // const { generalNotes, gherkin, condensed, otherContent } = mainItem;
+  const { generalNotes, otherContent } = mainItem;
 
   return (
     <div className="MagentaA11y__nav-display">
