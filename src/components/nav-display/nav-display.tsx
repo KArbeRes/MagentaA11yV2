@@ -5,6 +5,10 @@ import "./nav-display.scss";
 import { SideNavItem } from "../../shared/types/nav.types";
 import ReactMarkdown from "react-markdown";
 
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/atom-one-light.css";
+//more theme examples here -> https://highlightjs.org/examples
+
 // Helper function to find the item and its children by path
 const findItemByPath = (
   items: SideNavItem[],
@@ -43,6 +47,7 @@ const NavDisplay: React.FC = () => {
       {/* Render each section in order, if it exists */}
       {generalNotes && (
         <ReactMarkdown
+          rehypePlugins={[rehypeHighlight]}
           components={{
             p: ({ node, ...props }) => (
               <p
@@ -56,11 +61,13 @@ const NavDisplay: React.FC = () => {
         </ReactMarkdown>
       )}
 
-      {/* {gherkin && <ReactMarkdown>{gherkin}</ReactMarkdown>*/}
-      {/* {condensed && <ReactMarkdown>{condensed}</ReactMarkdown>} */}
+      {/* {gherkin && <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{gherkin}</ReactMarkdown>*/}
+      {/* {condensed && <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{condensed}</ReactMarkdown>} */}
       {otherContent && (
         <div className="MagentaA11y__nav-display--other-content">
-          <ReactMarkdown>{otherContent}</ReactMarkdown>
+          <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+            {otherContent}
+          </ReactMarkdown>
         </div>
       )}
 
