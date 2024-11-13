@@ -12,10 +12,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
 
-  pre:has([class^="language-"]) {
-    background-color: var(--magentaa11y-color--code-blocks);
-    padding: 10px;
+    pre {
+      width: -webkit-fill-available;
+    }
+
+    code {
+      background-color: var(--magentaa11y-color--code-blocks);
+    }
   }
 }

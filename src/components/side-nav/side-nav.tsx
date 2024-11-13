@@ -74,7 +74,6 @@ const SideNav: React.FC = () => {
   return (
     <div className="MagentaA11y__side-nav">
       {renderNavItems(contentData as NavItem[], "", false, true)}
-      <md-filled-button>Collapse All</md-filled-button>
     </div>
   );
 };
