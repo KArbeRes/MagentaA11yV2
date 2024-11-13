@@ -102,3 +102,7 @@
 - `--magentaa11y-color--black`: #212121
 - `--magentaa11y-color--true-black`: #000000
 - `--magentaa11y-color--white`: #FFFFFF
+
+## Additional Colors
+
+- `--magentaa11y-color--code-blocks`: #eae9ff

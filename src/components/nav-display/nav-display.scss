@@ -1,11 +1,21 @@
 .MagentaA11y__nav-display {
   max-width: 1280px;
   margin: auto;
+  padding: 15px;
+
+  &--title,
+  &--general-notes {
+    text-align: center;
+  }
 
   &--other-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  pre:has([class^="language-"]) {
+    background-color: var(--magentaa11y-color--code-blocks);
     padding: 10px;
   }
 }

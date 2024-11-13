@@ -3,8 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { remark } from "remark";
 import remarkParse from "remark-parse";
-import { Node } from "unist";
-import { Heading, Parent, Text } from "mdast";
+import { Root, Content, Parent, Heading, Text } from "mdast";
+import { toMarkdown } from "mdast-util-to-markdown";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,117 +21,73 @@ const formatLabel = (name: string) =>
     .replace(/\b\w/g, (char) => char.toUpperCase());
 
 // Type guard to check if a node is a heading
-const isHeading = (node: Node): node is Heading =>
+const isHeading = (node: Content): node is Heading =>
   node.type === "heading" && (node as Heading).depth !== undefined;
 
 // Type guard to check if a node has children
-const hasChildren = (node: Node): node is Parent =>
+const hasChildren = (node: any): node is Parent =>
   Array.isArray((node as Parent).children);
 
-// Function to extract "General Notes", "Gherkin", "Condensed", and "otherContent" with heading only for otherContent
+// Function to extract sections and omit H1 headers from specific sections
 const extractSections = (content: string) => {
-  let generalNotesContent = "";
-  let gherkinContent = "";
-  let condensedContent = "";
-  let otherContent = "";
+  const tree = remark().use(remarkParse).parse(content) as Root;
 
-  const tree = remark().use(remarkParse).parse(content);
-
+  const sections: Record<string, Content[]> = {};
   let currentSection: "generalNotes" | "gherkin" | "condensed" | "other" =
     "other";
+  sections[currentSection] = [];
 
-  const visit = (node: Node) => {
-    if (isHeading(node) && hasChildren(node) && node.depth === 1) {
-      const headingText = (node.children[0] as Text).value.toLowerCase();
-
-      // Set the current section based on the heading text
-      if (headingText.includes("general notes")) {
-        currentSection = "generalNotes";
-      } else if (headingText.includes("gherkin")) {
-        currentSection = "gherkin";
-      } else if (headingText.includes("condensed")) {
-        currentSection = "condensed";
-      } else {
-        currentSection = "other";
-        otherContent += `# ${headingText}\n\n`; // Include heading in otherContent only
-      }
-      return; // Skip processing this heading's content
-    }
-
-    // Collect content based on the current section
-    if (node.type === "paragraph" && hasChildren(node)) {
-      const paragraphContent = node.children
-        .map((child) => (child.type === "text" ? (child as Text).value : ""))
-        .join("");
-
-      if (currentSection === "generalNotes") {
-        generalNotesContent += paragraphContent + "\n";
-      } else if (currentSection === "gherkin") {
-        gherkinContent += paragraphContent + "\n";
-      } else if (currentSection === "condensed") {
-        condensedContent += paragraphContent + "\n";
-      } else {
-        otherContent += paragraphContent + "\n";
-      }
-    }
-
-    // Collect list items
-    if (node.type === "listItem" && hasChildren(node)) {
-      const listItemContent = node.children
-        .map((child) => (child.type === "text" ? (child as Text).value : ""))
-        .join("");
-
-      if (currentSection === "generalNotes") {
-        generalNotesContent += "- " + listItemContent + "\n";
-      } else if (currentSection === "gherkin") {
-        gherkinContent += "- " + listItemContent + "\n";
-      } else if (currentSection === "condensed") {
-        condensedContent += "- " + listItemContent + "\n";
-      } else {
-        otherContent += "- " + listItemContent + "\n";
-      }
-    }
-
-    // Capture code blocks
-    if (node.type === "code") {
-      const codeNode = node as any;
-      const codeBlock =
-        "```" + (codeNode.lang || "") + "\n" + codeNode.value + "\n```";
-      if (currentSection === "generalNotes") {
-        generalNotesContent += codeBlock + "\n";
-      } else if (currentSection === "gherkin") {
-        gherkinContent += codeBlock + "\n";
-      } else if (currentSection === "condensed") {
-        condensedContent += codeBlock + "\n";
-      } else {
-        otherContent += codeBlock + "\n";
-      }
-    }
-
-    // Capture nested headings within otherContent
-    if (isHeading(node) && currentSection === "other") {
-      const headingContent = `${"#".repeat(node.depth)} ${
-        (node.children[0] as Text).value
-      }\n\n`;
-      otherContent += headingContent;
-    }
-
-    // Recursively visit all children nodes
-    if (hasChildren(node)) {
-      node.children.forEach(visit);
-    }
-  };
-
-  // Start traversing the AST from the root node
   if (hasChildren(tree)) {
-    tree.children.forEach(visit);
+    const nodes = tree.children;
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+
+      if (isHeading(node) && node.depth === 1 && hasChildren(node)) {
+        const headingText = (node.children[0] as Text).value.toLowerCase();
+
+        if (headingText.includes("general notes")) {
+          currentSection = "generalNotes";
+        } else if (headingText.includes("gherkin")) {
+          currentSection = "gherkin";
+        } else if (headingText.includes("condensed")) {
+          currentSection = "condensed";
+        } else {
+          currentSection = "other";
+        }
+        if (!sections[currentSection]) {
+          sections[currentSection] = [];
+        }
+
+        // Only include the heading in the 'other' section
+        if (currentSection === "other") {
+          sections[currentSection].push(node);
+        }
+      } else {
+        // Add node to current section
+        sections[currentSection].push(node);
+      }
+    }
   }
 
+  // Serialize each section back to markdown
+  const generalNotes = sections["generalNotes"]
+    ? toMarkdown({ type: "root", children: sections["generalNotes"] })
+    : null;
+  const gherkin = sections["gherkin"]
+    ? toMarkdown({ type: "root", children: sections["gherkin"] })
+    : null;
+  const condensed = sections["condensed"]
+    ? toMarkdown({ type: "root", children: sections["condensed"] })
+    : null;
+  const otherContent = sections["other"]
+    ? toMarkdown({ type: "root", children: sections["other"] })
+    : null;
+
   return {
-    generalNotes: generalNotesContent.trim() || null,
-    gherkin: gherkinContent.trim() || null,
-    condensed: condensedContent.trim() || null,
-    otherContent: otherContent.trim() || null,
+    generalNotes: generalNotes?.trim() || null,
+    gherkin: gherkin?.trim() || null,
+    condensed: condensed?.trim() || null,
+    otherContent: otherContent?.trim() || null,
   };
 };
 

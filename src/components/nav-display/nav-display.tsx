@@ -40,9 +40,23 @@ const NavDisplay: React.FC = () => {
       <h1 className="MagentaA11y__nav-display--title">{mainItem.label}</h1>
 
       {/* Render each section in order, if it exists */}
-      {generalNotes && <ReactMarkdown>{generalNotes}</ReactMarkdown>}
-      {/* {gherkin && <ReactMarkdown>{gherkin}</ReactMarkdown>}
-      {condensed && <ReactMarkdown>{condensed}</ReactMarkdown>*/}
+      {generalNotes && (
+        <ReactMarkdown
+          components={{
+            p: ({ node, ...props }) => (
+              <p
+                className="MagentaA11y__nav-display--general-notes"
+                {...props}
+              />
+            ),
+          }}
+        >
+          {generalNotes}
+        </ReactMarkdown>
+      )}
+
+      {/* {gherkin && <ReactMarkdown>{gherkin}</ReactMarkdown>*/}
+      {/* {condensed && <ReactMarkdown>{condensed}</ReactMarkdown>} */}
       {otherContent && (
         <div className="MagentaA11y__nav-display--other-content">
           <ReactMarkdown>{otherContent}</ReactMarkdown>
