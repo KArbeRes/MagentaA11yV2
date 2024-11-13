@@ -5,7 +5,7 @@
     "children": [
       {
         "label": "Header Landmark",
-        "name": "header-component/header-landmark",
+        "name": "header-landmark",
         "type": "file",
         "generalNotes": "There must only be a singular header/banner element on the page. Contains the site title and typically the primary navigation.",
         "gherkin": "How to test a header landmark\nGIVEN THAT I am on a page with a header landmark\n1 - Keyboard for mobile & desktop\n- WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components\n2 - Desktop screenreader\n- WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND\n- I use the tab key to enter the web browser window\n- I HEAR It is discoverable with screenreader shortcuts as header/banner landmark\n- I HEAR It typically contains the name and primary navigation of the website\n3 - Mobile screenreader\n- WHEN I use a mobile screenreader (Talkback, VoiceOver) AND\n- I swipe to focusable elements in the header\n- I HEAR It is discoverable with screenreader shortcuts as header/banner landmark\n- I HEAR It typically contains the name and primary navigation of the website\nFull information: https://www.magentaa11y.com/checklist-web/header/",
@@ -20,7 +20,7 @@
     "children": [
       {
         "label": "Basic Web Page",
-        "name": "html-component/basic-web-page",
+        "name": "basic-web-page",
         "type": "file",
         "generalNotes": null,
         "gherkin": null,

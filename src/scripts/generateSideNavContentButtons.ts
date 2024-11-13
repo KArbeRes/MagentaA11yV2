@@ -135,20 +135,18 @@ const extractSections = (content: string) => {
   };
 };
 
-// Recursive function to build directory structure, including .md files with extracted sections
 const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
   const items = fs.readdirSync(dirPath, { withFileTypes: true });
 
   return items
     .map((item) => {
       const itemPath = path.join(dirPath, item.name);
-      const itemName = parentPath ? `${parentPath}/${item.name}` : item.name;
 
       if (item.isDirectory()) {
         return {
           label: formatLabel(item.name),
-          name: itemName,
-          children: getDirectoryStructure(itemPath, itemName),
+          name: item.name, // Use just the directory name for folders
+          children: getDirectoryStructure(itemPath), // Pass the directory without the parent path here
         };
       } else if (item.isFile() && item.name.endsWith(".md")) {
         const content = fs.readFileSync(itemPath, "utf-8");
@@ -157,7 +155,7 @@ const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
 
         return {
           label: formatLabel(item.name),
-          name: itemName.replace(".md", ""),
+          name: item.name.replace(".md", ""), // Use only the file name without the full path
           type: "file",
           generalNotes,
           gherkin,
