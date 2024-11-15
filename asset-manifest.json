@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/MagentaA11yV2/static/css/main.d57d7bc6.css",
+    "main.js": "/MagentaA11yV2/static/js/main.3f57a3f1.js",
+    "static/js/453.0bdec75c.chunk.js": "/MagentaA11yV2/static/js/453.0bdec75c.chunk.js",
+    "static/media/brand-logo-black.svg": "/MagentaA11yV2/static/media/brand-logo-black.30f5842aa0c1bcf49ff2.svg",
+    "index.html": "/MagentaA11yV2/index.html",
+    "main.d57d7bc6.css.map": "/MagentaA11yV2/static/css/main.d57d7bc6.css.map",
+    "main.3f57a3f1.js.map": "/MagentaA11yV2/static/js/main.3f57a3f1.js.map",
+    "453.0bdec75c.chunk.js.map": "/MagentaA11yV2/static/js/453.0bdec75c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d57d7bc6.css",
+    "static/js/main.3f57a3f1.js"
+  ]
+}
