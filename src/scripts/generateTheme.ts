@@ -1,14 +1,14 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Convert `import.meta.url` to a usable directory path
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Paths to the Markdown file and output SCSS file
-const markdownFilePath = path.join(__dirname, "../colors.md");
-const outputFilePath = path.join(__dirname, "../App.scss");
+const markdownFilePath = path.join(__dirname, '../colors.md');
+const outputFilePath = path.join(__dirname, '../App.scss');
 
 // Regular expression to match both Material and MagentaA11y CSS variable tokens and values in Markdown
 const tokenRegex =
@@ -41,10 +41,11 @@ function generateScssContent(tokens: Token[]): string {
   .MagentaA11y__main {
     flex-grow: 1;
     word-break: break-word;
+    overflow: auto;
   }
 
 :root {
-${tokens.map((token) => `  ${token.name}: ${token.value};`).join("\n")}
+${tokens.map((token) => `  ${token.name}: ${token.value};`).join('\n')}
 }
 `;
 }
@@ -62,9 +63,9 @@ const extractTokens = (data: string): Token[] => {
 };
 
 const generateTheme = () => {
-  fs.readFile(markdownFilePath, "utf8", (err, data) => {
+  fs.readFile(markdownFilePath, 'utf8', (err, data) => {
     if (err) {
-      console.error("Error reading the Markdown file:", err);
+      console.error('Error reading the Markdown file:', err);
       return;
     }
 
@@ -73,9 +74,9 @@ const generateTheme = () => {
 
     fs.writeFile(outputFilePath, scssContent, (err) => {
       if (err) {
-        console.error("Error writing to App.scss:", err);
+        console.error('Error writing to App.scss:', err);
       } else {
-        console.log("App.scss updated successfully with theme colors!");
+        console.log('App.scss updated successfully with theme colors!');
       }
     });
   });

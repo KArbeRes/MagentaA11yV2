@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import './App.scss';
 import Home from './components/home/home';
@@ -8,6 +8,7 @@ import SideNav from './components/side-nav/side-nav';
 import NavDisplay from './components/nav-display/nav-display';
 import contentData from './shared/content.json';
 import { SideNavItem } from './shared/types/nav.types';
+import SideNavToggle from './components/side-nav-toggle/side-nav-toggle';
 
 const navItems = [{ label: 'About us', href: '/about', component: About }];
 

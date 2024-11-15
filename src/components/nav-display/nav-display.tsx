@@ -1,12 +1,11 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import contentData from "../../shared/content.json";
-import "./nav-display.scss";
-import { SideNavItem } from "../../shared/types/nav.types";
-import ReactMarkdown from "react-markdown";
-
-import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/atom-one-light.css";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import contentData from '../../shared/content.json';
+import './nav-display.scss';
+import { SideNavItem } from '../../shared/types/nav.types';
+import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/atom-one-light.css';
 //more theme examples here -> https://highlightjs.org/examples
 
 // Helper function to find the item and its children by path
@@ -19,7 +18,7 @@ const findItemByPath = (
     if (path === fullPath) return item;
 
     if (item.children) {
-      const found = findItemByPath(item.children, path.replace(fullPath, ""));
+      const found = findItemByPath(item.children, path.replace(fullPath, ''));
       if (found) return found;
     }
   }
@@ -55,8 +54,7 @@ const NavDisplay: React.FC = () => {
                 {...props}
               />
             ),
-          }}
-        >
+          }}>
           {generalNotes}
         </ReactMarkdown>
       )}

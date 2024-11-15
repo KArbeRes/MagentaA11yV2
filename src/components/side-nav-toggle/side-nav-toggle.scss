@@ -1,0 +1,23 @@
+.side-nav-toggle {
+  --side-nav-background-color: #f7f2fa;
+  position: absolute;
+  top: 0;
+  right: -24px;
+  width: 24px;
+  height: 100px;
+  border: none;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  margin-top: 42px;
+  padding: 0;
+  background-color: var(--side-nav-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
