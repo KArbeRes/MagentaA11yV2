@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import "./side-nav-toggle.scss";
 
 interface SideNavToggleButtonProps {
@@ -20,61 +20,67 @@ const SideNavToggle: React.FC<SideNavToggleButtonProps> = ({
     e.preventDefault(); // Prevent text selection or other default behavior
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (isDragging && buttonRef.current) {
-      const parentElement = buttonRef.current.parentElement;
-      if (parentElement) {
-        const parentRect = parentElement.getBoundingClientRect();
-        const buttonHeight = buttonRef.current.offsetHeight;
-        let yDistance = e.clientY - parentRect.top - buttonHeight / 2;
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (isDragging && buttonRef.current) {
+        const parentElement = buttonRef.current.parentElement;
+        if (parentElement) {
+          const parentRect = parentElement.getBoundingClientRect();
+          const buttonHeight = buttonRef.current.offsetHeight;
+          let yDistance = e.clientY - parentRect.top - buttonHeight / 2;
 
-        // Constrain the button within the parent container
-        const maxTop = parentElement.offsetHeight - buttonHeight;
-        if (yDistance < 0) yDistance = 0;
-        if (yDistance > maxTop) yDistance = maxTop;
+          // Constrain the button within the parent container
+          const maxTop = parentElement.offsetHeight - buttonHeight;
+          if (yDistance < 0) yDistance = 0;
+          if (yDistance > maxTop) yDistance = maxTop;
 
-        // Set the top style of the button
-        buttonRef.current.style.top = `${yDistance}px`;
+          // Set the top style of the button
+          buttonRef.current.style.top = `${yDistance}px`;
+        }
+        setHasDragged(true);
       }
-      setHasDragged(true);
-    }
-  };
+    },
+    [isDragging]
+  );
 
   // Touch event handlers
   const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
     setIsDragging(true);
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
-  const handleTouchMove = (e: TouchEvent) => {
-    e.preventDefault();
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
+      e.preventDefault();
 
-    if (isDragging && buttonRef.current) {
-      const parentElement = buttonRef.current.parentElement;
-      if (parentElement) {
-        const touch = e.touches[0];
-        const parentRect = parentElement.getBoundingClientRect();
-        const buttonHeight = buttonRef.current.offsetHeight;
-        let yDistance = touch.clientY - parentRect.top - buttonHeight / 2;
+      if (isDragging && buttonRef.current) {
+        const parentElement = buttonRef.current.parentElement;
+        if (parentElement) {
+          const touch = e.touches[0];
+          const parentRect = parentElement.getBoundingClientRect();
+          const buttonHeight = buttonRef.current.offsetHeight;
+          let yDistance = touch.clientY - parentRect.top - buttonHeight / 2;
 
-        // Constrain the button within the parent container
-        const maxTop = parentElement.offsetHeight - buttonHeight;
-        if (yDistance < 0) yDistance = 0;
-        if (yDistance > maxTop) yDistance = maxTop;
+          // Constrain the button within the parent container
+          const maxTop = parentElement.offsetHeight - buttonHeight;
+          if (yDistance < 0) yDistance = 0;
+          if (yDistance > maxTop) yDistance = maxTop;
 
-        // Set the top style of the button
-        buttonRef.current.style.top = `${yDistance}px`;
+          // Set the top style of the button
+          buttonRef.current.style.top = `${yDistance}px`;
+        }
       }
-    }
-    setHasDragged(true);
-  };
+      setHasDragged(true);
+    },
+    [isDragging]
+  );
 
   // Add and remove event listeners
   useEffect(() => {
@@ -102,7 +108,13 @@ const SideNavToggle: React.FC<SideNavToggleButtonProps> = ({
       window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("touchcancel", handleTouchEnd);
     };
-  }, [handleMouseMove, handleTouchMove, isDragging]);
+  }, [
+    handleMouseMove,
+    handleMouseUp,
+    handleTouchEnd,
+    handleTouchMove,
+    isDragging,
+  ]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (hasDragged) {
