@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import contentData from '../../shared/content.json';
-import './side-nav.scss';
-import SideNavToggle from '../side-nav-toggle/side-nav-toggle';
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import contentData from "../../../shared/content.json";
+import "./side-nav.scss";
+import SideNavToggle from "../side-nav-toggle/side-nav-toggle";
 
 interface NavItem {
   label: string;
   name: string;
-  type?: 'file';
+  type?: "file";
   children?: NavItem[];
 }
 interface SideNavProps {
@@ -26,16 +26,17 @@ const SideNav: React.FC<SideNavProps> = () => {
 
   const renderNavItems = (
     items: NavItem[],
-    parentPath = '',
+    parentPath = "",
     parentActive = false,
     isTopLevel = false
   ) => (
     <ul
       className={
         isTopLevel
-          ? 'MagentaA11y__side-nav--list'
-          : 'MagentaA11y__side-nav--sub-list'
-      }>
+          ? "MagentaA11y__side-nav--list"
+          : "MagentaA11y__side-nav--sub-list"
+      }
+    >
       {items.map((item) => {
         const fullPath = `${parentPath}/${item.name}`; // Build the full path
         const itemActive = isActive(fullPath);
@@ -46,15 +47,17 @@ const SideNav: React.FC<SideNavProps> = () => {
             key={item.name}
             className={
               isTopLevel
-                ? 'MagentaA11y__side-nav--item'
-                : 'MagentaA11y__side-nav--sub-item'
-            }>
+                ? "MagentaA11y__side-nav--item"
+                : "MagentaA11y__side-nav--sub-item"
+            }
+          >
             <NavLink
               to={fullPath}
               className={`MagentaA11y__side-nav--link ${
-                !isTopLevel ? 'MagentaA11y__side-nav--sub-link' : ''
+                !isTopLevel ? "MagentaA11y__side-nav--sub-link" : ""
               }`}
-              {...(!isTopLevel && !activeState && { tabIndex: -1 })}>
+              {...(!isTopLevel && !activeState && { tabIndex: -1 })}
+            >
               {item.label}
               {isTopLevel && (
                 <svg
@@ -62,7 +65,8 @@ const SideNav: React.FC<SideNavProps> = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="24px"
                   viewBox="0 -960 960 960"
-                  width="24px">
+                  width="24px"
+                >
                   <path d="M480-360 280-560h400L480-360Z" />
                 </svg>
               )}
@@ -77,10 +81,11 @@ const SideNav: React.FC<SideNavProps> = () => {
   );
 
   return (
-    <div className="test">
+    <div className="MagentaA11y__side-nav-container">
       <div
-        className={`MagentaA11y__side-nav ${isSideNavVisible ? '' : 'hidden'}`}>
-        {renderNavItems(contentData as NavItem[], '', false, true)}
+        className={`MagentaA11y__side-nav ${isSideNavVisible ? "" : "hidden"}`}
+      >
+        {renderNavItems(contentData as NavItem[], "", false, true)}
       </div>
       <SideNavToggle toggle={toggleSideNav} isVisible={isSideNavVisible} />
     </div>

@@ -1,18 +1,18 @@
-import React from 'react';
-import { Route, HashRouter as Router, Routes } from 'react-router-dom';
-import './App.scss';
-import Home from './components/home/home';
-import About from './components/about-us/about-us';
-import TopNav from './components/top-nav/top-nav';
-import SideNav from './components/side-nav/side-nav';
-import NavDisplay from './components/nav-display/nav-display';
-import contentData from './shared/content.json';
-import { SideNavItem } from './shared/types/nav.types';
+import React from "react";
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import "./App.scss";
+import Home from "./components/home/home";
+import About from "./components/about-us/about-us";
+import TopNav from "./components/navigation/top-nav/top-nav";
+import SideNav from "./components/navigation/side-nav/side-nav";
+import NavDisplay from "./components/nav-display/nav-display";
+import contentData from "./shared/content.json";
+import { SideNavItem } from "./shared/types/nav.types";
 
-const navItems = [{ label: 'About us', href: '/about', component: About }];
+const navItems = [{ label: "About us", href: "/about", component: About }];
 
 const App: React.FC = () => {
-  const generateRoutes = (items: SideNavItem[], parentPath = '') => {
+  const generateRoutes = (items: SideNavItem[], parentPath = "") => {
     return items.map((item) => {
       const path = `${parentPath}/${item.name}`;
 
