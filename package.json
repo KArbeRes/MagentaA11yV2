@@ -39,7 +39,7 @@
   "scripts": {
     "generate-theme": "npx tsx src/scripts/generateTheme.ts",
     "generate-side-nav-buttons": "npx tsx src/scripts/generateSideNavContentButtons.ts",
-    "start": "react-scripts start",
+    "start": "npm run generate-theme && npm run generate-side-nav-buttons && react-scripts start",
     "dev": "concurrently -k \"npm run watch-nav-items\" \"npm start\"",
     "build": "npm run generate-side-nav-buttons && react-scripts build",
     "predeploy": "npm run build",
