@@ -102,7 +102,7 @@ const SideNavToggle: React.FC<SideNavToggleButtonProps> = ({
       window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("touchcancel", handleTouchEnd);
     };
-  }, [isDragging]);
+  }, [handleMouseMove, handleTouchMove, isDragging]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (hasDragged) {
