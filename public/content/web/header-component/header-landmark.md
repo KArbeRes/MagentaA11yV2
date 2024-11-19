@@ -95,7 +95,7 @@ This custom header requires extra attributes.
 </div>
 ```
 
-## Developer Notes
+# Developer Notes
 
 ### Name
 

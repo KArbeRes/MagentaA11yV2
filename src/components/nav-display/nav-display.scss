@@ -1,14 +1,22 @@
 .MagentaA11y__nav-display {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
   max-width: 1280px;
   margin: auto;
   padding: 15px;
 
-  &--title,
-  &--general-notes {
+  &__intro {
     text-align: center;
   }
 
-  &--other-content {
+  &__acceptance-criteria {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: solid red 1px;
+  }
+
+  &__other-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
