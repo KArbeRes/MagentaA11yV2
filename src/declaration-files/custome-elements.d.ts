@@ -36,6 +36,24 @@ declare namespace JSX {
       HTMLElement
     > & { slot?: string };
 
+    "md-tabs": React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    > & {
+      activeTabIndex?: number; // Selected tab index
+      onselected?: (event: Event) => void; // Event handler for the 'selected' event
+    };
+
+    "md-primary-tab": React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    >;
+
+    "md-secondary-tab": React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    >;
+
     svg: React.SVGProps<SVGSVGElement> & { slot?: string };
   }
 }

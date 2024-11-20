@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import contentData from "../../shared/content.json";
 import "./nav-display.scss";
@@ -11,7 +11,6 @@ import {
   MaterialButtonStyle,
   MaterialButtonVariant,
 } from "../material-button/material-buttons.types";
-//more theme examples here -> https://highlightjs.org/examples
 
 // Helper function to find the item and its children by path
 const findItemByPath = (
@@ -33,21 +32,45 @@ const findItemByPath = (
 const NavDisplay: React.FC = () => {
   const location = useLocation();
 
-  // Get the item matching the current path
+  // Get the item matching the current path**
   const mainItem = findItemByPath(
     contentData as SideNavItem[],
     location.pathname
   );
 
+  // Track the active tab
+  const tabsRef = useRef<HTMLElement>(null);
+  const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    const handleTabChange = (event: Event) => {
+      const tabIndex = (
+        event.target as HTMLElement & { activeTabIndex: number }
+      ).activeTabIndex;
+
+      setActiveTab(tabIndex);
+    };
+
+    const tabs = tabsRef.current;
+
+    if (tabs) {
+      tabs.addEventListener("change", handleTabChange);
+    }
+    return () => {
+      if (tabs) {
+        tabs.removeEventListener("change", handleTabChange);
+      }
+    };
+  }, []);
+
   if (!mainItem) return <div>Item not found</div>;
 
-  // const { generalNotes, gherkin, condensed, otherContent } = mainItem;
-  const { generalNotes, otherContent } = mainItem;
+  const { generalNotes, gherkin, condensed, otherContent } = mainItem;
 
   return (
     <div className="MagentaA11y__nav-display">
       <div className="MagentaA11y__nav-display__intro">
-        <h1 className="MagentaA11yß__nav-display__title">{mainItem.label}</h1>
+        <h1 className="MagentaA11y__nav-display__title">{mainItem.label}</h1>
         {/* Render each section in order, if it exists */}
         {generalNotes && (
           <ReactMarkdown
@@ -66,27 +89,73 @@ const NavDisplay: React.FC = () => {
         )}
       </div>
 
-      <div className="MagentaA11y__nav-display__acceptance-criteria">
-        <div className="MagentaA11y__nav-display__acceptance-criteria__actions">
+      {(gherkin || condensed) && (
+        <div className="MagentaA11y__nav-display__acceptance-criteria">
+          <div className="MagentaA11y__nav-display__acceptance-criteria__actions">
+            {/* md-tabs with ref */}
+            <md-tabs ref={tabsRef}>
+              <md-secondary-tab
+                aria-controls="condensed-tabpanel"
+                id="condensed-tab"
+              >
+                Condensed
+              </md-secondary-tab>
+              <md-secondary-tab
+                aria-controls="gherkin-tabpanel"
+                id="gherkin-tab"
+              >
+                Gherkin
+              </md-secondary-tab>
+            </md-tabs>
+
+            {/* Textarea displaying content based on activeTab */}
+            <textarea
+              id="content-textarea"
+              name="content-textarea"
+              readOnly
+              className="MagentaA11y__nav-display__textarea"
+              value={
+                activeTab === 0
+                  ? condensed || "No Condensed Syntax available!"
+                  : gherkin || "No Gherkin Syntax available!"
+              }
+            />
+
+            {/* Optional: Action Buttons */}
+            {/* Uncomment and implement functionality as needed */}
+            {/*
           <MaterialButton
             text="Copy"
             variant={MaterialButtonVariant.Filled}
             style={MaterialButtonStyle.Monochrome}
+            onClick={() => {
+              navigator.clipboard.writeText(
+                activeTab === "condensed" ? condensed || "" : gherkin || ""
+              );
+              alert("Content copied to clipboard!");
+            }}
           />
           <MaterialButton
             text="Share"
             variant={MaterialButtonVariant.Filled}
             style={MaterialButtonStyle.Monochrome}
+            onClick={() => {
+              // Implement share functionality
+            }}
           />
           <MaterialButton
             text="Add to List"
             variant={MaterialButtonVariant.Filled}
+            onClick={() => {
+              // Implement add to list functionality
+            }}
           />
+          */}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* {gherkin && <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{gherkin}</ReactMarkdown>*/}
-      {/* {condensed && <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{condensed}</ReactMarkdown>} */}
+      {/* Other content sections */}
       {otherContent && (
         <div className="MagentaA11y__nav-display__other-content">
           <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
