@@ -54,10 +54,11 @@ const NavDisplay: React.FC = () => {
     }
     return () => {
       if (tabs) {
+        setActiveTab(0);
         tabs.removeEventListener("change", handleTabChange);
       }
     };
-  }, []);
+  }, [location.pathname]);
 
   if (!mainItem) return <div>Item not found</div>;
 
