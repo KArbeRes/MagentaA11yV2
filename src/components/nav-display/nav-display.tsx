@@ -1,16 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import contentData from "../../shared/content.json";
-import "./nav-display.scss";
-import { SideNavItem } from "../../shared/types/nav.types";
+import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
+import contentData from "../../shared/content.json";
+import { SideNavItem } from "../../shared/types/nav.types";
+
 import "highlight.js/styles/atom-one-light.css";
-import MaterialButton from "../material-button/material-button";
-import {
-  MaterialButtonStyle,
-  MaterialButtonVariant,
-} from "../material-button/material-buttons.types";
+import "./nav-display.scss";
 
 // Helper function to find the item and its children by path
 const findItemByPath = (
@@ -120,37 +116,6 @@ const NavDisplay: React.FC = () => {
                   : gherkin || "No Gherkin Syntax available!"
               }
             />
-
-            {/* Optional: Action Buttons */}
-            {/* Uncomment and implement functionality as needed */}
-            {/*
-          <MaterialButton
-            text="Copy"
-            variant={MaterialButtonVariant.Filled}
-            style={MaterialButtonStyle.Monochrome}
-            onClick={() => {
-              navigator.clipboard.writeText(
-                activeTab === "condensed" ? condensed || "" : gherkin || ""
-              );
-              alert("Content copied to clipboard!");
-            }}
-          />
-          <MaterialButton
-            text="Share"
-            variant={MaterialButtonVariant.Filled}
-            style={MaterialButtonStyle.Monochrome}
-            onClick={() => {
-              // Implement share functionality
-            }}
-          />
-          <MaterialButton
-            text="Add to List"
-            variant={MaterialButtonVariant.Filled}
-            onClick={() => {
-              // Implement add to list functionality
-            }}
-          />
-          */}
           </div>
         </div>
       )}
