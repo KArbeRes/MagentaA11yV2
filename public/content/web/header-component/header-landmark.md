@@ -66,7 +66,7 @@ Full information: https://www.magentaa11y.com/checklist-web/header/
 
 # Code Examples
 
-### Use Semantic HTML
+## Use Semantic HTML
 
 This semantic HTML contains all accessibility features by default.
 
@@ -97,20 +97,20 @@ This custom header requires extra attributes.
 
 # Developer Notes
 
-### Name
+## Name
 
 - Typically doesn’t have a name or description since there must be only one instance per page.
 
-### Role
+## Role
 
 - Identifies itself as a header or banner landmark.
 - If a non-semantic element must be used (like a `<div>`), use `role="banner"` to make the element discoverable.
 
-### Group
+## Group
 
 - Contains the site title and typically the primary navigation.
 
-### Focus
+## Focus
 
 - Can be targeted with a skip link, but the skip link will typically be labeled “skip to navigation.”
 - Use `tabindex="-1"` to make the header targetable with a skip link.

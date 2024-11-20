@@ -5,7 +5,7 @@ import rehypeHighlight from "rehype-highlight";
 import contentData from "../../shared/content.json";
 import { SideNavItem } from "../../shared/types/nav.types";
 
-import "highlight.js/styles/atom-one-light.css";
+import "highlight.js/styles/magula.css";
 import "./nav-display.scss";
 
 // Helper function to find the item and its children by path
@@ -89,16 +89,22 @@ const NavDisplay: React.FC = () => {
         <div className="MagentaA11y__nav-display__acceptance-criteria">
           <div className="MagentaA11y__nav-display__acceptance-criteria__actions">
             {/* md-tabs with ref */}
-            <md-tabs ref={tabsRef}>
+            <md-tabs
+              ref={tabsRef}
+              aria-label="Content options for syntax"
+              role="tablist"
+            >
               <md-secondary-tab
-                aria-controls="condensed-tabpanel"
+                aria-selected={activeTab === 0 ? "true" : "false"}
                 id="condensed-tab"
+                role="tab"
               >
                 Condensed
               </md-secondary-tab>
               <md-secondary-tab
-                aria-controls="gherkin-tabpanel"
+                aria-selected={activeTab === 1 ? "true" : "false"}
                 id="gherkin-tab"
+                role="tab"
               >
                 Gherkin
               </md-secondary-tab>
@@ -108,8 +114,11 @@ const NavDisplay: React.FC = () => {
             <textarea
               id="content-textarea"
               name="content-textarea"
-              readOnly
+              aria-readonly="true"
               className="MagentaA11y__nav-display__textarea"
+              aria-label={`Textarea displaying ${
+                activeTab === 0 ? "Condensed" : "Gherkin"
+              } syntax`}
               value={
                 activeTab === 0
                   ? condensed || "No Condensed Syntax available!"
