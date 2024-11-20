@@ -114,7 +114,7 @@ const NavDisplay: React.FC = () => {
             <textarea
               id="content-textarea"
               name="content-textarea"
-              aria-readonly="true"
+              readOnly
               className="MagentaA11y__nav-display__textarea"
               aria-label={`Textarea displaying ${
                 activeTab === 0 ? "Condensed" : "Gherkin"
