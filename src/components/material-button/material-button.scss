@@ -1,3 +1,5 @@
 md-filled-button[data-style="monochrome"] {
-  --md-filled-button-container-color: var(--magentaa11y-color--true-black);
+  --md-filled-button-container-color: var(
+    --magentaa11y-color-brand-grayscale-black
+  );
 }

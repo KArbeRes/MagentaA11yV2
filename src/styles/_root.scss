@@ -1,0 +1,119 @@
+@mixin base-tokens {
+  --magentaa11y-line-height-71: 71px;
+  --magentaa11y-line-height-63: 63px;
+  --magentaa11y-line-height-57: 57px;
+  --magentaa11y-line-height-50: 50px; /* Line height for header H1. */
+  --magentaa11y-line-height-43: 43px; /* Line height for header H2. */
+  --magentaa11y-line-height-34: 34px; /* Line height for header H3 + H4 + H5. */
+  --magentaa11y-line-height-30: 30px; /* Line height for header H6 + H7. */
+  --magentaa11y-line-height-26: 26px; /* Line height for body XXL. */
+  --magentaa11y-line-height-24: 24px; /* Line height for header H9 & body XL. */
+  --magentaa11y-line-height-22: 22px; /* Line height for body LG. */
+  --magentaa11y-line-height-20: 20px; /* Line height for body MD. */
+  --magentaa11y-line-height-18: 18px; /* Line height for body SM. */
+  --magentaa11y-line-height-16: 16px;
+  --magentaa11y-line-height-15: 15px; /* Line height for body XS. */
+  --magentaa11y-color-brand-status-critical-400: #3d0400;
+  --magentaa11y-color-brand-status-critical-300: #d20d00;
+  --magentaa11y-color-brand-status-critical-200: #f44125;
+  --magentaa11y-color-brand-status-critical-100: #ffedec;
+  --magentaa11y-color-brand-status-caution-400: #321800;
+  --magentaa11y-color-brand-status-caution-300: #ad590b;
+  --magentaa11y-color-brand-status-caution-200: #f8a50c;
+  --magentaa11y-color-brand-status-caution-100: #fff3de;
+  --magentaa11y-color-brand-status-positive-400: #002805;
+  --magentaa11y-color-brand-status-positive-300: #008110;
+  --magentaa11y-color-brand-status-positive-200: #2dbf3b;
+  --magentaa11y-color-brand-status-positive-100: #e6fce8;
+  --magentaa11y-color-brand-status-info-400: #001338;
+  --magentaa11y-color-brand-status-info-300: #0c48bd;
+  --magentaa11y-color-brand-status-info-200: #4886ff;
+  --magentaa11y-color-brand-status-info-100: #eaf1ff;
+  --magentaa11y-color-brand-grayscale-black: #000000;
+  --magentaa11y-color-brand-grayscale-white: #ffffff;
+  --magentaa11y-color-brand-grayscale-1000: #121212;
+  --magentaa11y-color-brand-grayscale-900: #1c1c1c;
+  --magentaa11y-color-brand-grayscale-800: #2b2b2b;
+  --magentaa11y-color-brand-grayscale-700: #414141;
+  --magentaa11y-color-brand-grayscale-600: #6a6a6a;
+  --magentaa11y-color-brand-grayscale-500: #8c8c8c;
+  --magentaa11y-color-brand-grayscale-400: #cccccc;
+  --magentaa11y-color-brand-grayscale-300: #e6e6e6;
+  --magentaa11y-color-brand-grayscale-200: #f5f5f5;
+  --magentaa11y-color-brand-grayscale-100: #fbfbfb;
+  --magentaa11y-color-brand-secondary-600: #770141;
+  --magentaa11y-color-brand-secondary-500: #a7005a;
+  --magentaa11y-color-brand-secondary-400: #e20074;
+  --magentaa11y-color-brand-secondary-300: #f6288f;
+  --magentaa11y-color-brand-secondary-200: #ff52a3;
+  --magentaa11y-color-brand-secondary-100: #ffcee7;
+  --magentaa11y-color-brand-primary-600: #770141;
+  --magentaa11y-color-brand-primary-500: #a7005a;
+  --magentaa11y-color-brand-primary-400: #e20074;
+  --magentaa11y-color-brand-primary-300: #f6288f;
+  --magentaa11y-color-brand-primary-200: #ff52a3;
+  --magentaa11y-color-brand-primary-100: #ffcee7;
+  --magentaa11y-color-brand-accent-light: #eae9ff;
+
+  --magentaa11y-elevation-onDark-shadow-far: 0px 8px 24px 0px
+    rgba(0, 0, 0, 0.51); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+  --magentaa11y-elevation-onDark-shadow-near: 0px 3px 10px 0px
+    rgba(0, 0, 0, 0.51); /* Default shadow for components, elevation slightly above surface. */
+  --magentaa11y-elevation-onDark-shadow-close: 0px 2px 2px 0px
+    rgba(0, 0, 0, 0.51); /* Pressed shadow for components, elevation rests on top of surface. */
+  --magentaa11y-elevation-onLight-shadow-far: 0px 8px 24px 0px
+    rgba(65, 65, 65, 0.19); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+  --magentaa11y-elevation-onLight-shadow-near: 0px 3px 10px 0px
+    rgba(65, 65, 65, 0.19); /* Default shadow for components, elevation slightly above surface. */
+  --magentaa11y-elevation-onLight-shadow-close: 0px 2px 2px 0px
+    rgba(65, 65, 65, 0.19); /* Pressed shadow for components, elevation rests on top of surface. */
+  --magentaa11y-font-size-68: 68px;
+  --magentaa11y-font-size-60: 60px;
+  --magentaa11y-font-size-52: 52px;
+  --magentaa11y-font-size-48: 48px; /* H1 header size on mobile. */
+  --magentaa11y-font-size-40: 40px; /* H2 header size on mobile. */
+  --magentaa11y-font-size-32: 32px; /* H3 + H4 + H5 header size on mobile. */
+  --magentaa11y-font-size-28: 28px; /* H6 + H7 header size on mobile. */
+  --magentaa11y-font-size-24: 24px; /* H8 header size on mobile. */
+  --magentaa11y-font-size-20: 20px; /* H9 header and body XXL size on mobile. */
+  --magentaa11y-font-size-18: 18px; /* XL body size on mobile. */
+  --magentaa11y-font-size-16: 16px; /* LG body size on mobile. */
+  --magentaa11y-font-size-14: 14px; /* MD body size on mobile. */
+  --magentaa11y-font-size-12: 12px; /* SM body size on mobile. */
+  --magentaa11y-font-size-11: 11px; /* XS body size on mobile. */
+  --magentaa11y-font-weight-extrabold: 800; /* This weight value is 800. It is used for our header copy. */
+  --magentaa11y-font-weight-semibold: 600; /* This weight value is 600. It is used for our body copy. */
+  --magentaa11y-font-weight-bold: bold; /* This weight value is 700. It is used for our header copy. */
+  --magentaa11y-font-weight-regular: normal; /* This weight value is 400. It is used for our header and body copy. */
+  --magentaa11y-font-family-body: BlinkMacSystemFont, -apple-system, Roboto,
+    Helvetica, "Segoe UI", Arial, sans-serif; /* Used mainly for body copy, buttons, and links on web. */
+  --magentaa11y-font-family-display: TeleNeo; /* TeleNeo is reserved for headline display and headline only. */
+  --magentaa11y-font-family-header: TeleNeo; /* TeleNeo is reserved for headline display and headline only. */
+  --magentaa11y-border-radius-size-22: 22px; /* Border radius for cards. */
+  --magentaa11y-border-radius-size-12: 12px; /* Border radius for cards. */
+  --magentaa11y-border-radius-size-10: 10px; /* Border radius for app image placeholder. */
+  --magentaa11y-border-radius-size-6: 6px; /* Border radius for graphic objects such as segmented controls. */
+  --magentaa11y-border-radius-size-4: 4px; /* Applied to all buttons, containers, & input fields. */
+  --magentaa11y-border-radius-size-2: 2px; /* Applied to legends */
+  --magentaa11y-border-weight-size-16: 16px; /* hero progress ring */
+  --magentaa11y-border-weight-size-12: 12px; /* regular progress ring and bar */
+  --magentaa11y-border-weight-size-8: 8px; /* compact progress bar */
+  --magentaa11y-border-weight-size-4: 4px;
+  --magentaa11y-border-weight-size-3: 3px;
+  --magentaa11y-border-weight-size-2: 2px; /* Border weight for graphic objects such as inputs and secondary buttons */
+  --magentaa11y-border-weight-size-1: 1px; /* Border weight for graphic objects such as inputs */
+  --magentaa11y-spacing-size-160: 160px;
+  --magentaa11y-spacing-size-96: 96px;
+  --magentaa11y-spacing-size-80: 80px;
+  --magentaa11y-spacing-size-64: 64px;
+  --magentaa11y-spacing-size-48: 48px;
+  --magentaa11y-spacing-size-40: 40px;
+  --magentaa11y-spacing-size-32: 32px;
+  --magentaa11y-spacing-size-28: 28px;
+  --magentaa11y-spacing-size-24: 24px;
+  --magentaa11y-spacing-size-20: 20px;
+  --magentaa11y-spacing-size-16: 16px;
+  --magentaa11y-spacing-size-12: 12px;
+  --magentaa11y-spacing-size-8: 8px;
+  --magentaa11y-spacing-size-4: 4px;
+}
