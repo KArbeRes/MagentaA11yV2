@@ -117,3 +117,32 @@
   --magentaa11y-spacing-size-8: 8px;
   --magentaa11y-spacing-size-4: 4px;
 }
+
+@font-face {
+  font-family: "TeleNeo";
+  src: url("../assets/fonts/teleneo/web-v1.7/teleneoweb-regular.woff2")
+      format("woff2"),
+    url("../assets/fonts/teleneo/web-v1.7/teleneoweb-regular.woff2")
+      format("woff");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TeleNeo";
+  src: url("../assets/fonts/teleneo/web-v1.7/teleneoweb-bold.woff2")
+      format("woff2"),
+    url("../assets/fonts/teleneo/web-v1.7/teleneoweb-bold.woff2") format("woff");
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TeleNeo";
+  src: url("../assets/fonts/teleneo/web-v1.7/teleneoweb-extrabold.woff2")
+      format("woff2"),
+    url("../assets/fonts/teleneo/web-v1.7/teleneoweb-extrabold.woff2")
+      format("woff");
+  font-weight: 800; /* Extra Bold */
+  font-style: normal;
+}
