@@ -13,25 +13,25 @@ GIVEN THAT I am on a page with a basic web page
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use the keyboard to open a new web page I SEE the page has a unique logical title in the browser tab
+   &mdash; EN I use the keyboard to open a new web page I SEE the page has a unique logical title in the browser tab
 
 2. Desktop screenreader
 
-   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-   - I use the keyboard to open a new web page
-     - I HEAR The page has a unique logical title in the browser tab
-     - I HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
+   &mdash; EN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+   &mdash; use the keyboard to open a new web page
+   &mdash; HEAR The page has a unique logical title in the browser tab
+   &mdash; HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
 
 3. Mobile screenreader
 
-   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-   - I swipe to enter from the web browser tabs
-     - I HEAR The page has a unique logical title in the browser tab
-     - I HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
-   - THEN when I change orientations I HEAR content is accessible in landscape or portrait orientation
+   &mdash; EN I use a mobile screenreader (Talkback, VoiceOver) AND
+   &mdash; swipe to enter from the web browser tabs
+   &mdash; HEAR The page has a unique logical title in the browser tab
+   &mdash; HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
+   &mdash; EN when I change orientations I HEAR content is accessible in landscape or portrait orientation
 
 4. Device OS settings
-   - WHEN I use zoom/pinch THEN I see text can resize up to 200% without losing information
+   &mdash; EN I use zoom/pinch THEN I see text can resize up to 200% without losing information
 
 Full information: https://www.magentaa11y.com/checklist-web/html/
 
@@ -125,21 +125,22 @@ How to test a basic web page
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Tab: Enters the page and visibly focuses only interactive elements
-   - Zoom: Content zooms up to 200%
+   &mdash; Tab: Enters the page and visibly focuses only interactive elements
+   &mdash; Zoom: Content zooms up to 200%
 
 2. Test mobile screenreader gestures
 
-   - Swipe: Focus moves within page
-   - Pinch/stretch: Content zooms up to 200%
-   - Orientation: Content is accessible in landscape or portrait orientation
+   &mdash; Swipe: Focus moves within page
+   &mdash; Pinch/stretch: Content zooms up to 200%
+   &mdash; Orientation: Content is accessible in landscape or portrait orientation
 
 3. Listen to screenreader output on all devices
 
-   - Name: The page has a unique logical title in the browser tab
-   - Role: Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
+   &mdash; Name: The page has a unique logical title in the browser tab
+   &mdash; Role: Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
 
 4. Device OS settings
-   - Zoom/pinch: text can resize up to 200% without losing information
+
+   &mdash; Zoom/pinch: text can resize up to 200% without losing information
 
 Full information: https://www.magentaa11y.com/checklist-web/html/
