@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
-import contentData from "../../shared/content.json";
-import { SideNavItem } from "../../shared/types/nav.types";
+import contentData from "../../../shared/content.json";
+import { SideNavItem } from "../../../shared/types/nav.types";
 
 import "highlight.js/styles/magula.css";
 import "./nav-display.scss";
@@ -142,11 +142,27 @@ const NavDisplay: React.FC = () => {
       {/* List of sub-items, if any */}
       {mainItem.children && mainItem.children.length > 0 && (
         <ul className="MagentaA11y__nav-display--sub-list">
-          {mainItem.children.map((child) => (
-            <li key={child.name} className="MagentaA11y__nav-display--sub-item">
-              {child.label}
-            </li>
-          ))}
+          {mainItem.children.map((child) => {
+            console.log({ child });
+            return (
+              <li
+                key={child.name}
+                className="MagentaA11y__nav-display--sub-item"
+              >
+                <NavLink
+                  to={child.name}
+                  className="MagentaA11y__nav-display--sub-item-link"
+                >
+                  <span className="MagentaA11y__nav-display--sub-item-title">
+                    {child.label}
+                  </span>
+                  <span className="MagentaA11y__nav-display--sub-item-description">
+                    {child.generalNotes}
+                  </span>
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

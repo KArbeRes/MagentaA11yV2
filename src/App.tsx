@@ -5,7 +5,7 @@ import Home from "./components/home/home";
 import About from "./components/about-us/about-us";
 import TopNav from "./components/navigation/top-nav/top-nav";
 import SideNav from "./components/navigation/side-nav/side-nav";
-import NavDisplay from "./components/nav-display/nav-display";
+import NavDisplay from "./components/navigation/nav-display/nav-display";
 import contentData from "./shared/content.json";
 import { SideNavItem } from "./shared/types/nav.types";
 
