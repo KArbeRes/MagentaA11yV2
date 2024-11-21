@@ -72,6 +72,14 @@ button {
   ); /* Body font-family for interactive elements */
 }
 
+pre {
+  width: -webkit-fill-available;
+}
+
+code {
+  background-color: var(--magentaa11y-color--code-blocks);
+}
+
 :root {
   @include base-tokens;
   @include material-overrides;
