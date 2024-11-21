@@ -54,6 +54,16 @@ li {
   ); /* Default line height for body */
 }
 
+ul,
+ol {
+  padding-left: 20px; /* Default padding for list indentation */
+  margin: 0 0 1em 1em; /* Consistent spacing between lists */
+  line-height: var(
+    --magentaa11y-line-height-20
+  ); /* Default line height for lists */
+  font-family: var(--magentaa11y-font-family-body); /* Consistent font-family */
+}
+
 textarea,
 input,
 button {
