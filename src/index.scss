@@ -4,9 +4,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: var(--magentaa11y-font-family-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,6 +12,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(
+    --magentaa11y-font-family-header
+  ); /* Header font-family token */
+  margin: 0;
+}
+
+h1 {
+  line-height: var(--magentaa11y-line-height-50); /* Line height for H1 */
+}
+
+h2 {
+  line-height: var(--magentaa11y-line-height-43); /* Line height for H2 */
+}
+
+h3,
+h4,
+h5 {
+  line-height: var(--magentaa11y-line-height-34); /* Line height for H3-H5 */
+}
+
+h6 {
+  line-height: var(--magentaa11y-line-height-30); /* Line height for H6 */
+}
+
+p,
+li {
+  font-family: var(
+    --magentaa11y-font-family-body
+  ); /* Body font-family for paragraphs and lists */
+  line-height: var(
+    --magentaa11y-line-height-20
+  ); /* Default line height for body */
+}
+
+textarea,
+input,
+button {
+  font-family: var(
+    --magentaa11y-font-family-body
+  ); /* Body font-family for interactive elements */
 }
 
 :root {
