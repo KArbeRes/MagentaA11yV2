@@ -1,14 +1,19 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
+export enum Theme {
+  LIGHT = "light",
+  DARK = "dark",
+}
+
 // Types for the context
 interface ThemeContextType {
-  theme: "light" | "dark";
-  setTheme: (theme: "light" | "dark") => void;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 }
 
 // Default context value
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "light",
+  theme: Theme.LIGHT,
   setTheme: () => {},
 });
 
@@ -16,13 +21,13 @@ const ThemeContext = createContext<ThemeContextType>({
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
+  const [theme, setTheme] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme === "dark" || savedTheme === "light"
-      ? (savedTheme as "light" | "dark")
+    return savedTheme === Theme.DARK || savedTheme === Theme.LIGHT
+      ? (savedTheme as Theme)
       : window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+      ? Theme.DARK
+      : Theme.LIGHT;
   });
 
   // Apply the theme to the document
@@ -33,7 +38,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   // Listen for system theme changes
   useEffect(() => {
     const systemThemeChangeListener = (e: MediaQueryListEvent) => {
-      const systemTheme = e.matches ? "dark" : "light";
+      const systemTheme = e.matches ? Theme.DARK : Theme.LIGHT;
       const savedTheme = localStorage.getItem("theme");
 
       console.log({ systemTheme, savedTheme });
@@ -59,7 +64,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   // Update localStorage only when the user explicitly changes the theme
-  const handleSetTheme = (newTheme: "light" | "dark") => {
+  const handleSetTheme = (newTheme: Theme) => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
