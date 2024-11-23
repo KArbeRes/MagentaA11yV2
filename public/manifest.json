@@ -6,8 +6,8 @@
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
-  "start_url": "/",
-  "background_color": "#040f12",
+  "start_url": "/home",
+  "background_color": "#FFFFFF",
   "theme_color": "#f6288f",
   "icons": [
     {

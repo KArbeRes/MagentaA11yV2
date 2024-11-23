@@ -48,7 +48,7 @@ const generateFavicons = async () => {
       fs.writeFileSync(path.join(publicDir, image.name), image.contents);
     });
 
-    // Merge existing manifest with new one
+    // Merge existing manifest with the generated one
     let existingManifest: any = {};
     if (fs.existsSync(manifestPath)) {
       existingManifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
@@ -60,14 +60,16 @@ const generateFavicons = async () => {
         .contents.toString()
     );
 
-    // Preserve the `screenshots` field or other existing custom fields
-    if (existingManifest.screenshots) {
-      generatedManifest.screenshots = existingManifest.screenshots;
-    }
+    // Preserve custom fields from the existing manifest
+    const mergedManifest = {
+      ...generatedManifest,
+      start_url: existingManifest.start_url || "/",
+      screenshots: existingManifest.screenshots || [],
+    };
 
     // Write the merged manifest back to the file
-    fs.writeFileSync(manifestPath, JSON.stringify(generatedManifest, null, 2));
-    console.log("Manifest file updated and screenshots preserved!");
+    fs.writeFileSync(manifestPath, JSON.stringify(mergedManifest, null, 2));
+    console.log("Manifest file updated with preserved custom fields!");
 
     // Save the generated HTML tags
     fs.writeFileSync(
