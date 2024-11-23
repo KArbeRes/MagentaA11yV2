@@ -1,6 +1,5 @@
-@use "./styles/root" as *;
-@use "./styles/material-override" as *;
 @use "./utils/utilities" as *;
+@use "./styles/root" as *;
 
 body {
   margin: 0;
@@ -78,9 +77,4 @@ pre {
 
 code {
   background-color: var(--magentaa11y-color--code-blocks);
-}
-
-:root {
-  @include base-tokens;
-  @include material-overrides;
 }
