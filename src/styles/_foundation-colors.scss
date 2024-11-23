@@ -1,5 +1,6 @@
 @mixin foundation-colors {
   // Status colors
+  --magentaa11y-color-brand-status-critical-500: #f87373;
   --magentaa11y-color-brand-status-critical-400: #3d0400;
   --magentaa11y-color-brand-status-critical-300: #d20d00;
   --magentaa11y-color-brand-status-critical-200: #f44125;
@@ -8,6 +9,7 @@
   --magentaa11y-color-brand-status-caution-400: #321800;
   --magentaa11y-color-brand-status-caution-300: #ad590b;
   --magentaa11y-color-brand-status-caution-200: #f8a50c;
+  --magentaa11y-color-brand-status-caution-150: #ffea92;
   --magentaa11y-color-brand-status-caution-100: #fff3de;
 
   --magentaa11y-color-brand-status-positive-400: #002805;
@@ -15,6 +17,7 @@
   --magentaa11y-color-brand-status-positive-200: #2dbf3b;
   --magentaa11y-color-brand-status-positive-100: #e6fce8;
 
+  --magentaa11y-color-brand-status-info-500: #25d3fc;
   --magentaa11y-color-brand-status-info-400: #001338;
   --magentaa11y-color-brand-status-info-300: #0c48bd;
   --magentaa11y-color-brand-status-info-200: #4886ff;

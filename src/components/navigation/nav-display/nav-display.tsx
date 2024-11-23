@@ -5,7 +5,7 @@ import rehypeHighlight from "rehype-highlight";
 import contentData from "../../../shared/content.json";
 import { SideNavItem } from "../nav.types";
 
-import "highlight.js/styles/magula.css";
+import "../../../styles/_code-blocks.scss";
 import "./nav-display.scss";
 
 // Helper function to find the item and its children by path

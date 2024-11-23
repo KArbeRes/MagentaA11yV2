@@ -85,18 +85,6 @@ button {
   border: 3px solid var(--color-input-border);
 }
 
-/* Code and Pre */
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-  background-color: var(--color-code-block);
-  font-style: italic;
-
-  span {
-    color: inherit;
-  }
-}
-
 pre {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
