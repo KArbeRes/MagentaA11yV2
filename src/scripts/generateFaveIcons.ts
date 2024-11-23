@@ -15,7 +15,7 @@ const config: FaviconOptions = {
     "MagentaA11y is a tool built to simplify the process of accessibility testing.",
   developerName: "Kevin Arbelaez",
   developerURL: "https://www.linkedin.com/in/kevin-arbelaez/",
-  background: "#040f12",
+  background: "#FFFFFF",
   theme_color: "#f6288f",
   icons: {
     android: true,
