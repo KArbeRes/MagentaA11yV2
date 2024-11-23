@@ -16,7 +16,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.113",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "graphql": "^16.9.0",
@@ -37,6 +36,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "generate-faveicons": "npx tsx src/scripts/generateFaveIcons.ts",
     "generate-side-nav-buttons": "npx tsx src/scripts/generateSideNavContentButtons.ts",
     "start": "npm run generate-side-nav-buttons && react-scripts start",
     "dev": "concurrently -k \"npm run watch-nav-items\" \"npm start\"",
@@ -66,8 +66,11 @@
     ]
   },
   "devDependencies": {
+    "@types/favicons": "^7.0.2",
+    "@types/node": "^22.9.3",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.1.0",
+    "favicons": "^7.2.0",
     "gh-pages": "^6.2.0",
     "kill-port": "^2.0.1",
     "nodemon": "^3.1.7",
