@@ -53,5 +53,21 @@
   --magentaa11y-color-brand-secondary-100: #ffcee7;
 
   --magentaa11y-color-brand-accent-100: #f7f2fa;
+  --magentaa11y-color-brand-accent-200: #eae9ff;
+  --magentaa11y-color-brand-accent-300: #4c477b;
   --magentaa11y-color-brand-accent-400: #3a2d4d;
+
+  //shadows
+  --magentaa11y-elevation-onDark-shadow-far: 0px 8px 24px 0px
+    rgba(0, 0, 0, 0.51); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+  --magentaa11y-elevation-onDark-shadow-near: 0px 3px 10px 0px
+    rgba(0, 0, 0, 0.51); /* Default shadow for components, elevation slightly above surface. */
+  --magentaa11y-elevation-onDark-shadow-close: 0px 2px 2px 0px
+    rgba(0, 0, 0, 0.51); /* Pressed shadow for components, elevation rests on top of surface. */
+  --magentaa11y-elevation-onLight-shadow-far: 0px 8px 24px 0px
+    rgba(65, 65, 65, 0.19); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+  --magentaa11y-elevation-onLight-shadow-near: 0px 3px 10px 0px
+    rgba(65, 65, 65, 0.19); /* Default shadow for components, elevation slightly above surface. */
+  --magentaa11y-elevation-onLight-shadow-close: 0px 2px 2px 0px
+    rgba(65, 65, 65, 0.19); /* Pressed shadow for components, elevation rests on top of surface. */
 }

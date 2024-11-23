@@ -1,6 +1,7 @@
 @use "./utils/utilities" as *;
 @use "./styles/root" as *;
 
+/* General Resets */
 body {
   margin: 0;
   font-family: var(--magentaa11y-font-family-body);
@@ -8,9 +9,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/* Text Styling */
+body,
+p,
+li,
+span,
+a,
+div,
+textarea,
+input,
+button {
+  color: var(--color-text-primary); /* Default text color */
+  font-family: var(--magentaa11y-font-family-body);
 }
 
 h1,
@@ -19,79 +35,68 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(
-    --magentaa11y-font-family-header
-  ); /* Header font-family token */
+  font-family: var(--magentaa11y-font-family-header);
   margin: 0;
   color: var(--color-text-primary);
 }
 
-p,
-li,
-a,
-span,
-div {
-  color: var(--color-text-primary); /* Color for common text elements */
-}
-
+/* Line Heights */
 h1 {
-  line-height: var(--magentaa11y-line-height-50); /* Line height for H1 */
+  line-height: var(--magentaa11y-line-height-50);
 }
 
 h2 {
-  line-height: var(--magentaa11y-line-height-43); /* Line height for H2 */
+  line-height: var(--magentaa11y-line-height-43);
 }
 
 h3,
 h4,
 h5 {
-  line-height: var(--magentaa11y-line-height-34); /* Line height for H3-H5 */
+  line-height: var(--magentaa11y-line-height-34);
 }
 
 h6 {
-  line-height: var(--magentaa11y-line-height-30); /* Line height for H6 */
+  line-height: var(--magentaa11y-line-height-30);
 }
 
 p,
-li {
-  font-family: var(
-    --magentaa11y-font-family-body
-  ); /* Body font-family for paragraphs and lists */
-  line-height: var(
-    --magentaa11y-line-height-20
-  ); /* Default line height for body */
+li,
+ul,
+ol {
+  line-height: var(--magentaa11y-line-height-20);
 }
 
 ul,
 ol {
-  padding-left: 20px; /* Default padding for list indentation */
-  margin: 0 0 1em 1em; /* Consistent spacing between lists */
-  line-height: var(
-    --magentaa11y-line-height-20
-  ); /* Default line height for lists */
-  font-family: var(--magentaa11y-font-family-body); /* Consistent font-family */
+  padding-left: 20px;
+  margin: 0 0 1em 1em;
 }
 
+/* Inputs, Buttons, and Textareas */
 textarea,
 input,
 button {
-  font-family: var(
-    --magentaa11y-font-family-body
-  ); /* Body font-family for interactive elements */
-}
-
-input,
-textarea {
   background-color: var(--color-surface);
   color: var(--color-text-primary);
   border: 3px solid var(--color-input-border);
 }
 
-pre {
-  width: -webkit-fill-available;
+/* Code and Pre */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  background-color: var(--color-code-block);
+  font-style: italic;
+
+  span {
+    color: inherit;
+  }
 }
 
-code {
-  background-color: var(--magentaa11y-color--code-blocks);
-  font-style: italic;
+pre {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  padding: 1em;
+  overflow-x: auto;
+  border-radius: 4px;
 }
