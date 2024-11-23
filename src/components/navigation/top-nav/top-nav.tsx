@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./top-nav.scss";
-import { TopNavProps } from "../../../shared/types/nav.types";
+import { TopNavProps } from "../nav.types";
 
 const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   return (

@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
 import contentData from "../../../shared/content.json";
-import { SideNavItem } from "../../../shared/types/nav.types";
+import { SideNavItem } from "../nav.types";
 
 import "highlight.js/styles/magula.css";
 import "./nav-display.scss";

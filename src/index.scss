@@ -1,6 +1,10 @@
 @use "./utils/utilities" as *;
 @use "./styles/root" as *;
 
+html {
+  background-color: var(--color-background);
+}
+
 /* General Resets */
 body {
   margin: 0;

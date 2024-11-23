@@ -1,13 +1,14 @@
 import React from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
-import "./App.scss";
-import Home from "./components/home/home";
 import About from "./components/about-us/about-us";
-import TopNav from "./components/navigation/top-nav/top-nav";
-import SideNav from "./components/navigation/side-nav/side-nav";
+import Home from "./components/home/home";
 import NavDisplay from "./components/navigation/nav-display/nav-display";
+import { SideNavItem } from "./components/navigation/nav.types";
+import SideNav from "./components/navigation/side-nav/side-nav";
+import TopNav from "./components/navigation/top-nav/top-nav";
 import contentData from "./shared/content.json";
-import { SideNavItem } from "./shared/types/nav.types";
+
+import "./App.scss";
 
 const navItems = [{ label: "About us", href: "/about", component: About }];
 
@@ -27,7 +28,7 @@ const App: React.FC = () => {
   };
   return (
     <Router>
-      <div className="MagentaA11y" data-theme="dark">
+      <div className="MagentaA11y">
         <header className="MagentaA11y-header">
           <TopNav navItems={navItems} />
         </header>
