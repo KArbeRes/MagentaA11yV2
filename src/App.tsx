@@ -27,7 +27,7 @@ const App: React.FC = () => {
   };
   return (
     <Router>
-      <div className="MagentaA11y">
+      <div className="MagentaA11y" data-theme="dark">
         <header className="MagentaA11y-header">
           <TopNav navItems={navItems} />
         </header>

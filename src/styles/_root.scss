@@ -8,7 +8,15 @@
 :root {
   @include foundation-colors;
   @include base-tokens;
-  @include color-tokens;
   @include font-tokens;
   @include material-overrides;
+  @include color-tokens(light);
+}
+
+[data-theme="dark"] {
+  @include foundation-colors;
+  @include base-tokens;
+  @include font-tokens;
+  @include material-overrides;
+  @include color-tokens(dark);
 }

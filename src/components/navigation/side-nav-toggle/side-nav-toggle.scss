@@ -1,5 +1,5 @@
 .MagentaA11y__side-nav-toggle {
-  --side-nav-background-color: #f7f2fa;
+  --side-nav-background-color: var(--color-sidenav);
 
   top: var(--magentaa11y-spacing-size-40);
   right: calc(var(--magentaa11y-spacing-size-24) * -1);
@@ -22,6 +22,7 @@
   svg {
     width: 100%;
     height: auto;
+    fill: var(--color-text-primary);
   }
 
   &:active {

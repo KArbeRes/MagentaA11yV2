@@ -23,6 +23,15 @@ h6 {
     --magentaa11y-font-family-header
   ); /* Header font-family token */
   margin: 0;
+  color: var(--color-text-primary);
+}
+
+p,
+li,
+a,
+span,
+div {
+  color: var(--color-text-primary); /* Color for common text elements */
 }
 
 h1 {
@@ -71,10 +80,18 @@ button {
   ); /* Body font-family for interactive elements */
 }
 
+input,
+textarea {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 3px solid var(--color-input-border);
+}
+
 pre {
   width: -webkit-fill-available;
 }
 
 code {
   background-color: var(--magentaa11y-color--code-blocks);
+  font-style: italic;
 }
