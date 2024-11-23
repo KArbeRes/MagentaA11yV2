@@ -35,8 +35,8 @@ const logoPath: string = path.resolve(
 
 const generateFavicons = async () => {
   try {
-    // Set the output directory to the public folder
     const publicDir: string = path.resolve(__dirname, "../../public");
+    const manifestPath = path.join(publicDir, "manifest.json");
 
     // Ensure public directory exists
     if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
@@ -48,13 +48,26 @@ const generateFavicons = async () => {
       fs.writeFileSync(path.join(publicDir, image.name), image.contents);
     });
 
-    response.files.forEach((file) => {
-      const destination =
-        file.name === "manifest.webmanifest"
-          ? path.join(publicDir, "manifest.json") // Rename manifest.webmanifest to manifest.json
-          : path.join(publicDir, file.name);
-      fs.writeFileSync(destination, file.contents);
-    });
+    // Merge existing manifest with new one
+    let existingManifest: any = {};
+    if (fs.existsSync(manifestPath)) {
+      existingManifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+    }
+
+    const generatedManifest = JSON.parse(
+      response.files
+        .find((file) => file.name === "manifest.webmanifest")!
+        .contents.toString()
+    );
+
+    // Preserve the `screenshots` field or other existing custom fields
+    if (existingManifest.screenshots) {
+      generatedManifest.screenshots = existingManifest.screenshots;
+    }
+
+    // Write the merged manifest back to the file
+    fs.writeFileSync(manifestPath, JSON.stringify(generatedManifest, null, 2));
+    console.log("Manifest file updated and screenshots preserved!");
 
     // Save the generated HTML tags
     fs.writeFileSync(
