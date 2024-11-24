@@ -65,6 +65,7 @@
       "purpose": "any"
     }
   ],
+  "id": "/MagentaA11yV2",
   "screenshots": [
     {
       "src": "screenshot-desktop.png",
@@ -78,5 +79,18 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
+  ],
+  "launch_handler": {
+    "route_to": "existing-client",
+    "navigate_existing_client": "if-needed"
+  },
+  "categories": [
+    "utilities",
+    "developer-tools",
+    "productivity",
+    "education",
+    "business",
+    "reference",
+    "accessibility"
   ]
 }

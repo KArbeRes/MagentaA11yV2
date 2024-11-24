@@ -63,8 +63,11 @@ const generateFavicons = async () => {
     // Preserve custom fields from the existing manifest
     const mergedManifest = {
       ...generatedManifest,
+      id: existingManifest.id || "/",
       start_url: existingManifest.start_url || "/",
       screenshots: existingManifest.screenshots || [],
+      launch_handler: existingManifest.launch_handler || {},
+      categories: existingManifest.categories || [],
     };
 
     // Write the merged manifest back to the file
