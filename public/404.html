@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/" />
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
     <script>
-      window.location.href = "/";
+      // Redirect to the index.html while preserving hash fragments
+      if (window.location.hash) {
+        // Redirect to the root of your app with the current hash
+        window.location.replace("/MagentaA11yV2" + window.location.hash);
+      } else {
+        // Redirect to the root of your app if no hash
+        window.location.replace("/MagentaA11yV2#/");
+      }
     </script>
   </head>
-  <body></body>
+  <body>
+    <h1>Redirecting...</h1>
+    <p>
+      If you're not redirected automatically,
+      <a href="/MagentaA11yV2#/">click here</a>.
+    </p>
+  </body>
 </html>
