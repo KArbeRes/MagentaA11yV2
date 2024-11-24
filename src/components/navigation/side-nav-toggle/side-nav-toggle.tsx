@@ -14,6 +14,57 @@ const SideNavToggle: React.FC<SideNavToggleButtonProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [hasDragged, setHasDragged] = useState(false);
 
+  // Move button up or down by 1px
+  const moveButton = useCallback((direction: "up" | "down") => {
+    if (buttonRef.current) {
+      const parentElement = buttonRef.current.parentElement;
+      if (parentElement) {
+        const parentRect = parentElement.getBoundingClientRect();
+        const buttonRect = buttonRef.current.getBoundingClientRect();
+        const buttonHeight = buttonRef.current.offsetHeight;
+
+        let newTop =
+          buttonRect.top - parentRect.top + (direction === "up" ? -5 : 5);
+
+        // Constrain the button within the parent container
+        const maxTop = parentElement.offsetHeight - buttonHeight;
+        if (newTop < 0) newTop = 0;
+        if (newTop > maxTop) newTop = maxTop;
+
+        buttonRef.current.style.top = `${newTop}px`;
+      }
+    }
+  }, []);
+
+  // Handle keyboard events
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        moveButton("up");
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        moveButton("down");
+      }
+    },
+    [moveButton]
+  );
+
+  // Add and remove keydown event listener
+  useEffect(() => {
+    const button = buttonRef.current;
+
+    if (button) {
+      button.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      if (button) {
+        button.removeEventListener("keydown", handleKeyDown);
+      }
+    };
+  }, [handleKeyDown]);
+
   // Mouse event handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsDragging(true);
