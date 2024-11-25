@@ -1,7 +1,7 @@
 # General Notes
 
 Validate your code
-Use HTML validation as the foundation for ensuring your page works for everyone.
+Use [HTML validation](https://validator.w3.org/nu/) as the foundation for ensuring your page works for everyone.
 
 # Gherkin
 
