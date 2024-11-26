@@ -2,17 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import contentData from "../../../shared/content.json";
 import { SideNavItem } from "../nav.types";
-import rehypeRaw from "rehype-raw";
 
 import "../../../styles/_code-blocks.scss";
 import "./nav-display.scss";
 
-const ASSET_BASE_PATH = "/MagentaA11yV2/content/assets/images/icons";
+const ASSET_BASE_PATH = "/MagentaA11yV2/content/assets";
 
-type ImageProps = { src?: string; alt?: string };
+type MediaProps = {
+  src?: string;
+  alt?: string;
+  type?: string;
+  children?: React.ReactNode;
+  poster?: string;
+};
 
 // Helper function to find the item and its children by path
 const findItemByPath = (
@@ -153,15 +159,33 @@ const NavDisplay: React.FC = () => {
               th: ({ node, ...props }) => <th {...props} />,
               td: ({ node, ...props }) => <td {...props} />,
               tr: ({ node, ...props }) => <tr {...props} />,
-              img: ({ src, alt }: ImageProps) => {
+              img: ({ src, alt }: MediaProps) => {
                 const resolvedSrc = src?.startsWith("http")
                   ? src
-                  : `${window.location.origin}${ASSET_BASE_PATH}/${src}`;
+                  : `${ASSET_BASE_PATH}/${src}`;
                 return resolvedSrc ? (
-                  <img src={resolvedSrc} alt={alt} />
+                  <img src={resolvedSrc} alt={alt} loading="lazy" />
                 ) : (
-                  <span>{alt}</span> // Fallback for missing images
+                  <span>{alt}</span>
                 );
+              },
+              video: ({ poster, children }: MediaProps) => {
+                console.log({ poster });
+                let posterPath = poster
+                  ? `${ASSET_BASE_PATH}/${poster}`
+                  : "MagentaA11yV2/movie.svg";
+
+                return (
+                  <video controls preload="none" poster={`${posterPath}`}>
+                    {children}
+                  </video>
+                );
+              },
+              source: ({ src, type }: MediaProps) => {
+                const resolvedSrc = src?.startsWith("http")
+                  ? src
+                  : `${ASSET_BASE_PATH}/${src}`;
+                return <source src={resolvedSrc} type={type} />;
               },
             }}
           >

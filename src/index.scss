@@ -95,8 +95,16 @@ pre {
   width: -webkit-fill-available;
 }
 
+video,
 table {
   width: 100%;
+}
+
+video {
+  aspect-ratio: 3/2;
+}
+
+table {
   margin-bottom: var(--magentaa11y-spacing-size-48);
   border-collapse: collapse;
 

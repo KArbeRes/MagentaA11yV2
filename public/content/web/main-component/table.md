@@ -126,57 +126,57 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
   <tbody>
     <tr>
       <td>
-        <img src="logo-apple.svg" alt="Apple"> iOS
+        <img src="images/icons/logo-apple.svg" alt="Apple"> 
       </td>
       <td>
-        <img src="logo-apple.svg" alt="VoiceOver"> VoiceOver
+        <img src="images/icons/logo-apple.svg" alt="VoiceOver"> 
       </td>
       <td>
-        <img src="logo-safari.svg" alt="Safari"> Safari
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="logo-android.svg" alt="Android"> Android
-      </td>
-      <td>
-        <img src="logo-talkback.svg" alt="Talkback"> Talkback
-      </td>
-      <td>
-        <img src="logo-chrome.svg" alt="Chrome"> Chrome
+        <img src="images/icons/logo-safari.svg" alt="Safari"> 
       </td>
     </tr>
     <tr>
       <td>
-        <img src="logo-windows.svg" alt="Windows"> Windows
+        <img src="images/icons/logo-android.svg" alt="Android"> 
       </td>
       <td>
-        <img src="logo-jaws.svg" alt="JAWS"> JAWS
+        <img src="images/icons/logo-talkback.svg" alt="Talkback"> 
       </td>
       <td>
-        <img src="logo-chrome.svg" alt="Chrome"> Chrome
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="logo-windows.svg" alt="Windows"> Windows
-      </td>
-      <td>
-        <img src="logo-nvda.svg" alt="NVDA"> NVDA
-      </td>
-      <td>
-        <img src="logo-chrome.svg" alt="Chrome"> Chrome
+        <img src="images/icons/logo-chrome.svg" alt="Chrome">
       </td>
     </tr>
     <tr>
       <td>
-        <img src="logo-apple.svg" alt="Apple"> MacOS
+        <img src="images/icons/logo-windows.svg" alt="Windows"> 
       </td>
       <td>
-        <img src="logo-apple.svg" alt="VoiceOver"> VoiceOver
+        <img src="images/icons/logo-jaws.svg" alt="JAWS">
       </td>
       <td>
-        <img src="logo-safari.svg" alt="Safari"> Safari
+        <img src="images/icons/logo-chrome.svg" alt="Chrome"> 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="images/icons/logo-windows.svg" alt="Windows">
+      </td>
+      <td>
+        <img src="images/icons/logo-nvda.svg" alt="NVDA">
+      </td>
+      <td>
+        <img src="images/icons/logo-chrome.svg" alt="Chrome"> 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="images/icons/logo-apple.svg" alt="Apple">
+      </td>
+      <td>
+        <img src="images/icons/logo-apple.svg" alt="VoiceOver"> 
+      </td>
+      <td>
+        <img src="images/icons/logo-safari.svg" alt="Safari"> 
       </td>
     </tr>
   </tbody>
@@ -211,6 +211,13 @@ If tabular data must be displayed without a `<table>` element, additional attrib
   </div>
 </div>
 ```
+
+# Video examples
+
+<video controls>
+  <source src="media/video/checklist-web/ios/table.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 # Developer Notes
 
