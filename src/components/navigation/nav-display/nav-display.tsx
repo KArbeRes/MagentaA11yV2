@@ -2,11 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
 import contentData from "../../../shared/content.json";
 import { SideNavItem } from "../nav.types";
+import rehypeRaw from "rehype-raw";
 
 import "../../../styles/_code-blocks.scss";
 import "./nav-display.scss";
+
+const ASSET_BASE_PATH = "/MagentaA11yV2/content/assets/images/icons";
+
+type ImageProps = { src?: string; alt?: string };
 
 // Helper function to find the item and its children by path
 const findItemByPath = (
@@ -71,14 +77,19 @@ const NavDisplay: React.FC = () => {
         {/* Render each section in order, if it exists */}
         {generalNotes && (
           <ReactMarkdown
-            rehypePlugins={[rehypeHighlight]}
+            rehypePlugins={[rehypeHighlight]} // Syntax highlighting
+            remarkPlugins={[remarkGfm]} // GFM support (e.g., tables)
             components={{
               p: ({ node, ...props }) => (
                 <p
-                  className="MagentaA11y__nav-display__general-notes"
+                  className="MagentaA11y__nav-display__other-content-p"
                   {...props}
                 />
               ),
+              table: ({ node, ...props }) => <table {...props} />,
+              th: ({ node, ...props }) => <th {...props} />,
+              td: ({ node, ...props }) => <td {...props} />,
+              tr: ({ node, ...props }) => <tr {...props} />,
             }}
           >
             {generalNotes}
@@ -133,7 +144,32 @@ const NavDisplay: React.FC = () => {
       {/* Other content sections */}
       {otherContent && (
         <div className="MagentaA11y__nav-display__other-content">
-          <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+          <ReactMarkdown
+            rehypePlugins={[rehypeHighlight, rehypeRaw]} // Syntax highlighting
+            remarkPlugins={[remarkGfm]} // GFM support (e.g., tables, task lists)
+            components={{
+              p: ({ node, ...props }) => (
+                <p
+                  className="MagentaA11y__nav-display__other-content-p"
+                  {...props}
+                />
+              ),
+              table: ({ node, ...props }) => <table {...props} />,
+              th: ({ node, ...props }) => <th {...props} />,
+              td: ({ node, ...props }) => <td {...props} />,
+              tr: ({ node, ...props }) => <tr {...props} />,
+              img: ({ src, alt }: ImageProps) => {
+                const resolvedSrc = src?.startsWith("http")
+                  ? src
+                  : `${window.location.origin}${ASSET_BASE_PATH}/${src}`;
+                return resolvedSrc ? (
+                  <img src={resolvedSrc} alt={alt} />
+                ) : (
+                  <span>{alt}</span> // Fallback for missing images
+                );
+              },
+            }}
+          >
             {otherContent}
           </ReactMarkdown>
         </div>

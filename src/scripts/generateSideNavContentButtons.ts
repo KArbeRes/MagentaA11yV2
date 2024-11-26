@@ -3,8 +3,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { remark } from "remark";
 import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
 import { Root, Content, Parent, Heading, Text } from "mdast";
 import { toMarkdown } from "mdast-util-to-markdown";
+import { gfmTableToMarkdown } from "mdast-util-gfm-table";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,7 +32,10 @@ const hasChildren = (node: any): node is Parent =>
 
 // Function to extract sections and omit H1 headers from specific sections
 const extractSections = (content: string) => {
-  const tree = remark().use(remarkParse).parse(content) as Root;
+  const tree = remark()
+    .use(remarkParse)
+    .use(remarkGfm) // Add GFM support
+    .parse(content) as Root;
 
   const sections: Record<string, Content[]> = {};
   let currentSection: "generalNotes" | "gherkin" | "condensed" | "other" =
@@ -71,16 +76,28 @@ const extractSections = (content: string) => {
 
   // Serialize each section back to markdown
   const generalNotes = sections["generalNotes"]
-    ? toMarkdown({ type: "root", children: sections["generalNotes"] })
+    ? toMarkdown(
+        { type: "root", children: sections["generalNotes"] },
+        { extensions: [gfmTableToMarkdown()] } // Add GFM extensions for tables
+      )
     : null;
   const gherkin = sections["gherkin"]
-    ? toMarkdown({ type: "root", children: sections["gherkin"] })
+    ? toMarkdown(
+        { type: "root", children: sections["gherkin"] },
+        { extensions: [gfmTableToMarkdown()] }
+      )
     : null;
   const condensed = sections["condensed"]
-    ? toMarkdown({ type: "root", children: sections["condensed"] })
+    ? toMarkdown(
+        { type: "root", children: sections["condensed"] },
+        { extensions: [gfmTableToMarkdown()] }
+      )
     : null;
   const otherContent = sections["other"]
-    ? toMarkdown({ type: "root", children: sections["other"] })
+    ? toMarkdown(
+        { type: "root", children: sections["other"] },
+        { extensions: [gfmTableToMarkdown()] }
+      )
     : null;
 
   return {
