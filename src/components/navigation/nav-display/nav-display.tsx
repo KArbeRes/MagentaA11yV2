@@ -148,12 +148,7 @@ const NavDisplay: React.FC = () => {
             rehypePlugins={[rehypeHighlight, rehypeRaw]} // Syntax highlighting
             remarkPlugins={[remarkGfm]} // GFM support (e.g., tables, task lists)
             components={{
-              p: ({ node, ...props }) => (
-                <p
-                  className="MagentaA11y__nav-display__other-content-p"
-                  {...props}
-                />
-              ),
+              p: ({ node, ...props }) => <p {...props} />,
               table: ({ node, ...props }) => <table {...props} />,
               th: ({ node, ...props }) => <th {...props} />,
               td: ({ node, ...props }) => <td {...props} />,
