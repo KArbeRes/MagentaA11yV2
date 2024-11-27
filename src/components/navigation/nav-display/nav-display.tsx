@@ -170,7 +170,6 @@ const NavDisplay: React.FC = () => {
                 );
               },
               video: ({ poster, children }: MediaProps) => {
-                console.log({ poster });
                 let posterPath = poster
                   ? `${ASSET_BASE_PATH}/${poster}`
                   : "MagentaA11yV2/movie.svg";

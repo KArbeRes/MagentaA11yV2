@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration options
 const config: FaviconOptions = {
-  path: "",
+  path: "app-assets/", // Relative path without leading slash
   appName: "MagentaA11y",
   appShortName: "MagentaA11y",
   appDescription:
@@ -27,7 +27,6 @@ const config: FaviconOptions = {
   },
 };
 
-// Path to your SVG
 const logoPath: string = path.resolve(
   __dirname,
   "../assets/svgs/brand-logo-black.svg"
@@ -36,16 +35,18 @@ const logoPath: string = path.resolve(
 const generateFavicons = async () => {
   try {
     const publicDir: string = path.resolve(__dirname, "../../public");
+    const appAssetsDir: string = path.join(publicDir, "app-assets");
     const manifestPath = path.join(publicDir, "manifest.json");
 
-    // Ensure public directory exists
-    if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+    // Ensure app-assets directory exists
+    if (!fs.existsSync(appAssetsDir))
+      fs.mkdirSync(appAssetsDir, { recursive: true });
 
     const response: FaviconResponse = await favicons(logoPath, config);
 
-    // Save generated assets directly in the public directory
+    // Save generated assets in the app-assets directory
     response.images.forEach((image) => {
-      fs.writeFileSync(path.join(publicDir, image.name), image.contents);
+      fs.writeFileSync(path.join(appAssetsDir, image.name), image.contents);
     });
 
     // Merge existing manifest with the generated one
@@ -59,6 +60,14 @@ const generateFavicons = async () => {
         .find((file) => file.name === "manifest.webmanifest")!
         .contents.toString()
     );
+
+    // Remove leading slash from icon paths
+    if (generatedManifest.icons) {
+      generatedManifest.icons = generatedManifest.icons.map((icon: any) => ({
+        ...icon,
+        src: icon.src.startsWith("/") ? icon.src.substring(1) : icon.src,
+      }));
+    }
 
     // Preserve custom fields from the existing manifest
     const mergedManifest = {
