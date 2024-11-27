@@ -14,13 +14,38 @@ interface SideNavProps {
   isVisible?: boolean;
 }
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleResize = () => setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleResize);
+    };
+  }, []);
+
+  return isMobile;
+};
+
 const SideNav: React.FC<SideNavProps> = () => {
   const [isSideNavVisible, setSideNavVisible] = useState(true);
+  const isMobile = useIsMobile();
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (isMobile) {
+      setSideNavVisible(false);
+    }
+  }, [isMobile]);
 
   const toggleSideNav = () => {
     setSideNavVisible((isSideNavVisible) => !isSideNavVisible);
   };
-  const location = useLocation();
 
   const isActive = (path: string) => location.pathname.includes(path);
 
