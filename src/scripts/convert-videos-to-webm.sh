@@ -19,6 +19,20 @@ done < <(find "$DIRECTORY" \
         -iname "*.flv" -o -iname "*.wmv" -o -iname "*.webm" \
     \))
 
+# Check if all files are already WebM
+all_webm=true
+for file in "${video_files[@]}"; do
+    if [[ "${file##*.}" != "webm" ]]; then
+        all_webm=false
+        break
+    fi
+done
+
+if $all_webm; then
+    echo "All videos are already in WebM format. No further action needed."
+    exit 0
+fi
+
 # Process each video file
 echo "Processing video files..."
 for file in "${video_files[@]}"; do
