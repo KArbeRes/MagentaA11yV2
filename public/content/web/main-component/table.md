@@ -215,7 +215,7 @@ If tabular data must be displayed without a `<table>` element, additional attrib
 # Video examples
 
 <video controls>
-  <source src="media/video/checklist-web/ios/table.mp4" type="video/mp4">
+  <source src="media/video/table_ios.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
