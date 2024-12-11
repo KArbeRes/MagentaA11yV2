@@ -33,7 +33,7 @@
 
     // Background Colors
     --color-background: var(
-      --magentaa11y-color-brand-grayscale-100
+      --magentaa11y-color-brand-grayscale-white
     ); /* Page background */
     --color-background-secondary: var(
       --magentaa11y-color-brand-grayscale-200
@@ -97,7 +97,6 @@
     --color-on-info-container: var(--magentaa11y-color-brand-status-info-500);
 
     // Background and Surface
-    --color-background: var(--magentaa11y-color-brand-grayscale-white);
     --color-on-background: var(--magentaa11y-color-brand-grayscale-900);
 
     --color-surface: var(--magentaa11y-color-brand-grayscale-100);
@@ -131,7 +130,7 @@
     --color-inverse-primary: var(--magentaa11y-color-brand-primary-300);
 
     //sidenav
-    --color-sidenav: var(--magentaa11y-color-brand-accent-100);
+    --color-sidenav: var(--magentaa11y-color-brand-grayscale-100);
 
     //topnav
     --top-nav-background-color: var(--magentaa11y-color-brand-grayscale-black);
@@ -178,7 +177,7 @@
     ); /* Heading text */
 
     // Background Colors
-    --color-background: var(--magentaa11y-color-brand-grayscale-900);
+    --color-background: var(--magentaa11y-color-brand-grayscale-black);
     --color-background-secondary: var(--magentaa11y-color-brand-grayscale-800);
     --color-background-tertiary: var(--magentaa11y-color-brand-grayscale-700);
 
@@ -237,7 +236,6 @@
     --color-on-info-container: var(--magentaa11y-color-brand-status-info-400);
 
     // Background and Surface
-    --color-background: var(--magentaa11y-color-brand-grayscale-800);
     --color-on-background: var(--magentaa11y-color-brand-grayscale-100);
 
     --color-surface: var(--magentaa11y-color-brand-grayscale-900)
@@ -272,7 +270,7 @@
     --color-inverse-primary: var(--magentaa11y-color-brand-primary-400);
 
     //sidenav
-    --color-sidenav: var(--magentaa11y-color-brand-accent-400);
+    --color-sidenav: var(--magentaa11y-color-brand-grayscale-900);
 
     //topnav
     --top-nav-background-color: var(--magentaa11y-color-brand-grayscale-black);

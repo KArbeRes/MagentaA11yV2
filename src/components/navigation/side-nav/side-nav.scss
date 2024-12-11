@@ -35,7 +35,7 @@
     }
 
     &--link {
-      color: var(--magentaa11y-side-nav--link-primary);
+      color: var(--color-text-heading);
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
@@ -81,8 +81,8 @@
     }
 
     &--sub-link {
-      width: fit-content;
-      color: var(--magentaa11y-side-nav--link-secondary);
+      width: -webkit-fill-available;
+      color: var(--color-text-heading);
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -92,7 +92,8 @@
       padding: 8px 12px;
 
       &.active {
-        color: var(--magentaa11y-side-nav--link-primary);
+        border-radius: 25px;
+        background-color: var(--color-background-secondary);
       }
     }
   }
