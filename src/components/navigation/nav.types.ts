@@ -16,5 +16,5 @@ export interface SideNavItem {
   generalNotes?: string | null;
   gherkin?: string | null;
   condensed?: string | null;
-  otherContent?: string | null;
+  developerNotes?: string | null;
 }

@@ -93,7 +93,7 @@ const extractSections = (content: string) => {
         { extensions: [gfmTableToMarkdown()] }
       )
     : null;
-  const otherContent = sections["other"]
+  const developerNotes = sections["other"]
     ? toMarkdown(
         { type: "root", children: sections["other"] },
         { extensions: [gfmTableToMarkdown()] }
@@ -104,7 +104,7 @@ const extractSections = (content: string) => {
     generalNotes: generalNotes?.trim() || null,
     gherkin: gherkin?.trim() || null,
     condensed: condensed?.trim() || null,
-    otherContent: otherContent?.trim() || null,
+    developerNotes: developerNotes?.trim() || null,
   };
 };
 
@@ -123,7 +123,7 @@ const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
         };
       } else if (item.isFile() && item.name.endsWith(".md")) {
         const content = fs.readFileSync(itemPath, "utf-8");
-        const { generalNotes, gherkin, condensed, otherContent } =
+        const { generalNotes, gherkin, condensed, developerNotes } =
           extractSections(content);
 
         return {
@@ -133,7 +133,7 @@ const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
           generalNotes,
           gherkin,
           condensed,
-          otherContent,
+          developerNotes,
         };
       }
       return null;
