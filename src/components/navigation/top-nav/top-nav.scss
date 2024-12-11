@@ -35,6 +35,9 @@
     font-size: 16px;
     position: relative;
     padding: 0 0 0 28px;
+    height: -webkit-fill-available;
+    display: flex;
+    align-items: center;
 
     &::before {
       content: "Magenta";
