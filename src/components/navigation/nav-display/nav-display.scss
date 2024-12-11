@@ -69,6 +69,36 @@
       --md-text-button-icon-color: var(--color-text-primary);
     }
 
+    ol {
+      list-style: none;
+      padding: 0;
+      counter-reset: list-counter;
+    }
+
+    ol li {
+      position: relative;
+      margin-bottom: var(--magentaa11y-spacing-size-16);
+      padding-left: var(--magentaa11y-font-size-32);
+      counter-increment: list-counter;
+    }
+
+    ol li::before {
+      content: counter(list-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--magentaa11y-spacing-size-24);
+      height: var(--magentaa11y-spacing-size-24);
+      background-color: var(--color-on-tertiary);
+      color: var(--color-on-primary);
+      font-size: var(--magentaa11y-font-size-16);
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     p:has(> a) {
       display: flex;
       flex-direction: row;
@@ -79,7 +109,6 @@
     a {
       color: var(--color-primary);
       text-decoration: none;
-      line-height: var(--magentaa11y-spacing-size-48);
       font-size: var(--magentaa11y-font-size-16);
 
       &[target="_blank"] {
@@ -92,6 +121,7 @@
           display: inline-block;
           width: var(--magentaa11y-font-size-24);
           height: var(--magentaa11y-font-size-24);
+          flex: 0 0 var(--magentaa11y-spacing-size-24);
           margin-right: 8px;
           background-image: var(--external-links-background-img);
           background-size: contain;
