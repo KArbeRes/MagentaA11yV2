@@ -142,13 +142,15 @@
     flex-direction: var(--sub-lists-flex-direction);
     justify-content: space-between;
     align-items: stretch;
-    gap: var(--magentaa11y-spacing-size-40);
+    gap: var(--magentaa11y-spacing-size-24) var(--magentaa11y-spacing-size-20);
+    flex-wrap: wrap;
   }
 
   &--sub-item {
     box-shadow: var(--shadow-near);
     border-radius: 16px;
     flex: 1;
+    min-width: min(340px, 100%);
   }
 
   &--sub-item-title {
