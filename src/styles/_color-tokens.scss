@@ -27,6 +27,9 @@
     --color-text-inverse: var(
       --magentaa11y-color-brand-grayscale-100
     ); /* Text on dark/inverse surfaces */
+    --color-text-heading: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Heading text */
 
     // Background Colors
     --color-background: var(
@@ -130,6 +133,9 @@
     //sidenav
     --color-sidenav: var(--magentaa11y-color-brand-accent-100);
 
+    //topnav
+    --top-nav-background-color: var(--magentaa11y-color-brand-grayscale-black);
+
     //borders
     --color-input-border: var(--magentaa11y-color-brand-grayscale-350);
 
@@ -167,6 +173,9 @@
     --color-text-inverse: var(
       --magentaa11y-color-brand-grayscale-900
     ); /* Text on light/inverse surfaces */
+    --color-text-heading: var(
+      --magentaa11y-color-brand-grayscale-100
+    ); /* Heading text */
 
     // Background Colors
     --color-background: var(--magentaa11y-color-brand-grayscale-900);
@@ -264,6 +273,9 @@
 
     //sidenav
     --color-sidenav: var(--magentaa11y-color-brand-accent-400);
+
+    //topnav
+    --top-nav-background-color: var(--magentaa11y-color-brand-grayscale-black);
 
     //borders
     --color-input-border: var(--magentaa11y-color-brand-grayscale-350);

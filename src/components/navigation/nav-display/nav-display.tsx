@@ -86,12 +86,7 @@ const NavDisplay: React.FC = () => {
             rehypePlugins={[rehypeHighlight]} // Syntax highlighting
             remarkPlugins={[remarkGfm]} // GFM support (e.g., tables)
             components={{
-              p: ({ node, ...props }) => (
-                <p
-                  className="MagentaA11y__nav-display__other-content-p"
-                  {...props}
-                />
-              ),
+              p: ({ node, ...props }) => <p {...props} />,
               table: ({ node, ...props }) => <table {...props} />,
               th: ({ node, ...props }) => <th {...props} />,
               td: ({ node, ...props }) => <td {...props} />,
@@ -103,93 +98,129 @@ const NavDisplay: React.FC = () => {
         )}
       </div>
 
-      {(gherkin || condensed) && (
-        <div className="MagentaA11y__nav-display__acceptance-criteria">
-          <div className="MagentaA11y__nav-display__acceptance-criteria__actions">
+      {(gherkin || condensed || otherContent) && (
+        <div className="MagentaA11y__nav-display__content">
+          <div className="MagentaA11y__nav-display__content-actions">
             {/* md-tabs with ref */}
             <md-tabs
               ref={tabsRef}
               aria-label="Content options for syntax"
               role="tablist"
             >
-              <md-secondary-tab
+              <md-primary-tab
                 aria-selected={activeTab === 0 ? "true" : "false"}
                 id="condensed-tab"
                 role="tab"
               >
                 Condensed
-              </md-secondary-tab>
-              <md-secondary-tab
+              </md-primary-tab>
+              <md-primary-tab
                 aria-selected={activeTab === 1 ? "true" : "false"}
                 id="gherkin-tab"
                 role="tab"
               >
                 Gherkin
-              </md-secondary-tab>
+              </md-primary-tab>
+              <md-primary-tab
+                aria-selected={activeTab === 2 ? "true" : "false"}
+                id="developer-notes-tab"
+                role="tab"
+              >
+                Developer Notes
+              </md-primary-tab>
             </md-tabs>
-
-            {/* Textarea displaying content based on activeTab */}
-            <textarea
-              id="content-textarea"
-              name="content-textarea"
-              readOnly
-              className="MagentaA11y__nav-display__textarea"
-              aria-label={`Textarea displaying ${
-                activeTab === 0 ? "Condensed" : "Gherkin"
-              } syntax`}
-              value={
-                activeTab === 0
-                  ? condensed || "No Condensed Syntax available!"
-                  : gherkin || "No Gherkin Syntax available!"
-              }
-            />
+            <md-filled-button>
+              Add to list
+              <svg slot="icon" viewBox="0 -960 960 960">
+                <path d="M377-198v-60h463v60H377Zm0-252v-60h463v60H377Zm0-253v-60h463v60H377ZM189-161q-28.05 0-48.02-19Q121-199 121-227.5t19.5-48q19.5-19.5 48-19.5t47.5 19.98q19 19.97 19 48.02 0 27.23-19.39 46.61Q216.23-161 189-161Zm0-252q-28.05 0-48.02-19.68Q121-452.36 121-480t19.98-47.32Q160.95-547 189-547q27.23 0 46.61 19.68Q255-507.64 255-480t-19.39 47.32Q216.23-413 189-413Zm-1-253q-27.64 0-47.32-19.68T121-733q0-27.64 19.68-47.32T188-800q27.64 0 47.32 19.68T255-733q0 27.64-19.68 47.32T188-666Z" />
+              </svg>
+            </md-filled-button>
           </div>
-        </div>
-      )}
 
-      {/* Other content sections */}
-      {otherContent && (
-        <div className="MagentaA11y__nav-display__other-content">
-          <ReactMarkdown
-            rehypePlugins={[rehypeHighlight, rehypeRaw]} // Syntax highlighting
-            remarkPlugins={[remarkGfm]} // GFM support (e.g., tables, task lists)
-            components={{
-              p: ({ node, ...props }) => <p {...props} />,
-              table: ({ node, ...props }) => <table {...props} />,
-              th: ({ node, ...props }) => <th {...props} />,
-              td: ({ node, ...props }) => <td {...props} />,
-              tr: ({ node, ...props }) => <tr {...props} />,
-              img: ({ src, alt }: MediaProps) => {
-                const resolvedSrc = src?.startsWith("http")
-                  ? src
-                  : `${ASSET_BASE_PATH}/${src}`;
-                return resolvedSrc ? (
-                  <img src={resolvedSrc} alt={alt} loading="lazy" />
-                ) : (
-                  <span>{alt}</span>
-                );
-              },
-              video: ({ poster, children }: MediaProps) => {
-                let posterPath = poster
-                  ? `${ASSET_BASE_PATH}/${poster}`
-                  : "MagentaA11yV2/movie.svg";
+          <div className="MagentaA11y__nav-display__content-details">
+            {(activeTab === 0 || activeTab === 1) && (
+              <md-text-button name="copy-button">
+                Copy text
+                <svg slot="icon" viewBox="0 -960 960 960">
+                  <path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-620h60v620h500v60H180Z" />
+                </svg>
+              </md-text-button>
+            )}
 
-                return (
-                  <video controls preload="none" poster={`${posterPath}`}>
-                    {children}
-                  </video>
-                );
-              },
-              source: ({ src, type }: MediaProps) => {
-                const resolvedSrc = src?.startsWith("http")
-                  ? src
-                  : `${ASSET_BASE_PATH}/${src}`;
-                return <source src={resolvedSrc} type={type} />;
-              },
-            }}
-          >
-            {otherContent}
-          </ReactMarkdown>
+            <ReactMarkdown
+              rehypePlugins={[rehypeHighlight, rehypeRaw]}
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ node, ...props }) => <p {...props} />,
+                table: ({ node, ...props }) => <table {...props} />,
+                th: ({ node, ...props }) => <th {...props} />,
+                td: ({ node, ...props }) => <td {...props} />,
+                tr: ({ node, ...props }) => <tr {...props} />,
+                img: ({ src, alt }: MediaProps) => {
+                  const resolvedSrc = src?.startsWith("http")
+                    ? src
+                    : `${ASSET_BASE_PATH}/${src}`;
+                  return resolvedSrc ? (
+                    <img src={resolvedSrc} alt={alt} loading="lazy" />
+                  ) : (
+                    <span>{alt}</span>
+                  );
+                },
+                video: ({ poster, children }: MediaProps) => {
+                  let posterPath = poster
+                    ? `${ASSET_BASE_PATH}/${poster}`
+                    : "MagentaA11yV2/movie.svg";
+
+                  return (
+                    <video controls preload="none" poster={`${posterPath}`}>
+                      {children}
+                    </video>
+                  );
+                },
+                source: ({ src, type }: MediaProps) => {
+                  const resolvedSrc = src?.startsWith("http")
+                    ? src
+                    : `${ASSET_BASE_PATH}/${src}`;
+                  return <source src={resolvedSrc} type={type} />;
+                },
+                a: ({ href, children }) => {
+                  const isExternal = (() => {
+                    if (!href) return false; // Treat undefined href as relative
+                    try {
+                      const url = new URL(href, window.location.href);
+                      return url.origin !== window.location.origin; // External if origins differ
+                    } catch (e) {
+                      return false; // Invalid URLs are treated as relative
+                    }
+                  })();
+
+                  return isExternal ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${href} in a new tab`}
+                    >
+                      {children}
+                    </a>
+                  ) : (
+                    <NavLink
+                      to={href ? href : "/"}
+                      aria-label={`Navigate to ${href}`}
+                    >
+                      {children}
+                    </NavLink>
+                  );
+                },
+              }}
+            >
+              {activeTab === 0
+                ? condensed || "No Condensed Syntax available!"
+                : activeTab === 1
+                ? gherkin || "No Gherkin Syntax available!"
+                : otherContent || "No Developer Notes available!"}
+            </ReactMarkdown>
+          </div>
         </div>
       )}
 

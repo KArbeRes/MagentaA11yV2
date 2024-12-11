@@ -28,7 +28,7 @@ How to test a header landmark
 
    &mdash; Group: It typically contains the name and primary navigation of the website
 
-Full information: https://www.magentaa11y.com/checklist-web/header/
+Full information: [https://www.magentaa11y.com/checklist-web/header/](https://www.magentaa11y.com/checklist-web/header/)
 
 # Gherkin
 

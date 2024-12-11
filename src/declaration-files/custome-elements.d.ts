@@ -9,7 +9,7 @@ declare namespace JSX {
     "md-text-button": React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
-    > & { href?: string };
+    > & { href?: string; name?: string };
 
     "md-filled-button": React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,

@@ -1,4 +1,11 @@
 .MagentaA11y__nav-display {
+  --title-font-size: var(--magentaa11y-font-size-60);
+  --title-line-height: var(--magentaa11y-line-height-63);
+  --intro-font-size: var(--magentaa11y-font-size-24);
+  --intro-line-height: var(--magentaa11y-line-height-26);
+
+  --external-links-background-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23e20074' d='M9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h13.95v3H9v30h30V25.05h3V39q0 1.2-.9 2.1-.9.9-2.1.9Zm10.1-10.95L17 28.9 36.9 9H25.95V6H42v16.05h-3v-10.9Z'/%3E%3C/svg%3E");
+
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -6,29 +13,93 @@
   margin: auto;
 
   &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--magentaa11y-line-height-16);
     text-align: center;
-  }
+    padding-bottom: var(--magentaa11y-spacing-size-32);
+    border-bottom: var(--magentaa11y-border-weight-size-1) solid
+      var(--color-background-tertiary);
 
-  &__acceptance-criteria {
-    &__actions {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    p {
+      margin: 0;
+      font-size: var(--intro-font-size);
+      font-weight: var(--magentaa11y-font-weight-bold);
+      line-height: var(--intro-line-height);
     }
   }
 
-  &__textarea {
-    width: auto;
-    resize: vertical;
-    padding: 20px;
-    min-height: 270px;
-    border-radius: 16px;
+  &__title {
+    font-size: var(--title-font-size);
+    line-height: var(--title-line-height);
+    font-weight: var(--magentaa11y-font-weight-extrabold);
+    font-style: normal;
   }
 
-  &__other-content {
+  &__content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: var(--magentaa11y-spacing-size-24);
+  }
+
+  &__content-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--magentaa11y-spacing-size-16);
+    justify-content: space-between;
+
+    md-tabs {
+      width: fit-content;
+    }
+  }
+
+  &__content-details {
+    border: solid var(--color-on-surface-variant)
+      var(--magentaa11y-border-weight-size-1);
+    border-radius: var(--magentaa11y-border-radius-size-4);
+    padding: var(--magentaa11y-spacing-size-24);
+    position: relative;
+
+    md-text-button[name="copy-button"] {
+      position: absolute;
+      right: var(--magentaa11y-spacing-size-8);
+      top: 14px;
+
+      --md-text-button-label-text-color: var(--color-text-primary);
+      --md-text-button-icon-color: var(--color-text-primary);
+    }
+
+    p:has(> a) {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      line-height: var(--magentaa11y-spacing-size-48);
+      font-size: var(--magentaa11y-font-size-16);
+
+      &[target="_blank"] {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+
+        &::before {
+          content: "";
+          display: inline-block;
+          width: var(--magentaa11y-font-size-24);
+          height: var(--magentaa11y-font-size-24);
+          margin-right: 8px;
+          background-image: var(--external-links-background-img);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
   }
 
   &--sub-list {
@@ -63,4 +134,22 @@
     flex-direction: column;
     text-decoration: none;
   }
+
+  @media (max-width: 768px) {
+    --title-font-size: var(--magentaa11y-font-size-32);
+    --title-line-height: var(--magentaa11y-line-height-40);
+    --intro-font-size: var(--magentaa11y-font-size-16);
+    --intro-line-height: var(--magentaa11y-line-height-22);
+  }
+
+  @media (max-width: 1024px) {
+    --title-font-size: var(--magentaa11y-font-size-48);
+    --title-line-height: var(--magentaa11y-line-height-50);
+    --intro-font-size: var(--magentaa11y-font-size-20);
+    --intro-line-height: var(--magentaa11y-line-height-24);
+  }
+}
+
+[data-theme="dark"] .MagentaA11y__nav-display {
+  --external-links-background-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23f6288f' d='M9 42q-1.2 0-2.1-.9Q6 40.2 6 39V9q0-1.2.9-2.1Q7.8 6 9 6h13.95v3H9v30h30V25.05h3V39q0 1.2-.9 2.1-.9.9-2.1.9Zm10.1-10.95L17 28.9 36.9 9H25.95V6H42v16.05h-3v-10.9Z'/%3E%3C/svg%3E");
 }

@@ -3,19 +3,17 @@
   font-weight: 600;
   line-height: 20px;
   text-decoration: none;
-  color: var(--color-text-primary);
+  color: var(--magentaa11y-color-brand-grayscale-white);
   letter-spacing: 0.1px;
-  padding: 4px 24px;
+  padding: 4px 4px 8px 4px;
 }
 
 .MagentaA11y__top-nav {
-  --top-nav-border-color: var(--color-outline-variant);
-  background-color: var(--color-background);
+  background-color: var(--top-nav-background-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px 24px;
-  border-bottom: 0.5px solid var(--top-nav-border-color);
+  padding: 16px 40px;
 }
 
 .MagentaA11y__brand {
@@ -31,11 +29,12 @@
 
   &--name {
     @include base-link-styles;
+
     margin: 0;
     text-align: center;
     font-size: 16px;
     position: relative;
-    padding-left: 28px;
+    padding: 0 0 0 28px;
 
     &::before {
       content: "Magenta";
@@ -48,19 +47,11 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      background-image: url("../../../assets/svgs/brand-logo-black.svg");
+      background-image: url("../../../assets/svgs/brand-logo-white.svg");
       background-size: contain;
       background-repeat: no-repeat;
       width: 24px;
       height: 24px;
-    }
-  }
-
-  [data-theme="dark"] & {
-    .MagentaA11y__brand--name {
-      &::after {
-        background-image: url("../../../assets/svgs/brand-logo-white.svg");
-      }
     }
   }
 }
@@ -84,5 +75,11 @@
     &.active {
       box-shadow: inset 0 -2px 0 0 var(--color-primary);
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .MagentaA11y__top-nav {
+    padding: 5px 10px;
   }
 }

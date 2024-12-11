@@ -32,8 +32,8 @@
     Helvetica, "Segoe UI", Arial, sans-serif; /* Used for body copy */
   --magentaa11y-font-family-display: TeleNeo; /* Reserved for headline display */
   --magentaa11y-font-family-header: TeleNeo; /* Reserved for headers */
-
-  --magentaa11y-font-weight-regular: 400; /* Normal weight */
-  --magentaa11y-font-weight-bold: 700; /* Bold weight */
-  --magentaa11y-font-weight-extrabold: 800; /* Extra bold weight */
+  --magentaa11y-font-weight-extrabold: 800; /* This weight value is 800. It is used for our header copy. */
+  --magentaa11y-font-weight-semibold: 600; /* This weight value is 600. It is used for our body copy. */
+  --magentaa11y-font-weight-bold: bold; /* This weight value is 700. It is used for our header copy. */
+  --magentaa11y-font-weight-regular: normal; /* This weight value is 400. It is used for our header and body copy. */
 }
