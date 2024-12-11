@@ -80,12 +80,13 @@ const NavDisplay: React.FC = () => {
 
   if (!mainItem) return <div>Item not found</div>;
 
-  const { generalNotes, gherkin, condensed, developerNotes } = mainItem;
+  const { generalNotes, gherkin, condensed, videos, developerNotes } = mainItem;
 
   const tabs = [
     { content: condensed, label: "Condensed" },
     { content: gherkin, label: "Gherkin" },
     { content: developerNotes, label: "Developer Notes" },
+    { content: videos, label: "Videos" },
   ].filter((tab) => tab.content);
 
   return (

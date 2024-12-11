@@ -212,7 +212,9 @@ If tabular data must be displayed without a `<table>` element, additional attrib
 </div>
 ```
 
-# Video examples
+# Videos
+
+### iOS Voiceover
 
 <video controls>
   <source src="media/video/table_ios.webm" type="video/webm">

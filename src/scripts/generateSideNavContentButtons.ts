@@ -1,12 +1,12 @@
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { remark } from "remark";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import { Root, Content, Parent, Heading, Text } from "mdast";
-import { toMarkdown } from "mdast-util-to-markdown";
+import { RootContent, Heading, Parent, Root, Text } from "mdast";
 import { gfmTableToMarkdown } from "mdast-util-gfm-table";
+import { toMarkdown } from "mdast-util-to-markdown";
+import path from "path";
+import { remark } from "remark";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,7 +23,7 @@ const formatLabel = (name: string) =>
     .replace(/\b\w/g, (char) => char.toUpperCase());
 
 // Type guard to check if a node is a heading
-const isHeading = (node: Content): node is Heading =>
+const isHeading = (node: RootContent): node is Heading =>
   node.type === "heading" && (node as Heading).depth !== undefined;
 
 // Type guard to check if a node has children
@@ -37,9 +37,13 @@ const extractSections = (content: string) => {
     .use(remarkGfm) // Add GFM support
     .parse(content) as Root;
 
-  const sections: Record<string, Content[]> = {};
-  let currentSection: "generalNotes" | "gherkin" | "condensed" | "other" =
-    "other";
+  const sections: Record<string, RootContent[]> = {};
+  let currentSection:
+    | "generalNotes"
+    | "gherkin"
+    | "condensed"
+    | "videos"
+    | "other" = "other";
   sections[currentSection] = [];
 
   if (hasChildren(tree)) {
@@ -56,6 +60,8 @@ const extractSections = (content: string) => {
           currentSection = "gherkin";
         } else if (headingText.includes("condensed")) {
           currentSection = "condensed";
+        } else if (headingText.includes("videos")) {
+          currentSection = "videos";
         } else {
           currentSection = "other";
         }
@@ -78,7 +84,7 @@ const extractSections = (content: string) => {
   const generalNotes = sections["generalNotes"]
     ? toMarkdown(
         { type: "root", children: sections["generalNotes"] },
-        { extensions: [gfmTableToMarkdown()] } // Add GFM extensions for tables
+        { extensions: [gfmTableToMarkdown()] }
       )
     : null;
   const gherkin = sections["gherkin"]
@@ -93,6 +99,12 @@ const extractSections = (content: string) => {
         { extensions: [gfmTableToMarkdown()] }
       )
     : null;
+  const videos = sections["videos"]
+    ? toMarkdown(
+        { type: "root", children: sections["videos"] },
+        { extensions: [gfmTableToMarkdown()] }
+      )
+    : null;
   const developerNotes = sections["other"]
     ? toMarkdown(
         { type: "root", children: sections["other"] },
@@ -104,6 +116,7 @@ const extractSections = (content: string) => {
     generalNotes: generalNotes?.trim() || null,
     gherkin: gherkin?.trim() || null,
     condensed: condensed?.trim() || null,
+    videos: videos?.trim() || null,
     developerNotes: developerNotes?.trim() || null,
   };
 };
@@ -118,21 +131,22 @@ const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
       if (item.isDirectory()) {
         return {
           label: formatLabel(item.name),
-          name: item.name, // Use just the directory name for folders
-          children: getDirectoryStructure(itemPath), // Pass the directory without the parent path here
+          name: item.name,
+          children: getDirectoryStructure(itemPath),
         };
       } else if (item.isFile() && item.name.endsWith(".md")) {
         const content = fs.readFileSync(itemPath, "utf-8");
-        const { generalNotes, gherkin, condensed, developerNotes } =
+        const { generalNotes, gherkin, condensed, videos, developerNotes } =
           extractSections(content);
 
         return {
           label: formatLabel(item.name),
-          name: item.name.replace(".md", ""), // Use only the file name without the full path
+          name: item.name.replace(".md", ""),
           type: "file",
           generalNotes,
           gherkin,
           condensed,
+          videos,
           developerNotes,
         };
       }
