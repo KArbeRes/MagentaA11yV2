@@ -37,6 +37,12 @@ const findItemByPath = (
   return null;
 };
 
+const copyToClipboard = (content: string) => {
+  if (content) {
+    navigator.clipboard.writeText(content);
+  }
+};
+
 const NavDisplay: React.FC = () => {
   const location = useLocation();
 
@@ -76,6 +82,12 @@ const NavDisplay: React.FC = () => {
 
   const { generalNotes, gherkin, condensed, otherContent } = mainItem;
 
+  const tabs = [
+    { content: condensed, label: "Condensed" },
+    { content: gherkin, label: "Gherkin" },
+    { content: otherContent, label: "Developer Notes" },
+  ].filter((tab) => tab.content);
+
   return (
     <div className="MagentaA11y__nav-display">
       <div className="MagentaA11y__nav-display__intro">
@@ -98,7 +110,7 @@ const NavDisplay: React.FC = () => {
         )}
       </div>
 
-      {(gherkin || condensed || otherContent) && (
+      {tabs.length > 0 && (
         <div className="MagentaA11y__nav-display__content">
           <div className="MagentaA11y__nav-display__content-actions">
             {/* md-tabs with ref */}
@@ -107,27 +119,16 @@ const NavDisplay: React.FC = () => {
               aria-label="Content options for syntax"
               role="tablist"
             >
-              <md-primary-tab
-                aria-selected={activeTab === 0 ? "true" : "false"}
-                id="condensed-tab"
-                role="tab"
-              >
-                Condensed
-              </md-primary-tab>
-              <md-primary-tab
-                aria-selected={activeTab === 1 ? "true" : "false"}
-                id="gherkin-tab"
-                role="tab"
-              >
-                Gherkin
-              </md-primary-tab>
-              <md-primary-tab
-                aria-selected={activeTab === 2 ? "true" : "false"}
-                id="developer-notes-tab"
-                role="tab"
-              >
-                Developer Notes
-              </md-primary-tab>
+              {tabs.map((tab, index) => (
+                <md-primary-tab
+                  key={tab.label}
+                  aria-selected={activeTab === index ? "true" : "false"}
+                  id={`${tab.label.toLowerCase().replace(" ", "-")}-tab`}
+                  role="tab"
+                >
+                  {tab.label}
+                </md-primary-tab>
+              ))}
             </md-tabs>
             <md-filled-button>
               Add to list
@@ -138,8 +139,12 @@ const NavDisplay: React.FC = () => {
           </div>
 
           <div className="MagentaA11y__nav-display__content-details">
-            {(activeTab === 0 || activeTab === 1) && (
-              <md-text-button name="copy-button">
+            {(tabs[activeTab]?.label === "Condensed" ||
+              tabs[activeTab]?.label === "Gherkin") && (
+              <md-text-button
+                name="copy-button"
+                onClick={() => copyToClipboard(tabs[activeTab].content || "")}
+              >
                 Copy text
                 <svg slot="icon" viewBox="0 -960 960 960">
                   <path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300ZM180-80q-24 0-42-18t-18-42v-620h60v620h500v60H180Z" />
@@ -214,11 +219,7 @@ const NavDisplay: React.FC = () => {
                 },
               }}
             >
-              {activeTab === 0
-                ? condensed || "No Condensed Syntax available!"
-                : activeTab === 1
-                ? gherkin || "No Gherkin Syntax available!"
-                : otherContent || "No Developer Notes available!"}
+              {tabs[activeTab]?.content || "No content available!"}
             </ReactMarkdown>
           </div>
         </div>
