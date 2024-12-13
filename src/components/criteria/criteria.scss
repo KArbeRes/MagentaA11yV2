@@ -1,0 +1,14 @@
+.MagentaA11y {
+  --content-padding: 0 32px;
+  &__criteria-container {
+    display: flex;
+  }
+
+  &__criteria-content {
+    padding: var(--content-padding);
+  }
+
+  @media (max-width: 768px) {
+    --content-padding: 0 24px;
+  }
+}

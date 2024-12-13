@@ -26,21 +26,19 @@ const App: React.FC = () => {
         </header>
         <div className="MagentaA11y__content">
           {/* <SideNav /> */}
-          <div className="MagentaA11y__main">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route
-                path="/web-criteria/*"
-                element={<Criteria platform="web" />}
-              />
-              <Route
-                path="/native-criteria/*"
-                element={<Criteria platform="native" />}
-              />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/web-criteria/*"
+              element={<Criteria platform="web" />}
+            />
+            <Route
+              path="/native-criteria/*"
+              element={<Criteria platform="native" />}
+            />
+          </Routes>
         </div>
       </div>
     </Router>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import contentData from "../../../shared/content.json";
 import "./side-nav.scss";
-import SideNavToggle from "../side-nav-toggle/side-nav-toggle";
 
 interface NavItem {
   label: string;
@@ -115,7 +114,6 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
       >
         {renderNavItems(contentData[platform] as NavItem[])}
       </div>
-      <SideNavToggle toggle={toggleSideNav} isVisible={isSideNavVisible} />
     </div>
   );
 };
