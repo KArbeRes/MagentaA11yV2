@@ -9,23 +9,15 @@ import TopNav from "./components/navigation/top-nav/top-nav";
 import contentData from "./shared/content.json";
 
 import "./App.scss";
+import Criteria from "./components/criteria/criteria";
 
-const navItems = [{ label: "About us", href: "/about", component: About }];
+const navItems = [
+  { label: "Web Criteria", href: "/web-criteria", component: Criteria },
+  { label: "Native Criteria", href: "/native-criteria", component: Criteria },
+  { label: "About us", href: "/about", component: About },
+];
 
 const App: React.FC = () => {
-  const generateRoutes = (items: SideNavItem[], parentPath = "") => {
-    return items.map((item) => {
-      const path = `${parentPath}/${item.name}`;
-
-      return (
-        <React.Fragment key={path}>
-          <Route path={path} element={<NavDisplay />} />
-          {/* Recursively add routes for children */}
-          {item.children && generateRoutes(item.children, path)}
-        </React.Fragment>
-      );
-    });
-  };
   return (
     <Router>
       <div className="MagentaA11y">
@@ -33,15 +25,20 @@ const App: React.FC = () => {
           <TopNav navItems={navItems} />
         </header>
         <div className="MagentaA11y__content">
-          <SideNav />
+          {/* <SideNav /> */}
           <div className="MagentaA11y__main">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/about" element={<About />} />
-
-              {/* Generate routes dynamically from content.json */}
-              {generateRoutes(contentData as SideNavItem[])}
+              <Route
+                path="/web-criteria/*"
+                element={<Criteria platform="web" />}
+              />
+              <Route
+                path="/native-criteria/*"
+                element={<Criteria platform="native" />}
+              />
             </Routes>
           </div>
         </div>
