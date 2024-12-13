@@ -9,6 +9,7 @@ import { SideNavItem } from "../nav.types";
 
 import "../../../styles/_code-blocks.scss";
 import "./nav-display.scss";
+import NavSubList from "../../custom-components/cards/cards";
 
 interface NavDisplayProps {
   platform: "web" | "native";
@@ -225,41 +226,13 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
 
       {/* Sub-items list */}
       {children && children.length > 0 && (
-        <ul className="MagentaA11y__nav-display--sub-list" role="list">
-          {children.map((child) => (
-            <li
-              key={child.name}
-              className="MagentaA11y__nav-display--sub-item"
-              role="listitem"
-            >
-              <NavLink
-                to={`${location.pathname}/${child.name}`}
-                className="MagentaA11y__nav-display--sub-item-link"
-              >
-                <span className="MagentaA11y__nav-display--sub-item-title">
-                  {child.label}
-                </span>
-                {child.generalNotes && (
-                  <span className="MagentaA11y__nav-display--sub-item-description">
-                    {child.generalNotes}
-                  </span>
-                )}
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 19.6155L10.9308 18.5616L16.7424 12.7501H4.38465V11.2501H16.7424L10.9308 5.43859L12 4.38477L19.6154 12.0001L12 19.6155Z"
-                    fill="#121212"
-                  />
-                </svg>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <NavSubList
+          items={children.map((child) => ({
+            title: child.label,
+            description: child.generalNotes || undefined,
+            link: `${location.pathname}/${child.name}`,
+          }))}
+        />
       )}
     </div>
   );
