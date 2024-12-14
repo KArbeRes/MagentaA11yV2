@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/MagentaA11yV2/static/css/main.cc070b70.css",
+    "main.js": "/MagentaA11yV2/static/js/main.f0d8fbc0.js",
+    "static/js/453.0bdec75c.chunk.js": "/MagentaA11yV2/static/js/453.0bdec75c.chunk.js",
+    "static/media/teleneoweb-bold.woff2": "/MagentaA11yV2/static/media/teleneoweb-bold.1b7fe473df0f87cc56a5.woff2",
+    "static/media/teleneoweb-regular.woff2": "/MagentaA11yV2/static/media/teleneoweb-regular.003938824a945c247da6.woff2",
+    "static/media/teleneoweb-extrabold.woff2": "/MagentaA11yV2/static/media/teleneoweb-extrabold.cc806106975453c2028b.woff2",
+    "static/media/brand-logo-white.svg": "/MagentaA11yV2/static/media/brand-logo-white.599e2476a047e6a0dd0c.svg",
+    "index.html": "/MagentaA11yV2/index.html",
+    "static/media/bookmark-outlined.svg": "/MagentaA11yV2/static/media/bookmark-outlined.d8b251a25df66209b2d96435a5f714f4.svg",
+    "main.cc070b70.css.map": "/MagentaA11yV2/static/css/main.cc070b70.css.map",
+    "main.f0d8fbc0.js.map": "/MagentaA11yV2/static/js/main.f0d8fbc0.js.map",
+    "453.0bdec75c.chunk.js.map": "/MagentaA11yV2/static/js/453.0bdec75c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc070b70.css",
+    "static/js/main.f0d8fbc0.js"
+  ]
+}
