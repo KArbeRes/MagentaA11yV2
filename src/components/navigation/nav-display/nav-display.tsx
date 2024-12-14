@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, NavLink } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import NavSubList from "../../custom-components/cards/cards";
 import { SideNavItem } from "../nav.types";
 
 import "../../../styles/_code-blocks.scss";
 import "./nav-display.scss";
-import NavSubList from "../../custom-components/cards/cards";
 
 interface NavDisplayProps {
   platform: "web" | "native";
@@ -81,15 +81,21 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
     generalNotes,
     gherkin,
     condensed,
+    criteria,
     videos,
     developerNotes,
+    androidDeveloperNotes,
+    iosDeveloperNotes,
     children,
   } = currentItem;
 
   const tabs = [
     { content: condensed, label: "Condensed" },
     { content: gherkin, label: "Gherkin" },
+    { content: criteria, label: "Criteria" },
     { content: developerNotes, label: "Developer Notes" },
+    { content: androidDeveloperNotes, label: "Android Developer Notes" },
+    { content: iosDeveloperNotes, label: "iOS Developer Notes" },
     { content: videos, label: "Videos" },
   ].filter((tab) => tab.content);
 

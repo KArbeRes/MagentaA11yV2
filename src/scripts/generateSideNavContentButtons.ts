@@ -39,8 +39,12 @@ const extractSections = (content: string) => {
     | "generalNotes"
     | "gherkin"
     | "condensed"
+    | "criteria"
     | "videos"
+    | "androidDeveloperNotes"
+    | "iosDeveloperNotes"
     | "other" = "other";
+
   sections[currentSection] = [];
 
   if (hasChildren(tree)) {
@@ -51,17 +55,24 @@ const extractSections = (content: string) => {
       if (isHeading(node) && node.depth === 1 && hasChildren(node)) {
         const headingText = (node.children[0] as Text).value.toLowerCase();
 
-        if (headingText.includes("general notes")) {
+        if (headingText === "general notes") {
           currentSection = "generalNotes";
-        } else if (headingText.includes("gherkin")) {
+        } else if (headingText === "gherkin") {
           currentSection = "gherkin";
-        } else if (headingText.includes("condensed")) {
+        } else if (headingText === "condensed") {
           currentSection = "condensed";
-        } else if (headingText.includes("videos")) {
+        } else if (headingText === "criteria") {
+          currentSection = "criteria";
+        } else if (headingText === "android developer notes") {
+          currentSection = "androidDeveloperNotes";
+        } else if (headingText === "ios developer notes") {
+          currentSection = "iosDeveloperNotes";
+        } else if (headingText === "videos") {
           currentSection = "videos";
         } else {
           currentSection = "other";
         }
+
         if (!sections[currentSection]) {
           sections[currentSection] = [];
         }
@@ -96,9 +107,27 @@ const extractSections = (content: string) => {
           { extensions: [gfmTableToMarkdown()] }
         ).trim()
       : null,
+    criteria: sections["criteria"]
+      ? toMarkdown(
+          { type: "root", children: sections["criteria"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
     videos: sections["videos"]
       ? toMarkdown(
           { type: "root", children: sections["videos"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    androidDeveloperNotes: sections["androidDeveloperNotes"]
+      ? toMarkdown(
+          { type: "root", children: sections["androidDeveloperNotes"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    iosDeveloperNotes: sections["iosDeveloperNotes"]
+      ? toMarkdown(
+          { type: "root", children: sections["iosDeveloperNotes"] },
           { extensions: [gfmTableToMarkdown()] }
         ).trim()
       : null,
