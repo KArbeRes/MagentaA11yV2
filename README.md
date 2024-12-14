@@ -82,7 +82,7 @@ The script `convert-videos-to-webm.sh` optimizes video files for web by converti
 
 1. Converts video files (`.mp4`, `.mov`, etc.) to `.webm` format using FFmpeg.
 2. Updates all project references to use the new `.webm` files.
-3. Replaces `type="video/mp4"` with `type="video/webm"` in HTML or similar files.
+3. Replaces `type="video/webm"` with `type="video/webm"` in HTML or similar files.
 4. Deletes the original video files after successful conversion.
 
 ### Requirements

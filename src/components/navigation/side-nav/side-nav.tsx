@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import contentData from "../../../shared/content.json";
 import "./side-nav.scss";
-import SideNavToggle from "../side-nav-toggle/side-nav-toggle";
 
 interface NavItem {
   label: string;
@@ -10,7 +9,9 @@ interface NavItem {
   type?: "file";
   children?: NavItem[];
 }
+
 interface SideNavProps {
+  platform: "web" | "native";
   isVisible?: boolean;
 }
 
@@ -32,7 +33,7 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-const SideNav: React.FC<SideNavProps> = () => {
+const SideNav: React.FC<SideNavProps> = ({ platform }) => {
   const [isSideNavVisible, setSideNavVisible] = useState(true);
   const isMobile = useIsMobile();
   const location = useLocation();
@@ -51,9 +52,9 @@ const SideNav: React.FC<SideNavProps> = () => {
 
   const renderNavItems = (
     items: NavItem[],
-    parentPath = "",
+    parentPath = `/${platform}-criteria`, // Adjust base path for criteria
     parentActive = false,
-    isTopLevel = false
+    isTopLevel = true
   ) => (
     <ul
       className={
@@ -63,7 +64,8 @@ const SideNav: React.FC<SideNavProps> = () => {
       }
     >
       {items.map((item) => {
-        const fullPath = `${parentPath}/${item.name}`; // Build the full path
+        const fullPath = `${parentPath}/${item.name}`; // Build the full path with the platform and criteria
+
         const itemActive = isActive(fullPath);
         const activeState = parentActive || itemActive;
 
@@ -77,7 +79,7 @@ const SideNav: React.FC<SideNavProps> = () => {
             }
           >
             <NavLink
-              to={fullPath}
+              to={fullPath} // Use the full path with the platform and criteria
               className={`MagentaA11y__side-nav--link ${
                 !isTopLevel ? "MagentaA11y__side-nav--sub-link" : ""
               }`}
@@ -110,9 +112,8 @@ const SideNav: React.FC<SideNavProps> = () => {
       <div
         className={`MagentaA11y__side-nav ${isSideNavVisible ? "" : "hidden"}`}
       >
-        {renderNavItems(contentData as NavItem[], "", false, true)}
+        {renderNavItems(contentData[platform] as NavItem[])}
       </div>
-      <SideNavToggle toggle={toggleSideNav} isVisible={isSideNavVisible} />
     </div>
   );
 };

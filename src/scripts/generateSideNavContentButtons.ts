@@ -11,10 +11,10 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const contentDir = path.join(__dirname, "../../public/content/web");
+const platformsDir = path.join(__dirname, "../../public/content/platforms");
 const outputPath = path.join(__dirname, "../shared/content.json");
 
-// Function to format names to a label format
+// Format names to a label format
 const formatLabel = (name: string) =>
   name
     .replace(/-/g, " ")
@@ -22,28 +22,29 @@ const formatLabel = (name: string) =>
     .toLowerCase()
     .replace(/\b\w/g, (char) => char.toUpperCase());
 
-// Type guard to check if a node is a heading
+// Check if a node is a heading
 const isHeading = (node: RootContent): node is Heading =>
   node.type === "heading" && (node as Heading).depth !== undefined;
 
-// Type guard to check if a node has children
+// Check if a node has children
 const hasChildren = (node: any): node is Parent =>
   Array.isArray((node as Parent).children);
 
-// Function to extract sections and omit H1 headers from specific sections
+// Extract sections and omit H1 headers
 const extractSections = (content: string) => {
-  const tree = remark()
-    .use(remarkParse)
-    .use(remarkGfm) // Add GFM support
-    .parse(content) as Root;
+  const tree = remark().use(remarkParse).use(remarkGfm).parse(content) as Root;
 
   const sections: Record<string, RootContent[]> = {};
   let currentSection:
     | "generalNotes"
     | "gherkin"
     | "condensed"
+    | "criteria"
     | "videos"
+    | "androidDeveloperNotes"
+    | "iosDeveloperNotes"
     | "other" = "other";
+
   sections[currentSection] = [];
 
   if (hasChildren(tree)) {
@@ -54,17 +55,24 @@ const extractSections = (content: string) => {
       if (isHeading(node) && node.depth === 1 && hasChildren(node)) {
         const headingText = (node.children[0] as Text).value.toLowerCase();
 
-        if (headingText.includes("general notes")) {
+        if (headingText === "general notes") {
           currentSection = "generalNotes";
-        } else if (headingText.includes("gherkin")) {
+        } else if (headingText === "gherkin") {
           currentSection = "gherkin";
-        } else if (headingText.includes("condensed")) {
+        } else if (headingText === "condensed") {
           currentSection = "condensed";
-        } else if (headingText.includes("videos")) {
+        } else if (headingText === "criteria") {
+          currentSection = "criteria";
+        } else if (headingText === "android developer notes") {
+          currentSection = "androidDeveloperNotes";
+        } else if (headingText === "ios developer notes") {
+          currentSection = "iosDeveloperNotes";
+        } else if (headingText === "videos") {
           currentSection = "videos";
         } else {
           currentSection = "other";
         }
+
         if (!sections[currentSection]) {
           sections[currentSection] = [];
         }
@@ -74,54 +82,66 @@ const extractSections = (content: string) => {
           sections[currentSection].push(node);
         }
       } else {
-        // Add node to current section
         sections[currentSection].push(node);
       }
     }
   }
 
   // Serialize each section back to markdown
-  const generalNotes = sections["generalNotes"]
-    ? toMarkdown(
-        { type: "root", children: sections["generalNotes"] },
-        { extensions: [gfmTableToMarkdown()] }
-      )
-    : null;
-  const gherkin = sections["gherkin"]
-    ? toMarkdown(
-        { type: "root", children: sections["gherkin"] },
-        { extensions: [gfmTableToMarkdown()] }
-      )
-    : null;
-  const condensed = sections["condensed"]
-    ? toMarkdown(
-        { type: "root", children: sections["condensed"] },
-        { extensions: [gfmTableToMarkdown()] }
-      )
-    : null;
-  const videos = sections["videos"]
-    ? toMarkdown(
-        { type: "root", children: sections["videos"] },
-        { extensions: [gfmTableToMarkdown()] }
-      )
-    : null;
-  const developerNotes = sections["other"]
-    ? toMarkdown(
-        { type: "root", children: sections["other"] },
-        { extensions: [gfmTableToMarkdown()] }
-      )
-    : null;
-
   return {
-    generalNotes: generalNotes?.trim() || null,
-    gherkin: gherkin?.trim() || null,
-    condensed: condensed?.trim() || null,
-    videos: videos?.trim() || null,
-    developerNotes: developerNotes?.trim() || null,
+    generalNotes: sections["generalNotes"]
+      ? toMarkdown(
+          { type: "root", children: sections["generalNotes"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    gherkin: sections["gherkin"]
+      ? toMarkdown(
+          { type: "root", children: sections["gherkin"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    condensed: sections["condensed"]
+      ? toMarkdown(
+          { type: "root", children: sections["condensed"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    criteria: sections["criteria"]
+      ? toMarkdown(
+          { type: "root", children: sections["criteria"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    videos: sections["videos"]
+      ? toMarkdown(
+          { type: "root", children: sections["videos"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    androidDeveloperNotes: sections["androidDeveloperNotes"]
+      ? toMarkdown(
+          { type: "root", children: sections["androidDeveloperNotes"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    iosDeveloperNotes: sections["iosDeveloperNotes"]
+      ? toMarkdown(
+          { type: "root", children: sections["iosDeveloperNotes"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
+    developerNotes: sections["other"]
+      ? toMarkdown(
+          { type: "root", children: sections["other"] },
+          { extensions: [gfmTableToMarkdown()] }
+        ).trim()
+      : null,
   };
 };
 
-const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
+// Get directory structure
+const getDirectoryStructure = (dirPath: string): any => {
   const items = fs.readdirSync(dirPath, { withFileTypes: true });
 
   return items
@@ -136,18 +156,13 @@ const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
         };
       } else if (item.isFile() && item.name.endsWith(".md")) {
         const content = fs.readFileSync(itemPath, "utf-8");
-        const { generalNotes, gherkin, condensed, videos, developerNotes } =
-          extractSections(content);
+        const sections = extractSections(content);
 
         return {
           label: formatLabel(item.name),
           name: item.name.replace(".md", ""),
           type: "file",
-          generalNotes,
-          gherkin,
-          condensed,
-          videos,
-          developerNotes,
+          ...sections,
         };
       }
       return null;
@@ -155,13 +170,24 @@ const getDirectoryStructure = (dirPath: string, parentPath = ""): any => {
     .filter(Boolean);
 };
 
+// Generate content data
 const generateContentData = () => {
   try {
-    const contentData = getDirectoryStructure(contentDir);
+    const platforms = fs.readdirSync(platformsDir, { withFileTypes: true });
+
+    const contentData = platforms.reduce((acc, platform) => {
+      if (platform.isDirectory()) {
+        acc[platform.name] = getDirectoryStructure(
+          path.join(platformsDir, platform.name)
+        );
+      }
+      return acc;
+    }, {} as Record<string, any>);
+
     fs.writeFileSync(outputPath, JSON.stringify(contentData, null, 2));
-    console.log("Content buttons data generated successfully.");
+    console.log("Content data generated successfully.");
   } catch (error) {
-    console.error("Error generating content buttons data:", error);
+    console.error("Error generating content data:", error);
   }
 };
 

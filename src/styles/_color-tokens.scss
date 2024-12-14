@@ -146,6 +146,9 @@
     //codeblocks backgrounds
     --color-code-block: var(--magentaa11y-color-brand-grayscale-200);
 
+    //Cards
+    --card-color-background: var(--magentaa11y-color-brand-grayscale-white);
+
     --img-svgs: invert(0);
   } @else if $theme == dark {
     // Dark Theme
@@ -287,5 +290,8 @@
     --color-code-block: var(--magentaa11y-color-brand-grayscale-750);
 
     --img-svgs: invert(1);
+
+    //Cards
+    --card-color-background: var(--magentaa11y-color-brand-grayscale-900);
   }
 }
