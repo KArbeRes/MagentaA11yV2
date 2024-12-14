@@ -126,57 +126,57 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
   <tbody>
     <tr>
       <td>
-        <img src="images/icons/logo-apple.svg" alt="Apple"> 
+        <img src="media/images/icons/logo-apple.svg" alt="Apple"> 
       </td>
       <td>
-        <img src="images/icons/logo-apple.svg" alt="VoiceOver"> 
+        <img src="media/images/icons/logo-apple.svg" alt="VoiceOver"> 
       </td>
       <td>
-        <img src="images/icons/logo-safari.svg" alt="Safari"> 
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="images/icons/logo-android.svg" alt="Android"> 
-      </td>
-      <td>
-        <img src="images/icons/logo-talkback.svg" alt="Talkback"> 
-      </td>
-      <td>
-        <img src="images/icons/logo-chrome.svg" alt="Chrome">
+        <img src="media/images/icons/logo-safari.svg" alt="Safari"> 
       </td>
     </tr>
     <tr>
       <td>
-        <img src="images/icons/logo-windows.svg" alt="Windows"> 
+        <img src="media/images/icons/logo-android.svg" alt="Android"> 
       </td>
       <td>
-        <img src="images/icons/logo-jaws.svg" alt="JAWS">
+        <img src="media/images/icons/logo-talkback.svg" alt="Talkback"> 
       </td>
       <td>
-        <img src="images/icons/logo-chrome.svg" alt="Chrome"> 
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="images/icons/logo-windows.svg" alt="Windows">
-      </td>
-      <td>
-        <img src="images/icons/logo-nvda.svg" alt="NVDA">
-      </td>
-      <td>
-        <img src="images/icons/logo-chrome.svg" alt="Chrome"> 
+        <img src="media/images/icons/logo-chrome.svg" alt="Chrome">
       </td>
     </tr>
     <tr>
       <td>
-        <img src="images/icons/logo-apple.svg" alt="Apple">
+        <img src="media/images/icons/logo-windows.svg" alt="Windows"> 
       </td>
       <td>
-        <img src="images/icons/logo-apple.svg" alt="VoiceOver"> 
+        <img src="media/images/icons/logo-jaws.svg" alt="JAWS">
       </td>
       <td>
-        <img src="images/icons/logo-safari.svg" alt="Safari"> 
+        <img src="media/images/icons/logo-chrome.svg" alt="Chrome"> 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="media/images/icons/logo-windows.svg" alt="Windows">
+      </td>
+      <td>
+        <img src="media/images/icons/logo-nvda.svg" alt="NVDA">
+      </td>
+      <td>
+        <img src="media/images/icons/logo-chrome.svg" alt="Chrome"> 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="media/images/icons/logo-apple.svg" alt="Apple">
+      </td>
+      <td>
+        <img src="media/images/icons/logo-apple.svg" alt="VoiceOver"> 
+      </td>
+      <td>
+        <img src="media/images/icons/logo-safari.svg" alt="Safari"> 
       </td>
     </tr>
   </tbody>
