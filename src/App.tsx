@@ -4,13 +4,20 @@ import About from "./components/about-us/about-us";
 import Criteria from "./components/criteria/criteria";
 import Home from "./components/home/home";
 import TopNav from "./components/navigation/top-nav/top-nav";
+import { ReactComponent as BookmarkIconOutlined } from "./assets/svgs/bookmark-outlined.svg";
 
 import "./App.scss";
+import { NavItem } from "./components/navigation/nav.types";
 
-const navItems = [
-  { label: "Web Criteria", href: "/web-criteria", component: Criteria },
-  { label: "Native Criteria", href: "/native-criteria", component: Criteria },
-  { label: "About us", href: "/about", component: About },
+const navItems: NavItem[] = [
+  { label: "Web Criteria", href: "/web-criteria" },
+  { label: "Native Criteria", href: "/native-criteria" },
+  { label: "About us", href: "/about" },
+  {
+    label: "My criteria",
+    href: "/my-criteria",
+    icon: <BookmarkIconOutlined />,
+  },
 ];
 
 const App: React.FC = () => {
