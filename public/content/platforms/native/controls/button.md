@@ -37,7 +37,7 @@ Full information: https://www.magentaa11y.com/checklist-native/button/
 ### iOS Voiceover
 
 <video controls>
-  <source src="/assets/media/video/checklist-native/ios/button.mp4" type="video/mp4">
+  <source src="media/video/buttonIosVoiceover.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -105,7 +105,7 @@ Full information: https://www.magentaa11y.com/checklist-native/button/
 ### Android Talkback
 
 <video controls>
-  <source src="/assets/media/video/checklist-native/android/button.mp4" type="video/mp4">
+  <source src="media/video/buttonAndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
