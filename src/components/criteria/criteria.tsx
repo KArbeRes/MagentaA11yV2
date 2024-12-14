@@ -1,9 +1,8 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import SideNav from "../navigation/side-nav/side-nav";
-import NavDisplay from "../navigation/nav-display/nav-display";
 import contentData from "../../shared/content.json";
+import NavDisplay from "../navigation/nav-display/nav-display";
 import { SideNavItem } from "../navigation/nav.types";
+import SideNav from "../navigation/side-nav/side-nav";
 
 import "./criteria.scss";
 
@@ -12,8 +11,6 @@ interface CriteriaProps {
 }
 
 const Criteria: React.FC<CriteriaProps> = ({ platform }) => {
-  const location = useLocation();
-
   // Retrieve the appropriate content for the platform
   const platformData = contentData[platform] as SideNavItem[];
 

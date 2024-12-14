@@ -44,9 +44,9 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
     }
   }, [isMobile]);
 
-  const toggleSideNav = () => {
-    setSideNavVisible((isSideNavVisible) => !isSideNavVisible);
-  };
+  // const toggleSideNav = () => {
+  //   setSideNavVisible((isSideNavVisible) => !isSideNavVisible);
+  // };
 
   const isActive = (path: string) => location.pathname.includes(path);
 

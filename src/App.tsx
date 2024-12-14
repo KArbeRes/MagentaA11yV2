@@ -1,15 +1,11 @@
 import React from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import About from "./components/about-us/about-us";
+import Criteria from "./components/criteria/criteria";
 import Home from "./components/home/home";
-import NavDisplay from "./components/navigation/nav-display/nav-display";
-import { SideNavItem } from "./components/navigation/nav.types";
-import SideNav from "./components/navigation/side-nav/side-nav";
 import TopNav from "./components/navigation/top-nav/top-nav";
-import contentData from "./shared/content.json";
 
 import "./App.scss";
-import Criteria from "./components/criteria/criteria";
 
 const navItems = [
   { label: "Web Criteria", href: "/web-criteria", component: Criteria },
@@ -25,7 +21,6 @@ const App: React.FC = () => {
           <TopNav navItems={navItems} />
         </header>
         <div className="MagentaA11y__content">
-          {/* <SideNav /> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
