@@ -13,6 +13,9 @@
     ); /* Less emphasized text */
     --color-text-disabled: var(
       --magentaa11y-color-brand-grayscale-600
+    ); /* Less emphasized text */
+    --color-text-hovered: var(
+      --magentaa11y-color-brand-grayscale-600
     ); /* Disabled text */
     --color-text-on-primary: var(
       --magentaa11y-color-brand-grayscale-white
@@ -160,6 +163,9 @@
       --magentaa11y-color-brand-grayscale-300
     ); /* Less emphasized text */
     --color-text-disabled: var(
+      --magentaa11y-color-brand-grayscale-500
+    ); /* Less emphasized text */
+    --color-text-hovered: var(
       --magentaa11y-color-brand-grayscale-500
     ); /* Disabled text */
     --color-text-on-primary: var(

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import contentData from "../../../shared/content.json";
 import "./side-nav.scss";
+import Accordion from "../../custom-components/accordion/accordion";
 
 interface NavItem {
   label: string;
@@ -44,68 +45,62 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
     }
   }, [isMobile]);
 
-  // const toggleSideNav = () => {
-  //   setSideNavVisible((isSideNavVisible) => !isSideNavVisible);
-  // };
-
   const isActive = (path: string) => location.pathname.includes(path);
 
   const renderNavItems = (
     items: NavItem[],
-    parentPath = `/${platform}-criteria`, // Adjust base path for criteria
-    parentActive = false,
-    isTopLevel = true
-  ) => (
-    <ul
-      className={
-        isTopLevel
-          ? "MagentaA11y__side-nav--list"
-          : "MagentaA11y__side-nav--sub-list"
-      }
-    >
-      {items.map((item) => {
-        const fullPath = `${parentPath}/${item.name}`; // Build the full path with the platform and criteria
+    parentPath = `/${platform}-criteria`
+  ) => {
+    return (
+      <ul className="MagentaA11y__side-nav--list">
+        {items.map((item) => {
+          const fullPath = `${parentPath}/${item.name}`;
+          const itemActive = isActive(fullPath);
 
-        const itemActive = isActive(fullPath);
-        const activeState = parentActive || itemActive;
-
-        return (
-          <li
-            key={item.name}
-            className={
-              isTopLevel
-                ? "MagentaA11y__side-nav--item"
-                : "MagentaA11y__side-nav--sub-item"
-            }
-          >
-            <NavLink
-              to={fullPath} // Use the full path with the platform and criteria
-              className={`MagentaA11y__side-nav--link ${
-                !isTopLevel ? "MagentaA11y__side-nav--sub-link" : ""
-              }`}
-              {...(!isTopLevel && !activeState && { tabIndex: -1 })}
-            >
-              {item.label}
-              {isTopLevel && (
-                <svg
-                  slot="icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                >
-                  <path d="M480-360 280-560h400L480-360Z" />
-                </svg>
-              )}
-            </NavLink>
-            {item.children &&
-              item.children.length > 0 &&
-              renderNavItems(item.children, fullPath, activeState, false)}
-          </li>
-        );
-      })}
-    </ul>
-  );
+          return (
+            <li key={item.name} className="MagentaA11y__side-nav--item">
+              <Accordion
+                title={item.label}
+                id={`${item.label} list`}
+                isOpened={itemActive}
+              >
+                {item.children && item.children.length > 0 ? (
+                  <ul className="MagentaA11y__side-nav--sub-list">
+                    <li
+                      key={`${item.name} overview`}
+                      className="MagentaA11y__side-nav--sub-item"
+                    >
+                      <NavLink
+                        to={`${fullPath}/overview`}
+                        className={`MagentaA11y__side-nav--link`}
+                      >
+                        Overview
+                      </NavLink>
+                    </li>
+                    {item.children.map((child) => (
+                      <li
+                        key={child.name}
+                        className="MagentaA11y__side-nav--sub-item"
+                      >
+                        <NavLink
+                          to={`${fullPath}/${child.name}`}
+                          className={`MagentaA11y__side-nav--link`}
+                        >
+                          {child.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <a href={fullPath}>{item.label}</a>
+                )}
+              </Accordion>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   return (
     <div className="MagentaA11y__side-nav-container">

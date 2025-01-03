@@ -36,4 +36,20 @@
   --magentaa11y-font-weight-semibold: 600; /* This weight value is 600. It is used for our body copy. */
   --magentaa11y-font-weight-bold: bold; /* This weight value is 700. It is used for our header copy. */
   --magentaa11y-font-weight-regular: normal; /* This weight value is 400. It is used for our header and body copy. */
+
+  --magentaa11y-typeset-body-md-strong: var(--magentaa11y-font-weight-semibold)
+    var(--magentaa11y-font-size-14) / var(--magentaa11y-line-height-18)
+    var(--magentaa11y-font-family-body);
+
+  --magentaa11y-typeset-body-sm-normal: var(--magentaa11y-font-weight-regular)
+    var(--magentaa11y-font-size-12) / var(--magentaa11y-line-height-16)
+    var(--magentaa11y-font-family-body);
+
+  --magentaa11y-typeset-body-md-normal: var(--magentaa11y-font-weight-regular)
+    var(--magentaa11y-font-size-14) / var(--magentaa11y-line-height-18)
+    var(--magentaa11y-font-family-body);
+
+  --magentaa11y-typeset-body-lg-strong: var(--magentaa11y-font-weight-semibold)
+    var(--magentaa11y-font-size-16) / var(--magentaa11y-line-height-20)
+    var(--magentaa11y-font-family-body);
 }

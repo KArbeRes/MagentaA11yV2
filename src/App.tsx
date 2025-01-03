@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import { ReactComponent as BookmarkIconOutlined } from "./assets/svgs/bookmark-outlined.svg";
 import About from "./components/about-us/about-us";
 import Criteria from "./components/criteria/criteria";
 import Home from "./components/home/home";
+import { NavItem } from "./components/navigation/nav.types";
 import TopNav from "./components/navigation/top-nav/top-nav";
-import { ReactComponent as BookmarkIconOutlined } from "./assets/svgs/bookmark-outlined.svg";
 
 import "./App.scss";
-import { NavItem } from "./components/navigation/nav.types";
 
 const navItems: NavItem[] = [
   { label: "Web Criteria", href: "/web-criteria" },

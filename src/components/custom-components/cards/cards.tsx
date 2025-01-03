@@ -3,17 +3,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./cards.scss";
 
-interface NavItem {
+interface Card {
   title: string;
   description?: string;
   link: string;
 }
 
-interface NavSubListProps {
-  items: NavItem[];
+interface CardsProps {
+  items: Card[];
 }
 
-const NavSubList: React.FC<NavSubListProps> = ({ items }) => {
+const Cards: React.FC<CardsProps> = ({ items }) => {
   return (
     <ul className="MagentaA11y__card" role="list">
       {items.map((item) => (
@@ -44,4 +44,4 @@ const NavSubList: React.FC<NavSubListProps> = ({ items }) => {
   );
 };
 
-export default NavSubList;
+export default Cards;

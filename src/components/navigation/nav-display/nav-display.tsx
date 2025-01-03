@@ -5,7 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import NavSubList from "../../custom-components/cards/cards";
+import Cards from "../../custom-components/cards/cards";
 import { SideNavItem } from "../nav.types";
 
 import "../../../styles/_code-blocks.scss";
@@ -39,7 +39,7 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
   ): SideNavItem | null => {
     for (const item of items) {
       const fullPath = `${parentPath}/${item.name}`;
-      if (path === fullPath) return item;
+      if (path === fullPath || path === `${fullPath}/overview`) return item;
 
       if (item.children) {
         const found = findItemByPath(item.children, path, fullPath);
@@ -51,6 +51,9 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
 
   // Get the current item based on the route
   const currentItem = findItemByPath(items, location.pathname);
+
+  // Check if the current route is an overview route
+  const isOverviewRoute = location.pathname.endsWith("/overview");
 
   // Track active tab changes
   useEffect(() => {
@@ -104,7 +107,7 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
       <div className="MagentaA11y__nav-display__intro">
         <h1 className="MagentaA11y__nav-display__title">{label}</h1>
 
-        {generalNotes && (
+        {generalNotes && !isOverviewRoute && (
           <ReactMarkdown
             rehypePlugins={[rehypeHighlight, rehypeRaw]}
             remarkPlugins={[remarkGfm]}
@@ -121,7 +124,19 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
         )}
       </div>
 
-      {tabs.length > 0 && (
+      {isOverviewRoute && children && children.length > 0 && (
+        <Cards
+          items={children.map((child) => ({
+            title: child.label,
+            description: child.generalNotes || undefined,
+            link: `${location.pathname.replace(/\/overview$/, "")}/${
+              child.name
+            }`,
+          }))}
+        />
+      )}
+
+      {!isOverviewRoute && tabs.length > 0 && (
         <div className="MagentaA11y__nav-display__content">
           <div className="MagentaA11y__nav-display__content-actions">
             {/* Tabs */}
@@ -228,17 +243,6 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
             })}
           </div>
         </div>
-      )}
-
-      {/* Sub-items list */}
-      {children && children.length > 0 && (
-        <NavSubList
-          items={children.map((child) => ({
-            title: child.label,
-            description: child.generalNotes || undefined,
-            link: `${location.pathname}/${child.name}`,
-          }))}
-        />
       )}
     </div>
   );
