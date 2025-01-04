@@ -52,4 +52,10 @@
   --magentaa11y-typeset-body-lg-strong: var(--magentaa11y-font-weight-semibold)
     var(--magentaa11y-font-size-16) / var(--magentaa11y-line-height-20)
     var(--magentaa11y-font-family-body);
+
+  --magentaa11y-typeset-headline-xs-xtrastrong: var(
+      --magentaa11y-font-weight-extrabold
+    )
+    var(--magentaa11y-font-size-20) / var(--magentaa11y-line-height-22)
+    var(--magentaa11y-font-family-display);
 }

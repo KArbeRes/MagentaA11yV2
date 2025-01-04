@@ -24,6 +24,10 @@
       list-style-type: none;
     }
 
+    &--list {
+      border-top: solid 1px var(--color-surface-variant);
+    }
+
     &--item {
       &:has(
           .MagentaA11y__side-nav--link.active,
@@ -84,21 +88,10 @@
       // }
     }
 
-    // &--sub-link {
-    //   width: -webkit-fill-available;
-    //   color: var(--color-text-heading);
-    //   font-size: 14px;
-    //   font-style: normal;
-    //   font-weight: 500;
-    //   line-height: var(--magentaa11y-spacing-size-20);
-    //   letter-spacing: 0.1px;
-    //   margin: var(--magentaa11y-spacing-size-8) 12px;
-    //   padding: var(--magentaa11y-spacing-size-8) 12px;
-
-    //   // &.active {
-    //   //   border-radius: 25px;
-    //   //   background-color: var(--color-background-secondary);
-    //   // }
-    // }
+    &--title {
+      font: var(--magentaa11y-typeset-headline-xs-xtrastrong);
+      padding: 0 var(--magentaa11y-spacing-size-8)
+        var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-8);
+    }
   }
 }

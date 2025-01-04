@@ -52,63 +52,64 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
     parentPath = `/${platform}-criteria`
   ) => {
     return (
-      <ul className="MagentaA11y__side-nav--list">
-        {items.map((item) => {
-          const fullPath = `${parentPath}/${item.name}`;
-          const itemActive = isActive(fullPath);
+      <div
+        className={`MagentaA11y__side-nav ${isSideNavVisible ? "" : "hidden"}`}
+      >
+        <h1 className="MagentaA11y__side-nav--title">Criteria</h1>
+        <ul className="MagentaA11y__side-nav--list">
+          {items.map((item) => {
+            const fullPath = `${parentPath}/${item.name}`;
+            const itemActive = isActive(fullPath);
 
-          return (
-            <li key={item.name} className="MagentaA11y__side-nav--item">
-              <Accordion
-                title={item.label}
-                id={`${item.label} list`}
-                isOpened={itemActive}
-              >
-                {item.children && item.children.length > 0 ? (
-                  <ul className="MagentaA11y__side-nav--sub-list">
-                    <li
-                      key={`${item.name} overview`}
-                      className="MagentaA11y__side-nav--sub-item"
-                    >
-                      <NavLink
-                        to={`${fullPath}/overview`}
-                        className={`MagentaA11y__side-nav--link`}
-                      >
-                        Overview
-                      </NavLink>
-                    </li>
-                    {item.children.map((child) => (
+            return (
+              <li key={item.name} className="MagentaA11y__side-nav--item">
+                <Accordion
+                  title={item.label}
+                  id={`${item.label} list`}
+                  isOpened={itemActive}
+                >
+                  {item.children && item.children.length > 0 ? (
+                    <ul className="MagentaA11y__side-nav--sub-list">
                       <li
-                        key={child.name}
+                        key={`${item.name} overview`}
                         className="MagentaA11y__side-nav--sub-item"
                       >
                         <NavLink
-                          to={`${fullPath}/${child.name}`}
+                          to={`${fullPath}/overview`}
                           className={`MagentaA11y__side-nav--link`}
                         >
-                          {child.label}
+                          Overview
                         </NavLink>
                       </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <a href={fullPath}>{item.label}</a>
-                )}
-              </Accordion>
-            </li>
-          );
-        })}
-      </ul>
+                      {item.children.map((child) => (
+                        <li
+                          key={child.name}
+                          className="MagentaA11y__side-nav--sub-item"
+                        >
+                          <NavLink
+                            to={`${fullPath}/${child.name}`}
+                            className={`MagentaA11y__side-nav--link`}
+                          >
+                            {child.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <a href={fullPath}>{item.label}</a>
+                  )}
+                </Accordion>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   };
 
   return (
     <div className="MagentaA11y__side-nav-container">
-      <div
-        className={`MagentaA11y__side-nav ${isSideNavVisible ? "" : "hidden"}`}
-      >
-        {renderNavItems(contentData[platform] as NavItem[])}
-      </div>
+      {renderNavItems(contentData[platform] as NavItem[])}
     </div>
   );
 };
