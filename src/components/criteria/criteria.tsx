@@ -1,6 +1,6 @@
 import React from "react";
 import contentData from "../../shared/content.json";
-import NavDisplay from "../navigation/nav-display/nav-display";
+import ContentDisplay from "../content-display/content-display";
 import { SideNavItem } from "../navigation/nav.types";
 import SideNav from "../navigation/side-nav/side-nav";
 
@@ -21,8 +21,8 @@ const Criteria: React.FC<CriteriaProps> = ({ platform }) => {
 
       {/* Main Content Section */}
       <div className="MagentaA11y__criteria-content">
-        {/* Dynamically display NavDisplay based on the current route */}
-        <NavDisplay platform={platform} items={platformData} />
+        {/* Dynamically display ContentDisplay based on the current route */}
+        <ContentDisplay platform={platform} items={platformData} />
       </div>
     </div>
   );

@@ -5,13 +5,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import Cards from "../../custom-components/cards/cards";
-import { SideNavItem } from "../nav.types";
+import Cards from "../custom-components/cards/cards";
+import { SideNavItem } from "../navigation/nav.types";
 
-import "../../../styles/_code-blocks.scss";
-import "./nav-display.scss";
+import "../../styles/_code-blocks.scss";
+import "./content-display.scss";
 
-interface NavDisplayProps {
+interface ContentDisplayProps {
   platform: "web" | "native";
   items: SideNavItem[];
 }
@@ -26,7 +26,7 @@ type MediaProps = {
 
 const ASSET_BASE_PATH = "/MagentaA11yV2/content/assets";
 
-const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
+const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -248,4 +248,4 @@ const NavDisplay: React.FC<NavDisplayProps> = ({ platform, items }) => {
   );
 };
 
-export default NavDisplay;
+export default ContentDisplay;
