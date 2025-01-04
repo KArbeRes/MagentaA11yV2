@@ -65,7 +65,7 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
               <li key={item.name} className="MagentaA11y__side-nav--item">
                 <Accordion
                   title={item.label}
-                  id={`${item.label} list`}
+                  id={`${item.name}-list`}
                   isOpened={itemActive}
                 >
                   {item.children && item.children.length > 0 ? (
@@ -108,9 +108,11 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
   };
 
   return (
-    <div className="MagentaA11y__side-nav-container">
-      {renderNavItems(contentData[platform] as NavItem[])}
-    </div>
+    <nav aria-label="Side navigation">
+      <div className="MagentaA11y__side-nav-container">
+        {renderNavItems(contentData[platform] as NavItem[])}
+      </div>
+    </nav>
   );
 };
 
