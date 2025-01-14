@@ -136,3 +136,27 @@ table {
     filter: var(--img-svgs);
   }
 }
+
+/* General Text Wrapping */
+body,
+p,
+li,
+span,
+a,
+div,
+textarea,
+input,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+td,
+th {
+  word-wrap: break-word; /* Allows long words to break and wrap to the next line */
+  word-break: break-word; /* Breaks long unbreakable words at any point (for legacy compatibility) */
+  overflow-wrap: break-word; /* Modern equivalent to word-wrap */
+}

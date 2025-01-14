@@ -10,12 +10,16 @@
     var(--magentaa11y-spacing-size-8) var(--magentaa11y-spacing-size-4);
 }
 
-.MagentaA11y__top-nav {
+.MagentaA11y__navbar {
   background-color: var(--top-nav-background-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 16px var(--magentaa11y-spacing-size-40);
+  padding: var(--magentaa11y-spacing-size-4) var(--magentaa11y-spacing-size-40);
+
+  md-icon-button + &__nav {
+    display: none;
+  }
 }
 
 .MagentaA11y__brand {
@@ -98,7 +102,7 @@
 }
 
 @media (max-width: 768px) {
-  .MagentaA11y__top-nav {
-    padding: 5px 10px;
+  .MagentaA11y__navbar {
+    padding: var(--magentaa11y-spacing-size-16);
   }
 }

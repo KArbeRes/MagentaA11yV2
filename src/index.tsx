@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "./shared/theme-context";
+import { ThemeProvider } from "./shared/contexts/theme-context";
 
 import "./index.scss";
+import { ViewportProvider } from "./shared/contexts/viewport-context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <ViewportProvider>
+        <App />
+      </ViewportProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

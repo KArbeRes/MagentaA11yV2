@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import contentData from "../../../shared/content.json";
-import "./side-nav.scss";
+import { useViewport } from "../../../shared/contexts/viewport-context";
 import Accordion from "../../custom-components/accordion/accordion";
+
+import "./side-nav.scss";
 
 interface NavItem {
   label: string;
@@ -16,35 +18,9 @@ interface SideNavProps {
   isVisible?: boolean;
 }
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
-    setIsMobile(mediaQuery.matches);
-
-    const handleResize = () => setIsMobile(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleResize);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleResize);
-    };
-  }, []);
-
-  return isMobile;
-};
-
 const SideNav: React.FC<SideNavProps> = ({ platform }) => {
-  const [isSideNavVisible, setSideNavVisible] = useState(true);
-  const isMobile = useIsMobile();
+  const viewportContext = useViewport();
   const location = useLocation();
-
-  React.useEffect(() => {
-    if (isMobile) {
-      setSideNavVisible(false);
-    }
-  }, [isMobile]);
-
   const isActive = (path: string) => location.pathname.includes(path);
 
   const renderNavItems = (
@@ -53,7 +29,9 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
   ) => {
     return (
       <div
-        className={`MagentaA11y__side-nav ${isSideNavVisible ? "" : "hidden"}`}
+        className={`MagentaA11y__side-nav ${
+          viewportContext.isMobile ? "hidden" : ""
+        }`}
       >
         <h1 className="MagentaA11y__side-nav--title">Criteria</h1>
         <ul className="MagentaA11y__side-nav--list">

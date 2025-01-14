@@ -16,6 +16,11 @@ declare namespace JSX {
       HTMLElement
     >;
 
+    "md-icon-button": React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    >;
+
     "md-filled-tonal-button": React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
