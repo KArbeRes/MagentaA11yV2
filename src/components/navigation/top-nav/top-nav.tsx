@@ -20,7 +20,12 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
       </div>
 
       {viewportContext.isMobile && (
-        <IconButton a11yLabel={"Criteria added"} icon={Icons.menu}></IconButton>
+        <IconButton
+          a11yLabel={"Menu Button"}
+          icon={Icons.menu}
+          ariaExpanded={false}
+          ariaHasPopup={true}
+        ></IconButton>
       )}
 
       <nav className="MagentaA11y__navbar__nav" aria-label="Top navigation">

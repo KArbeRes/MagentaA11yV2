@@ -68,7 +68,7 @@ const IconButton: React.FC<TMOIconButton> = ({
       aria-haspopup={ariaHasPopup || undefined}
       aria-controls={ariaControls || undefined}
       tabIndex={tabIndex || undefined}
-      aria-expanded={ariaExpanded || undefined}
+      aria-expanded={ariaExpanded}
       disabled={disabled}
       className="MagentaA11y-icon-button"
     >

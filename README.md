@@ -1,109 +1,132 @@
 # MagentaA11y V2
 
-MagentaA11y V2 is a modern, React-based application designed to simplify the process of accessibility testing for digital experiences. This new version of MagentaA11y incorporates a fresh tech stack and enhances usability, making it easier for product teams to deliver accessible experiences.
-
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Features](#features)
-- [Installation](#installation)
 - [Available Scripts](#available-scripts)
+- [Key Features](#key-features)
 - [Deployment](#deployment)
 - [Optimize Video Assets](#optimize-video-assets)
 
 ---
 
-### Getting Started
+## Getting Started
 
-Follow the steps below to set up and run MagentaA11y V2 on your local machine.
+### Prerequisites
 
-### Features
-
-MagentaA11y V2 enables product teams to:
-
-- Build accessibility testing criteria for web or native app components.
-- Provide easy-to-use testing instructions for keyboard navigation, screen readers, and mobile accessibility.
-- Display guidelines and examples for developers to improve accessibility.
-
-Each entry includes:
-
-- Video demos for screen reader interactions.
-- Code examples and developer notes.
-- References to WCAG and WAI-ARIA documentation.
+- **Node.js**: Ensure you have [Node.js](https://nodejs.org/) installed. It is recommended to use the latest LTS version.
+- **FFmpeg** (Optional): Required for video optimization scripts.
 
 ### Installation
 
-Ensure you have [Node.js](https://nodejs.org/) installed.
-
-To install the dependencies, run:
+To set up the application, clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/KArbeRes/MagentaA11yV2.git
+cd MagentaA11yV2
 npm install
 ```
 
+---
+
 ## Available Scripts
 
-In the project directory, you can run:
+### Development
 
-- **`npm start`**: Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
-- **`npm run generate-theme`**: Generates the application theme based on the color settings.
-- **`npm run build`**: Builds the app for production in the `build` folder.
+- **`npm start`**: Starts the app in development mode.
+
+  - Automatically generates navigation buttons and icons.
+  - Accessible at [http://localhost:3000](http://localhost:3000).
+
+- **`npm run dev`**: Watches for navigation item changes and starts the app concurrently.
+
+### Building and Deployment
+
+- **`npm run build`**: Builds the app for production, optimizing all assets.
 - **`npm run deploy`**: Deploys the app to GitHub Pages.
-- **`npm run print-tree`**: Prints the project tree, excluding `node_modules`.
-- **`npm run convert-videos`**: Converts all video files to `.webm` format, updates file references, and removes original video files.
+
+### Utility Scripts
+
+- **`npm run generate-icons`**: Generates React components for all SVG icons and updates type definitions.
+- **`npm run generate-faveicons`**: Creates favicon assets.
+- **`npm run generate-side-nav-buttons`**: Updates side navigation buttons dynamically.
+- **`npm run convert-videos`**: Converts video files to `.webm` format for web optimization.
+- **`npm run print-tree`**: Prints the project tree structure, excluding `node_modules`.
+
+---
+
+## Key Features
+
+- **React-Based Architecture**: Built with React 18 for a modern, component-driven approach.
+- **Dynamic Icon Generation**: Generates type-safe React components for SVG icons.
+- **Accessibility-Focused**: Streamlines testing and verification for accessible digital experiences.
+- **Video Optimization**: Converts video assets to `.webm` format for performance optimization.
+- **GitHub Pages Deployment**: Deploy your app with a single command.
 
 ---
 
 ## Deployment
 
-This app is deployed via GitHub Pages. To deploy manually, make sure you have GitHub Pages enabled in the repository settings.
+The app is deployed via GitHub Pages. Follow these steps to deploy:
 
-1. Update the `homepage` field in `package.json` to match your GitHub Pages URL:
-
+1. Ensure GitHub Pages is enabled in your repository settings.
+2. Update the `homepage` field in `package.json`:
    ```json
    "homepage": "https://<username>.github.io/<repository-name>"
    ```
-
-2. Run:
-
+3. Run:
    ```bash
    npm run deploy
    ```
 
-The application will be available at your GitHub Pages URL: `https://<username>.github.io/<repository-name>`.
+Your application will be live at:
+
+```
+https://<username>.github.io/<repository-name>
+```
 
 ---
 
 ## Optimize Video Assets
 
-The script `convert-videos-to-webm.sh` optimizes video files for web by converting them to `.webm` format, updating file references, and removing original files.
+The script `convert-videos-to-webm.sh` optimizes video files for the web.
 
 ### What the Script Does
 
 1. Converts video files (`.mp4`, `.mov`, etc.) to `.webm` format using FFmpeg.
-2. Updates all project references to use the new `.webm` files.
-3. Replaces `type="video/webm"` with `type="video/webm"` in HTML or similar files.
-4. Deletes the original video files after successful conversion.
+2. Updates all references in the project to use the `.webm` files.
+3. Deletes the original video files after successful conversion.
 
 ### Requirements
 
-- **FFmpeg**: A tool for video processing.
-  - macOS:
-    ```bash
-    brew install ffmpeg
-    ```
+- **FFmpeg**: Install via [Homebrew](https://brew.sh/) (macOS):
+  ```bash
+  brew install ffmpeg
+  ```
 
-### How to Run the Script
+### Running the Script
 
-1. Ensure the script has executable permissions:
+Ensure the script has executable permissions:
 
-   ```bash
-   chmod +x src/scripts/convert-videos-to-webm.sh
-   ```
+```bash
+chmod +x src/scripts/convert-videos-to-webm.sh
+```
 
-### Outputs
+Run the script:
 
-- Converted `.webm` files will replace references in the project.
-- Original video files will be deleted if the conversion is successful.
+```bash
+npm run convert-videos
+```
+
+Outputs:
+
+- Converted `.webm` files replace references in the project.
+- Original video files are deleted after successful conversion.
+
+---
+
+## Support
+
+For issues, suggestions, or contributions, please open a GitHub issue or submit a pull request.
 
 ---
