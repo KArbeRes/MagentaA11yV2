@@ -1,10 +1,8 @@
 import React from "react";
+import { getIcon } from "utils/getIcon";
+import { Icon } from "shared/Icons";
 
 import "./icon-button.scss";
-
-// // Import your button size, type, and other constants
-// import { ButtonSize, ButtonType } from 'shared/types/button/button.types';
-// import { TMOIconButton } from 'shared/types/button/html-type/button.types';
 
 const enum ButtonSize {
   large = "large",
@@ -19,7 +17,8 @@ const enum ButtonType {
 
 interface TMOIconButton {
   a11yLabel: string;
-  icon?: string;
+  //   icon: keyof typeof Icons;
+  icon: Icon;
   disabled?: boolean;
   size?: ButtonSize;
   type?: ButtonType;
@@ -56,6 +55,8 @@ const IconButton: React.FC<TMOIconButton> = ({
     a11yLabel = `${a11yLabel}, ${badgeNumber >= 100 ? "99+" : badgeNumber}`;
   }
 
+  const IconComponent = icon ? getIcon(icon) : null;
+
   return (
     <button
       id={id}
@@ -71,15 +72,7 @@ const IconButton: React.FC<TMOIconButton> = ({
       disabled={disabled}
       className="MagentaA11y-icon-button"
     >
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M3.50003 17.6344V16.1345H20.5V17.6344H3.50003ZM3.50003 12.7498V11.2499H20.5V12.7498H3.50003ZM3.50003 7.86521V6.36523H20.5V7.86521H3.50003Z" />
-      </svg>
+      {IconComponent && <IconComponent width="24" height="24" />}
 
       {hasBadge && badgeNumber >= 0 && (
         <span

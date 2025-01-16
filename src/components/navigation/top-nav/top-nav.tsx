@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Icons } from "shared/Icons";
 import { useViewport } from "../../../shared/contexts/viewport-context";
 import IconButton from "../../custom-components/buttons/icon-button/icon-button";
 import { TopNavProps } from "../nav.types";
@@ -19,7 +20,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
       </div>
 
       {viewportContext.isMobile && (
-        <IconButton a11yLabel={"Criteria added"} icon={""}></IconButton>
+        <IconButton a11yLabel={"Criteria added"} icon={Icons.menu}></IconButton>
       )}
 
       <nav className="MagentaA11y__navbar__nav" aria-label="Top navigation">

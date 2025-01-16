@@ -42,6 +42,7 @@
     "generate-faveicons": "npx tsx src/scripts/generateFaveIcons.ts",
     "generate-side-nav-buttons": "npx tsx src/scripts/generateSideNavContentButtons.ts",
     "convert-videos": "bash src/scripts/convert-videos-to-webm.sh",
+    "generate-icons": "npx tsx src/scripts/generateIcons.ts",
     "start": "npm run generate-side-nav-buttons && react-scripts start",
     "dev": "concurrently -k \"npm run watch-nav-items\" \"npm start\"",
     "build": "npm run generate-faveicons && npm run generate-side-nav-buttons && npm run convert-videos && react-scripts build",
