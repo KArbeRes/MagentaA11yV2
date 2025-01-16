@@ -11,13 +11,13 @@
 }
 
 .MagentaA11y__navbar {
-  background-color: var(--top-nav-background-color);
+  background-color: var(--color-on-primary);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: var(--magentaa11y-spacing-size-4) var(--magentaa11y-spacing-size-40);
 
-  md-icon-button + &__nav {
+  button + &__nav {
     display: none;
   }
 }
@@ -48,6 +48,7 @@
     display: flex;
     align-items: center;
     padding: 0 0 0 50px;
+    color: var(--color-on-tertiary);
 
     &::before {
       content: "Magenta";

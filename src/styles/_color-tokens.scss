@@ -152,6 +152,21 @@
     //Cards
     --card-color-background: var(--magentaa11y-color-brand-grayscale-white);
 
+    //Background disabled
+    --color-surface-disabled: var(--magentaa11y-color-brand-grayscale-500);
+
+    //Icons color
+    --color-icons: var(--magentaa11y-color-brand-grayscale-1000);
+
+    //Icon button hover
+    --color-icons-hover: var(--magentaa11y-color-brand-grayscale-700);
+
+    //IconButton hover
+    --color-icon-button-hover: var(--magentaa11y-color-brand-grayscale-300);
+
+    //IconButton pressed
+    --color-icon-button-pressed: var(--magentaa11y-color-brand-grayscale-400);
+
     --img-svgs: invert(0);
   } @else if $theme == dark {
     // Dark Theme
@@ -299,5 +314,16 @@
 
     //Cards
     --card-color-background: var(--magentaa11y-color-brand-grayscale-900);
+
+    //Background disabled
+    --color-surface-disabled: var(--magentaa11y-color-brand-grayscale-600);
+    //Icons color
+    --color-icons: var(--magentaa11y-color-brand-grayscale-200);
+    //Icon color hover
+    --color-icons-hover: var(--magentaa11y-color-brand-grayscale-300);
+    //IconButton hover
+    --color-icon-button-hover: var(--magentaa11y-color-brand-grayscale-900);
+    //IconButton pressed
+    --color-icon-button-pressed: var(--magentaa11y-color-brand-grayscale-700);
   }
 }

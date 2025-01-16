@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useViewport } from "../../../shared/contexts/viewport-context";
+import IconButton from "../../custom-components/buttons/icon-button/icon-button";
 import { TopNavProps } from "../nav.types";
 
 import "./top-nav.scss";
@@ -9,7 +10,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const viewportContext = useViewport();
 
   return (
-    <div className="MagentaA11y__navbar">
+    <div className="MagentaA11y__navbar" data-theme="dark">
       {/* Brand Section */}
       <div className="MagentaA11y__brand">
         <NavLink to="/home" className="MagentaA11y__brand--name">
@@ -18,9 +19,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
       </div>
 
       {viewportContext.isMobile && (
-        <md-icon-button>
-          <md-icon>menu</md-icon>
-        </md-icon-button>
+        <IconButton a11yLabel={"Criteria added"} icon={""}></IconButton>
       )}
 
       <nav className="MagentaA11y__navbar__nav" aria-label="Top navigation">
