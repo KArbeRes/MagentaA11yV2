@@ -1,13 +1,14 @@
-import React from "react";
-import contentData from "../../shared/content.json";
-import ContentDisplay from "../content-display/content-display";
-import { SideNavItem } from "../navigation/nav.types";
-import SideNav from "../navigation/side-nav/side-nav";
+import React from 'react';
+import contentData from '../../shared/content.json';
+import { Platforms } from '../../shared/types/shared-types';
+import ContentDisplay from '../content-display/content-display';
+import { SideNavItem } from '../navigation/nav.types';
+import SideNav from '../navigation/side-nav/side-nav';
 
-import "./criteria.scss";
+import './criteria.scss';
 
 interface CriteriaProps {
-  platform: "web" | "native";
+  platform: Platforms;
 }
 
 const Criteria: React.FC<CriteriaProps> = ({ platform }) => {

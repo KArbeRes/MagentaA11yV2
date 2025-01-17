@@ -5,6 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import { Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
 
@@ -12,7 +13,7 @@ import '../../styles/_code-blocks.scss';
 import './content-display.scss';
 
 interface ContentDisplayProps {
-  platform: 'web' | 'native';
+  platform: Platforms;
   items: SideNavItem[];
 }
 
