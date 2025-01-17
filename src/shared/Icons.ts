@@ -99,6 +99,7 @@ export const Icons = {
   botnetPreventionOutlined: "botnetPreventionOutlined",
   brakeFluidLowFilled: "brakeFluidLowFilled",
   brakeFluidLowOutlined: "brakeFluidLowOutlined",
+  brandLogoWhite: "brandLogoWhite",
   brightnessContrastOutlined: "brightnessContrastOutlined",
   calendarFilled: "calendarFilled",
   calendarOutlined: "calendarOutlined",

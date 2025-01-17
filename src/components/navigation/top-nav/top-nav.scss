@@ -1,7 +1,7 @@
 @mixin base-link-styles {
   font-weight: var(--magentaa11y-font-weight-semibold);
   line-height: var(--magentaa11y-spacing-size-20);
-  color: var(--magentaa11y-color-brand-grayscale-white);
+  color: var(--color-on-tertiary);
   font-style: normal;
   text-decoration: none;
   letter-spacing: 0.1px;
@@ -61,7 +61,7 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      // background-image: url("../../../assets/svgs/brand-logo-white.svg");
+      background-image: url("../../../assets/svgs/brand-logo-white.svg");
       background-size: contain;
       background-repeat: no-repeat;
       width: var(--magentaa11y-spacing-size-40);
@@ -92,11 +92,10 @@
   }
 
   &--label {
-    color: var(--magentaa11y-color-brand-grayscale-white);
+    color: var(---color-on-tertiary);
   }
 
   &--icon {
-    filter: invert(1);
     display: inherit;
     align-items: center;
   }

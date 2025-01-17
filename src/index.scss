@@ -160,3 +160,7 @@ th {
   word-break: break-word; /* Breaks long unbreakable words at any point (for legacy compatibility) */
   overflow-wrap: break-word; /* Modern equivalent to word-wrap */
 }
+
+svg {
+  fill: var(--color-on-tertiary);
+}
