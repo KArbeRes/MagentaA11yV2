@@ -1,11 +1,13 @@
+import classNames from 'classnames';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
 import contentData from '../../../shared/content.json';
 import { useViewport } from '../../../shared/contexts/viewport-context';
 import IconButton from '../../custom-components/buttons/icon-button/icon-button';
-import { NavItem, TopNavProps } from '../nav.types';
+import { TopNavProps } from '../nav.types';
+import { isPathActive } from 'utils/navigation-helpers';
 
 import './top-nav.scss';
 
@@ -21,14 +23,12 @@ const getFirstOverviewLink = (platform: Platforms) => {
 
 const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const viewportContext = useViewport();
+  const location = useLocation();
   const [expanded, setExpanded] = useState(false);
 
   const handleMenuClick = () => {
     setExpanded((expanded) => !expanded);
   };
-
-  const firstLink = getFirstOverviewLink(Platforms.NATIVE);
-  console.log({ firstLink });
 
   return (
     <div className="MagentaA11y__navbar" data-theme="dark">
@@ -62,11 +62,15 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                 ? getFirstOverviewLink(Platforms.NATIVE)
                 : item.href;
 
+            const isActive = isPathActive(item.href, location);
+
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
                 <NavLink
                   to={href}
-                  className="MagentaA11y__nav-items--link"
+                  className={classNames('MagentaA11y__nav-items--link', {
+                    active: isActive,
+                  })}
                   aria-label={`Navigate to ${item.label}`}>
                   {item.icon && (
                     <span className="MagentaA11y__nav-items--icon">
