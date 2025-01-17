@@ -1,35 +1,35 @@
 @font-face {
-  font-family: "TeleNeo";
-  src: url("../assets/fonts/teleneo/web-v1.7/teleneoweb-regular.woff2")
-      format("woff2"),
-    url("../assets/fonts/teleneo/web-v1.7/teleneoweb-regular.woff2")
-      format("woff");
+  font-family: 'TeleNeo';
+  src: url('../assets/fonts/teleneo/web-v1.7/teleneoweb-regular.woff2')
+      format('woff2'),
+    url('../assets/fonts/teleneo/web-v1.7/teleneoweb-regular.woff2')
+      format('woff');
   font-weight: 400; /* Regular */
   font-style: normal;
 }
 
 @font-face {
-  font-family: "TeleNeo";
-  src: url("../assets/fonts/teleneo/web-v1.7/teleneoweb-bold.woff2")
-      format("woff2"),
-    url("../assets/fonts/teleneo/web-v1.7/teleneoweb-bold.woff2") format("woff");
+  font-family: 'TeleNeo';
+  src: url('../assets/fonts/teleneo/web-v1.7/teleneoweb-bold.woff2')
+      format('woff2'),
+    url('../assets/fonts/teleneo/web-v1.7/teleneoweb-bold.woff2') format('woff');
   font-weight: 700; /* Bold */
   font-style: normal;
 }
 
 @font-face {
-  font-family: "TeleNeo";
-  src: url("../assets/fonts/teleneo/web-v1.7/teleneoweb-extrabold.woff2")
-      format("woff2"),
-    url("../assets/fonts/teleneo/web-v1.7/teleneoweb-extrabold.woff2")
-      format("woff");
+  font-family: 'TeleNeo';
+  src: url('../assets/fonts/teleneo/web-v1.7/teleneoweb-extrabold.woff2')
+      format('woff2'),
+    url('../assets/fonts/teleneo/web-v1.7/teleneoweb-extrabold.woff2')
+      format('woff');
   font-weight: 800; /* Extra Bold */
   font-style: normal;
 }
 
 @mixin font-tokens {
   --magentaa11y-font-family-body: BlinkMacSystemFont, -apple-system, Roboto,
-    Helvetica, "Segoe UI", Arial, sans-serif; /* Used for body copy */
+    Helvetica, 'Segoe UI', Arial, sans-serif; /* Used for body copy */
   --magentaa11y-font-family-display: TeleNeo; /* Reserved for headline display */
   --magentaa11y-font-family-header: TeleNeo; /* Reserved for headers */
   --magentaa11y-font-weight-extrabold: 800; /* This weight value is 800. It is used for our header copy. */
@@ -61,5 +61,9 @@
       --magentaa11y-font-weight-extrabold
     )
     var(--magentaa11y-font-size-20) / var(--magentaa11y-line-height-22)
+    var(--magentaa11y-font-family-display);
+
+  --magentaa11y-typeset-headline-sm-strong: var(--magentaa11y-font-weight-bold)
+    var(--magentaa11y-font-size-24) / var(--magentaa11y-line-height-26)
     var(--magentaa11y-font-family-display);
 }
