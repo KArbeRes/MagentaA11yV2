@@ -11,14 +11,29 @@
 }
 
 .MagentaA11y__navbar {
+  --nav-items-flex-direction: row;
+
   background-color: var(--color-on-primary);
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: var(--magentaa11y-spacing-size-4) var(--magentaa11y-spacing-size-40);
 
-  button + &__nav {
+  button[aria-expanded="false"] + &__nav {
     display: none;
+  }
+
+  button[aria-expanded="true"] + &__nav {
+    --nav-items-flex-direction: column;
+
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    padding: var(--magentaa11y-spacing-size-40)
+      var(--magentaa11y-spacing-size-24);
+    background-color: var(--color-background);
   }
 }
 
@@ -73,6 +88,7 @@
 .MagentaA11y__nav-items {
   list-style-type: none;
   display: flex;
+  flex-direction: var(--nav-items-flex-direction);
   gap: var(--magentaa11y-spacing-size-16);
   margin: 0;
   padding: 0;

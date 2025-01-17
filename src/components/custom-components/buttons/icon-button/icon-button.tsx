@@ -30,6 +30,7 @@ interface TMOIconButton {
   id?: string;
   hasBadge?: boolean;
   badgeNumber?: number;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const IconButton: React.FC<TMOIconButton> = ({
@@ -46,6 +47,7 @@ const IconButton: React.FC<TMOIconButton> = ({
   id,
   hasBadge = false,
   badgeNumber = 0,
+  onClick,
 }) => {
   if (!a11yLabel || a11yLabel.trim() === "") {
     return null;
@@ -71,6 +73,7 @@ const IconButton: React.FC<TMOIconButton> = ({
       aria-expanded={ariaExpanded}
       disabled={disabled}
       className="MagentaA11y-icon-button"
+      onClick={onClick}
     >
       {IconComponent && <IconComponent width="24" height="24" />}
 
