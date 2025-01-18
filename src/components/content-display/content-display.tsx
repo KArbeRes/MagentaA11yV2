@@ -11,6 +11,13 @@ import { SideNavItem } from '../navigation/nav.types';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
+import Button from 'components/custom-components/buttons/button/button';
+import {
+  ButtonType,
+  ButtonVariant,
+  ButtonSize,
+} from 'components/custom-components/buttons/button-types';
+import { Icons } from 'shared/Icons';
 
 interface ContentDisplayProps {
   platform: Platforms;
@@ -154,6 +161,19 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                 </md-primary-tab>
               ))}
             </md-tabs>
+            <Button
+              onClick={() => {}}
+              type={ButtonType.button}
+              variant={ButtonVariant.primary}
+              size={ButtonSize.large}
+              label={'Save Criteria'}
+              decoration={Icons.bookmarkFilled}></Button>
+            <Button
+              onClick={() => {}}
+              type={ButtonType.button}
+              variant={ButtonVariant.primary}
+              size={ButtonSize.large}
+              label={'Save Criteria'}></Button>
           </div>
 
           <div className="MagentaA11y__nav-display__content-details">

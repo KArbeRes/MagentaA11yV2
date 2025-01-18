@@ -1,0 +1,64 @@
+.Magentaa11y-button {
+  --button-padding: var(--magentaa11y-spacing-size-12)
+    var(--magentaa11y-spacing-size-16);
+  --button-min-height: var(--magentaa11y-spacing-size-48);
+  --button-min-width: 110px;
+  --button-max-width: 424px;
+  --button--cursor: pointer;
+
+  font: var(--magentaa11y-typeset-body-lg-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: break-word;
+  background: var(--button--bg);
+  border-width: var(--button--border-width);
+  border-color: var(--button--border-color);
+  border-style: var(--button--border-style);
+  border-radius: var(--magentaa11y-border-radius-size-4);
+  color: var(--button--text-color);
+  padding: var(--button-padding);
+  min-block-size: var(--button-min-height);
+  min-inline-size: var(--button-min-width);
+  max-inline-size: var(--button-max-width);
+  overflow: hidden;
+  height: fit-content;
+  cursor: var(--button--cursor);
+
+  &.Magentaa11y-button--primary {
+    --button--bg: var(--button-default);
+    --button--text-color: var(--button-text-color);
+    --button--border-color: none;
+    --button--border-style: none;
+    --button--border-width: 0;
+    --button--cursor: pointer;
+    --icon-color: var(--button-text-color);
+
+    &:hover {
+      --button--bg: var(--button-hover);
+      --button--text-color: var(--button-text-hover);
+      --icon-color: var(--button-text-hover);
+    }
+
+    &:active {
+      --button--bg: var(--button-pressed);
+      --button--text-color: var(--button-text-pressed);
+      --icon-color: var(--button-text-pressed);
+    }
+  }
+
+  svg {
+    flex: none;
+    fill: var(--icon-color);
+    margin-inline-end: var(--magentaa11y-spacing-size-8);
+
+    @media (forced-colors: active) {
+      --icon-color: buttontext;
+    }
+  }
+
+  span {
+    color: inherit;
+  }
+}

@@ -1,19 +1,9 @@
-import React from "react";
-import { getIcon } from "utils/getIcon";
-import { Icon } from "shared/Icons";
+import React from 'react';
+import { Icon } from 'shared/Icons';
+import { getIcon } from 'utils/getIcon';
+import { ButtonSize, ButtonType } from '../button-types';
 
-import "./icon-button.scss";
-
-const enum ButtonSize {
-  large = "large",
-  small = "small",
-}
-
-const enum ButtonType {
-  button = "button",
-  submit = "submit",
-  reset = "reset",
-}
+import './icon-button.scss';
 
 interface TMOIconButton {
   a11yLabel: string;
@@ -49,12 +39,12 @@ const IconButton: React.FC<TMOIconButton> = ({
   badgeNumber = 0,
   onClick,
 }) => {
-  if (!a11yLabel || a11yLabel.trim() === "") {
+  if (!a11yLabel || a11yLabel.trim() === '') {
     return null;
   }
 
   if (hasBadge && badgeNumber > 0) {
-    a11yLabel = `${a11yLabel}, ${badgeNumber >= 100 ? "99+" : badgeNumber}`;
+    a11yLabel = `${a11yLabel}, ${badgeNumber >= 100 ? '99+' : badgeNumber}`;
   }
 
   const IconComponent = icon ? getIcon(icon) : null;
@@ -73,17 +63,15 @@ const IconButton: React.FC<TMOIconButton> = ({
       aria-expanded={ariaExpanded}
       disabled={disabled}
       className="MagentaA11y-icon-button"
-      onClick={onClick}
-    >
+      onClick={onClick}>
       {IconComponent && <IconComponent width="24" height="24" />}
 
       {hasBadge && badgeNumber >= 0 && (
         <span
           className={`MagentaA11y-badge ${
-            badgeNumber ? "MagentaA11y-badge--number" : ""
-          }`}
-        >
-          {badgeNumber > 99 ? "99+" : badgeNumber || null}
+            badgeNumber ? 'MagentaA11y-badge--number' : ''
+          }`}>
+          {badgeNumber > 99 ? '99+' : badgeNumber || null}
         </span>
       )}
     </button>

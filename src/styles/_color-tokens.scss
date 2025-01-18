@@ -1,4 +1,4 @@
-@use "./foundation-colors" as *;
+@use './foundation-colors' as *;
 
 @mixin color-tokens($theme: light) {
   @if $theme == light {
@@ -167,7 +167,13 @@
     //IconButton pressed
     --color-icon-button-pressed: var(--magentaa11y-color-brand-grayscale-400);
 
-    --img-svgs: invert(0);
+    //button colors
+    --button-default: var(--magentaa11y-color-brand-primary-400);
+    --button-hover: var(--magentaa11y-color-brand-primary-500);
+    --button-pressed: var(--magentaa11y-color-brand-primary-600);
+    --button-text-color: var(--magentaa11y-color-brand-grayscale-white);
+    --button-text-hover: var(--magentaa11y-color-brand-grayscale-200);
+    --button-text-pressed: var(--magentaa11y-color-brand-grayscale-200);
   } @else if $theme == dark {
     // Dark Theme
     // Text Colors
@@ -325,5 +331,14 @@
     --color-icon-button-hover: var(--magentaa11y-color-brand-grayscale-900);
     //IconButton pressed
     --color-icon-button-pressed: var(--magentaa11y-color-brand-grayscale-700);
+
+    //button colors
+    --button-default: var(--magentaa11y-color-brand-primary-400);
+    --button-hover: var(--magentaa11y-color-brand-primary-500);
+    --button-pressed: var(--magentaa11y-color-brand-primary-600);
+    --button-text-color: var(--magentaa11y-color-brand-grayscale-white);
+    --button-text-hover: var(--magentaa11y-color-brand-grayscale-200);
+    --button-text-pressed: var(--magentaa11y-color-brand-grayscale-200);
+    --button-text-pressed: var(--magentaa11y-color-brand-grayscale-200);
   }
 }
