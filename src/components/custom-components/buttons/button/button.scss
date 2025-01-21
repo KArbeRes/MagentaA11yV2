@@ -48,16 +48,41 @@
     }
   }
 
+  &.Magentaa11y-button--secondary {
+    --button--text-color: var(--button-secondary-color);
+    --button--border-color: var(--button-secondary-color);
+    --icon-color: var(--button-secondary-color);
+    --button--border-width: var(--magentaa11y-border-weight-size-2);
+    --button--bg: none;
+    --button--transition: none;
+    --button--border-style: solid;
+    --button--cursor: pointer;
+    --button-padding: 10px 14px;
+
+    &:hover {
+      --button--text-color: var(--button-secondary-hover);
+      --button--bg: var(--button-secondary-color);
+      --button--border-color: var(--button-secondary-color);
+      --icon-color: var(--button-secondary-hover);
+    }
+
+    &:active {
+      --button--text-color: var(--button-secondary-pressed-text);
+      --button--bg: var(--button-secondary-pressed);
+      --button--border-color: var(--button-secondary-pressed);
+      --icon-color: var(--button-secondary-pressed-text);
+      --button--transition: var(--button--transition), border 100ms ease-in;
+    }
+  }
+
   &.Magentaa11y-button--tertiary {
     --button--bg: none;
     --button--transition: none;
     --button--cursor: pointer;
     --button-min-width: initial;
     --button-max-width: initial;
-    --button--text-color: var(
-      --magentaa11y-color-text-onLight-tertiary-default
-    );
-    --icon-color: var(--magentaa11y-color-fill-onLight-tertiary-icon-default);
+    --button--text-color: var(--button-tertiary-color);
+    --icon-color: var(--button-tertiary-color);
 
     padding: 10px 0;
 
@@ -66,10 +91,15 @@
       --button-padding: 13px 0;
     }
 
+    &:hover {
+      --button--text-color: var(--button-tertiary-color-hover);
+      --icon-color: var(--button-tertiary-color-hover);
+    }
+
     &:active {
-      --button--text-color: var(--button-pressed);
+      --button--text-color: var(--button-tertiary-color-pressed);
+      --icon-color: var(--button-tertiary-color-pressed);
       --button--transition: color 100ms ease-in;
-      --icon-color: var(--button-pressed);
     }
   }
 
