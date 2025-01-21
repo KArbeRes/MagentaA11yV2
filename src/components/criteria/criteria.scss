@@ -11,6 +11,6 @@
   }
 
   @media (max-width: 768px) {
-    --content-padding: 0 24px;
+    --content-padding: 0 var(--magentaa11y-spacing-size-16);
   }
 }
