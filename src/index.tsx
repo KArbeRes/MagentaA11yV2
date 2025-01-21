@@ -1,14 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "./shared/contexts/theme-context";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from './shared/contexts/theme-context';
+import { ViewportProvider } from './shared/contexts/viewport-context';
 
-import "./index.scss";
-import { ViewportProvider } from "./shared/contexts/viewport-context";
+import './index.scss';
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
