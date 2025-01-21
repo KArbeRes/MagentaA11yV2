@@ -46,6 +46,13 @@
       --button--text-color: var(--button-text-pressed);
       --icon-color: var(--button-text-pressed);
     }
+
+    &[aria-disabled='true'] {
+      --button--bg: var(--button-disabled);
+      --button--text-color: var(--button-disabled-text);
+      --icon-color: var(--button-disabled-text);
+      --button--cursor: not-allowed;
+    }
   }
 
   &.Magentaa11y-button--secondary {

@@ -38,6 +38,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
+  const [copiedContent, setCopiedContent] = useState<string | null>(null);
 
   // Helper function to find the active item
   const findItemByPath = (
@@ -62,6 +63,19 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
 
   // Check if the current route is an overview route
   const isOverviewRoute = location.pathname.endsWith('/overview');
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      if (copiedContent) {
+        const isStillInClipboard = await isContentInClipboard(copiedContent);
+        if (!isStillInClipboard) {
+          setCopiedContent(null);
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [copiedContent]);
 
   // Track active tab changes
   useEffect(() => {
@@ -109,6 +123,35 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
     { content: iosDeveloperNotes, label: 'iOS Developer Notes' },
     { content: videos, label: 'Videos' },
   ].filter((tab) => tab.content);
+
+  const copyTabContent = (content: string) => {
+    if (content) {
+      navigator.clipboard
+        .writeText(content)
+        .then(() => {
+          setCopiedContent(content);
+        })
+        .catch((err) => {
+          console.error('Failed to copy content: ', err);
+        });
+    }
+  };
+
+  const isContentInClipboard = async (content: string) => {
+    try {
+      const clipboardText = await navigator.clipboard.readText();
+      return clipboardText === content;
+    } catch (err) {
+      console.error('Failed to read clipboard content: ', err);
+      return false;
+    }
+  };
+
+  let actionsButtonsVisible = ['Condensed', 'Gherkin', 'Criteria'].includes(
+    tabs[activeTab]?.label
+  );
+
+  let criteriaIsCopied = copiedContent === tabs[activeTab]?.content;
 
   return (
     <div className="MagentaA11y__nav-display">
@@ -161,22 +204,27 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                 </md-primary-tab>
               ))}
             </md-tabs>
-            <div className="MagentaA11y__nav-display__content-actions__buttons">
-              <Button
-                onClick={() => {}}
-                type={ButtonType.button}
-                variant={ButtonVariant.primary}
-                size={ButtonSize.large}
-                label={'Copy Criteria'}
-                decoration={Icons.copyFilled}></Button>
-              <Button
-                onClick={() => {}}
-                type={ButtonType.button}
-                variant={ButtonVariant.tertiary}
-                size={ButtonSize.large}
-                label={'Save Criteria'}
-                decoration={Icons.bookmarkOutlined}></Button>
-            </div>
+            {actionsButtonsVisible && (
+              <div className="MagentaA11y__nav-display__content-actions__buttons">
+                <Button
+                  onClick={() => copyTabContent(tabs[activeTab].content || '')}
+                  type={ButtonType.button}
+                  variant={ButtonVariant.primary}
+                  disabled={criteriaIsCopied}
+                  size={ButtonSize.large}
+                  label={criteriaIsCopied ? 'Copied!' : 'Copy Criteria'}
+                  decoration={
+                    criteriaIsCopied ? Icons.checkmark : Icons.copyFilled
+                  }></Button>
+                <Button
+                  onClick={() => {}}
+                  type={ButtonType.button}
+                  variant={ButtonVariant.tertiary}
+                  size={ButtonSize.large}
+                  label={'Save Criteria'}
+                  decoration={Icons.bookmarkOutlined}></Button>
+              </div>
+            )}
           </div>
 
           <div className="MagentaA11y__nav-display__content-details">

@@ -19,7 +19,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
-  disabled = false,
+  disabled,
   type,
   variant,
   decoration,
@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      disabled={disabled}
+      aria-disabled={disabled}
       type={type}
       data-size={size}
       aria-describedby={describedBy}
