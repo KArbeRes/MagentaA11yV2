@@ -161,19 +161,22 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                 </md-primary-tab>
               ))}
             </md-tabs>
-            <Button
-              onClick={() => {}}
-              type={ButtonType.button}
-              variant={ButtonVariant.primary}
-              size={ButtonSize.large}
-              label={'Save Criteria'}
-              decoration={Icons.bookmarkFilled}></Button>
-            <Button
-              onClick={() => {}}
-              type={ButtonType.button}
-              variant={ButtonVariant.primary}
-              size={ButtonSize.large}
-              label={'Save Criteria'}></Button>
+            <div className="MagentaA11y__nav-display__content-actions__buttons">
+              <Button
+                onClick={() => {}}
+                type={ButtonType.button}
+                variant={ButtonVariant.primary}
+                size={ButtonSize.large}
+                label={'Copy Criteria'}
+                decoration={Icons.copyFilled}></Button>
+              <Button
+                onClick={() => {}}
+                type={ButtonType.button}
+                variant={ButtonVariant.tertiary}
+                size={ButtonSize.large}
+                label={'Save Criteria'}
+                decoration={Icons.bookmarkOutlined}></Button>
+            </div>
           </div>
 
           <div className="MagentaA11y__nav-display__content-details">

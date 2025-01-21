@@ -45,6 +45,11 @@
     md-tabs {
       width: fit-content;
     }
+
+    &__buttons {
+      display: flex;
+      gap: 24px;
+    }
   }
 
   &__content-details {
