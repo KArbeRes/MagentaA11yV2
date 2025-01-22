@@ -20,11 +20,11 @@
   justify-content: space-between;
   padding: var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-40);
 
-  button[aria-expanded='false'] + &__nav {
+  button[aria-expanded="false"] + &__nav {
     display: none;
   }
 
-  button[aria-expanded='true'] + &__nav {
+  button[aria-expanded="true"] + &__nav {
     --nav-items-flex-direction: column;
 
     position: absolute;
@@ -34,6 +34,7 @@
     padding: var(--magentaa11y-spacing-size-40)
       var(--magentaa11y-spacing-size-24);
     background-color: var(--color-background);
+    z-index: 2;
   }
 }
 
@@ -66,17 +67,17 @@
     color: var(--color-on-tertiary);
 
     &::before {
-      content: 'Magenta';
+      content: "Magenta";
       color: var(--color-primary);
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      background-image: url('../../../assets/svgs/brand-logo-white.svg');
+      background-image: url("../../../assets/svgs/brand-logo-white.svg");
       background-size: contain;
       background-repeat: no-repeat;
       width: var(--magentaa11y-spacing-size-40);
