@@ -183,6 +183,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
           size={ButtonSize.large}
           label={"Criteria"}
           decoration={Icons.listOutlined}
+          id="criteria-button"
         ></Button>
       </div>
 
