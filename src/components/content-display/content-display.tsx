@@ -225,7 +225,6 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                   onClick={() => copyTabContent(tabs[activeTab].content || "")}
                   type={ButtonType.button}
                   variant={ButtonVariant.primary}
-                  disabled={criteriaIsCopied}
                   size={ButtonSize.large}
                   label={criteriaIsCopied ? "Copied!" : "Copy Criteria"}
                   decoration={
