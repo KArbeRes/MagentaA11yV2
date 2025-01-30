@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Route,
   HashRouter as Router,
@@ -40,6 +40,31 @@ const AppContent: React.FC = () => {
   const platform = location.pathname.startsWith("/web-criteria")
     ? Platforms.WEB
     : Platforms.NATIVE;
+
+  useEffect(() => {
+    const rawSegments = location.pathname
+      .replace("/MagentaA11yV2#", "")
+      .split("/")
+      .filter(Boolean);
+
+    let pageTitle = "MagentaA11y";
+
+    if (rawSegments.length > 0) {
+      let lastSegment = rawSegments[rawSegments.length - 1];
+
+      if (lastSegment.toLowerCase() === "overview" && rawSegments.length > 1) {
+        lastSegment = rawSegments[rawSegments.length - 2];
+      }
+
+      lastSegment = lastSegment
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+
+      pageTitle = lastSegment;
+    }
+
+    document.title = pageTitle;
+  }, [location.pathname]);
 
   return (
     <div className="MagentaA11y__content">
