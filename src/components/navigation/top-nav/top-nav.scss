@@ -115,6 +115,20 @@
   &--icon {
     display: inherit;
     align-items: center;
+    position: relative;
+
+    &--notification {
+      &::before {
+        content: "";
+        position: absolute;
+        background-color: var(--color-primary);
+        width: var(--magentaa11y-spacing-size-8);
+        height: var(--magentaa11y-spacing-size-8);
+        right: 0;
+        top: 0;
+        border-radius: 5px;
+      }
+    }
   }
 }
 
