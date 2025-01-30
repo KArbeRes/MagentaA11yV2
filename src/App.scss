@@ -1,13 +1,30 @@
 @use "@material/web/menu/_menu.scss" as *;
 
 .MagentaA11y {
+  --main-content-padding: var(--magentaa11y-spacing-size-24)
+    var(--magentaa11y-spacing-size-32);
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
 
-.MagentaA11y__content {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+  }
+
+  &__main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--magentaa11y-spacing-size-40);
+    flex-grow: 1;
+    padding: var(--main-content-padding);
+    overflow: auto;
+  }
+
+  @media (max-width: 768px) {
+    --main-content-padding: var(--magentaa11y-spacing-size-24)
+      var(--magentaa11y-spacing-size-16);
+  }
 }

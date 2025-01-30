@@ -1,0 +1,30 @@
+.MagentaA11y__breadcrumbs {
+  ol {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      &::before {
+        content: "/";
+        margin: 0 8px;
+        color: var(--breadcrumbs-text-default);
+      }
+
+      &:first-child::before {
+        display: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--breadcrumbs-text-default);
+        font: var(--magentaa11y-typeset-body-sm-normal);
+      }
+    }
+  }
+}
