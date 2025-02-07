@@ -4,20 +4,22 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20.11.0'
 
@@ -27,9 +29,44 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Determine Deployment Path
+        id: deployment_path
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            echo "DEPLOY_PATH=/" >> $GITHUB_ENV
+          else
+            echo "DEPLOY_PATH=/pr-previews/${{ github.head_ref }}/" >> $GITHUB_ENV
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          destination_dir: ${{ env.DEPLOY_PATH }}
           force_orphan: true
+
+      - name: Post PR Comment (if PR)
+        if: github.event_name == 'pull_request' && github.event.action != 'closed'
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: '✅ Preview deployed: [View PR Preview](https://your-username.github.io/your-repo-name/pr-previews/${{ github.head_ref }}/)'
+
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.event.action == 'closed'
+
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Remove PR Preview
+        run: |
+          rm -rf pr-previews/${{ github.head_ref }}
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Remove PR preview for ${{ github.head_ref }}" || echo "No changes to commit"
+          git push origin gh-pages

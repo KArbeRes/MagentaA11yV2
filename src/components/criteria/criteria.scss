@@ -8,6 +8,7 @@
   &__criteria-content {
     padding: var(--content-padding);
     width: -webkit-fill-available;
+    overflow: auto;
   }
 
   @media (max-width: 768px) {
