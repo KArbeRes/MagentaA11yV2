@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   deploy:
@@ -49,7 +50,8 @@ jobs:
         if: github.event_name == 'pull_request' && github.event.action != 'closed'
         uses: mshick/add-pr-comment@v2
         with:
-          message: '✅ Preview deployed: [View PR Preview](https://your-username.github.io/your-repo-name/pr-previews/${{ github.head_ref }}/)'
+          message: '✅ Preview deployed: [View PR Preview](https://karberes.github.io/MagentaA11yV2/${{ env.DEPLOY_PATH }})'
+          repo-token: ${{ secrets.GITHUB_TOKEN }} # Ensure the correct GitHub token is used
 
   cleanup:
     runs-on: ubuntu-latest
