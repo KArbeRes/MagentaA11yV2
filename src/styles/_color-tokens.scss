@@ -1,4 +1,4 @@
-@use './foundation-colors' as *;
+@use "./foundation-colors" as *;
 
 @mixin color-tokens($theme: light) {
   @if $theme == light {
@@ -189,6 +189,9 @@
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-black);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-600);
+
+    //breadcrumbs
+    --breadcrumbs-text-default: var(--magentaa11y-color-brand-grayscale-600);
   } @else if $theme == dark {
     // Dark Theme
     // Text Colors
@@ -370,5 +373,8 @@
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-white);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-100);
+
+    //breadcrumbs
+    --breadcrumbs-text-default: var(--magentaa11y-color-brand-grayscale-300);
   }
 }

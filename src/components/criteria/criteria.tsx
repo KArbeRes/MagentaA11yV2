@@ -1,11 +1,10 @@
-import React from 'react';
-import contentData from '../../shared/content.json';
-import { Platforms } from '../../shared/types/shared-types';
-import ContentDisplay from '../content-display/content-display';
-import { SideNavItem } from '../navigation/nav.types';
-import SideNav from '../navigation/side-nav/side-nav';
+import React from "react";
+import contentData from "../../shared/content.json";
+import { Platforms } from "../../shared/types/shared-types";
+import ContentDisplay from "../content-display/content-display";
+import { SideNavItem } from "../navigation/nav.types";
 
-import './criteria.scss';
+import "./criteria.scss";
 
 interface CriteriaProps {
   platform: Platforms;
@@ -17,9 +16,6 @@ const Criteria: React.FC<CriteriaProps> = ({ platform }) => {
 
   return (
     <div className="MagentaA11y__criteria-container">
-      {/* SideNav remains persistent */}
-      <SideNav platform={platform} />
-
       {/* Main Content Section */}
       <div className="MagentaA11y__criteria-content">
         {/* Dynamically display ContentDisplay based on the current route */}
