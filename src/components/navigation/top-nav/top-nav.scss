@@ -20,11 +20,11 @@
   justify-content: space-between;
   padding: var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-40);
 
-  button[aria-expanded="false"] + &__nav {
+  button[aria-expanded='false'] + &__nav {
     display: none;
   }
 
-  button[aria-expanded="true"] + &__nav {
+  button[aria-expanded='true'] + &__nav {
     --nav-items-flex-direction: column;
 
     position: absolute;
@@ -67,17 +67,17 @@
     color: var(--color-on-tertiary);
 
     &::before {
-      content: "Magenta";
+      content: 'Magenta';
       color: var(--color-primary);
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      background-image: url("../../../assets/svgs/brand-logo-white.svg");
+      background-image: url('../../../assets/svgs/brand-logo-white.svg');
       background-size: contain;
       background-repeat: no-repeat;
       width: var(--magentaa11y-spacing-size-40);
@@ -117,16 +117,23 @@
     align-items: center;
     position: relative;
 
-    &--notification {
+    &[data-count]:not([data-count='0']):not([data-count='']):not(
+        [data-count*='e']
+      ):not([data-count*='.']) {
       &::before {
-        content: "";
+        content: attr(data-count);
         position: absolute;
+        display: flex;
+        justify-content: center;
         background-color: var(--color-primary);
-        width: var(--magentaa11y-spacing-size-8);
-        height: var(--magentaa11y-spacing-size-8);
-        right: 0;
-        top: 0;
-        border-radius: 5px;
+        width: max-content;
+        min-width: var(--magentaa11y-spacing-size-18);
+        height: var(--magentaa11y-spacing-size-18);
+        border-radius: var(--magentaa11y-border-radius-size-10);
+        font: var(--magentaa11y-typeset-body-xs-strong);
+        bottom: var(--magentaa11y-spacing-size-12);
+        left: var(--magentaa11y-spacing-size-12);
+        padding: 1px 3px;
       }
     }
   }

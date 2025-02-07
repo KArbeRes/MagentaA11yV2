@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// Define the shape of a saved criteria item
 interface SavedCriteria {
   id: string;
   label: string;
@@ -12,7 +11,7 @@ interface CriteriaContextType {
   savedCriteria: SavedCriteria[];
   saveCriteria: (criteria: SavedCriteria) => void;
   removeCriteria: (id: string) => void;
-  findCriteria: (searchTerm: string) => SavedCriteria[]; // Search function
+  findCriteria: (searchTerm: string) => SavedCriteria[];
 }
 
 const CriteriaContext = createContext<CriteriaContextType | undefined>(
@@ -36,13 +35,9 @@ export const CriteriaProvider: React.FC<{ children: React.ReactNode }> = ({
         return updatedCriteria;
       }
 
-      return prev; // Don't add duplicate
+      return prev;
     });
   };
-
-  useEffect(() => {
-    console.log('Updated Saved Criteria List:', savedCriteria);
-  }, [savedCriteria]);
 
   const removeCriteria = (id: string) => {
     setSavedCriteria((prev) => prev.filter((item) => item.id !== id));

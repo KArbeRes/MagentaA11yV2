@@ -1,16 +1,16 @@
-import classNames from "classnames";
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { Icons } from "shared/Icons";
-import { useCriteria } from "shared/contexts/criteria-context";
-import { Platforms } from "shared/types/shared-types";
-import { isPathActive } from "utils/navigation-helpers";
-import contentData from "../../../shared/content.json";
-import { useViewport } from "../../../shared/contexts/viewport-context";
-import IconButton from "../../custom-components/buttons/icon-button/icon-button";
-import { TopNavProps } from "../nav.types";
+import classNames from 'classnames';
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Icons } from 'shared/Icons';
+import { useCriteria } from 'shared/contexts/criteria-context';
+import { Platforms } from 'shared/types/shared-types';
+import { isPathActive } from 'utils/navigation-helpers';
+import contentData from '../../../shared/content.json';
+import { useViewport } from '../../../shared/contexts/viewport-context';
+import IconButton from '../../custom-components/buttons/icon-button/icon-button';
+import { TopNavProps } from '../nav.types';
 
-import "./top-nav.scss";
+import './top-nav.scss';
 
 const getFirstOverviewLink = (platform: Platforms) => {
   const items = contentData[platform];
@@ -43,48 +43,51 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
 
       {viewportContext.isMobile && (
         <IconButton
-          a11yLabel={"Menu Button"}
+          a11yLabel={'Menu Button'}
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
           ariaHasPopup={true}
           ariaControls="top-navigation"
-          onClick={handleMenuClick}
-        ></IconButton>
+          onClick={handleMenuClick}></IconButton>
       )}
 
       <nav
         className="MagentaA11y__navbar__nav"
         aria-label="Top navigation"
-        id="top-navigation"
-      >
+        id="top-navigation">
         <ul className="MagentaA11y__nav-items">
           {navItems.map((item, index) => {
             const href =
-              item.label === "Web Criteria"
+              item.label === 'Web Criteria'
                 ? getFirstOverviewLink(Platforms.WEB)
-                : item.label === "Native Criteria"
+                : item.label === 'Native Criteria'
                 ? getFirstOverviewLink(Platforms.NATIVE)
                 : item.href;
 
             const isActive = isPathActive(item.href, location);
+            const isMyCriteria = item.label === 'My criteria';
+            const ariaLabel = isMyCriteria
+              ? `Navigate to ${item.label}${
+                  savedCriteria.length > 0
+                    ? `, Saved criteria, ${savedCriteria.length}`
+                    : ''
+                }`
+              : `Navigate to ${item.label}`;
 
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
                 <NavLink
                   to={href}
-                  className={classNames("MagentaA11y__nav-items--link", {
+                  className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
                   })}
-                  aria-label={`Navigate to ${item.label}`}
-                >
+                  aria-label={ariaLabel}>
                   {item.icon && (
                     <span
-                      className={`MagentaA11y__nav-items--icon ${
-                        savedCriteria.length > 0
-                          ? `MagentaA11y__nav-items--icon--notification`
-                          : ""
-                      }`}
-                    >
+                      {...(savedCriteria.length > 0
+                        ? { 'data-count': savedCriteria.length }
+                        : {})}
+                      className={'MagentaA11y__nav-items--icon'}>
                       {item.icon}
                     </span>
                   )}
