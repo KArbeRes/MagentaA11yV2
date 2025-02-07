@@ -12,7 +12,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  deploy:
+  deploy-main:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -30,28 +31,46 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Determine Deployment Path
-        id: deployment_path
-        run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            echo "DEPLOY_PATH=/" >> $GITHUB_ENV
-          else
-            echo "DEPLOY_PATH=/pr-previews/${{ github.head_ref }}/" >> $GITHUB_ENV
-          fi
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (Main)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          destination_dir: /
+          force_orphan: true
+
+  deploy-pr-preview:
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.11.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Deploy PR Preview
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          destination_dir: pr-previews/${{ github.head_ref }}
           force_orphan: true
 
       - name: Post PR Comment (if PR)
-        if: github.event_name == 'pull_request' && github.event.action != 'closed'
         uses: mshick/add-pr-comment@v2
         with:
-          message: '✅ Preview deployed: [View PR Preview](https://karberes.github.io/MagentaA11yV2/${{ env.DEPLOY_PATH }})'
-          repo-token: ${{ secrets.GITHUB_TOKEN }} # Ensure the correct GitHub token is used
+          message: '✅ Preview deployed: [View PR Preview](https://karberes.github.io/MagentaA11yV2/pr-previews/${{ github.head_ref }})'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   cleanup:
     runs-on: ubuntu-latest
