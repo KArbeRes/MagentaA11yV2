@@ -70,8 +70,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                   to={href}
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
-                  })}
-                  aria-label={`Navigate to ${item.label}`}>
+                  })}>
                   {item.icon && (
                     <span className="MagentaA11y__nav-items--icon">
                       {item.icon}
