@@ -36,7 +36,10 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
     <div className="MagentaA11y__navbar" data-theme="dark">
       {/* Brand Section */}
       <div className="MagentaA11y__brand">
-        <NavLink to="/home" className="MagentaA11y__brand--name">
+        <NavLink
+          to="/home"
+          className="MagentaA11y__brand--name"
+          aria-label="Magenta A11y - Home">
           A11y
         </NavLink>
       </div>
