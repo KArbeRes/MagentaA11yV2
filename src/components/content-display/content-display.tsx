@@ -1,23 +1,23 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import React, { useEffect, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import { NavLink, useLocation } from "react-router-dom";
-import rehypeHighlight from "rehype-highlight";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
-import { Platforms } from "shared/types/shared-types";
-import Cards from "../custom-components/cards/cards";
-import { SideNavItem } from "../navigation/nav.types";
-
-import "../../styles/_code-blocks.scss";
-import "./content-display.scss";
-import Button from "components/custom-components/buttons/button/button";
 import {
+  ButtonSize,
   ButtonType,
   ButtonVariant,
-  ButtonSize,
-} from "components/custom-components/buttons/button-types";
-import { Icons } from "shared/Icons";
+} from 'components/custom-components/buttons/button-types';
+import Button from 'components/custom-components/buttons/button/button';
+import React, { useEffect, useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { NavLink, useLocation } from 'react-router-dom';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
+import { Icons } from 'shared/Icons';
+import { Platforms } from 'shared/types/shared-types';
+import Cards from '../custom-components/cards/cards';
+import { SideNavItem } from '../navigation/nav.types';
+
+import '../../styles/_code-blocks.scss';
+import './content-display.scss';
 
 interface ContentDisplayProps {
   platform: Platforms;
@@ -32,7 +32,7 @@ type MediaProps = {
   poster?: string;
 };
 
-const ASSET_BASE_PATH = "/MagentaA11yV2/content/assets";
+const ASSET_BASE_PATH = '/MagentaA11yV2/content/assets';
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const location = useLocation();
@@ -62,7 +62,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const currentItem = findItemByPath(items, location.pathname);
 
   // Check if the current route is an overview route
-  const isOverviewRoute = location.pathname.endsWith("/overview");
+  const isOverviewRoute = location.pathname.endsWith('/overview');
 
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -89,12 +89,12 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
     const tabs = tabsRef.current;
 
     if (tabs) {
-      tabs.addEventListener("change", handleTabChange);
+      tabs.addEventListener('change', handleTabChange);
     }
     return () => {
       if (tabs) {
         setActiveTab(0);
-        tabs.removeEventListener("change", handleTabChange);
+        tabs.removeEventListener('change', handleTabChange);
       }
     };
   }, [location.pathname]);
@@ -115,13 +115,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   } = currentItem;
 
   const tabs = [
-    { content: condensed, label: "Condensed" },
-    { content: gherkin, label: "Gherkin" },
-    { content: criteria, label: "Criteria" },
-    { content: developerNotes, label: "Developer Notes" },
-    { content: androidDeveloperNotes, label: "Android Developer Notes" },
-    { content: iosDeveloperNotes, label: "iOS Developer Notes" },
-    { content: videos, label: "Videos" },
+    { content: condensed, label: 'Condensed' },
+    { content: gherkin, label: 'Gherkin' },
+    { content: criteria, label: 'Criteria' },
+    { content: developerNotes, label: 'Developer Notes' },
+    { content: androidDeveloperNotes, label: 'Android Developer Notes' },
+    { content: iosDeveloperNotes, label: 'iOS Developer Notes' },
+    { content: videos, label: 'Videos' },
   ].filter((tab) => tab.content);
 
   const copyTabContent = (content: string) => {
@@ -132,7 +132,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
           setCopiedContent(content);
         })
         .catch((err) => {
-          console.error("Failed to copy content: ", err);
+          console.error('Failed to copy content: ', err);
         });
     }
   };
@@ -142,12 +142,12 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
       const clipboardText = await navigator.clipboard.readText();
       return clipboardText === content;
     } catch (err) {
-      console.error("Failed to read clipboard content: ", err);
+      console.error('Failed to read clipboard content: ', err);
       return false;
     }
   };
 
-  let actionsButtonsVisible = ["Condensed", "Gherkin", "Criteria"].includes(
+  let actionsButtonsVisible = ['Condensed', 'Gherkin', 'Criteria'].includes(
     tabs[activeTab]?.label
   );
 
@@ -168,23 +168,21 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
               th: ({ node, ...props }) => <th {...props} />,
               td: ({ node, ...props }) => <td {...props} />,
               tr: ({ node, ...props }) => <tr {...props} />,
-            }}
-          >
+            }}>
             {generalNotes}
           </ReactMarkdown>
         )}
 
         <Button
           onClick={function (): void {
-            throw new Error("Function not implemented.");
+            throw new Error('Function not implemented.');
           }}
           type={ButtonType.button}
           variant={ButtonVariant.secondary}
           size={ButtonSize.large}
-          label={"Criteria"}
+          label={'Criteria'}
           decoration={Icons.listOutlined}
-          id="criteria-button"
-        ></Button>
+          id="criteria-button"></Button>
       </div>
 
       {isOverviewRoute && children && children.length > 0 && (
@@ -192,7 +190,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
           items={children.map((child) => ({
             title: child.label,
             description: child.generalNotes || undefined,
-            link: `${location.pathname.replace(/\/overview$/, "")}/${
+            link: `${location.pathname.replace(/\/overview$/, '')}/${
               child.name
             }`,
           }))}
@@ -206,15 +204,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
             <md-tabs
               ref={tabsRef}
               aria-label="Content options for syntax"
-              role="tablist"
-            >
+              role="tablist">
               {tabs.map((tab, index) => (
                 <md-primary-tab
                   key={tab.label}
-                  aria-selected={activeTab === index ? "true" : "false"}
-                  id={`${tab.label.toLowerCase().replace(" ", "-")}-tab`}
-                  role="tab"
-                >
+                  aria-selected={activeTab === index ? 'true' : 'false'}
+                  id={`${tab.label.toLowerCase().replace(' ', '-')}-tab`}
+                  role="tab">
                   {tab.label}
                 </md-primary-tab>
               ))}
@@ -222,23 +218,21 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
             {actionsButtonsVisible && (
               <div className="MagentaA11y__nav-display__content-actions__buttons">
                 <Button
-                  onClick={() => copyTabContent(tabs[activeTab].content || "")}
+                  onClick={() => copyTabContent(tabs[activeTab].content || '')}
                   type={ButtonType.button}
                   variant={ButtonVariant.primary}
                   size={ButtonSize.large}
-                  label={criteriaIsCopied ? "Copied!" : "Copy Criteria"}
+                  label={criteriaIsCopied ? 'Copied!' : 'Copy Criteria'}
                   decoration={
                     criteriaIsCopied ? Icons.checkmark : Icons.copyFilled
-                  }
-                ></Button>
+                  }></Button>
                 <Button
                   onClick={() => {}}
                   type={ButtonType.button}
                   variant={ButtonVariant.tertiary}
                   size={ButtonSize.large}
-                  label={"Save Criteria"}
-                  decoration={Icons.bookmarkOutlined}
-                ></Button>
+                  label={'Save Criteria'}
+                  decoration={Icons.bookmarkOutlined}></Button>
               </div>
             )}
           </div>
@@ -248,8 +242,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
               return (
                 <div
                   key={tab.label}
-                  style={{ display: activeTab === index ? "block" : "none" }}
-                >
+                  style={{ display: activeTab === index ? 'block' : 'none' }}>
                   <ReactMarkdown
                     rehypePlugins={[rehypeHighlight, rehypeRaw]}
                     remarkPlugins={[remarkGfm]}
@@ -260,7 +253,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                       td: ({ node, ...props }) => <td {...props} />,
                       tr: ({ node, ...props }) => <tr {...props} />,
                       img: ({ src, alt }: MediaProps) => {
-                        const resolvedSrc = src?.startsWith("http")
+                        const resolvedSrc = src?.startsWith('http')
                           ? src
                           : `${ASSET_BASE_PATH}/${src}`;
                         return resolvedSrc ? (
@@ -272,20 +265,19 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                       video: ({ poster, children }: MediaProps) => {
                         let posterPath = poster
                           ? `${ASSET_BASE_PATH}/${poster}`
-                          : "MagentaA11yV2/movie.svg";
+                          : 'MagentaA11yV2/movie.svg';
 
                         return (
                           <video
                             controls
                             preload="none"
-                            poster={`${posterPath}`}
-                          >
+                            poster={`${posterPath}`}>
                             {children}
                           </video>
                         );
                       },
                       source: ({ src, type }: MediaProps) => {
-                        const resolvedSrc = src?.startsWith("http")
+                        const resolvedSrc = src?.startsWith('http')
                           ? src
                           : `${ASSET_BASE_PATH}/${src}`;
                         return <source src={resolvedSrc} type={type} />;
@@ -306,22 +298,19 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`Open ${href} in a new tab`}
-                          >
+                            aria-label={`Open ${href} in a new tab`}>
                             {children}
                           </a>
                         ) : (
                           <NavLink
-                            to={href ? href : "/"}
-                            aria-label={`Navigate to ${href}`}
-                          >
+                            to={href ? href : '/'}
+                            aria-label={`Navigate to ${href}`}>
                             {children}
                           </NavLink>
                         );
                       },
-                    }}
-                  >
-                    {tab.content || ""}
+                    }}>
+                    {tab.content || ''}
                   </ReactMarkdown>
                 </div>
               );
