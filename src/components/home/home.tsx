@@ -8,11 +8,11 @@ const Home: React.FC = () => {
     <div className="MagentaA11y--home-page">
       <div className="MagentaA11y--home-page__header">
         <div className="MagentaA11y--home-page__header--title">
-          <h1>Unlock the power of accessibility</h1>
-          <h2>MagentaA11y</h2>
+          <span>Unlock the power of accessibility</span>
+          <span>MagentaA11y</span>
         </div>
         <div className="MagentaA11y--home-page__header--logo">
-          <img src={BrandLogo} alt="Brand Logo" />
+          <img src={BrandLogo} alt="Globe surrounding T-Mobile T" />
         </div>
       </div>
       <h1>Welcome to MagentaA11y</h1>

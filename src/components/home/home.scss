@@ -31,15 +31,15 @@
       justify-content: center;
       align-items: center;
       gap: var(--magentaa11y-spacing-size-16);
-      h1,
-      h2 {
+
+      span {
         color: var(--magentaa11y-color-brand-grayscale-white);
       }
 
-      h1 {
+      :first-child {
         font: var(--title-first-headline-font);
       }
-      h2 {
+      :nth-child(2) {
         font: var(--title-second-headline-font);
       }
     }
