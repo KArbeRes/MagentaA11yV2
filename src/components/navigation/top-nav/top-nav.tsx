@@ -1,13 +1,14 @@
 import classNames from 'classnames';
+import { ButtonSize } from 'components/custom-components/buttons/button-types';
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
+import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
 import { useViewport } from '../../../shared/contexts/viewport-context';
 import IconButton from '../../custom-components/buttons/icon-button/icon-button';
 import { TopNavProps } from '../nav.types';
-import { isPathActive } from 'utils/navigation-helpers';
 
 import './top-nav.scss';
 
@@ -45,6 +46,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
           ariaHasPopup={true}
+          size={ButtonSize.small}
           ariaControls="top-navigation"
           onClick={handleMenuClick}></IconButton>
       )}

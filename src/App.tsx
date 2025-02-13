@@ -28,7 +28,7 @@ const App: React.FC = () => {
         <header className="MagentaA11y-header">
           <TopNav navItems={navItems} />
         </header>
-        <div className="MagentaA11y__content">
+        <div className="MagentaA11y--content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
