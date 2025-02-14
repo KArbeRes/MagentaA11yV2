@@ -12,7 +12,7 @@ const Home: React.FC = () => {
           <span>MagentaA11y</span>
         </div>
         <div className="MagentaA11y--home-page__header--logo">
-          <img src={BrandLogo} alt="Globe surrounding T-Mobile T" />
+          <img src={BrandLogo} alt="Globe surrounding T-Mobile Person" />
         </div>
       </div>
       <h1>Welcome to MagentaA11y</h1>
