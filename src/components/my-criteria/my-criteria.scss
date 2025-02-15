@@ -1,0 +1,28 @@
+.MagentaA11y__my-criteria {
+  --heading-font: var(--magentaa11y-typeset-headline-xxl-xtrastrong);
+  --headline-font: var(--magentaa11y-typeset-headline-sm-strong);
+  --page-padding: var(--magentaa11y-spacing-size-24)
+    var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-80)
+    var(--magentaa11y-spacing-size-16);
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--page-padding);
+
+  &__heading-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--magentaa11y-spacing-size-20);
+    padding-bottom: var(--magentaa11y-spacing-size-32);
+  }
+
+  &__heading {
+    font: var(--heading-font);
+  }
+  &__headline {
+    font: var(--headline-font);
+    margin: 0;
+  }
+}

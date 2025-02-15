@@ -9,6 +9,7 @@ import { NavItem } from './components/navigation/nav.types';
 import TopNav from './components/navigation/top-nav/top-nav';
 
 import './App.scss';
+import MyCriteria from 'components/my-criteria/my-criteria';
 
 const navItems: NavItem[] = [
   { label: 'Web Criteria', href: '/web-criteria' },
@@ -41,6 +42,7 @@ const App: React.FC = () => {
               path="/native-criteria/*"
               element={<Criteria platform={Platforms.NATIVE} />}
             />
+            <Route path="/my-criteria" element={<MyCriteria />} />
           </Routes>
         </div>
       </div>

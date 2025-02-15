@@ -189,6 +189,17 @@
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-black);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-600);
+
+    //Divider tokens
+    --magentaa11y-color-fill-divider-brand: var(
+      --magentaa11y-color-brand-primary-400
+    ); /* Fill for branded  dividers */
+    --magentaa11y-color-fill-divider-strong: var(
+      --magentaa11y-color-brand-grayscale-600
+    ); /* Fill for strong dividers */
+    --magentaa11y-color-fill-divider-default: var(
+      --magentaa11y-color-brand-grayscale-300
+    ); /* Fill for default dividers */
   } @else if $theme == dark {
     // Dark Theme
     // Text Colors
@@ -324,9 +335,9 @@
     --color-input-border: var(--magentaa11y-color-brand-grayscale-350);
 
     // Shadows
-    --shadow-far: var(--magentaa11y-elevation-onDark-shadow-far);
-    --shadow-near: var(--magentaa11y-elevation-onDark-shadow-near);
-    --shadow-close: var(--magentaa11y-elevation-onDark-shadow-close);
+    --shadow-far: var(--magentaa11y-elevation-shadow-far);
+    --shadow-near: var(--magentaa11y-elevation-shadow-near);
+    --shadow-close: var(--magentaa11y-elevation-shadow-close);
 
     //codeblocks backgrounds
     --color-code-block: var(--magentaa11y-color-brand-grayscale-750);
@@ -370,5 +381,15 @@
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-white);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-100);
+
+    --magentaa11y-color-fill-divider-brand: var(
+      --magentaa11y-color-brand-primary-300
+    ); /* Fill for branded  dividers */
+    --magentaa11y-color-fill-divider-strong: var(
+      --magentaa11y-color-brand-grayscale-600
+    ); /* Fill for strong dividers */
+    --magentaa11y-color-fill-divider-default: var(
+      --magentaa11y-color-brand-grayscale-700
+    ); /* Fill for default dividers */
   }
 }
