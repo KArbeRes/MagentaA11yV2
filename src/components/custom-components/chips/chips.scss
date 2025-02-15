@@ -24,22 +24,7 @@
   --background-color: var(--magentaa11y-color-fill-chips-selected);
   --border: var(--magentaa11y-border-weight-size-2) solid
     var(--magentaa11y-color-fill-chips-selected);
-
-  // #{$component-inverse},
-  // #{$container-inverse} {
-  //   --border: var(--magentaa11y-border-weight-size-2) solid var(--magentaa11y-color-fill-onDark-chips-selected);
-  //   --background-color: var(--magentaa11y-color-fill-onDark-chips-selected);
-  //   --text-color: var(--magentaa11y-color-text-onDark-chips-selected);
-  //   --icon-color: var(--magentaa11y-color-fill-onDark-chips-icon-selected);
-  // }
 }
-
-// @mixin chip-focus-styles {
-//   @include focus-outline();
-//   // ensure that the focus ring does not get cut off
-//   // by the chip container
-//   outline-offset: -2px;
-// }
 
 @mixin svg-styles(
   $margin-position: null,
@@ -71,7 +56,6 @@
 }
 
 .MagentaA11y-chips {
-  // @include chips-tokens;
   --magentaa11y-spacing-size-6: 6px;
   display: flex;
   overflow-x: auto;
@@ -111,11 +95,6 @@
     //   flex-wrap: wrap;
     // }
   }
-
-  // #{$component-inverse},
-  // #{$container-inverse} {
-  //   color: var(--magentaa11y-color-text-onDark-chips-default);
-  // }
 
   &[data-size='xs'] {
     .MagentaA11y-chip {
@@ -157,12 +136,6 @@
         }
       }
     }
-
-    // #{$focused} {
-    //   + .MagentaA11y-chip {
-    //     @include chip-focus-styles;
-    //   }
-    // }
   }
 
   button {
@@ -173,13 +146,13 @@
       var(--svg-size)
     );
 
-    // #{$pressed} {
-    //   .MagentaA11y-chip {
-    //     .MagentaA11y-chip__label--wrapper {
-    //       @include selected-chip-styles();
-    //     }
-    //   }
-    // }
+    &:active {
+      .MagentaA11y-chip {
+        .MagentaA11y-chip__label--wrapper {
+          @include selected-chip-styles();
+        }
+      }
+    }
 
     .MagentaA11y-chip {
       .MagentaA11y-chip__label--wrapper {
@@ -187,14 +160,11 @@
           .MagentaA11y-chip__label--text {
             overflow: hidden;
             text-overflow: ellipsis;
+            color: var(--text-color);
           }
         }
       }
     }
-
-    // #{$focused} {
-    //   @include chip-focus-styles;
-    // }
   }
 
   input[type='checkbox'] {
@@ -237,21 +207,13 @@
     @include svg-styles();
 
     &--wrapper {
-      --text-color: var(--magentaa11y-color-text-chips-default);
       --icon-color: var(--magentaa11y-color-fill-chips-icon-default);
+      --text-color: var(--magentaa11y-color-text-chips-default);
       --background-color: transparent;
       --border: var(--magentaa11y-border-weight-size-2) solid
         var(--magentaa11y-color-border-chips-default);
       border-radius: var(--magentaa11y-border-radius-size-24);
       margin-block: 2px;
-
-      // #{$component-inverse},
-      // #{$container-inverse} {
-      //   --border: var(--magentaa11y-border-weight-size-2) solid
-      //     var(--magentaa11y-color-border-onDark-chips-default);
-      //   --text-color: var(--magentaa11y-color-text-onDark-chips-default);
-      //   --icon-color: var(--magentaa11y-color-fill-onDark-chips-icon-default);
-      // }
     }
 
     &--sr-only {
@@ -280,7 +242,6 @@
 
   @media (pointer: fine) {
     &:hover,
-    &.force-hover,
     input[type='checkbox']:checked + &:hover,
     input[type='checkbox']:checked + &.force-hover,
     input[type='radio']:not(:checked) + &:hover,
@@ -291,14 +252,6 @@
           var(--background-color);
         --text-color: var(--magentaa11y-color-text-chips-hover);
         --icon-color: var(--magentaa11y-color-fill-chips-icon-hover);
-
-        // [data-inverse] & {
-        //   --background-color: var(--magentaa11y-color-fill-onDark-chips-hover);
-        //   --border: var(--magentaa11y-border-weight-size-2) solid
-        //     var(--background-color);
-        //   --text-color: var(--magentaa11y-color-text-onDark-chips-hover);
-        //   --icon-color: var(--magentaa11y-color-fill-onDark-chips-icon-hover);
-        // }
       }
     }
   }

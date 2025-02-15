@@ -1,9 +1,13 @@
-import React from 'react';
+import Chips from 'components/custom-components/chips/chips';
+import {
+  ChipSize,
+  ChipType,
+} from 'components/custom-components/chips/chips.types';
 import Divider from 'components/custom-components/divider/divider';
 import { OrientationEnum } from 'components/custom-components/divider/divider.types';
+import React from 'react';
 
 import '../my-criteria/my-criteria.scss';
-import Chips from 'components/custom-components/chips/chips';
 
 const MyCriteria: React.FC = () => {
   return (
@@ -15,7 +19,20 @@ const MyCriteria: React.FC = () => {
         </p>
       </div>
       <Divider orientation={OrientationEnum.HORIZONTAL} />
-      <Chips></Chips>
+      <Chips
+        variant={ChipType.BUTTON}
+        chips={[
+          {
+            label: 'Navigation Landmark',
+            id: 'navigation-landmark',
+          },
+        ]}
+        onDelete={(id: string) => {
+          alert(
+            `${id}, deleted function will be implemented when criteria saved function is available`
+          );
+        }}
+        size={ChipSize.SMALL}></Chips>
     </div>
   );
 };
