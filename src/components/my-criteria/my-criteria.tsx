@@ -3,6 +3,7 @@ import Divider from 'components/custom-components/divider/divider';
 import { OrientationEnum } from 'components/custom-components/divider/divider.types';
 
 import '../my-criteria/my-criteria.scss';
+import Chips from 'components/custom-components/chips/chips';
 
 const MyCriteria: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const MyCriteria: React.FC = () => {
         </p>
       </div>
       <Divider orientation={OrientationEnum.HORIZONTAL} />
+      <Chips></Chips>
     </div>
   );
 };

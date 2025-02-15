@@ -24,5 +24,13 @@
   &__headline {
     font: var(--headline-font);
     margin: 0;
+    align-self: center;
+  }
+
+  @media (min-width: 769px) {
+    --heading-font: var(--magentaa11y-typeset-display-md-xtrastrong);
+    --page-padding: var(--magentaa11y-spacing-size-40)
+      var(--magentaa11y-spacing-size-32) var(--magentaa11y-spacing-size-80)
+      var(--magentaa11y-spacing-size-32);
   }
 }
