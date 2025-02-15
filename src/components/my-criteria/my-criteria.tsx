@@ -26,13 +26,25 @@ const MyCriteria: React.FC = () => {
             label: 'Navigation Landmark',
             id: 'navigation-landmark',
           },
+          {
+            label: 'Navigation Landmarks',
+            id: 'navigation-landmarks',
+          },
+          {
+            label: 'Navigation Landmarkss',
+            id: 'navigation-landmarkss',
+          },
+          {
+            label: 'Navigation Landmarksss',
+            id: 'navigation-landmarksss',
+          },
         ]}
         onDelete={(id: string) => {
           alert(
             `${id}, deleted function will be implemented when criteria saved function is available`
           );
         }}
-        size={ChipSize.SMALL}></Chips>
+        size={ChipSize.XS}></Chips>
     </div>
   );
 };

@@ -19,8 +19,8 @@ const Chips: React.FC<IChipGroup> = ({
         {legend && (
           <legend className="MagentaA11y-chips__legend">{legend}</legend>
         )}
-        <div className="MagentaA11y-chip-container">
-          {chips.map((chip: IChipSelectable) => (
+        {chips.map((chip: IChipSelectable) => (
+          <div className="MagentaA11y-chip-container">
             <button
               key={chip.id}
               aria-label={`${chip.label}, delete`}
@@ -37,8 +37,8 @@ const Chips: React.FC<IChipGroup> = ({
                 </span>
               </span>
             </button>
-          ))}
-        </div>
+          </div>
+        ))}
       </fieldset>
     </div>
   );
