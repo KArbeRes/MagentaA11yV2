@@ -24,7 +24,8 @@ const navItems: NavItem[] = [
 
 const App: React.FC = () => {
   return (
-    <Router>
+    // Enabled React Router v7 future flags for smooth transition. When upgrading to React Router v7, remove the future prop since these flags will be enabled by default.
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <div className="MagentaA11y">
         <header className="MagentaA11y-header">
           <TopNav navItems={navItems} />
