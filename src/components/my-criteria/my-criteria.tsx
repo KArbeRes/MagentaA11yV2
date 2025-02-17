@@ -44,7 +44,7 @@ const MyCriteria: React.FC = () => {
             `${id}, deleted function will be implemented when criteria saved function is available`
           );
         }}
-        size={ChipSize.XS}></Chips>
+        size={ChipSize.SMALL}></Chips>
     </div>
   );
 };

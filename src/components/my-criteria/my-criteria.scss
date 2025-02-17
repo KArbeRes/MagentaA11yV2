@@ -10,12 +10,12 @@
   flex-direction: column;
   align-items: center;
   padding: var(--page-padding);
+  gap: var(--magentaa11y-spacing-size-32);
 
   &__heading-wrapper {
     display: flex;
     flex-direction: column;
     gap: var(--magentaa11y-spacing-size-20);
-    padding-bottom: var(--magentaa11y-spacing-size-32);
   }
 
   &__heading {
