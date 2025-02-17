@@ -142,9 +142,9 @@
     --color-input-border: var(--magentaa11y-color-brand-grayscale-350);
 
     // Shadows
-    --shadow-far: var(--magentaa11y-elevation-shadow-far);
-    --shadow-near: var(--magentaa11y-elevation-shadow-near);
-    --shadow-close: var(--magentaa11y-elevation-shadow-close);
+    --shadow-far: var(--magentaa11y-elevation-onLight-shadow-far);
+    --shadow-near: var(--magentaa11y-elevation-onLight-shadow-near);
+    --shadow-close: var(--magentaa11y-elevation-onLight-shadow-close);
 
     //codeblocks backgrounds
     --color-code-block: var(--magentaa11y-color-brand-grayscale-200);
@@ -364,9 +364,9 @@
     --color-input-border: var(--magentaa11y-color-brand-grayscale-350);
 
     // Shadows
-    --shadow-far: var(--magentaa11y-elevation-shadow-far);
-    --shadow-near: var(--magentaa11y-elevation-shadow-near);
-    --shadow-close: var(--magentaa11y-elevation-shadow-close);
+    --shadow-far: var(--magentaa11y-elevation-onDark-shadow-far);
+    --shadow-near: var(--magentaa11y-elevation-onDark-shadow-near);
+    --shadow-close: var(--magentaa11y-elevation-onDark-shadow-close);
 
     //codeblocks backgrounds
     --color-code-block: var(--magentaa11y-color-brand-grayscale-750);

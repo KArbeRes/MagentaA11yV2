@@ -1,3 +1,4 @@
+import MyCriteria from 'components/my-criteria/my-criteria';
 import React from 'react';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { Platforms } from 'shared/types/shared-types';
@@ -9,7 +10,6 @@ import { NavItem } from './components/navigation/nav.types';
 import TopNav from './components/navigation/top-nav/top-nav';
 
 import './App.scss';
-import MyCriteria from 'components/my-criteria/my-criteria';
 
 const navItems: NavItem[] = [
   { label: 'Web Criteria', href: '/web-criteria' },
