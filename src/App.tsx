@@ -1,6 +1,7 @@
 import MyCriteria from 'components/my-criteria/my-criteria';
 import React from 'react';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
+import { CriteriaProvider } from 'shared/contexts/criteria-context';
 import { Platforms } from 'shared/types/shared-types';
 import { ReactComponent as BookmarkIconOutlined } from './assets/svgs/bookmark-outlined.svg';
 import About from './components/about-us/about-us';
@@ -10,7 +11,6 @@ import { NavItem } from './components/navigation/nav.types';
 import TopNav from './components/navigation/top-nav/top-nav';
 
 import './App.scss';
-import { CriteriaProvider } from 'shared/contexts/criteria-context';
 
 const navItems: NavItem[] = [
   { label: 'Web Criteria', href: '/web-criteria' },

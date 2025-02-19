@@ -31,9 +31,7 @@ const MyCriteria: React.FC = () => {
 
   const handleDelete = (id: string) => {
     const chipButtons =
-      chipsContainerRef.current?.querySelectorAll<HTMLButtonElement>(
-        '[role="button"]'
-      );
+      chipsContainerRef.current?.querySelectorAll<HTMLButtonElement>('button');
 
     if (!chipButtons || chipButtons.length === 0) {
       removeCriteria(id);
@@ -49,7 +47,6 @@ const MyCriteria: React.FC = () => {
     if (chipButtons.length > 1) {
       const nextChip =
         chipButtons[index] || chipButtons[index - 1] || chipButtons[0];
-      console.log({ nextChip });
       nextChip?.focus();
     }
   };
@@ -101,12 +98,14 @@ const MyCriteria: React.FC = () => {
         </p>
       </div>
       <Divider orientation={OrientationEnum.HORIZONTAL} />
-      <Chips
-        variant={ChipType.BUTTON}
-        chips={criteriaChips}
-        onDelete={handleDelete}
-        size={ChipSize.SMALL}
-      />
+      <div ref={chipsContainerRef}>
+        <Chips
+          variant={ChipType.BUTTON}
+          chips={criteriaChips}
+          onDelete={handleDelete}
+          size={ChipSize.SMALL}
+        />
+      </div>
       {savedCriteria.length > 0 && (
         <Button
           onClick={copyCriteria}
