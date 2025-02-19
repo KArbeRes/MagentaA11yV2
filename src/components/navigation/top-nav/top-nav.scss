@@ -107,6 +107,27 @@
   &--icon {
     display: inherit;
     align-items: center;
+    position: relative;
+
+    &[data-count]:not([data-count='0']):not([data-count='']):not(
+        [data-count*='e']
+      ):not([data-count*='.']) {
+      &::before {
+        content: attr(data-count);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        background-color: var(--color-primary);
+        width: max-content;
+        min-width: var(--magentaa11y-spacing-size-18);
+        height: var(--magentaa11y-spacing-size-18);
+        border-radius: var(--magentaa11y-border-radius-size-10);
+        font: var(--magentaa11y-typeset-body-xs-strong);
+        bottom: var(--magentaa11y-spacing-size-12);
+        left: var(--magentaa11y-spacing-size-12);
+        padding: 1px 3px;
+      }
+    }
   }
 }
 
