@@ -20,9 +20,8 @@ const Chips: React.FC<IChipGroup> = ({
           <legend className="MagentaA11y-chips__legend">{legend}</legend>
         )}
         {chips.map((chip: IChipSelectable) => (
-          <div className="MagentaA11y-chip-container">
+          <div key={chip.id} className="MagentaA11y-chip-container">
             <button
-              key={chip.id}
               aria-label={`${chip.label}, delete`}
               id={chip.id}
               onClick={() => onDelete(chip.id)}>

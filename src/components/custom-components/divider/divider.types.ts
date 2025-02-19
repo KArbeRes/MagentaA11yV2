@@ -10,5 +10,5 @@ export enum DividerModifiers {
 
 export type TDivider = {
   className?: DividerModifiers;
-  orientation?: OrientationEnum;
+  orientation: OrientationEnum;
 };

@@ -6,8 +6,13 @@ export interface MediaProps {
   poster?: string;
 }
 
+export interface ContentTab {
+  label: string;
+  content: string;
+}
+
 export interface MarkdownContentProps {
-  tabs: { label: string; content?: string }[];
-  activeTab: number;
-  assetBasePath: string;
+  tabs: ContentTab[];
+  activeTab?: number;
+  assetBasePath?: string;
 }

@@ -11,11 +11,12 @@ import { useLocation } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
-import MarkdownContent from './markdown-content';
+import MarkdownContent from './markdown-content/markdown-content';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
@@ -32,6 +33,32 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [copiedContent, setCopiedContent] = useState<string | null>(null);
+
+  const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
+
+  const handleToggleCriteria = () => {
+    const activeLabel = tabs[activeTab]?.label;
+    const activeContent = tabs[activeTab]?.content;
+    const componentName = location.pathname.split('/').slice(-1)[0];
+
+    if (!activeContent) return;
+
+    const criteriaId = `${componentName}-${activeLabel.toLowerCase()}`;
+
+    // Check if the criteria is already saved
+    const isAlreadySaved = savedCriteria.some((item) => item.id === criteriaId);
+
+    if (isAlreadySaved) {
+      removeCriteria(criteriaId); // Remove if already saved
+    } else {
+      saveCriteria({
+        id: criteriaId,
+        label: activeLabel,
+        content: activeContent,
+        savedAt: new Date(),
+      });
+    }
+  };
 
   // Helper function to find the active item
   const findItemByPath = (
@@ -108,17 +135,17 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   } = currentItem;
 
   const tabs = [
-    { content: condensed ?? undefined, label: 'Condensed' },
-    { content: gherkin ?? undefined, label: 'Gherkin' },
-    { content: criteria ?? undefined, label: 'Criteria' },
-    { content: developerNotes ?? undefined, label: 'Developer Notes' },
+    { content: condensed ?? '', label: 'Condensed' },
+    { content: gherkin ?? '', label: 'Gherkin' },
+    { content: criteria ?? '', label: 'Criteria' },
+    { content: developerNotes ?? '', label: 'Developer Notes' },
     {
-      content: androidDeveloperNotes ?? undefined,
+      content: androidDeveloperNotes ?? '',
       label: 'Android Developer Notes',
     },
-    { content: iosDeveloperNotes ?? undefined, label: 'iOS Developer Notes' },
-    { content: videos ?? undefined, label: 'Videos' },
-  ].filter((tab) => tab.content && tab.content.trim() !== '');
+    { content: iosDeveloperNotes ?? '', label: 'iOS Developer Notes' },
+    { content: videos ?? '', label: 'Videos' },
+  ].filter((tab) => tab.content.trim() !== '');
 
   const copyTabContent = (content: string) => {
     if (content) {
@@ -148,6 +175,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   );
 
   let criteriaIsCopied = copiedContent === tabs[activeTab]?.content;
+  const isCriteriaSaved = savedCriteria.some(
+    (item) =>
+      item.id ===
+      `${location.pathname.split('/').slice(-1)[0]}-${tabs[
+        activeTab
+      ]?.label.toLowerCase()}`
+  );
 
   return (
     <div className="MagentaA11y__nav-display">
@@ -222,14 +256,20 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                   label={criteriaIsCopied ? 'Copied!' : 'Copy Criteria'}
                   decoration={
                     criteriaIsCopied ? Icons.checkmark : Icons.copyFilled
-                  }></Button>
+                  }
+                />
                 <Button
-                  onClick={() => {}}
+                  onClick={handleToggleCriteria}
                   type={ButtonType.button}
                   variant={ButtonVariant.tertiary}
                   size={ButtonSize.large}
-                  label={'Save Criteria'}
-                  decoration={Icons.bookmarkOutlined}></Button>
+                  label={isCriteriaSaved ? 'Remove Criteria' : 'Save Criteria'}
+                  decoration={
+                    isCriteriaSaved
+                      ? Icons.trashcanFilled
+                      : Icons.bookmarkFilled
+                  }
+                />
               </div>
             )}
           </div>

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
+import { useCriteria } from 'shared/contexts/criteria-context';
 import { Platforms } from 'shared/types/shared-types';
 import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
@@ -25,6 +26,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const viewportContext = useViewport();
   const location = useLocation();
   const [expanded, setExpanded] = useState(false);
+  const { savedCriteria } = useCriteria();
   const navRef = useRef<HTMLDivElement>(null);
 
   const handleMenuClick = () => {
@@ -86,7 +88,10 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
     <div className="MagentaA11y__navbar" data-theme="dark" ref={navRef}>
       {/* Brand Section */}
       <div className="MagentaA11y__brand">
-        <NavLink to="/home" className="MagentaA11y__brand--name">
+        <NavLink
+          to="/home"
+          className="MagentaA11y__brand--name"
+          aria-label="Magenta A11y - Home">
           A11y
         </NavLink>
       </div>
@@ -115,6 +120,14 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                 : item.href;
 
             const isActive = isPathActive(item.href, location);
+            const isMyCriteria = item.label === 'My criteria';
+            const ariaLabel = isMyCriteria
+              ? `Navigate to ${item.label}${
+                  savedCriteria.length > 0
+                    ? `, Saved criteria, ${savedCriteria.length}`
+                    : ''
+                }`
+              : `Navigate to ${item.label}`;
 
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
@@ -123,9 +136,13 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
                   })}
-                  aria-label={`Navigate to ${item.label}`}>
+                  aria-label={ariaLabel}>
                   {item.icon && (
-                    <span className="MagentaA11y__nav-items--icon">
+                    <span
+                      {...(savedCriteria.length > 0
+                        ? { 'data-count': savedCriteria.length }
+                        : {})}
+                      className={'MagentaA11y__nav-items--icon'}>
                       {item.icon}
                     </span>
                   )}
