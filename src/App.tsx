@@ -9,6 +9,7 @@ import { NavItem } from './components/navigation/nav.types';
 import TopNav from './components/navigation/top-nav/top-nav';
 
 import './App.scss';
+import { CriteriaProvider } from 'shared/contexts/criteria-context';
 
 const navItems: NavItem[] = [
   { label: 'Web Criteria', href: '/web-criteria' },
@@ -23,28 +24,30 @@ const navItems: NavItem[] = [
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <div className="MagentaA11y">
-        <header className="MagentaA11y-header">
-          <TopNav navItems={navItems} />
-        </header>
-        <div className="MagentaA11y__content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/web-criteria/*"
-              element={<Criteria platform={Platforms.WEB} />}
-            />
-            <Route
-              path="/native-criteria/*"
-              element={<Criteria platform={Platforms.NATIVE} />}
-            />
-          </Routes>
+    <CriteriaProvider>
+      <Router>
+        <div className="MagentaA11y">
+          <header className="MagentaA11y-header">
+            <TopNav navItems={navItems} />
+          </header>
+          <div className="MagentaA11y__content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route
+                path="/web-criteria/*"
+                element={<Criteria platform={Platforms.WEB} />}
+              />
+              <Route
+                path="/native-criteria/*"
+                element={<Criteria platform={Platforms.NATIVE} />}
+              />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </CriteriaProvider>
   );
 };
 

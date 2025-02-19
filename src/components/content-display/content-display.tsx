@@ -11,6 +11,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
@@ -39,6 +40,32 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [copiedContent, setCopiedContent] = useState<string | null>(null);
+
+  const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
+
+  const handleToggleCriteria = () => {
+    const activeLabel = tabs[activeTab]?.label;
+    const activeContent = tabs[activeTab]?.content;
+    const componentName = location.pathname.split('/').slice(-1)[0];
+
+    if (!activeContent) return;
+
+    const criteriaId = `${componentName}-${activeLabel.toLowerCase()}`;
+
+    // Check if the criteria is already saved
+    const isAlreadySaved = savedCriteria.some((item) => item.id === criteriaId);
+
+    if (isAlreadySaved) {
+      removeCriteria(criteriaId); // Remove if already saved
+    } else {
+      saveCriteria({
+        id: criteriaId,
+        label: activeLabel,
+        content: activeContent,
+        savedAt: new Date(),
+      });
+    }
+  };
 
   // Helper function to find the active item
   const findItemByPath = (
@@ -152,6 +179,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   );
 
   let criteriaIsCopied = copiedContent === tabs[activeTab]?.content;
+  const isCriteriaSaved = savedCriteria.some(
+    (item) =>
+      item.id ===
+      `${location.pathname.split('/').slice(-1)[0]}-${tabs[
+        activeTab
+      ]?.label.toLowerCase()}`
+  );
 
   return (
     <div className="MagentaA11y__nav-display">
@@ -227,12 +261,16 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                     criteriaIsCopied ? Icons.checkmark : Icons.copyFilled
                   }></Button>
                 <Button
-                  onClick={() => {}}
+                  onClick={handleToggleCriteria}
                   type={ButtonType.button}
                   variant={ButtonVariant.tertiary}
                   size={ButtonSize.large}
-                  label={'Save Criteria'}
-                  decoration={Icons.bookmarkOutlined}></Button>
+                  label={isCriteriaSaved ? 'Remove Criteria' : 'Save Criteria'}
+                  decoration={
+                    isCriteriaSaved
+                      ? Icons.trashcanFilled
+                      : Icons.bookmarkFilled
+                  }></Button>
               </div>
             )}
           </div>
