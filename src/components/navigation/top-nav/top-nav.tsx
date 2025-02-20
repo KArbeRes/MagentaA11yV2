@@ -56,10 +56,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           onClick={handleMenuClick}></IconButton>
       )}
 
-      <nav
-        className="MagentaA11y__navbar__nav"
-        aria-label="Top navigation"
-        id="main">
+      <nav className="MagentaA11y__navbar__nav" aria-label="main">
         <ul className="MagentaA11y__nav-items">
           {navItems.map((item, index) => {
             const href =
