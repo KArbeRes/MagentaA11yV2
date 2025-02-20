@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
+import { CriteriaProvider } from 'shared/contexts/criteria-context';
 import { Platforms } from 'shared/types/shared-types';
 import { ReactComponent as BookmarkIconOutlined } from './assets/svgs/bookmark-outlined.svg';
 import About from './components/about-us/about-us';
@@ -9,7 +10,6 @@ import { NavItem } from './components/navigation/nav.types';
 import TopNav from './components/navigation/top-nav/top-nav';
 
 import './App.scss';
-import { CriteriaProvider } from 'shared/contexts/criteria-context';
 
 const navItems: NavItem[] = [
   { label: 'Web Criteria', href: '/web-criteria' },
@@ -32,7 +32,7 @@ const App: React.FC = () => {
           <header className="MagentaA11y-header">
             <TopNav navItems={navItems} />
           </header>
-          <div className="MagentaA11y__content">
+          <div className="MagentaA11y--content">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />

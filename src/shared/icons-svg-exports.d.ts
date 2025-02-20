@@ -101,6 +101,7 @@ declare module "shared/icons-svg-exports" {
   export const botnetPreventionOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
   export const brakeFluidLowFilled: React.FC<React.SVGProps<SVGSVGElement>>;
   export const brakeFluidLowOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
+  export const brandLogoMagenta: React.FC<React.SVGProps<SVGSVGElement>>;
   export const brandLogoWhite: React.FC<React.SVGProps<SVGSVGElement>>;
   export const brightnessContrastOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
   export const calendarFilled: React.FC<React.SVGProps<SVGSVGElement>>;

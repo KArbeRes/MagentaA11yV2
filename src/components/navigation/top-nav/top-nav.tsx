@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { ButtonSize } from 'components/custom-components/buttons/button-types';
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
@@ -50,14 +51,15 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
           ariaHasPopup={true}
-          ariaControls="top-navigation"
+          size={ButtonSize.small}
+          ariaControls="main"
           onClick={handleMenuClick}></IconButton>
       )}
 
       <nav
         className="MagentaA11y__navbar__nav"
         aria-label="Top navigation"
-        id="top-navigation">
+        id="main">
         <ul className="MagentaA11y__nav-items">
           {navItems.map((item, index) => {
             const href =
@@ -68,14 +70,6 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                 : item.href;
 
             const isActive = isPathActive(item.href, location);
-            const isMyCriteria = item.label === 'My criteria';
-            const ariaLabel = isMyCriteria
-              ? `Navigate to ${item.label}${
-                  savedCriteria.length > 0
-                    ? `, Saved criteria, ${savedCriteria.length}`
-                    : ''
-                }`
-              : `Navigate to ${item.label}`;
 
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
@@ -84,7 +78,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
                   })}
-                  aria-label={ariaLabel}>
+                  aria-label={item.ariaLabel}>
                   {item.icon && (
                     <span
                       {...(savedCriteria.length > 0
