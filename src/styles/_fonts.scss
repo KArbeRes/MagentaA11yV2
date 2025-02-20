@@ -129,6 +129,13 @@
   --magentaa11y-typeset-display-sm-strong: var(--magentaa11y-font-weight-bold)
     var(--magentaa11y-font-size-52) / var(--magentaa11y-line-height-57)
     var(--magentaa11y-font-family-display);
+
+  --magentaa11y-typeset-headline-lg-xtrastrong: var(
+      --magentaa11y-font-weight-extrabold
+    )
+    var(--magentaa11y-font-size-32) / var(--magentaa11y-line-height-34)
+    var(--magentaa11y-font-family-display);
+
   --magentaa11y-typeset-display-md-xtrastrong: var(
       --magentaa11y-font-weight-extrabold
     )

@@ -81,7 +81,7 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
   };
 
   return (
-    <nav aria-label="Side navigation">
+    <nav aria-label="criteria">
       <div className="MagentaA11y__side-nav-container">
         {renderNavItems(contentData[platform] as NavItem[])}
       </div>
