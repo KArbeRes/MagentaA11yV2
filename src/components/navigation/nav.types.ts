@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface NavItem {
   label: string;
   href: string;
   icon?: ReactNode;
+  ariaLabel?: string;
 }
 
 export interface TopNavProps {
@@ -13,7 +14,7 @@ export interface TopNavProps {
 export interface SideNavItem {
   label: string;
   name: string;
-  type?: "file";
+  type?: 'file';
   children?: SideNavItem[];
   generalNotes?: string | null;
   gherkin?: string | null;

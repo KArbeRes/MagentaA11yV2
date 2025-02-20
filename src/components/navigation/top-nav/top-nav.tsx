@@ -104,14 +104,11 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           ariaExpanded={expanded}
           ariaHasPopup={true}
           size={ButtonSize.small}
-          ariaControls="top-navigation"
+          ariaControls="main"
           onClick={handleMenuClick}></IconButton>
       )}
 
-      <nav
-        className="MagentaA11y__navbar__nav"
-        aria-label="Top navigation"
-        id="top-navigation">
+      <nav className="MagentaA11y__navbar__nav" aria-label="main">
         <ul className="MagentaA11y__nav-items">
           {navItems.map((item, index) => {
             const href =
@@ -122,14 +119,6 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                 : item.href;
 
             const isActive = isPathActive(item.href, location);
-            const isMyCriteria = item.label === 'My criteria';
-            const ariaLabel = isMyCriteria
-              ? `Navigate to ${item.label}${
-                  savedCriteria.length > 0
-                    ? `, Saved criteria, ${savedCriteria.length}`
-                    : ''
-                }`
-              : `Navigate to ${item.label}`;
 
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
@@ -138,7 +127,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
                   })}
-                  aria-label={ariaLabel}>
+                  aria-label={item.ariaLabel}>
                   {item.icon && (
                     <span
                       {...(savedCriteria.length > 0
