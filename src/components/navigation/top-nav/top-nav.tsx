@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { ButtonSize } from 'components/custom-components/buttons/button-types';
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
@@ -50,6 +51,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
           ariaHasPopup={true}
+          size={ButtonSize.small}
           ariaControls="top-navigation"
           onClick={handleMenuClick}></IconButton>
       )}
