@@ -1,6 +1,6 @@
-@use "./utils/utilities" as *;
-@use "./styles/root" as *;
-@use "./utils/_utilities" as *;
+@use './utils/utilities' as *;
+@use './styles/root' as *;
+@use './utils/_utilities' as *;
 
 html {
   background-color: var(--color-background);
@@ -87,7 +87,7 @@ button {
 }
 
 pre {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   padding: 1em;
   overflow-x: auto;
@@ -163,4 +163,7 @@ th {
 
 svg {
   fill: var(--color-on-tertiary);
+}
+:focus-visible {
+  outline-offset: 4px;
 }
