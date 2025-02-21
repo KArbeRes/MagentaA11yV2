@@ -165,5 +165,7 @@ svg {
   fill: var(--color-on-tertiary);
 }
 :focus-visible {
-  outline-offset: 4px;
+  outline: 0.5rem auto Highlight;
+  outline: -webkit-focus-ring-color auto 10px;
+  outline-offset: -2px;
 }

@@ -38,15 +38,17 @@ const MyCriteria: React.FC = () => {
       return;
     }
 
-    const index = Array.from(chipButtons).findIndex(
-      (chip) => chip.dataset.id === id
-    );
+    const index = Array.from(chipButtons).findIndex((chip) => {
+      return chip.getAttribute('id') === id;
+    });
 
     removeCriteria(id);
 
     if (chipButtons.length > 1) {
       const nextChip =
-        chipButtons[index] || chipButtons[index - 1] || chipButtons[0];
+        index === 0
+          ? chipButtons[Math.max(index + 1, 0)]
+          : chipButtons[Math.max(index - 1, 0)];
       nextChip?.focus();
     }
   };
