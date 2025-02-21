@@ -1,5 +1,7 @@
+import IconButton from 'components/custom-components/buttons/icon-button/icon-button';
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
 import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
@@ -18,11 +20,16 @@ interface NavItem {
 interface SideNavProps {
   platform: Platforms;
   isVisible?: boolean;
+  onClose?: () => void;
 }
 
-const SideNav: React.FC<SideNavProps> = ({ platform }) => {
+const SideNav: React.FC<SideNavProps> = ({ platform, isVisible, onClose }) => {
   const viewportContext = useViewport();
   const location = useLocation();
+
+  const shouldBeHidden = viewportContext.isMobile
+    ? isVisible === false || isVisible === undefined
+    : false;
 
   const renderNavItems = (
     items: NavItem[],
@@ -30,10 +37,17 @@ const SideNav: React.FC<SideNavProps> = ({ platform }) => {
   ) => {
     return (
       <div
-        className={`MagentaA11y__side-nav ${
-          viewportContext.isMobile ? 'hidden' : ''
-        }`}>
-        <h1 className="MagentaA11y__side-nav--title">Criteria</h1>
+        className={`MagentaA11y__side-nav ${shouldBeHidden ? 'hidden' : ''}`}>
+        <div className="MagentaA11y__side-nav--title-wrapper">
+          <h1 className="MagentaA11y__side-nav--title">Criteria</h1>
+          {viewportContext.isMobile && (
+            <IconButton
+              a11yLabel={'close-side-nav'}
+              icon={Icons.closeOutlined}
+              onClick={onClose}
+            />
+          )}
+        </div>
         <ul className="MagentaA11y__side-nav--list">
           {items.map((item) => {
             const fullPath = `${parentPath}/${item.name}`;

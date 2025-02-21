@@ -24,11 +24,16 @@ import './content-display.scss';
 interface ContentDisplayProps {
   platform: Platforms;
   items: SideNavItem[];
+  onToggleSideNav: () => void;
 }
 
 const ASSET_BASE_PATH = '/MagentaA11yV2/content/assets';
 
-const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
+const ContentDisplay: React.FC<ContentDisplayProps> = ({
+  platform,
+  items,
+  onToggleSideNav,
+}) => {
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -204,9 +209,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
         )}
 
         <Button
-          onClick={function (): void {
-            throw new Error('Function not implemented.');
-          }}
+          onClick={onToggleSideNav}
           type={ButtonType.button}
           variant={ButtonVariant.secondary}
           size={ButtonSize.large}
