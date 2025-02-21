@@ -108,10 +108,11 @@
     display: inherit;
     align-items: center;
     position: relative;
+    padding-inline-end: var(--magentaa11y-spacing-size-8);
 
-    &[data-count]:not([data-count='0']):not([data-count='']):not(
-        [data-count*='e']
-      ):not([data-count*='.']) {
+    &[data-count]:not([data-count='']):not([data-count*='e']):not(
+        [data-count*='.']
+      ) {
       &::before {
         content: attr(data-count);
         position: absolute;
@@ -126,6 +127,17 @@
         bottom: var(--magentaa11y-spacing-size-12);
         left: var(--magentaa11y-spacing-size-12);
         padding: 1px 3px;
+      }
+
+      /* When data-count is exactly '0', show a small badge with no content */
+      &[data-count='0']::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        min-width: 8px;
+        min-height: 8px;
+        padding: 0;
+        top: 0;
       }
     }
   }

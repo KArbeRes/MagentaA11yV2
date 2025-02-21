@@ -3,7 +3,6 @@ import { ButtonSize } from 'components/custom-components/buttons/button-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
-import { useCriteria } from 'shared/contexts/criteria-context';
 import { Platforms } from 'shared/types/shared-types';
 import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
@@ -27,7 +26,6 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const viewportContext = useViewport();
   const location = useLocation();
   const [expanded, setExpanded] = useState(false);
-  const { savedCriteria } = useCriteria();
   const navRef = useRef<HTMLDivElement>(null);
 
   const handleMenuClick = () => {
@@ -127,12 +125,10 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
                   })}
-                  aria-label={item.ariaLabel}>
+                  {...(item.ariaLabel && { 'aria-label': item.ariaLabel })}>
                   {item.icon && (
                     <span
-                      {...(savedCriteria.length > 0
-                        ? { 'data-count': savedCriteria.length }
-                        : {})}
+                      data-count={item.withBadge ? item.withBadge : ''}
                       className={'MagentaA11y__nav-items--icon'}>
                       {item.icon}
                     </span>
