@@ -19,3 +19,11 @@
 .text-center {
   text-align: center;
 }
+
+$alignments: (left, center, right, justify);
+
+@each $align in $alignments {
+  .text-#{$align} {
+    text-align: $align;
+  }
+}
