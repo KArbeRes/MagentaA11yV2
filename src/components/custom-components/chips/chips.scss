@@ -59,6 +59,7 @@
   --magentaa11y-spacing-size-6: 6px;
   display: flex;
   overflow-x: auto;
+  align-self: center;
 
   &__legend {
     @include legend();

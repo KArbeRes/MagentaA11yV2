@@ -100,17 +100,16 @@ const MyCriteria: React.FC = () => {
         </p>
       </div>
       <Divider orientation={OrientationEnum.HORIZONTAL} />
-      <div ref={chipsContainerRef}>
-        <Chips
-          variant={ChipType.BUTTON}
-          chips={criteriaChips}
-          onDelete={handleDelete}
-          size={ChipSize.SMALL}
-          legend="Saved Criteria"
-        />
-      </div>
       {savedCriteria.length > 0 && (
-        <>
+        <div className="MagentaA11y__my-criteria__actions">
+          <Chips
+            variant={ChipType.BUTTON}
+            chips={criteriaChips}
+            onDelete={handleDelete}
+            size={ChipSize.SMALL}
+            legend="Saved Criteria"
+            ref={chipsContainerRef}
+          />
           {savedCriteria.length > 1 && (
             <div className="w-100">
               <Button
@@ -133,7 +132,7 @@ const MyCriteria: React.FC = () => {
             decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
             id="copy-criteria"
           />
-        </>
+        </div>
       )}
 
       <MarkdownContent tabs={savedCriteria} />
