@@ -1,5 +1,5 @@
 import { ContentTab } from 'components/content-display/markdown-content/markdown-content.types';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface SavedCriteria extends ContentTab {
   id: string;
@@ -20,7 +20,14 @@ const CriteriaContext = createContext<CriteriaContextType | undefined>(
 export const CriteriaProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [savedCriteria, setSavedCriteria] = useState<SavedCriteria[]>([]);
+  const [savedCriteria, setSavedCriteria] = useState<SavedCriteria[]>(() => {
+    const storedCriteria = localStorage.getItem('savedCriteria');
+    return storedCriteria ? JSON.parse(storedCriteria) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('savedCriteria', JSON.stringify(savedCriteria));
+  }, [savedCriteria]);
 
   const saveCriteria = (criteria: SavedCriteria) => {
     setSavedCriteria((prev) => {
