@@ -28,6 +28,8 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const [expanded, setExpanded] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
+  const hasNotifications = navItems.some((item) => item.withBadge);
+
   const handleMenuClick = () => {
     setExpanded((expanded) => !expanded);
   };
@@ -103,7 +105,9 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           ariaHasPopup={true}
           size={ButtonSize.small}
           ariaControls="main"
-          onClick={handleMenuClick}></IconButton>
+          onClick={handleMenuClick}
+          hasBadge={!expanded && hasNotifications}
+          badgeNumber={0}></IconButton>
       )}
 
       <nav className="MagentaA11y__navbar__nav" aria-label="main">
