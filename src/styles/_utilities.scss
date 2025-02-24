@@ -16,6 +16,18 @@
   display: none !important;
 }
 
-.text-center {
-  text-align: center;
+$text-alignments: left, center, right, justify, start, end;
+
+@each $align in $text-alignments {
+  .text-#{$align} {
+    text-align: $align;
+  }
+}
+
+$width-percentages: 25, 50, 75, 100;
+
+@each $width in $width-percentages {
+  .w-#{$width} {
+    width: #{$width + '%'};
+  }
 }

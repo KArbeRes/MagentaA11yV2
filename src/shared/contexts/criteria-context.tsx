@@ -11,6 +11,7 @@ interface CriteriaContextType {
   saveCriteria: (criteria: SavedCriteria) => void;
   removeCriteria: (id: string) => void;
   findCriteria: (searchTerm: string) => SavedCriteria[];
+  clearCriteria: () => void;
 }
 
 const CriteriaContext = createContext<CriteriaContextType | undefined>(
@@ -55,9 +56,20 @@ export const CriteriaProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
+  const clearCriteria = () => {
+    setSavedCriteria([]);
+    localStorage.removeItem('savedCriteria'); // Clears local storage
+  };
+
   return (
     <CriteriaContext.Provider
-      value={{ savedCriteria, saveCriteria, removeCriteria, findCriteria }}>
+      value={{
+        savedCriteria,
+        saveCriteria,
+        removeCriteria,
+        findCriteria,
+        clearCriteria,
+      }}>
       {children}
     </CriteriaContext.Provider>
   );

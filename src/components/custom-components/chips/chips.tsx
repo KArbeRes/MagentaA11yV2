@@ -15,30 +15,32 @@ const Chips: React.FC<IChipGroup> = ({
 }) => {
   return (
     <div className="MagentaA11y-chips" data-size={size}>
-      <fieldset>
-        {legend && (
-          <legend className="MagentaA11y-chips__legend">{legend}</legend>
-        )}
-        {chips.map((chip: IChipSelectable) => (
-          <div key={chip.id} className="MagentaA11y-chip-container">
-            <button
-              aria-label={`${chip.label}, delete`}
-              id={chip.id}
-              onClick={() => onDelete(chip.id)}>
-              <span className="MagentaA11y-chip">
-                <span className="MagentaA11y-chip__label--wrapper">
-                  <span className="MagentaA11y-chip__label">
-                    <span className="MagentaA11y-chip__label--text">
-                      {chip.label}
+      {chips.length > 0 && (
+        <fieldset>
+          {legend && (
+            <legend className="MagentaA11y-chips__legend">{legend}</legend>
+          )}
+          {chips.map((chip: IChipSelectable) => (
+            <div key={chip.id} className="MagentaA11y-chip-container">
+              <button
+                aria-label={`${chip.label}, delete`}
+                id={chip.id}
+                onClick={() => onDelete(chip.id)}>
+                <span className="MagentaA11y-chip">
+                  <span className="MagentaA11y-chip__label--wrapper">
+                    <span className="MagentaA11y-chip__label">
+                      <span className="MagentaA11y-chip__label--text">
+                        {chip.label}
+                      </span>
+                      {closeOutlined({})}
                     </span>
-                    {closeOutlined({})}
                   </span>
                 </span>
-              </span>
-            </button>
-          </div>
-        ))}
-      </fieldset>
+              </button>
+            </div>
+          ))}
+        </fieldset>
+      )}
     </div>
   );
 };

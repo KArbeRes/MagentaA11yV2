@@ -5,6 +5,8 @@
     var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-80)
     var(--magentaa11y-spacing-size-16);
 
+  --clear-all-btn-margin: auto;
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -31,10 +33,16 @@
     align-self: self-end;
   }
 
+  #clear-all-btn {
+    display: block;
+    margin: var(--clear-all-btn-margin);
+  }
+
   @media (min-width: 769px) {
     --heading-font: var(--magentaa11y-typeset-display-md-xtrastrong);
     --page-padding: var(--magentaa11y-spacing-size-40)
       var(--magentaa11y-spacing-size-32) var(--magentaa11y-spacing-size-80)
       var(--magentaa11y-spacing-size-32);
+    --clear-all-btn-margin: initial;
   }
 }

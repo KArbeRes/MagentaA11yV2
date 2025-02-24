@@ -20,7 +20,7 @@ import { Icons } from 'shared/Icons';
 import '../my-criteria/my-criteria.scss';
 
 const MyCriteria: React.FC = () => {
-  const { savedCriteria, removeCriteria } = useCriteria();
+  const { savedCriteria, removeCriteria, clearCriteria } = useCriteria();
   const [copiedContent, setCopiedContent] = useState<string | null>(null);
 
   const chipsContainerRef = useRef<HTMLDivElement>(null);
@@ -106,18 +106,34 @@ const MyCriteria: React.FC = () => {
           chips={criteriaChips}
           onDelete={handleDelete}
           size={ChipSize.SMALL}
+          legend="Saved Criteria"
         />
       </div>
       {savedCriteria.length > 0 && (
-        <Button
-          onClick={copyCriteria}
-          type={ButtonType.button}
-          variant={ButtonVariant.primary}
-          size={ButtonSize.large}
-          label={copiedContent ? 'Copied!' : 'Copy Criteria'}
-          decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
-          id="copy-criteria"
-        />
+        <>
+          {savedCriteria.length > 1 && (
+            <div className="w-100">
+              <Button
+                onClick={clearCriteria}
+                type={ButtonType.button}
+                variant={ButtonVariant.tertiary}
+                size={ButtonSize.large}
+                label={'Remove All'}
+                id="clear-all-btn"
+              />
+              <Divider orientation={OrientationEnum.HORIZONTAL} />
+            </div>
+          )}
+          <Button
+            onClick={copyCriteria}
+            type={ButtonType.button}
+            variant={ButtonVariant.primary}
+            size={ButtonSize.large}
+            label={copiedContent ? 'Copied!' : 'Copy Criteria'}
+            decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
+            id="copy-criteria"
+          />
+        </>
       )}
 
       <MarkdownContent tabs={savedCriteria} />

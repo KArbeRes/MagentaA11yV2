@@ -1,6 +1,5 @@
-@use './utils/utilities' as *;
 @use './styles/root' as *;
-@use './utils/_utilities' as *;
+@use './styles/utilities' as *;
 
 html {
   background-color: var(--color-background);
