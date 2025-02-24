@@ -121,6 +121,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
                 <NavLink
+                  onClick={() => setExpanded(false)}
                   to={href}
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Icon } from 'shared/Icons';
 import { getIcon } from 'utils/getIcon';
 import { ButtonSize, ButtonType } from '../button-types';
@@ -7,7 +7,6 @@ import './icon-button.scss';
 
 interface TMOIconButton {
   a11yLabel: string;
-  //   icon: keyof typeof Icons;
   icon: Icon;
   disabled?: boolean;
   size?: ButtonSize;
@@ -23,59 +22,68 @@ interface TMOIconButton {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const IconButton: React.FC<TMOIconButton> = ({
-  a11yLabel,
-  icon,
-  disabled = false,
-  size = ButtonSize.large,
-  type = ButtonType.button,
-  ariaHidden,
-  ariaHasPopup,
-  ariaControls,
-  tabIndex,
-  ariaExpanded,
-  id,
-  hasBadge = false,
-  badgeNumber = 0,
-  onClick,
-}) => {
-  if (!a11yLabel || a11yLabel.trim() === '') {
-    return null;
+const IconButton = forwardRef<HTMLButtonElement, TMOIconButton>(
+  (
+    {
+      a11yLabel,
+      icon,
+      disabled = false,
+      size = ButtonSize.large,
+      type = ButtonType.button,
+      ariaHidden,
+      ariaHasPopup,
+      ariaControls,
+      tabIndex,
+      ariaExpanded,
+      id,
+      hasBadge = false,
+      badgeNumber = 0,
+      onClick,
+    },
+    ref
+  ) => {
+    if (!a11yLabel || a11yLabel.trim() === '') {
+      return null;
+    }
+
+    if (hasBadge && badgeNumber > 0) {
+      a11yLabel = `${a11yLabel}, ${badgeNumber >= 100 ? '99+' : badgeNumber}`;
+    }
+
+    const IconComponent = icon ? getIcon(icon) : null;
+
+    return (
+      <button
+        ref={ref}
+        id={id}
+        aria-label={a11yLabel}
+        aria-disabled={disabled || undefined}
+        data-size={size}
+        type={type}
+        aria-hidden={ariaHidden || undefined}
+        aria-haspopup={ariaHasPopup || undefined}
+        aria-controls={ariaControls || undefined}
+        tabIndex={tabIndex || undefined}
+        aria-expanded={ariaExpanded}
+        disabled={disabled}
+        className="MagentaA11y-icon-button"
+        onClick={onClick}>
+        {IconComponent && <IconComponent width="24" height="24" />}
+
+        {hasBadge && badgeNumber >= 0 && (
+          <span
+            className={`MagentaA11y-badge ${
+              badgeNumber ? 'MagentaA11y-badge--number' : ''
+            }`}>
+            {badgeNumber > 99 ? '99+' : badgeNumber || null}
+          </span>
+        )}
+      </button>
+    );
   }
+);
 
-  if (hasBadge && badgeNumber > 0) {
-    a11yLabel = `${a11yLabel}, ${badgeNumber >= 100 ? '99+' : badgeNumber}`;
-  }
-
-  const IconComponent = icon ? getIcon(icon) : null;
-
-  return (
-    <button
-      id={id}
-      aria-label={a11yLabel}
-      aria-disabled={disabled || undefined}
-      data-size={size}
-      type={type}
-      aria-hidden={ariaHidden || undefined}
-      aria-haspopup={ariaHasPopup || undefined}
-      aria-controls={ariaControls || undefined}
-      tabIndex={tabIndex || undefined}
-      aria-expanded={ariaExpanded}
-      disabled={disabled}
-      className="MagentaA11y-icon-button"
-      onClick={onClick}>
-      {IconComponent && <IconComponent width="24" height="24" />}
-
-      {hasBadge && badgeNumber >= 0 && (
-        <span
-          className={`MagentaA11y-badge ${
-            badgeNumber ? 'MagentaA11y-badge--number' : ''
-          }`}>
-          {badgeNumber > 99 ? '99+' : badgeNumber || null}
-        </span>
-      )}
-    </button>
-  );
-};
+// Set display name for debugging
+IconButton.displayName = 'IconButton';
 
 export default IconButton;
