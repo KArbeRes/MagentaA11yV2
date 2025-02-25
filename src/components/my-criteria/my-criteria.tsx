@@ -120,7 +120,7 @@ const MyCriteria: React.FC = () => {
           {criteria.length > 1 && (
             <div className="w-100">
               <Button
-                onClick={clearCriteria}
+                onClick={() => clearCriteria(uniqueLabels[activeTab])}
                 type={ButtonType.button}
                 variant={ButtonVariant.tertiary}
                 size={ButtonSize.large}
