@@ -7,15 +7,16 @@ import {
 import Button from 'components/custom-components/buttons/button/button';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
-import { Platforms } from 'shared/types/shared-types';
+import { CriteriaType, Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
+import MarkdownContent from './markdown-content/markdown-content';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
@@ -23,19 +24,16 @@ import './content-display.scss';
 interface ContentDisplayProps {
   platform: Platforms;
   items: SideNavItem[];
+  onToggleSideNav: () => void;
 }
-
-type MediaProps = {
-  src?: string;
-  alt?: string;
-  type?: string;
-  children?: React.ReactNode;
-  poster?: string;
-};
 
 const ASSET_BASE_PATH = '/MagentaA11yV2/content/assets';
 
-const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
+const ContentDisplay: React.FC<ContentDisplayProps> = ({
+  platform,
+  items,
+  onToggleSideNav,
+}) => {
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -44,7 +42,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
 
   const handleToggleCriteria = () => {
-    const activeLabel = tabs[activeTab]?.label;
+    const activeLabel = tabs[activeTab]?.label as CriteriaType;
     const activeContent = tabs[activeTab]?.content;
     const componentName = location.pathname.split('/').slice(-1)[0];
 
@@ -56,12 +54,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
     const isAlreadySaved = savedCriteria.some((item) => item.id === criteriaId);
 
     if (isAlreadySaved) {
-      removeCriteria(criteriaId); // Remove if already saved
+      removeCriteria(criteriaId);
     } else {
       saveCriteria({
         id: criteriaId,
-        label: activeLabel,
+        label: componentName,
         content: activeContent,
+        criteria: activeLabel,
         savedAt: new Date(),
       });
     }
@@ -142,14 +141,17 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
   } = currentItem;
 
   const tabs = [
-    { content: condensed, label: 'Condensed' },
-    { content: gherkin, label: 'Gherkin' },
-    { content: criteria, label: 'Criteria' },
-    { content: developerNotes, label: 'Developer Notes' },
-    { content: androidDeveloperNotes, label: 'Android Developer Notes' },
-    { content: iosDeveloperNotes, label: 'iOS Developer Notes' },
-    { content: videos, label: 'Videos' },
-  ].filter((tab) => tab.content);
+    { content: condensed ?? '', label: 'Condensed' },
+    { content: gherkin ?? '', label: 'Gherkin' },
+    { content: criteria ?? '', label: 'Criteria' },
+    { content: developerNotes ?? '', label: 'Developer Notes' },
+    {
+      content: androidDeveloperNotes ?? '',
+      label: 'Android Developer Notes',
+    },
+    { content: iosDeveloperNotes ?? '', label: 'iOS Developer Notes' },
+    { content: videos ?? '', label: 'Videos' },
+  ].filter((tab) => tab.content.trim() !== '');
 
   const copyTabContent = (content: string) => {
     if (content) {
@@ -208,9 +210,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
         )}
 
         <Button
-          onClick={function (): void {
-            throw new Error('Function not implemented.');
-          }}
+          onClick={onToggleSideNav}
           type={ButtonType.button}
           variant={ButtonVariant.secondary}
           size={ButtonSize.large}
@@ -259,7 +259,8 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                   label={criteriaIsCopied ? 'Copied!' : 'Copy Criteria'}
                   decoration={
                     criteriaIsCopied ? Icons.checkmark : Icons.copyFilled
-                  }></Button>
+                  }
+                />
                 <Button
                   onClick={handleToggleCriteria}
                   type={ButtonType.button}
@@ -270,90 +271,16 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ platform, items }) => {
                     isCriteriaSaved
                       ? Icons.trashcanFilled
                       : Icons.bookmarkFilled
-                  }></Button>
+                  }
+                />
               </div>
             )}
           </div>
-
-          <div className="MagentaA11y__nav-display__content-details">
-            {tabs.map((tab, index) => {
-              return (
-                <div
-                  key={tab.label}
-                  style={{ display: activeTab === index ? 'block' : 'none' }}>
-                  <ReactMarkdown
-                    rehypePlugins={[rehypeHighlight, rehypeRaw]}
-                    remarkPlugins={[remarkGfm]}
-                    components={{
-                      p: ({ node, ...props }) => <p {...props} />,
-                      table: ({ node, ...props }) => <table {...props} />,
-                      th: ({ node, ...props }) => <th {...props} />,
-                      td: ({ node, ...props }) => <td {...props} />,
-                      tr: ({ node, ...props }) => <tr {...props} />,
-                      img: ({ src, alt }: MediaProps) => {
-                        const resolvedSrc = src?.startsWith('http')
-                          ? src
-                          : `${ASSET_BASE_PATH}/${src}`;
-                        return resolvedSrc ? (
-                          <img src={resolvedSrc} alt={alt} loading="lazy" />
-                        ) : (
-                          <span>{alt}</span>
-                        );
-                      },
-                      video: ({ poster, children }: MediaProps) => {
-                        let posterPath = poster
-                          ? `${ASSET_BASE_PATH}/${poster}`
-                          : 'MagentaA11yV2/movie.svg';
-
-                        return (
-                          <video
-                            controls
-                            preload="none"
-                            poster={`${posterPath}`}>
-                            {children}
-                          </video>
-                        );
-                      },
-                      source: ({ src, type }: MediaProps) => {
-                        const resolvedSrc = src?.startsWith('http')
-                          ? src
-                          : `${ASSET_BASE_PATH}/${src}`;
-                        return <source src={resolvedSrc} type={type} />;
-                      },
-                      a: ({ href, children }) => {
-                        const isExternal = (() => {
-                          if (!href) return false; // Treat undefined href as relative
-                          try {
-                            const url = new URL(href, window.location.href);
-                            return url.origin !== window.location.origin; // External if origins differ
-                          } catch (e) {
-                            return false; // Invalid URLs are treated as relative
-                          }
-                        })();
-
-                        return isExternal ? (
-                          <a
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Open ${href} in a new tab`}>
-                            {children}
-                          </a>
-                        ) : (
-                          <NavLink
-                            to={href ? href : '/'}
-                            aria-label={`Navigate to ${href}`}>
-                            {children}
-                          </NavLink>
-                        );
-                      },
-                    }}>
-                    {tab.content || ''}
-                  </ReactMarkdown>
-                </div>
-              );
-            })}
-          </div>
+          <MarkdownContent
+            tabs={tabs}
+            activeTab={activeTab}
+            assetBasePath={ASSET_BASE_PATH}
+          />
         </div>
       )}
     </div>

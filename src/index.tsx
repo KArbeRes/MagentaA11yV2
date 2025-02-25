@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { CriteriaProvider } from 'shared/contexts/criteria-context';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './shared/contexts/theme-context';
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <ViewportProvider>
-        <App />
+        <CriteriaProvider>
+          <App />
+        </CriteriaProvider>
       </ViewportProvider>
     </ThemeProvider>
   </React.StrictMode>
