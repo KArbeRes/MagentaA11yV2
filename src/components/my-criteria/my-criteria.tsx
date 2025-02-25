@@ -22,10 +22,17 @@ import '../my-criteria/my-criteria.scss';
 const MyCriteria: React.FC = () => {
   const { savedCriteria, removeCriteria, clearCriteria } = useCriteria();
   const [copiedContent, setCopiedContent] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<number>(0);
 
+  const tabsRef = useRef<HTMLElement>(null);
   const chipsContainerRef = useRef<HTMLDivElement>(null);
 
-  const criteriaChips: IChipSelectable[] = savedCriteria.map((criteria) => {
+  const uniqueLabels = ['Condensed', 'Gherkin'];
+  const criteria = savedCriteria.filter(
+    (item) => item.label === uniqueLabels[activeTab]
+  );
+
+  const criteriaChips: IChipSelectable[] = criteria.map((criteria) => {
     return { id: criteria.id, label: criteria.id.replaceAll('-', ' ') };
   });
 
@@ -110,7 +117,7 @@ const MyCriteria: React.FC = () => {
             legend="Saved Criteria"
             ref={chipsContainerRef}
           />
-          {savedCriteria.length > 1 && (
+          {criteria.length > 1 && (
             <div className="w-100">
               <Button
                 onClick={clearCriteria}
@@ -123,19 +130,37 @@ const MyCriteria: React.FC = () => {
               <Divider orientation={OrientationEnum.HORIZONTAL} />
             </div>
           )}
-          <Button
-            onClick={copyCriteria}
-            type={ButtonType.button}
-            variant={ButtonVariant.primary}
-            size={ButtonSize.large}
-            label={copiedContent ? 'Copied!' : 'Copy Criteria'}
-            decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
-            id="copy-criteria"
-          />
+          <div className="MagentaA11y__my-criteria__tab-container">
+            <md-tabs
+              ref={tabsRef}
+              aria-label="Content options for syntax"
+              role="tablist">
+              {uniqueLabels.map((label, index) => (
+                <md-primary-tab
+                  key={label}
+                  aria-selected={activeTab === index ? 'true' : 'false'}
+                  id={`${label.toLowerCase().replace(/\s+/g, '-')}-tab`}
+                  role="tab"
+                  onClick={() => setActiveTab(index)}>
+                  {label}
+                </md-primary-tab>
+              ))}
+            </md-tabs>
+
+            <Button
+              onClick={copyCriteria}
+              type={ButtonType.button}
+              variant={ButtonVariant.primary}
+              size={ButtonSize.large}
+              label={copiedContent ? 'Copied!' : 'Copy Criteria'}
+              decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
+              id="copy-criteria"
+            />
+          </div>
         </div>
       )}
 
-      <MarkdownContent tabs={savedCriteria} />
+      <MarkdownContent tabs={criteria} />
     </div>
   );
 };

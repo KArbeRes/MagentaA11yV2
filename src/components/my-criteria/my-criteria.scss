@@ -6,6 +6,7 @@
     var(--magentaa11y-spacing-size-16);
 
   --clear-all-btn-margin: auto;
+  --tab-container-flex-direction: column;
 
   width: 100%;
   display: flex;
@@ -33,6 +34,18 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: var(--magentaa11y-spacing-size-24);
+
+    md-tabs {
+      width: fit-content;
+    }
+  }
+
+  &__tab-container {
+    display: flex;
+    flex-direction: var(--tab-container-flex-direction);
+    justify-content: space-between;
+    gap: var(--magentaa11y-spacing-size-24);
   }
 
   #copy-criteria {
@@ -50,5 +63,6 @@
       var(--magentaa11y-spacing-size-32) var(--magentaa11y-spacing-size-80)
       var(--magentaa11y-spacing-size-32);
     --clear-all-btn-margin: initial;
+    --tab-container-flex-direction: row;
   }
 }
