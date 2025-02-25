@@ -13,7 +13,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
-import { Platforms } from 'shared/types/shared-types';
+import { CriteriaType, Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
 import MarkdownContent from './markdown-content/markdown-content';
@@ -42,7 +42,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
 
   const handleToggleCriteria = () => {
-    const activeLabel = tabs[activeTab]?.label;
+    const activeLabel = tabs[activeTab]?.label as CriteriaType;
     const activeContent = tabs[activeTab]?.content;
     const componentName = location.pathname.split('/').slice(-1)[0];
 
@@ -54,12 +54,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     const isAlreadySaved = savedCriteria.some((item) => item.id === criteriaId);
 
     if (isAlreadySaved) {
-      removeCriteria(criteriaId); // Remove if already saved
+      removeCriteria(criteriaId);
     } else {
       saveCriteria({
         id: criteriaId,
-        label: activeLabel,
+        label: componentName,
         content: activeContent,
+        criteria: activeLabel,
         savedAt: new Date(),
       });
     }

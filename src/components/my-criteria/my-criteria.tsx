@@ -16,6 +16,7 @@ import { OrientationEnum } from 'components/custom-components/divider/divider.ty
 import React, { useEffect, useRef, useState } from 'react';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
+import { CriteriaType } from 'shared/types/shared-types';
 
 import '../my-criteria/my-criteria.scss';
 
@@ -27,37 +28,21 @@ const MyCriteria: React.FC = () => {
   const tabsRef = useRef<HTMLElement>(null);
   const chipsContainerRef = useRef<HTMLDivElement>(null);
 
-  const uniqueLabels = ['Condensed', 'Gherkin'];
-  const criteria = savedCriteria.filter(
-    (item) => item.label === uniqueLabels[activeTab]
-  );
+  const uniqueLabels: CriteriaType[] = Object.values(CriteriaType);
+
+  const criteria = React.useMemo(() => {
+    return savedCriteria.filter(
+      (item) => item.criteria === uniqueLabels[activeTab]
+    );
+  }, [savedCriteria, uniqueLabels, activeTab]);
 
   const criteriaChips: IChipSelectable[] = criteria.map((criteria) => {
-    return { id: criteria.id, label: criteria.id.replaceAll('-', ' ') };
+    return { id: criteria.id, label: criteria.label };
   });
 
   const handleDelete = (id: string) => {
-    const chipButtons =
-      chipsContainerRef.current?.querySelectorAll<HTMLButtonElement>('button');
-
-    if (!chipButtons || chipButtons.length === 0) {
-      removeCriteria(id);
-      return;
-    }
-
-    const index = Array.from(chipButtons).findIndex((chip) => {
-      return chip.getAttribute('id') === id;
-    });
-
     removeCriteria(id);
-
-    if (chipButtons.length > 1) {
-      const nextChip =
-        index === 0
-          ? chipButtons[Math.max(index + 1, 0)]
-          : chipButtons[Math.max(index - 1, 0)];
-      nextChip?.focus();
-    }
+    if (criteria.length === 1) setActiveTab((prev) => Math.max(prev - 1, 0));
   };
 
   const copyCriteria = (): void => {
@@ -76,13 +61,11 @@ const MyCriteria: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!copiedContent) return;
+
     const interval = setInterval(async () => {
-      if (copiedContent) {
-        const isStillInClipboard = await isContentInClipboard(copiedContent);
-        if (!isStillInClipboard) {
-          setCopiedContent(null);
-        }
-      }
+      const isStillInClipboard = await isContentInClipboard(copiedContent);
+      if (!isStillInClipboard) setCopiedContent(null);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -120,7 +103,9 @@ const MyCriteria: React.FC = () => {
           {criteria.length > 1 && (
             <div className="w-100">
               <Button
-                onClick={() => clearCriteria(uniqueLabels[activeTab])}
+                onClick={() =>
+                  clearCriteria(uniqueLabels[activeTab] as CriteriaType)
+                }
                 type={ButtonType.button}
                 variant={ButtonVariant.tertiary}
                 size={ButtonSize.large}

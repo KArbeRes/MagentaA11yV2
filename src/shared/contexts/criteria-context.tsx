@@ -1,8 +1,12 @@
 import { ContentTab } from 'components/content-display/markdown-content/markdown-content.types';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useContext } from 'react';
+import { CriteriaType } from 'shared/types/shared-types';
+
+const LOCAL_STORAGE_KEY: string = 'savedCriteria';
 
 interface SavedCriteria extends ContentTab {
   id: string;
+  criteria: CriteriaType;
   savedAt: Date;
 }
 
@@ -11,74 +15,98 @@ interface CriteriaContextType {
   saveCriteria: (criteria: SavedCriteria) => void;
   removeCriteria: (id: string) => void;
   findCriteria: (searchTerm: string) => SavedCriteria[];
-  clearCriteria: (label: string) => void;
+  clearCriteria: (label: CriteriaType) => void;
 }
 
 const CriteriaContext = createContext<CriteriaContextType | undefined>(
   undefined
 );
 
-export const CriteriaProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [savedCriteria, setSavedCriteria] = useState<SavedCriteria[]>(() => {
-    const storedCriteria = localStorage.getItem('savedCriteria');
+const saveToLocalStorage = (criteria: SavedCriteria[]) => {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(criteria));
+  } catch (error) {
+    console.error('Failed to save criteria to localStorage:', error);
+  }
+};
+
+const getInitialSavedCriteria = (): SavedCriteria[] => {
+  try {
+    const storedCriteria = localStorage.getItem(LOCAL_STORAGE_KEY);
     return storedCriteria ? JSON.parse(storedCriteria) : [];
-  });
+  } catch (error) {
+    console.error('Failed to load criteria from localStorage:', error);
+    return [];
+  }
+};
 
-  useEffect(() => {
-    localStorage.setItem('savedCriteria', JSON.stringify(savedCriteria));
-  }, [savedCriteria]);
+const useSavedCriteria = () => {
+  const [savedCriteria, setSavedCriteria] = React.useState<SavedCriteria[]>(
+    getInitialSavedCriteria
+  );
 
-  const saveCriteria = (criteria: SavedCriteria) => {
+  const saveCriteria = React.useCallback((criteria: SavedCriteria) => {
     setSavedCriteria((prev) => {
-      const alreadyExists = prev.some(
-        (item) =>
-          item.label === criteria.label && item.content === criteria.content
-      );
-
-      if (!alreadyExists) {
+      if (
+        !prev.some(
+          (item) =>
+            item.label === criteria.label && item.content === criteria.content
+        )
+      ) {
         const updatedCriteria = [...prev, criteria];
+        saveToLocalStorage(updatedCriteria);
         return updatedCriteria;
       }
-
       return prev;
     });
-  };
+  }, []);
 
-  const removeCriteria = (id: string) => {
-    setSavedCriteria((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const findCriteria = (searchTerm: string): SavedCriteria[] => {
-    return savedCriteria.filter((item) =>
-      item.label.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  };
-
-  const clearCriteria = (label: string) => {
+  const removeCriteria = React.useCallback((id: string) => {
     setSavedCriteria((prev) => {
-      const updatedCriteria = prev.filter((item) => item.label !== label);
-
-      if (updatedCriteria.length > 0) {
-        localStorage.setItem('savedCriteria', JSON.stringify(updatedCriteria));
-      } else {
-        localStorage.removeItem('savedCriteria');
-      }
-
+      const updatedCriteria = prev.filter((item) => item.id !== id);
+      saveToLocalStorage(updatedCriteria);
       return updatedCriteria;
     });
+  }, []);
+
+  const clearCriteria = React.useCallback((criteriaType: CriteriaType) => {
+    setSavedCriteria((prev) => {
+      const updatedCriteria = prev.filter(
+        (item) => item.criteria !== criteriaType
+      );
+      saveToLocalStorage(updatedCriteria);
+      return updatedCriteria;
+    });
+  }, []);
+
+  const filteredCriteria = React.useMemo(() => {
+    return savedCriteria.map((item) => ({
+      ...item,
+      lowerLabel: item.label.toLowerCase(),
+    }));
+  }, [savedCriteria]);
+
+  const findCriteria = (searchTerm: string): SavedCriteria[] => {
+    const term = searchTerm.toLowerCase();
+    return filteredCriteria.filter((item) => item.lowerLabel.includes(term));
   };
 
+  return {
+    savedCriteria,
+    saveCriteria,
+    removeCriteria,
+    findCriteria,
+    clearCriteria,
+  };
+};
+
+export const CriteriaProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const criteria = useSavedCriteria();
+
   return (
-    <CriteriaContext.Provider
-      value={{
-        savedCriteria,
-        saveCriteria,
-        removeCriteria,
-        findCriteria,
-        clearCriteria,
-      }}>
+    <CriteriaContext.Provider value={criteria}>
       {children}
     </CriteriaContext.Provider>
   );
