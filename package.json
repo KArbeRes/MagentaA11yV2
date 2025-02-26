@@ -67,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@types/favicons": "^7.0.2",
     "@types/node": "^22.9.3",
     "concurrently": "^9.1.0",
     "favicons": "^7.2.0",

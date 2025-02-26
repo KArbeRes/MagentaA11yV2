@@ -18,6 +18,7 @@
     "baseUrl": "./src",
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "paths": {
+      "favicons": ["@types/favicons"],
       "shared/*": ["shared/*"],
       "utils/*": ["utils/*"],
       "components/*": ["components/*"]
