@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import contentData from '../../shared/content.json';
 import { Platforms } from '../../shared/types/shared-types';
 import ContentDisplay from '../content-display/content-display';
@@ -12,23 +12,18 @@ interface CriteriaProps {
 }
 
 const Criteria: React.FC<CriteriaProps> = ({ platform }) => {
-  // State to control the visibility of the side nav
-  const [isSideNavVisible, setIsSideNavVisible] = useState(false);
+  const sideNavRef = useRef<{ showModal: () => void } | null>(null);
 
   // Function to toggle the side nav visibility
   const toggleSideNav = () => {
-    setIsSideNavVisible((prev) => !prev);
+    sideNavRef.current?.showModal();
   };
   // Retrieve the appropriate content for the platform
   const platformData = contentData[platform] as SideNavItem[];
 
   return (
     <div className="MagentaA11y__criteria-container">
-      <SideNav
-        platform={platform}
-        isVisible={isSideNavVisible}
-        onClose={toggleSideNav}
-      />
+      <SideNav platform={platform} ref={sideNavRef} />
 
       {/* Main Content Section */}
       <div className="MagentaA11y__criteria-content">

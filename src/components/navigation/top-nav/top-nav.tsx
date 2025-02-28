@@ -99,7 +99,9 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
 
       {viewportContext.isMobile && (
         <IconButton
-          a11yLabel={'Menu Button'}
+          a11yLabel={`Menu${
+            hasNotifications ? ', criteria has been saved' : ''
+          }`}
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
           ariaHasPopup={true}

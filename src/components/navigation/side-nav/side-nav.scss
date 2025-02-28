@@ -105,3 +105,13 @@ nav {
     }
   }
 }
+
+#sideNavDialog {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: -webkit-fill-available;
+  height: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+}

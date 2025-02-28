@@ -1,5 +1,5 @@
 import IconButton from 'components/custom-components/buttons/icon-button/icon-button';
-import React, { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
@@ -19,43 +19,55 @@ interface NavItem {
 
 interface SideNavProps {
   platform: Platforms;
-  isVisible?: boolean;
-  onClose?: () => void;
 }
 
-const SideNav: React.FC<SideNavProps> = ({ platform, isVisible, onClose }) => {
+const SideNav = forwardRef(({ platform }: SideNavProps, ref) => {
   const viewportContext = useViewport();
   const location = useLocation();
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  const shouldBeHidden = viewportContext.isMobile
-    ? isVisible === false || isVisible === undefined
-    : false;
+  // Expose showModal and closeModal methods via ref
+  useImperativeHandle(ref, () => ({
+    showModal: () => {
+      dialogRef.current?.showModal();
+      closeButtonRef.current?.focus();
+    },
+    closeModal: () => {
+      dialogRef.current?.close();
+    },
+  }));
 
   useEffect(() => {
-    if (isVisible) {
-      closeButtonRef.current?.focus();
+    const dialog = dialogRef.current;
+    if (dialog) {
+      const handleBackdropClick = (event: MouseEvent) => {
+        if (event.target === dialog) {
+          dialog.close();
+        }
+      };
+      dialog.addEventListener('click', handleBackdropClick);
+      return () => dialog.removeEventListener('click', handleBackdropClick);
     }
-  }, [isVisible]);
+  }, []);
 
   const renderNavItems = (
     items: NavItem[],
     parentPath = `/${platform}-criteria`
-  ) => {
-    return (
-      <div
-        className={`MagentaA11y__side-nav ${shouldBeHidden ? 'hidden' : ''}`}>
+  ) => (
+    <div className="MagentaA11y__side-nav-container">
+      <div className="MagentaA11y__side-nav">
         <div className="MagentaA11y__side-nav--title-wrapper">
-          <h1 className="MagentaA11y__side-nav--title">Criteria</h1>
-          {viewportContext.isMobile && (
-            <IconButton
-              a11yLabel={'close-side-nav'}
-              icon={Icons.closeOutlined}
-              onClick={onClose}
-              id="close-side-nav-btn"
-              ref={closeButtonRef}
-            />
-          )}
+          <h1 className="MagentaA11y__side-nav--title" id="side-nav-title">
+            Criteria
+          </h1>
+          <IconButton
+            a11yLabel="close"
+            icon={Icons.closeOutlined}
+            onClick={() => dialogRef.current?.close()}
+            id="close-side-nav-btn"
+            ref={closeButtonRef}
+          />
         </div>
         <ul className="MagentaA11y__side-nav--list">
           {items.map((item) => {
@@ -75,8 +87,8 @@ const SideNav: React.FC<SideNavProps> = ({ platform, isVisible, onClose }) => {
                         className="MagentaA11y__side-nav--sub-item">
                         <NavLink
                           to={`${fullPath}/overview`}
-                          className={`MagentaA11y__side-nav--link`}
-                          onClick={onClose}>
+                          className="MagentaA11y__side-nav--link"
+                          onClick={() => dialogRef.current?.close()}>
                           Overview
                         </NavLink>
                       </li>
@@ -86,8 +98,8 @@ const SideNav: React.FC<SideNavProps> = ({ platform, isVisible, onClose }) => {
                           className="MagentaA11y__side-nav--sub-item">
                           <NavLink
                             to={`${fullPath}/${child.name}`}
-                            className={`MagentaA11y__side-nav--link`}
-                            onClick={onClose}>
+                            className="MagentaA11y__side-nav--link"
+                            onClick={() => dialogRef.current?.close()}>
                             {child.label}
                           </NavLink>
                         </li>
@@ -102,16 +114,22 @@ const SideNav: React.FC<SideNavProps> = ({ platform, isVisible, onClose }) => {
           })}
         </ul>
       </div>
-    );
-  };
-
-  return (
-    <nav aria-label="criteria">
-      <div className="MagentaA11y__side-nav-container">
-        {renderNavItems(contentData[platform] as NavItem[])}
-      </div>
-    </nav>
+    </div>
   );
-};
+
+  if (viewportContext.isMobile) {
+    return (
+      <dialog
+        ref={dialogRef}
+        id="sideNavDialog"
+        aria-modal="true"
+        aria-labelledby="side-nav-title">
+        {renderNavItems(contentData[platform] as NavItem[])}
+      </dialog>
+    );
+  }
+
+  return renderNavItems(contentData[platform] as NavItem[]);
+});
 
 export default SideNav;
