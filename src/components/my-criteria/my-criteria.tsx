@@ -16,7 +16,6 @@ import { OrientationEnum } from 'components/custom-components/divider/divider.ty
 import React, { useEffect, useRef, useState } from 'react';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
-import { CriteriaType } from 'shared/types/shared-types';
 
 import '../my-criteria/my-criteria.scss';
 
@@ -32,24 +31,25 @@ const MyCriteria: React.FC = () => {
     new Set(savedCriteria.map((item) => item.tab))
   );
 
-  const criteria = React.useMemo(() => {
+  const activeCriteria = React.useMemo(() => {
     return savedCriteria.filter((item) => item.tab === uniqueLabels[activeTab]);
   }, [savedCriteria, uniqueLabels, activeTab]);
 
-  const criteriaChips: IChipSelectable[] = criteria.map((criteria) => {
-    return { id: criteria.id, label: criteria.label };
+  const criteriaChips: IChipSelectable[] = activeCriteria.map((criterion) => {
+    return { id: criterion.id, label: criterion.label };
   });
 
   const handleDelete = (id: string) => {
     removeCriteria(id);
-    if (criteria.length === 1) setActiveTab((prev) => Math.max(prev - 1, 0));
+    if (activeCriteria.length === 1)
+      setActiveTab((prev) => Math.max(prev - 1, 0));
   };
 
   const copyCriteria = (): void => {
     if (savedCriteria.length === 0) return;
 
-    const combinedContent = savedCriteria
-      .map((criteria) => criteria.content.trim())
+    const combinedContent = activeCriteria
+      .map((criterion) => criterion.content.trim())
       .join('\n\n---\n\n');
 
     navigator.clipboard
@@ -100,12 +100,10 @@ const MyCriteria: React.FC = () => {
             legend="Saved Criteria"
             ref={chipsContainerRef}
           />
-          {criteria.length > 1 && (
+          {activeCriteria.length > 1 && (
             <div className="w-100">
               <Button
-                onClick={() =>
-                  clearCriteria(uniqueLabels[activeTab] as CriteriaType)
-                }
+                onClick={() => clearCriteria(uniqueLabels[activeTab])}
                 type={ButtonType.button}
                 variant={ButtonVariant.tertiary}
                 size={ButtonSize.large}
@@ -116,10 +114,7 @@ const MyCriteria: React.FC = () => {
             </div>
           )}
           <div className="MagentaA11y__my-criteria__tab-container">
-            <md-tabs
-              ref={tabsRef}
-              aria-label="Content options for syntax"
-              role="tablist">
+            <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
               {uniqueLabels.map((label, index) => {
                 const formattedLabel = label.toLowerCase().replace(/\s+/g, '-');
 

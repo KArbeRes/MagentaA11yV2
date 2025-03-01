@@ -1,6 +1,8 @@
-import { SavedCriteria } from 'components/content-display/markdown-content/markdown-content.types';
+import {
+  ContentTab,
+  SavedCriteria,
+} from 'components/content-display/markdown-content/markdown-content.types';
 import React, { createContext, ReactNode, useContext } from 'react';
-import { CriteriaType } from 'shared/types/shared-types';
 
 const LOCAL_STORAGE_KEY: string = 'savedCriteria';
 
@@ -8,8 +10,7 @@ interface CriteriaContextType {
   savedCriteria: SavedCriteria[];
   saveCriteria: (criteria: SavedCriteria) => void;
   removeCriteria: (id: string) => void;
-  findCriteria: (searchTerm: string) => SavedCriteria[];
-  clearCriteria: (label: CriteriaType) => void;
+  clearCriteria: (label: string) => void;
 }
 
 const CriteriaContext = createContext<CriteriaContextType | undefined>(
@@ -63,33 +64,20 @@ const useSavedCriteria = () => {
     });
   }, []);
 
-  const clearCriteria = React.useCallback((criteriaType: CriteriaType) => {
+  const clearCriteria = React.useCallback((criteria: string) => {
     setSavedCriteria((prev) => {
       const updatedCriteria = prev.filter(
-        (item) => item.criteria !== criteriaType
+        (item: ContentTab) => item.tab !== criteria
       );
       saveToLocalStorage(updatedCriteria);
       return updatedCriteria;
     });
   }, []);
 
-  const filteredCriteria = React.useMemo(() => {
-    return savedCriteria.map((item) => ({
-      ...item,
-      lowerLabel: item.label.toLowerCase(),
-    }));
-  }, [savedCriteria]);
-
-  const findCriteria = (searchTerm: string): SavedCriteria[] => {
-    const term = searchTerm.toLowerCase();
-    return filteredCriteria.filter((item) => item.lowerLabel.includes(term));
-  };
-
   return {
     savedCriteria,
     saveCriteria,
     removeCriteria,
-    findCriteria,
     clearCriteria,
   };
 };

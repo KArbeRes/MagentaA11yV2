@@ -13,14 +13,14 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
-import { CriteriaType, Platforms } from 'shared/types/shared-types';
+import { Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
 import MarkdownContent from './markdown-content/markdown-content';
+import { ContentTab } from './markdown-content/markdown-content.types';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
-import { ContentTab } from './markdown-content/markdown-content.types';
 
 interface ContentDisplayProps {
   platform: Platforms;
@@ -43,7 +43,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
 
   const handleToggleCriteria = () => {
-    const activeLabel = tabs[activeTab]?.label as CriteriaType;
+    const activeLabel = tabs[activeTab]?.label;
     const activeContent = tabs[activeTab]?.content;
     const componentName = location.pathname.split('/').slice(-1)[0];
 
@@ -61,7 +61,6 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         id: criteriaId,
         label: componentName,
         content: activeContent,
-        criteria: activeLabel,
         tab: activeLabel,
         savedAt: new Date(),
       });
@@ -246,10 +245,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         <div className="MagentaA11y__nav-display__content">
           <div className="MagentaA11y__nav-display__content-actions">
             {/* Tabs */}
-            <md-tabs
-              ref={tabsRef}
-              aria-label="Content options for syntax"
-              role="tablist">
+            <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
               {tabs.map((tab, index) => {
                 const formattedLabel = tab.label
                   .toLowerCase()

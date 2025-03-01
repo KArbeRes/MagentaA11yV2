@@ -1,5 +1,3 @@
-import { CriteriaType } from 'shared/types/shared-types';
-
 export interface MediaProps {
   src?: string;
   alt?: string;
@@ -16,7 +14,6 @@ export interface ContentTab {
 
 export interface SavedCriteria extends ContentTab {
   id: string;
-  criteria: CriteriaType;
   savedAt: Date;
 }
 

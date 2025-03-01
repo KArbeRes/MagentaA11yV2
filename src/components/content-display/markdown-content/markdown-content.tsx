@@ -1,3 +1,5 @@
+import Divider from 'components/custom-components/divider/divider';
+import { OrientationEnum } from 'components/custom-components/divider/divider.types';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { NavLink } from 'react-router-dom';
@@ -5,8 +7,6 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { MarkdownContentProps, MediaProps } from './markdown-content.types';
-import Divider from 'components/custom-components/divider/divider';
-import { OrientationEnum } from 'components/custom-components/divider/divider.types';
 
 import './markdown-content.scss';
 
@@ -29,7 +29,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
   }, {} as Record<string, typeof tabs>);
 
   return (
-    <div>
+    <>
       {Object.entries(groupedTabs).map(([groupKey, groupTabs], index) => {
         const formattedGroupKey = groupKey.toLowerCase().replace(/\s+/g, '-');
         return (
@@ -118,7 +118,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
