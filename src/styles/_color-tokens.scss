@@ -189,6 +189,46 @@
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-black);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-600);
+
+    //Divider tokens
+    --magentaa11y-color-fill-divider-brand: var(
+      --magentaa11y-color-brand-primary-400
+    ); /* Fill for branded  dividers */
+    --magentaa11y-color-fill-divider-strong: var(
+      --magentaa11y-color-brand-grayscale-600
+    ); /* Fill for strong dividers */
+    --magentaa11y-color-fill-divider-default: var(
+      --magentaa11y-color-brand-grayscale-300
+    ); /* Fill for default dividers */
+
+    //Chip tokens
+    --magentaa11y-color-border-chips-default: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Border for default & unavailable chips. */
+    --magentaa11y-color-fill-chips-icon-selected: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Fill for icons on selected chip variant. */
+    --magentaa11y-color-fill-chips-icon-hover: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Fill for icons on hover chip variant. */
+    --magentaa11y-color-fill-chips-icon-default: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Fill for icons on default chip variant. */
+    --magentaa11y-color-fill-chips-selected: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Background fill for selected chip variant. */
+    --magentaa11y-color-fill-chips-hover: var(
+      --magentaa11y-color-brand-grayscale-600
+    ); /* Background fill for hover chip variant. */
+    --magentaa11y-color-text-chips-selected: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Reserved for text on selected chip variant. */
+    --magentaa11y-color-text-chips-hover: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Reserved for text on default chip variant. */
+    --magentaa11y-color-text-chips-default: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Reserved for text on default chip variant. */
   } @else if $theme == dark {
     // Dark Theme
     // Text Colors
@@ -370,5 +410,45 @@
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-white);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-100);
+
+    --magentaa11y-color-fill-divider-brand: var(
+      --magentaa11y-color-brand-primary-300
+    ); /* Fill for branded  dividers */
+    --magentaa11y-color-fill-divider-strong: var(
+      --magentaa11y-color-brand-grayscale-600
+    ); /* Fill for strong dividers */
+    --magentaa11y-color-fill-divider-default: var(
+      --magentaa11y-color-brand-grayscale-700
+    ); /* Fill for default dividers */
+
+    //chips tokens
+
+    --magentaa11y-color-border-chips-default: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Border for default & unavailable chips. */
+    --magentaa11y-color-fill-chips-icon-selected: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Fill for icons on selected chip variant. */
+    --magentaa11y-color-fill-chips-icon-hover: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Fill for icons on hover chip variant. */
+    --magentaa11y-color-fill-chips-icon-default: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Fill for icons on default chip variant. */
+    --magentaa11y-color-fill-chips-selected: var(
+      --magentaa11y-color-brand-grayscale-100
+    ); /* Background fill for selected chip variant. */
+    --magentaa11y-color-fill-chips-hover: var(
+      --magentaa11y-color-brand-grayscale-300
+    ); /* Background fill for hover chip variant. */
+    --magentaa11y-color-text-chips-selected: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Reserved for text on selected chip variant. */
+    --magentaa11y-color-text-chips-hover: var(
+      --magentaa11y-color-brand-grayscale-1000
+    ); /* Reserved for text on hover chip variant. */
+    --magentaa11y-color-text-chips-default: var(
+      --magentaa11y-color-brand-grayscale-200
+    ); /* Reserved for text on default chip variant. */
   }
 }

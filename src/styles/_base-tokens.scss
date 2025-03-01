@@ -39,11 +39,12 @@
 
   // Font families
   --magentaa11y-font-family-body: BlinkMacSystemFont, -apple-system, Roboto,
-    Helvetica, "Segoe UI", Arial, sans-serif; /* Used for body copy, buttons, and links on web. */
+    Helvetica, 'Segoe UI', Arial, sans-serif; /* Used for body copy, buttons, and links on web. */
   --magentaa11y-font-family-display: TeleNeo; /* Reserved for headline display. */
   --magentaa11y-font-family-header: TeleNeo; /* Reserved for headline display. */
 
   // Border radius
+  --magentaa11y-border-radius-size-24: 24px; /* Border radius for cards. */
   --magentaa11y-border-radius-size-22: 22px; /* Border radius for cards. */
   --magentaa11y-border-radius-size-12: 12px; /* Border radius for cards. */
   --magentaa11y-border-radius-size-10: 10px; /* Border radius for app image placeholders. */
