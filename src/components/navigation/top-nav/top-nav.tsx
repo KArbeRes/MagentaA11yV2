@@ -28,7 +28,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const [expanded, setExpanded] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  const hasNotifications = navItems.some((item) => item.withBadge);
+  const notificationCount = navItems.filter((item) => item.withBadge).length;
 
   const handleMenuClick = () => {
     setExpanded((expanded) => !expanded);
@@ -100,7 +100,9 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
       {viewportContext.isMobile && (
         <IconButton
           a11yLabel={`Menu${
-            hasNotifications ? ', criteria has been saved' : ''
+            notificationCount
+              ? `, ${notificationCount} criteria has been saved`
+              : ''
           }`}
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
@@ -108,7 +110,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           size={ButtonSize.small}
           ariaControls="main"
           onClick={handleMenuClick}
-          hasBadge={!expanded && hasNotifications}
+          hasBadge={!expanded && notificationCount > 0}
           badgeNumber={0}></IconButton>
       )}
 

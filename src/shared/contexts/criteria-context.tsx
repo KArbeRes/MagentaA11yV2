@@ -1,14 +1,8 @@
-import { ContentTab } from 'components/content-display/markdown-content/markdown-content.types';
+import { SavedCriteria } from 'components/content-display/markdown-content/markdown-content.types';
 import React, { createContext, ReactNode, useContext } from 'react';
 import { CriteriaType } from 'shared/types/shared-types';
 
 const LOCAL_STORAGE_KEY: string = 'savedCriteria';
-
-interface SavedCriteria extends ContentTab {
-  id: string;
-  criteria: CriteriaType;
-  savedAt: Date;
-}
 
 interface CriteriaContextType {
   savedCriteria: SavedCriteria[];

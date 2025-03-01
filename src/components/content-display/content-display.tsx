@@ -20,6 +20,7 @@ import MarkdownContent from './markdown-content/markdown-content';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
+import { ContentTab } from './markdown-content/markdown-content.types';
 
 interface ContentDisplayProps {
   platform: Platforms;
@@ -61,6 +62,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         label: componentName,
         content: activeContent,
         criteria: activeLabel,
+        tab: activeLabel,
         savedAt: new Date(),
       });
     }
@@ -140,17 +142,26 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     children,
   } = currentItem;
 
-  const tabs = [
-    { content: condensed ?? '', label: 'Condensed' },
-    { content: gherkin ?? '', label: 'Gherkin' },
-    { content: criteria ?? '', label: 'Criteria' },
-    { content: developerNotes ?? '', label: 'Developer Notes' },
+  const tabs: ContentTab[] = [
+    { content: condensed ?? '', label: 'Condensed', tab: 'Condensed' },
+    { content: gherkin ?? '', label: 'Gherkin', tab: 'Gherkin' },
+    { content: criteria ?? '', label: 'Criteria', tab: 'Criteria' },
+    {
+      content: developerNotes ?? '',
+      label: 'Developer Notes',
+      tab: 'Developer Notes',
+    },
     {
       content: androidDeveloperNotes ?? '',
       label: 'Android Developer Notes',
+      tab: 'Android Developer Notes',
     },
-    { content: iosDeveloperNotes ?? '', label: 'iOS Developer Notes' },
-    { content: videos ?? '', label: 'Videos' },
+    {
+      content: iosDeveloperNotes ?? '',
+      label: 'iOS Developer Notes',
+      tab: 'iOS Developer Notes',
+    },
+    { content: videos ?? '', label: 'Videos', tab: 'Videos' },
   ].filter((tab) => tab.content.trim() !== '');
 
   const copyTabContent = (content: string) => {
@@ -239,15 +250,21 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
               ref={tabsRef}
               aria-label="Content options for syntax"
               role="tablist">
-              {tabs.map((tab, index) => (
-                <md-primary-tab
-                  key={tab.label}
-                  aria-selected={activeTab === index ? 'true' : 'false'}
-                  id={`${tab.label.toLowerCase().replace(' ', '-')}-tab`}
-                  role="tab">
-                  {tab.label}
-                </md-primary-tab>
-              ))}
+              {tabs.map((tab, index) => {
+                const formattedLabel = tab.label
+                  .toLowerCase()
+                  .replace(/\s+/g, '-');
+                return (
+                  <md-primary-tab
+                    key={tab.label}
+                    aria-selected={activeTab === index ? 'true' : 'false'}
+                    aria-controls={`${formattedLabel}-tabpanel`}
+                    id={`${formattedLabel}-tab`}
+                    role="tab">
+                    {tab.label}
+                  </md-primary-tab>
+                );
+              })}
             </md-tabs>
             {actionsButtonsVisible && (
               <div className="MagentaA11y__nav-display__content-actions__buttons">

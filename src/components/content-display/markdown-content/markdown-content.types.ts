@@ -1,3 +1,5 @@
+import { CriteriaType } from 'shared/types/shared-types';
+
 export interface MediaProps {
   src?: string;
   alt?: string;
@@ -9,6 +11,13 @@ export interface MediaProps {
 export interface ContentTab {
   label: string;
   content: string;
+  tab: string;
+}
+
+export interface SavedCriteria extends ContentTab {
+  id: string;
+  criteria: CriteriaType;
+  savedAt: Date;
 }
 
 export interface MarkdownContentProps {

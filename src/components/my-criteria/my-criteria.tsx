@@ -28,12 +28,12 @@ const MyCriteria: React.FC = () => {
   const tabsRef = useRef<HTMLElement>(null);
   const chipsContainerRef = useRef<HTMLDivElement>(null);
 
-  const uniqueLabels: CriteriaType[] = Object.values(CriteriaType);
+  const uniqueLabels: string[] = Array.from(
+    new Set(savedCriteria.map((item) => item.tab))
+  );
 
   const criteria = React.useMemo(() => {
-    return savedCriteria.filter(
-      (item) => item.criteria === uniqueLabels[activeTab]
-    );
+    return savedCriteria.filter((item) => item.tab === uniqueLabels[activeTab]);
   }, [savedCriteria, uniqueLabels, activeTab]);
 
   const criteriaChips: IChipSelectable[] = criteria.map((criteria) => {
@@ -120,16 +120,21 @@ const MyCriteria: React.FC = () => {
               ref={tabsRef}
               aria-label="Content options for syntax"
               role="tablist">
-              {uniqueLabels.map((label, index) => (
-                <md-primary-tab
-                  key={label}
-                  aria-selected={activeTab === index ? 'true' : 'false'}
-                  id={`${label.toLowerCase().replace(/\s+/g, '-')}-tab`}
-                  role="tab"
-                  onClick={() => setActiveTab(index)}>
-                  {label}
-                </md-primary-tab>
-              ))}
+              {uniqueLabels.map((label, index) => {
+                const formattedLabel = label.toLowerCase().replace(/\s+/g, '-');
+
+                return (
+                  <md-primary-tab
+                    key={label}
+                    aria-selected={activeTab === index ? 'true' : 'false'}
+                    id={`${formattedLabel}-tab`}
+                    role="tab"
+                    aria-controls={`${formattedLabel}-tabpanel`}
+                    onClick={() => setActiveTab(index)}>
+                    {label}
+                  </md-primary-tab>
+                );
+              })}
             </md-tabs>
 
             <Button
@@ -145,7 +150,7 @@ const MyCriteria: React.FC = () => {
         </div>
       )}
 
-      <MarkdownContent tabs={criteria} />
+      <MarkdownContent tabs={savedCriteria} activeTab={activeTab} />
     </div>
   );
 };

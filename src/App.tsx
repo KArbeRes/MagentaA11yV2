@@ -34,7 +34,9 @@ const App: React.FC = () => {
       href: '/my-criteria',
       icon: <BookmarkIconOutlined />,
       withBadge: badgeString,
-      ariaLabel: badgeString ? `${badgeString}, saved criteria` : '',
+      ariaLabel: badgeString
+        ? `My Criteria, ${badgeString} criteria has been saved`
+        : '',
     },
   ];
   return (
