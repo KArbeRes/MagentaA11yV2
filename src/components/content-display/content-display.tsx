@@ -42,6 +42,8 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
 
   const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
 
+  console.log({ activeTab });
+
   const handleToggleCriteria = () => {
     const activeLabel = tabs[activeTab]?.label;
     const activeContent = tabs[activeTab]?.content;
@@ -247,6 +249,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
             {/* Tabs */}
             <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
               {tabs.map((tab, index) => {
+                console.log({ activeTab, index });
                 const formattedLabel = tab.label
                   .toLowerCase()
                   .replace(/\s+/g, '-');
@@ -256,7 +259,8 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
                     aria-selected={activeTab === index ? 'true' : 'false'}
                     aria-controls={`${formattedLabel}-tabpanel`}
                     id={`${formattedLabel}-tab`}
-                    role="tab">
+                    role="tab"
+                    {...(activeTab === index && { active: true })}>
                     {tab.label}
                   </md-primary-tab>
                 );
