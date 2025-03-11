@@ -23,13 +23,24 @@ const MyCriteria: React.FC = () => {
   const { savedCriteria, removeCriteria, clearCriteria } = useCriteria();
   const [copiedContent, setCopiedContent] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [uniqueLabels, setUniqueLabels] = useState<string[]>([]);
 
   const tabsRef = useRef<HTMLElement>(null);
   const chipsContainerRef = useRef<HTMLDivElement>(null);
 
-  const uniqueLabels: string[] = Array.from(
-    new Set(savedCriteria.map((item) => item.tab))
-  );
+  useEffect(() => {
+    setUniqueLabels((prevLabels) => {
+      const newLabels = savedCriteria
+        .map((item) => item.tab)
+        .filter((tab, index, arr) => arr.indexOf(tab) === index);
+
+      return prevLabels.length > 0
+        ? prevLabels
+            .filter((label) => newLabels.includes(label))
+            .concat(newLabels.filter((label) => !prevLabels.includes(label)))
+        : newLabels;
+    });
+  }, [savedCriteria]);
 
   const activeCriteria = React.useMemo(() => {
     return savedCriteria.filter((item) => item.tab === uniqueLabels[activeTab]);
@@ -40,9 +51,24 @@ const MyCriteria: React.FC = () => {
   });
 
   const handleDelete = (id: string) => {
+    const index = criteriaChips.findIndex((chip) => chip.id === id);
+    let nextFocusIndex: number | null = index > 0 ? index - 1 : index;
+
     removeCriteria(id);
-    if (activeCriteria.length === 1)
+
+    setTimeout(() => {
+      if (chipsContainerRef.current) {
+        const chipButtons =
+          chipsContainerRef.current.querySelectorAll('button');
+        if (nextFocusIndex !== null && chipButtons[nextFocusIndex]) {
+          (chipButtons[nextFocusIndex] as HTMLElement).focus();
+        }
+      }
+    }, 0);
+
+    if (criteriaChips.length === 0) {
       setActiveTab((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   const copyCriteria = (): void => {
@@ -92,27 +118,6 @@ const MyCriteria: React.FC = () => {
       <Divider orientation={OrientationEnum.HORIZONTAL} />
       {savedCriteria.length > 0 && (
         <div className="MagentaA11y__my-criteria__actions">
-          <Chips
-            variant={ChipType.BUTTON}
-            chips={criteriaChips}
-            onDelete={handleDelete}
-            size={ChipSize.SMALL}
-            legend="Saved Criteria"
-            ref={chipsContainerRef}
-          />
-          {activeCriteria.length > 1 && (
-            <div className="w-100">
-              <Button
-                onClick={() => clearCriteria(uniqueLabels[activeTab])}
-                type={ButtonType.button}
-                variant={ButtonVariant.tertiary}
-                size={ButtonSize.large}
-                label={'Remove All'}
-                id="clear-all-btn"
-              />
-              <Divider orientation={OrientationEnum.HORIZONTAL} />
-            </div>
-          )}
           <div className="MagentaA11y__my-criteria__tab-container">
             <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
               {uniqueLabels.map((label, index) => {
@@ -142,6 +147,27 @@ const MyCriteria: React.FC = () => {
               id="copy-criteria"
             />
           </div>
+          <Chips
+            variant={ChipType.BUTTON}
+            chips={criteriaChips}
+            onDelete={handleDelete}
+            size={ChipSize.SMALL}
+            legend="Saved Criteria"
+            ref={chipsContainerRef}
+          />
+          {activeCriteria.length > 1 && (
+            <div className="w-100">
+              <Button
+                onClick={() => clearCriteria(uniqueLabels[activeTab])}
+                type={ButtonType.button}
+                variant={ButtonVariant.tertiary}
+                size={ButtonSize.large}
+                label={'Remove All'}
+                id="clear-all-btn"
+              />
+              <Divider orientation={OrientationEnum.HORIZONTAL} />
+            </div>
+          )}
         </div>
       )}
 
