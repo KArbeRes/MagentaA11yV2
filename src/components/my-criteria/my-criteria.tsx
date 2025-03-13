@@ -1,3 +1,4 @@
+import { formatTabLabel } from 'components/content-display/content-display';
 import MarkdownContent from 'components/content-display/markdown-content/markdown-content';
 import {
   ButtonSize,
@@ -25,33 +26,46 @@ import '../my-criteria/my-criteria.scss';
 const MyCriteria: React.FC = () => {
   const { savedCriteria, removeCriteria, clearCriteria } = useCriteria();
   const [copiedContent, setCopiedContent] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<number>(0);
-  const uniqueLabels = useMemo(() => ['Condensed', 'Gherkin'], []);
+  const [selectedTabIndex, setActiveTab] = useState<number>(0);
+  const mergedCriteriaTabs = useMemo(() => {
+    return ['Condensed', 'Gherkin'].map((tabName) => ({
+      tab: tabName,
+      content: savedCriteria
+        .filter((item) => item.tab === tabName)
+        .map((item) => item.content.trim())
+        .join('\n\n---\n\n'),
+    }));
+  }, [savedCriteria]);
 
-  const tabsRef = useRef<HTMLElement>(null);
+  const tabsElementRef = useRef<HTMLElement>(null);
   const chipsContainerRef = useRef<HTMLDivElement>(null);
-  const emptyStateRef = useRef<HTMLDivElement>(null);
+  const emptyMessageRef = useRef<HTMLDivElement>(null);
 
-  const activeCriteria = React.useMemo(() => {
-    return savedCriteria.filter((item) => item.tab === uniqueLabels[activeTab]);
-  }, [savedCriteria, uniqueLabels, activeTab]);
+  const currentTabContent = useMemo(() => {
+    return mergedCriteriaTabs[selectedTabIndex]?.content || '';
+  }, [mergedCriteriaTabs, selectedTabIndex]);
 
-  const criteriaChips: IChipSelectable[] = activeCriteria.map((criterion) => {
-    return { id: criterion.id, label: criterion.label };
-  });
+  const currentTabChips: IChipSelectable[] = useMemo(() => {
+    return savedCriteria
+      .filter((item) => item.tab === mergedCriteriaTabs[selectedTabIndex]?.tab)
+      .map((criterion) => ({
+        id: criterion.id,
+        label: criterion.label,
+      }));
+  }, [savedCriteria, mergedCriteriaTabs, selectedTabIndex]);
 
-  const focusFirstLinkInEmptyState = () => {
-    if (emptyStateRef.current) {
-      const firstLink = emptyStateRef.current.querySelector('a');
+  const focusFirstEmptyStateLink = () => {
+    if (emptyMessageRef.current) {
+      const firstLink = emptyMessageRef.current.querySelector('a');
       if (firstLink) {
         (firstLink as HTMLElement).focus();
       }
     }
   };
 
-  const handleDelete = (id: string) => {
-    const index = criteriaChips.findIndex((chip) => chip.id === id);
-    const updatedChips = criteriaChips.filter((chip) => chip.id !== id);
+  const deleteCriteriaChip = (id: string) => {
+    const index = currentTabChips.findIndex((chip) => chip.id === id);
+    const updatedChips = currentTabChips.filter((chip) => chip.id !== id);
     let nextFocusIndex = Math.min(index, updatedChips.length - 1);
 
     removeCriteria(id);
@@ -64,31 +78,30 @@ const MyCriteria: React.FC = () => {
           (chipButtons[nextFocusIndex] as HTMLElement).focus();
         }
       } else if (updatedChips.length === 0) {
-        focusFirstLinkInEmptyState();
+        focusFirstEmptyStateLink();
       }
     }, 0);
   };
 
-  const copyCriteria = (): void => {
-    if (savedCriteria.length === 0) return;
-
-    const combinedContent = activeCriteria
-      .map((criterion) => criterion.content.trim())
-      .join('\n\n---\n\n');
+  const copyCurrentCriteria = (): void => {
+    if (!currentTabContent.trim()) return;
 
     navigator.clipboard
-      .writeText(combinedContent)
+      .writeText(currentTabContent)
       .then(() => {
-        setCopiedContent(combinedContent);
+        setCopiedContent(currentTabContent);
       })
       .catch((err) => console.error('Failed to copy content:', err));
   };
 
-  const handleClearCriteria = () => {
-    clearCriteria(uniqueLabels[activeTab]);
+  const clearCurrentTabCriteria = () => {
+    const activeTabLabel = mergedCriteriaTabs[selectedTabIndex]?.tab;
+    if (!activeTabLabel) return;
+
+    clearCriteria(activeTabLabel);
 
     setTimeout(() => {
-      focusFirstLinkInEmptyState();
+      focusFirstEmptyStateLink();
     }, 0);
   };
 
@@ -96,14 +109,14 @@ const MyCriteria: React.FC = () => {
     if (!copiedContent) return;
 
     const interval = setInterval(async () => {
-      const isStillInClipboard = await isContentInClipboard(copiedContent);
+      const isStillInClipboard = await checkClipboardContent(copiedContent);
       if (!isStillInClipboard) setCopiedContent(null);
     }, 3000);
 
     return () => clearInterval(interval);
   }, [copiedContent]);
 
-  const isContentInClipboard = async (content: string) => {
+  const checkClipboardContent = async (content: string) => {
     try {
       const clipboardText = await navigator.clipboard.readText();
       return clipboardText === content;
@@ -124,27 +137,29 @@ const MyCriteria: React.FC = () => {
       <Divider orientation={OrientationEnum.HORIZONTAL} />
       <div className="MagentaA11y__my-criteria__actions">
         <div className="MagentaA11y__my-criteria__tab-container">
-          <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
-            {uniqueLabels.map((label, index) => {
-              const formattedLabel = label.toLowerCase().replace(/\s+/g, '-');
-
+          <md-tabs
+            ref={tabsElementRef}
+            aria-label="Criteria options"
+            role="tablist">
+            {mergedCriteriaTabs.map((tab, index) => {
+              const formattedLabel = formatTabLabel(tab.tab);
               return (
                 <md-primary-tab
-                  key={label}
-                  aria-selected={activeTab === index ? 'true' : 'false'}
+                  key={tab.tab}
+                  aria-selected={selectedTabIndex === index ? 'true' : 'false'}
                   id={`${formattedLabel}-tab`}
                   role="tab"
                   aria-controls={`${formattedLabel}-tabpanel`}
                   onClick={() => setActiveTab(index)}>
-                  {label}
+                  {tab.tab}
                 </md-primary-tab>
               );
             })}
           </md-tabs>
 
-          {criteriaChips.length > 0 && (
+          {currentTabChips.length > 0 && (
             <Button
-              onClick={copyCriteria}
+              onClick={copyCurrentCriteria}
               type={ButtonType.button}
               variant={ButtonVariant.primary}
               size={ButtonSize.large}
@@ -154,46 +169,62 @@ const MyCriteria: React.FC = () => {
             />
           )}
         </div>
-        <Chips
-          variant={ChipType.BUTTON}
-          chips={criteriaChips}
-          onDelete={handleDelete}
-          size={ChipSize.SMALL}
-          legend="Saved Criteria"
-          ref={chipsContainerRef}
-        />
-        {activeCriteria.length > 1 && (
-          <div className="w-100">
-            <Button
-              onClick={handleClearCriteria}
-              type={ButtonType.button}
-              variant={ButtonVariant.tertiary}
-              size={ButtonSize.large}
-              label={`Remove All (${criteriaChips.length})`}
-              id="clear-all-btn"
-            />
-            <Divider orientation={OrientationEnum.HORIZONTAL} />
-          </div>
-        )}
       </div>
 
-      {activeCriteria.length > 0 ? (
-        <MarkdownContent tabs={activeCriteria} />
-      ) : (
-        <div className="MagentaA11y__my-criteria--empty" ref={emptyStateRef}>
-          <p>
-            It seems you haven’t saved any criteria. Start by checking out{' '}
-            <Link to={`${getFirstOverviewLink(Platforms.WEB)}`}>
-              Web Criteria
-            </Link>{' '}
-            or{' '}
-            <Link to={`${getFirstOverviewLink(Platforms.NATIVE)}`}>
-              Native Criteria
-            </Link>
-            .
-          </p>
-        </div>
-      )}
+      {mergedCriteriaTabs.map((criteria, index) => {
+        const formattedLabel = formatTabLabel(criteria.tab);
+        return (
+          <div
+            key={formattedLabel}
+            role="tabpanel"
+            id={`${formattedLabel}-tabpanel`}
+            aria-labelledby={`${formattedLabel}-tab`}
+            className={
+              selectedTabIndex === index
+                ? 'MagentaA11y__my-criteria__criteria-list'
+                : 'hidden'
+            }>
+            <Chips
+              variant={ChipType.BUTTON}
+              chips={currentTabChips}
+              onDelete={deleteCriteriaChip}
+              size={ChipSize.SMALL}
+              legend="Saved Criteria"
+              ref={chipsContainerRef}
+            />
+            {criteria.content ? (
+              <>
+                <Button
+                  onClick={clearCurrentTabCriteria}
+                  type={ButtonType.button}
+                  variant={ButtonVariant.tertiary}
+                  size={ButtonSize.large}
+                  label={`Remove All (${currentTabChips.length})`}
+                  id="clear-all-btn"
+                />
+                <Divider orientation={OrientationEnum.HORIZONTAL} />
+                <MarkdownContent content={criteria.content} />
+              </>
+            ) : (
+              <div
+                className="MagentaA11y__my-criteria--empty"
+                ref={emptyMessageRef}>
+                <p>
+                  It seems you haven’t saved any criteria. Start by checking out{' '}
+                  <Link to={`${getFirstOverviewLink(Platforms.WEB)}`}>
+                    Web Criteria
+                  </Link>{' '}
+                  or{' '}
+                  <Link to={`${getFirstOverviewLink(Platforms.NATIVE)}`}>
+                    Native Criteria
+                  </Link>
+                  .
+                </p>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };

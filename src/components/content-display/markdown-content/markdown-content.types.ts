@@ -18,7 +18,7 @@ export interface SavedCriteria extends ContentTab {
 }
 
 export interface MarkdownContentProps {
-  tabs: ContentTab[];
+  content: string;
   activeTab?: number;
   assetBasePath?: string;
 }

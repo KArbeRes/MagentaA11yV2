@@ -28,6 +28,9 @@ interface ContentDisplayProps {
   onToggleSideNav: () => void;
 }
 
+export const formatTabLabel = (label: string) =>
+  label.toLowerCase().replace(/\s+/g, '-');
+
 const ASSET_BASE_PATH = '/MagentaA11yV2/content/assets';
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({
@@ -247,9 +250,8 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
             {/* Tabs */}
             <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
               {tabs.map((tab, index) => {
-                const formattedLabel = tab.label
-                  .toLowerCase()
-                  .replace(/\s+/g, '-');
+                const formattedLabel = formatTabLabel(tab.label);
+
                 return (
                   <md-primary-tab
                     key={tab.label}
@@ -290,11 +292,24 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
               </div>
             )}
           </div>
-          <MarkdownContent
-            tabs={tabs}
-            activeTab={activeTab}
-            assetBasePath={ASSET_BASE_PATH}
-          />
+          {tabs.map((tab, index) => {
+            const formattedLabel = formatTabLabel(tab.label);
+            return (
+              <div
+                role="tabpanel"
+                id={`${formattedLabel}-tabpanel`}
+                aria-labelledby={`${formattedLabel}-tab`}
+                key={index}
+                className={index !== activeTab ? 'hidden' : undefined}>
+                <MarkdownContent
+                  key={index}
+                  content={tab.content}
+                  activeTab={activeTab}
+                  assetBasePath={ASSET_BASE_PATH}
+                />
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
