@@ -182,15 +182,15 @@ const MyCriteria: React.FC = () => {
       ) : (
         <div className="MagentaA11y__my-criteria--empty" ref={emptyStateRef}>
           <p>
-            No Criteria Available, check out{' '}
+            It seems you haven’t saved any criteria. Start by checking out{' '}
             <Link to={`${getFirstOverviewLink(Platforms.WEB)}`}>
               Web Criteria
             </Link>{' '}
             or{' '}
             <Link to={`${getFirstOverviewLink(Platforms.NATIVE)}`}>
               Native Criteria
-            </Link>{' '}
-            to save some criteria.
+            </Link>
+            .
           </p>
         </div>
       )}
