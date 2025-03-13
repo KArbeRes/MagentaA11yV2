@@ -16,7 +16,7 @@ const Chips = forwardRef<HTMLDivElement, IChipGroup>(
             {chips.map((chip: IChipSelectable) => (
               <div key={chip.id} className="MagentaA11y-chip-container">
                 <button
-                  aria-label={`${chip.label}, delete`}
+                  aria-label={`remove ${chip.label} criteria`}
                   id={chip.id}
                   onClick={() => onDelete(chip.id)}>
                   <span className="MagentaA11y-chip">

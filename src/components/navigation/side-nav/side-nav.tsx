@@ -61,13 +61,15 @@ const SideNav = forwardRef(({ platform }: SideNavProps, ref) => {
           <h1 className="MagentaA11y__side-nav--title" id="side-nav-title">
             Criteria
           </h1>
-          <IconButton
-            a11yLabel="close"
-            icon={Icons.closeOutlined}
-            onClick={() => dialogRef.current?.close()}
-            id="close-side-nav-btn"
-            ref={closeButtonRef}
-          />
+          {viewportContext.isMobile && (
+            <IconButton
+              a11yLabel="close"
+              icon={Icons.closeOutlined}
+              onClick={() => dialogRef.current?.close()}
+              id="close-side-nav-btn"
+              ref={closeButtonRef}
+            />
+          )}
         </div>
         <ul className="MagentaA11y__side-nav--list">
           {items.map((item) => {

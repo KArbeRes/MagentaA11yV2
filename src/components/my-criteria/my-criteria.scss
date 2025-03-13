@@ -1,3 +1,5 @@
+@use '../../styles/links' as *;
+
 .MagentaA11y__my-criteria {
   --heading-font: var(--magentaa11y-typeset-headline-xxl-xtrastrong);
   --headline-font: var(--magentaa11y-typeset-headline-sm-strong);
@@ -46,6 +48,12 @@
     flex-direction: var(--tab-container-flex-direction);
     justify-content: space-between;
     gap: var(--magentaa11y-spacing-size-24);
+  }
+
+  &--empty {
+    a {
+      @include base-inline-link;
+    }
   }
 
   #copy-criteria {

@@ -12,7 +12,7 @@ import { TopNavProps } from '../nav.types';
 
 import './top-nav.scss';
 
-const getFirstOverviewLink = (platform: Platforms) => {
+export const getFirstOverviewLink = (platform: Platforms) => {
   const items = contentData[platform];
   for (const item of items) {
     if (item.children?.length) {
