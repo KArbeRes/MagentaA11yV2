@@ -15,12 +15,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src", // Enable base URL for absolute imports
-    "typeRoots": ["./node_modules/@types", "./src/shared"], // Add custom type declarations
+    "baseUrl": "./src",
+    "typeRoots": ["./node_modules/@types", "./src/@types"],
     "paths": {
-      "shared/*": ["shared/*"], // Define alias for shared folder
-      "utils/*": ["utils/*"], // Define alias for utils folder if needed
-      "components/*": ["components/*"] // Define alias for components folder
+      "favicons": ["@types/favicons"],
+      "shared/*": ["shared/*"],
+      "utils/*": ["utils/*"],
+      "components/*": ["components/*"]
     }
   },
   "include": ["src"]

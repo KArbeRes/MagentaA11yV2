@@ -5,6 +5,7 @@ export interface NavItem {
   href: string;
   icon?: ReactNode;
   ariaLabel?: string;
+  withBadge?: string;
 }
 
 export interface TopNavProps {

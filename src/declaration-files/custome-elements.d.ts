@@ -1,47 +1,47 @@
 // src/custom-elements.d.ts
 declare namespace JSX {
   interface IntrinsicElements {
-    "md-outlined-button": React.DetailedHTMLProps<
+    'md-outlined-button': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     > & { href?: string };
 
-    "md-text-button": React.DetailedHTMLProps<
+    'md-text-button': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     > & { href?: string; name?: string };
 
-    "md-filled-button": React.DetailedHTMLProps<
+    'md-filled-button': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     >;
 
-    "md-icon-button": React.DetailedHTMLProps<
+    'md-icon-button': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     >;
 
-    "md-filled-tonal-button": React.DetailedHTMLProps<
+    'md-filled-tonal-button': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     >;
 
-    "md-list": React.DetailedHTMLProps<
+    'md-list': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     >;
 
-    "md-list-item": React.DetailedHTMLProps<
+    'md-list-item': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     > & { class?: string };
 
-    "md-icon": React.DetailedHTMLProps<
+    'md-icon': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     > & { slot?: string };
 
-    "md-tabs": React.DetailedHTMLProps<
+    'md-tabs': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     > & {
@@ -49,12 +49,14 @@ declare namespace JSX {
       onselected?: (event: Event) => void; // Event handler for the 'selected' event
     };
 
-    "md-primary-tab": React.DetailedHTMLProps<
+    'md-primary-tab': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
-    >;
+    > & {
+      active?: boolean;
+    };
 
-    "md-secondary-tab": React.DetailedHTMLProps<
+    'md-secondary-tab': React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement>,
       HTMLElement
     >;

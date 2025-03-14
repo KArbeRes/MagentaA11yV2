@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import { ButtonSize } from 'components/custom-components/buttons/button-types';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
-import { useCriteria } from 'shared/contexts/criteria-context';
 import { Platforms } from 'shared/types/shared-types';
 import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
@@ -13,7 +12,7 @@ import { TopNavProps } from '../nav.types';
 
 import './top-nav.scss';
 
-const getFirstOverviewLink = (platform: Platforms) => {
+export const getFirstOverviewLink = (platform: Platforms) => {
   const items = contentData[platform];
   for (const item of items) {
     if (item.children?.length) {
@@ -27,14 +26,67 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   const viewportContext = useViewport();
   const location = useLocation();
   const [expanded, setExpanded] = useState(false);
-  const { savedCriteria } = useCriteria();
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const notificationCount = navItems.filter((item) => item.withBadge).length;
 
   const handleMenuClick = () => {
     setExpanded((expanded) => !expanded);
   };
 
+  useEffect(() => {
+    if (!viewportContext.isMobile) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setExpanded(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [viewportContext.isMobile]);
+
+  useEffect(() => {
+    if (!viewportContext.isMobile) return;
+
+    const handleTabKey = (event: KeyboardEvent) => {
+      if (!expanded) return;
+
+      const focusableElements = navRef.current?.querySelectorAll<HTMLElement>(
+        'a, button, input, [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusableElements && focusableElements.length > 0) {
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (
+          !event.shiftKey &&
+          document.activeElement === lastElement &&
+          event.key === 'Tab'
+        ) {
+          setExpanded(false);
+        } else if (
+          event.shiftKey &&
+          document.activeElement === firstElement &&
+          event.key === 'Tab'
+        ) {
+          setExpanded(false);
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => {
+      document.removeEventListener('keydown', handleTabKey);
+    };
+  }, [expanded, viewportContext.isMobile]);
+
   return (
-    <div className="MagentaA11y__navbar" data-theme="dark">
+    <div className="MagentaA11y__navbar" data-theme="dark" ref={navRef}>
       {/* Brand Section */}
       <div className="MagentaA11y__brand">
         <NavLink
@@ -47,13 +99,22 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
 
       {viewportContext.isMobile && (
         <IconButton
-          a11yLabel={'Menu Button'}
+          a11yLabel={
+            viewportContext.isMobile && expanded
+              ? 'Close'
+              : `Menu${
+                  notificationCount
+                    ? `, ${notificationCount} criteria has been saved`
+                    : ''
+                }`
+          }
           icon={expanded ? Icons.closeOutlined : Icons.menu}
           ariaExpanded={expanded}
-          ariaHasPopup={true}
           size={ButtonSize.small}
           ariaControls="main"
-          onClick={handleMenuClick}></IconButton>
+          onClick={handleMenuClick}
+          hasBadge={!expanded && notificationCount > 0}
+          badgeNumber={0}></IconButton>
       )}
 
       <nav className="MagentaA11y__navbar__nav" aria-label="main">
@@ -71,16 +132,15 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
             return (
               <li key={index} className="MagentaA11y__nav-items--item">
                 <NavLink
+                  onClick={() => setExpanded(false)}
                   to={href}
                   className={classNames('MagentaA11y__nav-items--link', {
                     active: isActive,
                   })}
-                  aria-label={item.ariaLabel}>
+                  {...(item.ariaLabel && { 'aria-label': item.ariaLabel })}>
                   {item.icon && (
                     <span
-                      {...(savedCriteria.length > 0
-                        ? { 'data-count': savedCriteria.length }
-                        : {})}
+                      data-count={item.withBadge ? item.withBadge : ''}
                       className={'MagentaA11y__nav-items--icon'}>
                       {item.icon}
                     </span>

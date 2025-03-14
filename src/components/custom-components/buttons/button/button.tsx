@@ -1,9 +1,9 @@
-import React from "react";
-import { ButtonSize, ButtonType, ButtonVariant } from "../button-types";
-import { Icon } from "shared/Icons";
-import { getIcon } from "utils/getIcon";
+import React from 'react';
+import { Icon } from 'shared/Icons';
+import { getIcon } from 'utils/getIcon';
+import { ButtonSize, ButtonType, ButtonVariant } from '../button-types';
 
-import "./button.scss";
+import './button.scss';
 
 interface ButtonProps {
   onClick: () => void;
@@ -41,8 +41,7 @@ const Button: React.FC<ButtonProps> = ({
       data-size={size}
       aria-describedby={describedBy}
       a11y-label={a11yLabel}
-      className={`Magentaa11y-button Magentaa11y-button--${variant}`}
-    >
+      className={`Magentaa11y-button Magentaa11y-button--${variant}`}>
       {LeadingIcon && <LeadingIcon width="24" height="24" />}
       <span>{label}</span>
     </button>

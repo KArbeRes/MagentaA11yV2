@@ -1,0 +1,13 @@
+@mixin base-inline-link {
+  --link--color: var(--color-on-tertiary);
+
+  color: var(--link--color);
+  display: inline-block;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: under;
+  width: -moz-fit-content;
+  width: fit-content;
+}

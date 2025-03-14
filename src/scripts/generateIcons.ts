@@ -57,7 +57,7 @@ const generateIcons = () => {
       // Generate React component for `icons-svg-exports.tsx`
       svgExportsContent += `
 export const ${camelCaseName} = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
     focusable="false"
 >${innerSvg}</svg>
 );\n`;
