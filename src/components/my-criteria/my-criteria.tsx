@@ -36,9 +36,11 @@ const MyCriteria: React.FC = () => {
         .join('\n\n---\n\n'),
     }));
   }, [savedCriteria]);
+  const [deletedChipIndex, setDeletedChipIndex] = useState<number | null>(null);
 
   const tabsElementRef = useRef<HTMLElement>(null);
-  const chipsContainerRef = useRef<HTMLDivElement>(null);
+  const condensedChipsRef = useRef<HTMLDivElement>(null);
+  const gherkinChipsRef = useRef<HTMLDivElement>(null);
   const emptyMessageRef = useRef<HTMLDivElement>(null);
 
   const currentTabContent = useMemo(() => {
@@ -58,29 +60,15 @@ const MyCriteria: React.FC = () => {
     if (emptyMessageRef.current) {
       const firstLink = emptyMessageRef.current.querySelector('a');
       if (firstLink) {
-        (firstLink as HTMLElement).focus();
+        firstLink.focus();
       }
     }
   };
 
   const deleteCriteriaChip = (id: string) => {
     const index = currentTabChips.findIndex((chip) => chip.id === id);
-    const updatedChips = currentTabChips.filter((chip) => chip.id !== id);
-    let nextFocusIndex = Math.min(index, updatedChips.length - 1);
-
+    setDeletedChipIndex(index);
     removeCriteria(id);
-
-    setTimeout(() => {
-      if (updatedChips.length > 0 && chipsContainerRef.current) {
-        const chipButtons =
-          chipsContainerRef.current.querySelectorAll('button');
-        if (chipButtons[nextFocusIndex]) {
-          (chipButtons[nextFocusIndex] as HTMLElement).focus();
-        }
-      } else if (updatedChips.length === 0) {
-        focusFirstEmptyStateLink();
-      }
-    }, 0);
   };
 
   const copyCurrentCriteria = (): void => {
@@ -115,6 +103,27 @@ const MyCriteria: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [copiedContent]);
+
+  useEffect(() => {
+    if (deletedChipIndex === null) return;
+
+    const updatedChips = currentTabChips;
+    const nextFocusIndex = Math.min(deletedChipIndex, updatedChips.length - 1);
+
+    const refToUse =
+      selectedTabIndex === 0 ? condensedChipsRef : gherkinChipsRef;
+
+    if (updatedChips.length > 0 && refToUse.current) {
+      const chipButtons = refToUse.current.querySelectorAll('button');
+      if (chipButtons[nextFocusIndex]) {
+        chipButtons[nextFocusIndex].focus();
+      }
+    } else if (updatedChips.length === 0) {
+      focusFirstEmptyStateLink();
+    }
+
+    setDeletedChipIndex(null);
+  }, [currentTabChips, deletedChipIndex, selectedTabIndex]);
 
   const checkClipboardContent = async (content: string) => {
     try {
@@ -173,6 +182,8 @@ const MyCriteria: React.FC = () => {
 
       {mergedCriteriaTabs.map((criteria, index) => {
         const formattedLabel = formatTabLabel(criteria.tab);
+        const isCondensed = criteria.tab === 'Condensed';
+
         return (
           <div
             key={formattedLabel}
@@ -190,7 +201,7 @@ const MyCriteria: React.FC = () => {
               onDelete={deleteCriteriaChip}
               size={ChipSize.SMALL}
               legend="Saved Criteria"
-              ref={chipsContainerRef}
+              ref={isCondensed ? condensedChipsRef : gherkinChipsRef}
             />
             {criteria.content ? (
               <>
