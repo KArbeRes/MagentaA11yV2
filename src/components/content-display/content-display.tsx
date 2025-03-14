@@ -7,7 +7,7 @@ import {
 import Button from 'components/custom-components/buttons/button/button';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -17,7 +17,10 @@ import { Platforms } from 'shared/types/shared-types';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
 import MarkdownContent from './markdown-content/markdown-content';
-import { ContentTab } from './markdown-content/markdown-content.types';
+import {
+  ContentTab,
+  Criteria,
+} from './markdown-content/markdown-content.types';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
@@ -38,6 +41,8 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   items,
   onToggleSideNav,
 }) => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -107,6 +112,18 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     return () => clearInterval(interval);
   }, [copiedContent]);
 
+  useEffect(() => {
+    const tabFromURL = searchParams.get('tab');
+    if (tabFromURL) {
+      const tabIndex = parseInt(tabFromURL, 10);
+      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < tabs.length) {
+        setActiveTab(tabIndex);
+      }
+    } else {
+      setActiveTab(0);
+    }
+  }, [searchParams]);
+
   // Track active tab changes
   useEffect(() => {
     const handleTabChange = (event: Event) => {
@@ -114,20 +131,23 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         event.target as HTMLElement & { activeTabIndex: number }
       ).activeTabIndex;
       setActiveTab(tabIndex);
+      navigate({
+        pathname: location.pathname,
+        search: `?tab=${tabIndex}`,
+      });
     };
 
-    const tabs = tabsRef.current;
+    const tabsElement = tabsRef.current;
 
-    if (tabs) {
-      tabs.addEventListener('change', handleTabChange);
+    if (tabsElement) {
+      tabsElement.addEventListener('change', handleTabChange);
     }
     return () => {
-      if (tabs) {
-        setActiveTab(0);
-        tabs.removeEventListener('change', handleTabChange);
+      if (tabsElement) {
+        tabsElement.removeEventListener('change', handleTabChange);
       }
     };
-  }, [location.pathname]);
+  });
 
   if (!currentItem) return <div>No content available</div>;
 
@@ -189,8 +209,8 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     }
   };
 
-  let actionsButtonsVisible = ['Condensed', 'Gherkin', 'Criteria'].includes(
-    tabs[activeTab]?.label
+  let actionsButtonsVisible = Object.values(Criteria).some(
+    (criteria) => criteria === tabs[activeTab]?.label
   );
 
   let criteriaIsCopied = copiedContent === tabs[activeTab]?.content;

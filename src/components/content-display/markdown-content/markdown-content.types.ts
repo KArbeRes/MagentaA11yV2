@@ -6,6 +6,12 @@ export interface MediaProps {
   poster?: string;
 }
 
+export enum Criteria {
+  Condensed = 'Condensed',
+  Gherkin = 'Gherkin',
+  Criteria = 'Criteria',
+}
+
 export interface ContentTab {
   label: string;
   content: string;
