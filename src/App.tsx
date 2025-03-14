@@ -31,6 +31,7 @@ const AppContent: React.FC = () => {
   useEffect(() => {
     let pathSegments = location.pathname.split('/').filter(Boolean);
     let pageTitle = '';
+    let category = '';
 
     if (pathSegments.length > 0) {
       let lastSegment = pathSegments[pathSegments.length - 1];
@@ -39,18 +40,24 @@ const AppContent: React.FC = () => {
         lastSegment = pathSegments[pathSegments.length - 2];
       }
 
-      pageTitle = lastSegment
+      let formattedLastSegment = lastSegment
         .replace(/-/g, ' ')
         .replace(/\b\w/g, (c) => c.toUpperCase());
 
       if (pathSegments.includes('web-criteria')) {
-        pageTitle += ' - Web';
+        category = 'Web Criteria';
       } else if (pathSegments.includes('native-criteria')) {
-        pageTitle += ' - Native';
+        category = 'Native Criteria';
       }
+
+      pageTitle = category
+        ? `${category} - ${formattedLastSegment}`
+        : formattedLastSegment;
+    } else {
+      pageTitle = 'Home';
     }
 
-    document.title = pageTitle;
+    document.title = `${pageTitle} | Magentaa11y`;
   }, [location]);
 
   const navItems: NavItem[] = [
