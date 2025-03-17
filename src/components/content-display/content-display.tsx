@@ -1,11 +1,11 @@
-/* eslint-disable jsx-a11y/no-redundant-roles */
 import {
   ButtonSize,
   ButtonType,
   ButtonVariant,
 } from 'components/custom-components/buttons/button-types';
 import Button from 'components/custom-components/buttons/button/button';
-import React, { useEffect, useRef, useState } from 'react';
+import { useClipboard } from 'hooks/useClipboard';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
@@ -14,6 +14,8 @@ import remarkGfm from 'remark-gfm';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
+import { findItemByPath } from 'utils/navigation-helpers';
+import { formatTabLabel } from 'utils/string-helpers';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
 import MarkdownContent from './markdown-content/markdown-content';
@@ -31,9 +33,6 @@ interface ContentDisplayProps {
   onToggleSideNav: () => void;
 }
 
-export const formatTabLabel = (label: string) =>
-  label.toLowerCase().replace(/\s+/g, '-');
-
 const ASSET_BASE_PATH = '/MagentaA11yV2/content/assets';
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({
@@ -46,9 +45,14 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0);
-  const [copiedContent, setCopiedContent] = useState<string | null>(null);
 
   const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
+  const {
+    copiedContent,
+    isContentInClipboard,
+    setCopiedContent,
+    copyToClipboard,
+  } = useClipboard();
 
   const handleToggleCriteria = () => {
     const activeLabel = tabs[activeTab]?.label;
@@ -75,29 +79,65 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     }
   };
 
-  // Helper function to find the active item
-  const findItemByPath = (
-    items: SideNavItem[],
-    path: string,
-    parentPath = `/${platform}-criteria`
-  ): SideNavItem | null => {
-    for (const item of items) {
-      const fullPath = `${parentPath}/${item.name}`;
-      if (path === fullPath || path === `${fullPath}/overview`) return item;
-
-      if (item.children) {
-        const found = findItemByPath(item.children, path, fullPath);
-        if (found) return found;
-      }
-    }
-    return null;
-  };
-
   // Get the current item based on the route
-  const currentItem = findItemByPath(items, location.pathname);
+  const currentItem = findItemByPath(
+    items,
+    location.pathname,
+    `/${platform}-criteria`
+  );
 
   // Check if the current route is an overview route
   const isOverviewRoute = location.pathname.endsWith('/overview');
+
+  const tabs: ContentTab[] = useMemo(() => {
+    if (!currentItem) return [];
+
+    const {
+      condensed,
+      gherkin,
+      criteria,
+      videos,
+      developerNotes,
+      androidDeveloperNotes,
+      iosDeveloperNotes,
+    } = currentItem;
+
+    return [
+      { content: condensed ?? '', label: 'Condensed', tab: 'Condensed' },
+      { content: gherkin ?? '', label: 'Gherkin', tab: 'Gherkin' },
+      { content: criteria ?? '', label: 'Criteria', tab: 'Criteria' },
+      {
+        content: developerNotes ?? '',
+        label: 'Developer Notes',
+        tab: 'Developer Notes',
+      },
+      {
+        content: androidDeveloperNotes ?? '',
+        label: 'Android Developer Notes',
+        tab: 'Android Developer Notes',
+      },
+      {
+        content: iosDeveloperNotes ?? '',
+        label: 'iOS Developer Notes',
+        tab: 'iOS Developer Notes',
+      },
+      { content: videos ?? '', label: 'Videos', tab: 'Videos' },
+    ].filter((tab) => tab.content.trim() !== '');
+  }, [currentItem]);
+
+  useEffect(() => {
+    if (!tabs.length) return;
+
+    const tabFromURL = searchParams.get('tab');
+    if (tabFromURL) {
+      const tabIndex = parseInt(tabFromURL, 10);
+      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < tabs.length) {
+        setActiveTab(tabIndex);
+      }
+    } else {
+      setActiveTab(0);
+    }
+  }, [searchParams, tabs.length]);
 
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -110,7 +150,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [copiedContent]);
+  }, [copiedContent, isContentInClipboard, setCopiedContent]);
 
   useEffect(() => {
     const tabFromURL = searchParams.get('tab');
@@ -122,7 +162,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     } else {
       setActiveTab(0);
     }
-  }, [searchParams]);
+  }, [searchParams, tabs.length]);
 
   // Track active tab changes
   useEffect(() => {
@@ -151,63 +191,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
 
   if (!currentItem) return <div>No content available</div>;
 
-  const {
-    label,
-    generalNotes,
-    gherkin,
-    condensed,
-    criteria,
-    videos,
-    developerNotes,
-    androidDeveloperNotes,
-    iosDeveloperNotes,
-    children,
-  } = currentItem;
-
-  const tabs: ContentTab[] = [
-    { content: condensed ?? '', label: 'Condensed', tab: 'Condensed' },
-    { content: gherkin ?? '', label: 'Gherkin', tab: 'Gherkin' },
-    { content: criteria ?? '', label: 'Criteria', tab: 'Criteria' },
-    {
-      content: developerNotes ?? '',
-      label: 'Developer Notes',
-      tab: 'Developer Notes',
-    },
-    {
-      content: androidDeveloperNotes ?? '',
-      label: 'Android Developer Notes',
-      tab: 'Android Developer Notes',
-    },
-    {
-      content: iosDeveloperNotes ?? '',
-      label: 'iOS Developer Notes',
-      tab: 'iOS Developer Notes',
-    },
-    { content: videos ?? '', label: 'Videos', tab: 'Videos' },
-  ].filter((tab) => tab.content.trim() !== '');
-
-  const copyTabContent = (content: string) => {
-    if (content) {
-      navigator.clipboard
-        .writeText(content)
-        .then(() => {
-          setCopiedContent(content);
-        })
-        .catch((err) => {
-          console.error('Failed to copy content: ', err);
-        });
-    }
-  };
-
-  const isContentInClipboard = async (content: string) => {
-    try {
-      const clipboardText = await navigator.clipboard.readText();
-      return clipboardText === content;
-    } catch (err) {
-      console.error('Failed to read clipboard content: ', err);
-      return false;
-    }
-  };
+  const { label, generalNotes, children } = currentItem;
 
   let actionsButtonsVisible = Object.values(Criteria).some(
     (criteria) => criteria === tabs[activeTab]?.label
@@ -288,7 +272,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
             {actionsButtonsVisible && (
               <div className="MagentaA11y__nav-display__content-actions__buttons">
                 <Button
-                  onClick={() => copyTabContent(tabs[activeTab].content || '')}
+                  onClick={() => copyToClipboard(tabs[activeTab].content || '')}
                   type={ButtonType.button}
                   variant={ButtonVariant.primary}
                   size={ButtonSize.large}

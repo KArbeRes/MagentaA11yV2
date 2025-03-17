@@ -1,4 +1,3 @@
-import { formatTabLabel } from 'components/content-display/content-display';
 import MarkdownContent from 'components/content-display/markdown-content/markdown-content';
 import {
   ButtonSize,
@@ -20,6 +19,7 @@ import { Link } from 'react-router-dom';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
+import { formatTabLabel } from 'utils/string-helpers';
 
 import '../my-criteria/my-criteria.scss';
 

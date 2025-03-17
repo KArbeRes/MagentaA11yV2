@@ -1,3 +1,4 @@
+import { SideNavItem } from 'components/navigation/nav.types';
 import { Location } from 'react-router-dom';
 
 /**
@@ -11,3 +12,21 @@ export const isPathActive = (path: string, location: Location): boolean => {
   const isActive = location.pathname.includes(path);
   return isActive;
 };
+
+// Helper function to find the active item
+export function findItemByPath(
+  items: SideNavItem[],
+  path: string,
+  parentPath: string
+): SideNavItem | null {
+  for (const item of items) {
+    const fullPath = `${parentPath}/${item.name}`;
+    if (path === fullPath || path === `${fullPath}/overview`) return item;
+
+    if (item.children) {
+      const found = findItemByPath(item.children, path, fullPath);
+      if (found) return found;
+    }
+  }
+  return null;
+}
