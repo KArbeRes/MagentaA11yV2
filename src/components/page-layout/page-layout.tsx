@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { ReactComponent as BookmarkIconOutlined } from '../../assets/svgs/bookmark-outlined.svg';
 
-const MainLayout: React.FC = () => {
+const PageLayout: React.FC = () => {
   const { savedCriteria } = useCriteria();
   const savedCriteriaCount = savedCriteria.length;
   const mainContentRef = useRef<HTMLDivElement | null>(null);
@@ -48,11 +48,11 @@ const MainLayout: React.FC = () => {
       <header className="MagentaA11y-header">
         <TopNav navItems={navItems} />
       </header>
-      <div className="MagentaA11y--content" ref={mainContentRef} tabIndex={-1}>
+      <main className="MagentaA11y--content" ref={mainContentRef} tabIndex={-1}>
         <AppRoutes />
-      </div>
+      </main>
     </div>
   );
 };
 
-export default MainLayout;
+export default PageLayout;
