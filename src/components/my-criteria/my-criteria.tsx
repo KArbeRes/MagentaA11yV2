@@ -14,6 +14,7 @@ import {
 import Divider from 'components/custom-components/divider/divider';
 import { OrientationEnum } from 'components/custom-components/divider/divider.types';
 import { getFirstOverviewLink } from 'components/navigation/top-nav/top-nav';
+import { useClipboard } from 'hooks/useClipboard';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCriteria } from 'shared/contexts/criteria-context';
@@ -25,7 +26,7 @@ import '../my-criteria/my-criteria.scss';
 
 const MyCriteria: React.FC = () => {
   const { savedCriteria, removeCriteria, clearCriteria } = useCriteria();
-  const [copiedContent, setCopiedContent] = useState<string | null>(null);
+  const { copiedContent, copyToClipboard } = useClipboard();
   const [selectedTabIndex, setActiveTab] = useState<number>(0);
   const mergedCriteriaTabs = useMemo(() => {
     return ['Condensed', 'Gherkin'].map((tabName) => ({
@@ -73,13 +74,7 @@ const MyCriteria: React.FC = () => {
 
   const copyCurrentCriteria = (): void => {
     if (!currentTabContent.trim()) return;
-
-    navigator.clipboard
-      .writeText(currentTabContent)
-      .then(() => {
-        setCopiedContent(currentTabContent);
-      })
-      .catch((err) => console.error('Failed to copy content:', err));
+    copyToClipboard(currentTabContent);
   };
 
   const clearCurrentTabCriteria = () => {
@@ -92,17 +87,6 @@ const MyCriteria: React.FC = () => {
       focusFirstEmptyStateLink();
     }, 0);
   };
-
-  useEffect(() => {
-    if (!copiedContent) return;
-
-    const interval = setInterval(async () => {
-      const isStillInClipboard = await checkClipboardContent(copiedContent);
-      if (!isStillInClipboard) setCopiedContent(null);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [copiedContent]);
 
   useEffect(() => {
     if (deletedChipIndex === null) return;
@@ -125,15 +109,8 @@ const MyCriteria: React.FC = () => {
     setDeletedChipIndex(null);
   }, [currentTabChips, deletedChipIndex, selectedTabIndex]);
 
-  const checkClipboardContent = async (content: string) => {
-    try {
-      const clipboardText = await navigator.clipboard.readText();
-      return clipboardText === content;
-    } catch (err) {
-      console.error('Failed to read clipboard content:', err);
-      return false;
-    }
-  };
+  let criteriaIsCopied =
+    copiedContent === mergedCriteriaTabs[selectedTabIndex]?.content;
 
   return (
     <div className="MagentaA11y__my-criteria">
@@ -172,8 +149,8 @@ const MyCriteria: React.FC = () => {
               type={ButtonType.button}
               variant={ButtonVariant.primary}
               size={ButtonSize.large}
-              label={copiedContent ? 'Copied!' : 'Copy Criteria'}
-              decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
+              label={criteriaIsCopied ? 'Copied!' : 'Copy Criteria'}
+              decoration={criteriaIsCopied ? Icons.checkmark : Icons.copyFilled}
               id="copy-criteria"
             />
           )}

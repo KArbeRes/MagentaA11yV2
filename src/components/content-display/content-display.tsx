@@ -5,24 +5,21 @@ import {
 } from 'components/custom-components/buttons/button-types';
 import Button from 'components/custom-components/buttons/button/button';
 import { useClipboard } from 'hooks/useClipboard';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useContentTabs } from 'hooks/useContentTabs';
+import { useCriteriaManager } from 'hooks/useCriteriaManager';
+import React, { useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
-import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
-import { findItemByPath } from 'utils/navigation-helpers';
 import { formatTabLabel } from 'utils/string-helpers';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
 import MarkdownContent from './markdown-content/markdown-content';
-import {
-  ContentTab,
-  Criteria,
-} from './markdown-content/markdown-content.types';
+import { Criteria } from './markdown-content/markdown-content.types';
 
 import '../../styles/_code-blocks.scss';
 import './content-display.scss';
@@ -44,86 +41,16 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const tabsRef = useRef<HTMLElement>(null);
-  const [activeTab, setActiveTab] = useState(0);
-
-  const { savedCriteria, saveCriteria, removeCriteria } = useCriteria();
-  const {
-    copiedContent,
-    isContentInClipboard,
-    setCopiedContent,
-    copyToClipboard,
-  } = useClipboard();
-
-  const handleToggleCriteria = () => {
-    const activeLabel = tabs[activeTab]?.label;
-    const activeContent = tabs[activeTab]?.content;
-    const componentName = location.pathname.split('/').slice(-1)[0];
-
-    if (!activeContent) return;
-
-    const criteriaId = `${componentName}-${activeLabel.toLowerCase()}`;
-
-    // Check if the criteria is already saved
-    const isAlreadySaved = savedCriteria.some((item) => item.id === criteriaId);
-
-    if (isAlreadySaved) {
-      removeCriteria(criteriaId);
-    } else {
-      saveCriteria({
-        id: criteriaId,
-        label: componentName,
-        content: activeContent,
-        tab: activeLabel,
-        savedAt: new Date(),
-      });
-    }
-  };
-
-  // Get the current item based on the route
-  const currentItem = findItemByPath(
+  const { tabs, activeTab, setActiveTab, currentItem } = useContentTabs(
     items,
-    location.pathname,
-    `/${platform}-criteria`
+    platform
   );
+  const { copiedContent, copyToClipboard } = useClipboard();
 
-  // Check if the current route is an overview route
-  const isOverviewRoute = location.pathname.endsWith('/overview');
-
-  const tabs: ContentTab[] = useMemo(() => {
-    if (!currentItem) return [];
-
-    const {
-      condensed,
-      gherkin,
-      criteria,
-      videos,
-      developerNotes,
-      androidDeveloperNotes,
-      iosDeveloperNotes,
-    } = currentItem;
-
-    return [
-      { content: condensed ?? '', label: 'Condensed', tab: 'Condensed' },
-      { content: gherkin ?? '', label: 'Gherkin', tab: 'Gherkin' },
-      { content: criteria ?? '', label: 'Criteria', tab: 'Criteria' },
-      {
-        content: developerNotes ?? '',
-        label: 'Developer Notes',
-        tab: 'Developer Notes',
-      },
-      {
-        content: androidDeveloperNotes ?? '',
-        label: 'Android Developer Notes',
-        tab: 'Android Developer Notes',
-      },
-      {
-        content: iosDeveloperNotes ?? '',
-        label: 'iOS Developer Notes',
-        tab: 'iOS Developer Notes',
-      },
-      { content: videos ?? '', label: 'Videos', tab: 'Videos' },
-    ].filter((tab) => tab.content.trim() !== '');
-  }, [currentItem]);
+  const { handleToggleCriteria, isCriteriaSaved } = useCriteriaManager(
+    tabs,
+    activeTab
+  );
 
   useEffect(() => {
     if (!tabs.length) return;
@@ -137,20 +64,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     } else {
       setActiveTab(0);
     }
-  }, [searchParams, tabs.length]);
-
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      if (copiedContent) {
-        const isStillInClipboard = await isContentInClipboard(copiedContent);
-        if (!isStillInClipboard) {
-          setCopiedContent(null);
-        }
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [copiedContent, isContentInClipboard, setCopiedContent]);
+  }, [searchParams, setActiveTab, tabs.length]);
 
   useEffect(() => {
     const tabFromURL = searchParams.get('tab');
@@ -162,7 +76,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     } else {
       setActiveTab(0);
     }
-  }, [searchParams, tabs.length]);
+  }, [searchParams, setActiveTab, tabs.length]);
 
   // Track active tab changes
   useEffect(() => {
@@ -198,13 +112,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   );
 
   let criteriaIsCopied = copiedContent === tabs[activeTab]?.content;
-  const isCriteriaSaved = savedCriteria.some(
-    (item) =>
-      item.id ===
-      `${location.pathname.split('/').slice(-1)[0]}-${tabs[
-        activeTab
-      ]?.label.toLowerCase()}`
-  );
+  const isOverviewRoute = location.pathname.endsWith('/overview');
 
   return (
     <div className="MagentaA11y__nav-display">
