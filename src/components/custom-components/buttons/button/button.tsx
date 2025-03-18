@@ -30,17 +30,21 @@ const Button: React.FC<ButtonProps> = ({
   label,
   id,
 }) => {
+  if (!label) {
+    return null;
+  }
   const LeadingIcon = decoration ? getIcon(decoration) : null;
 
   return (
     <button
       onClick={onClick}
       aria-disabled={disabled}
+      disabled={disabled}
       id={id || undefined}
       type={type}
       data-size={size}
       aria-describedby={describedBy}
-      a11y-label={a11yLabel}
+      aria-label={a11yLabel}
       className={`Magentaa11y-button Magentaa11y-button--${variant}`}>
       {LeadingIcon && <LeadingIcon width="24" height="24" />}
       <span>{label}</span>

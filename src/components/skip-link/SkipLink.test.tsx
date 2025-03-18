@@ -1,5 +1,5 @@
-import React, { createRef } from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import SkipLink from './SkipLink';
 

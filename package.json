@@ -9,7 +9,7 @@
     "@material/web": "^2.2.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^27.5.2",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
@@ -75,7 +75,7 @@
     "concurrently": "^9.1.0",
     "favicons": "^7.2.0",
     "gh-pages": "^6.2.0",
-    "tsx": "^4.19.2",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "tsx": "^4.19.2"
   }
 }
