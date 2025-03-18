@@ -27,7 +27,6 @@ const SideNav = forwardRef(({ platform }: SideNavProps, ref) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Expose showModal and closeModal methods via ref
   useImperativeHandle(ref, () => ({
     showModal: () => {
       dialogRef.current?.showModal();

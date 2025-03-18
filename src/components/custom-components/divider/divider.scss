@@ -14,7 +14,7 @@
     --divider-height: 100%;
   }
 
-  &.MagentaA11y-divider--branded {
+  &--branded {
     --divider-bg: var(--magentaa11y-color-fill-divider-brand);
 
     &[data-orientation='horizontal'] {
@@ -26,7 +26,7 @@
     }
   }
 
-  &.MagentaA11y-divider--strong {
+  &--strong {
     --divider-bg: var(--magentaa11y-color-fill-divider-strong);
   }
 }

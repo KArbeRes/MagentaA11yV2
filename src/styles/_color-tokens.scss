@@ -229,6 +229,9 @@
     --magentaa11y-color-text-chips-default: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Reserved for text on default chip variant. */
+
+    --footer-background-color: var(--magentaa11y-color-brand-grayscale-black);
+    --footer-text-color: var(--magentaa11y-color-brand-grayscale-white);
   } @else if $theme == dark {
     // Dark Theme
     // Text Colors
@@ -450,5 +453,7 @@
     --magentaa11y-color-text-chips-default: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Reserved for text on default chip variant. */
+    --footer-background-color: var(--magentaa11y-color-brand-grayscale-black);
+    --footer-text-color: var(--magentaa11y-color-brand-grayscale-white);
   }
 }

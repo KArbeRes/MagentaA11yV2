@@ -4,8 +4,8 @@ export enum OrientationEnum {
 }
 
 export enum DividerModifiers {
-  BRANDED = 'tdds-divider--branded',
-  STRONG = 'tdds-divider--strong',
+  BRANDED = 'MagentaA11y-divider--branded',
+  STRONG = 'MagentaA11y-divider--strong',
 }
 
 export type TDivider = {

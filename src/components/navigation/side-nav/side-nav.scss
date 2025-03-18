@@ -1,3 +1,5 @@
+@use '../../../styles/links' as *;
+
 nav {
   display: flex;
 }
@@ -45,14 +47,9 @@ nav {
     }
 
     &--link {
+      @include base-link;
+
       color: var(--color-text-heading);
-      padding: 16px 24px;
-      letter-spacing: 0.1px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
       font: var(--magentaa11y-typeset-body-md-normal);
 
       ~ ul > li {
