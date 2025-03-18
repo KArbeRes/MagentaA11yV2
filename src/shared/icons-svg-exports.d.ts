@@ -504,6 +504,7 @@ declare module "shared/icons-svg-exports" {
   export const streamingVideoDeviceOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
   export const suspiciousDeviceActivityOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
   export const switcherOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
+  export const tDigitLogo: React.FC<React.SVGProps<SVGSVGElement>>;
   export const tabletOutlined: React.FC<React.SVGProps<SVGSVGElement>>;
   export const tablet: React.FC<React.SVGProps<SVGSVGElement>>;
   export const tasksOffFilled: React.FC<React.SVGProps<SVGSVGElement>>;

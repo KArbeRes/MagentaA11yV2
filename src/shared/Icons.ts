@@ -502,6 +502,7 @@ export const Icons = {
   streamingVideoDeviceOutlined: "streamingVideoDeviceOutlined",
   suspiciousDeviceActivityOutlined: "suspiciousDeviceActivityOutlined",
   switcherOutlined: "switcherOutlined",
+  tDigitLogo: "tDigitLogo",
   tabletOutlined: "tabletOutlined",
   tablet: "tablet",
   tasksOffFilled: "tasksOffFilled",
