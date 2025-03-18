@@ -8,6 +8,11 @@ import { useRef } from 'react';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { ReactComponent as BookmarkIconOutlined } from '../../assets/svgs/bookmark-outlined.svg';
 import Footer from 'components/navigation/footer/footer';
+import Divider from 'components/custom-components/divider/divider';
+import {
+  DividerModifiers,
+  OrientationEnum,
+} from 'components/custom-components/divider/divider.types';
 
 const PageLayout: React.FC = () => {
   const { savedCriteria } = useCriteria();
@@ -52,6 +57,10 @@ const PageLayout: React.FC = () => {
       <main className="MagentaA11y--content" ref={mainContentRef} tabIndex={-1}>
         <AppRoutes />
       </main>
+      <Divider
+        orientation={OrientationEnum.HORIZONTAL}
+        className={DividerModifiers.STRONG}
+      />
       <Footer />
     </div>
   );

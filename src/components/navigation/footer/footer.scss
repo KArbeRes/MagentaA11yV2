@@ -1,8 +1,9 @@
 @use '../../../styles/links' as *;
 
 .MagentaA11y--footer {
+  --footer-flex-direction: row;
   display: flex;
-  flex-direction: row;
+  flex-direction: var(--footer-flex-direction);
   justify-content: space-around;
   gap: var(--magentaa11y-spacing-size-24);
   background-color: var(--footer-background-color);
@@ -37,6 +38,10 @@
       flex-direction: column;
       gap: var(--magentaa11y-spacing-size-4);
     }
+  }
+
+  @media (max-width: 768px) {
+    --footer-flex-direction: column;
   }
 
   .MagentaA11y-divider {
