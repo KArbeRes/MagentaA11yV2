@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import Divider from 'components/custom-components/divider/divider';
 import { OrientationEnum } from 'components/custom-components/divider/divider.types';
 import React from 'react';
@@ -15,9 +16,9 @@ const Footer: React.FC = () => {
             {category.charAt(0).toUpperCase() + category.slice(1)} Criteria
           </h2>
           <Divider orientation={OrientationEnum.HORIZONTAL} />
-          <ul>
+          <ul role="list">
             {items.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} role="listitem">
                 <NavLink to={`${category}-criteria/${item.name}/overview`}>
                   {item.label}
                 </NavLink>
@@ -29,8 +30,8 @@ const Footer: React.FC = () => {
       <div className="MagentaA11y--footer__nav-list">
         <h2>About Us</h2>
         <Divider orientation={OrientationEnum.HORIZONTAL} />
-        <ul>
-          <li>
+        <ul role="list">
+          <li role="listitem">
             <NavLink to={`/about`}>Contact Us</NavLink>
           </li>
         </ul>

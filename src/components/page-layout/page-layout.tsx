@@ -47,11 +47,11 @@ const PageLayout: React.FC = () => {
 
   return (
     <div className="MagentaA11y">
-      <SkipLink
-        mainContentRef={mainContentRef}
-        isKeyboardNavigation={isKeyboardNavigation}
-      />
       <header className="MagentaA11y-header">
+        <SkipLink
+          mainContentRef={mainContentRef}
+          isKeyboardNavigation={isKeyboardNavigation}
+        />
         <TopNav navItems={navItems} />
       </header>
       <main className="MagentaA11y--content" ref={mainContentRef} tabIndex={-1}>
