@@ -2,29 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { ViewportProvider, useViewport } from './viewport-context';
 import { useRef } from 'react';
 
-// Mock matchMedia globally
-beforeEach(() => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: jest.fn().mockImplementation((query) => ({
-      matches: query === '(max-width: 768px)' ? false : true,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(), // Deprecated
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    })),
-  });
-});
-
-// Reset mocks after tests
-afterEach(() => {
-  jest.clearAllMocks();
-});
-
-// Test component to consume the viewport context
 const TestComponent = () => {
   const { isMobile } = useViewport();
   return (

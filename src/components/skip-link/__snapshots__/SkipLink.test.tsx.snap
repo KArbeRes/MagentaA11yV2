@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLink Component SkipLink Component - Snapshot Test matches the snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="skip-link"
+  >
+    Skip to main content
+  </button>
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+  />
+</DocumentFragment>
+`;
