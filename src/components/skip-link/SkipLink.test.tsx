@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { createRef } from 'react';
 import { MemoryRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import SkipLink from './SkipLink';
@@ -19,24 +19,11 @@ const renderWithRouter = (
 describe('SkipLink Component', () => {
   test('renders the SkipLink button', () => {
     const mainContentRef = createRef<HTMLDivElement>();
-    renderWithRouter(
-      <SkipLink mainContentRef={mainContentRef} isKeyboardNavigation={false} />
-    );
+    renderWithRouter(<SkipLink mainContentRef={mainContentRef} />);
 
     expect(
       screen.getByRole('button', { name: /skip to main content/i })
     ).toBeInTheDocument();
-  });
-
-  test('focuses on the SkipLink button when isKeyboardNavigation is true', () => {
-    const mainContentRef = createRef<HTMLDivElement>();
-    renderWithRouter(
-      <SkipLink mainContentRef={mainContentRef} isKeyboardNavigation={true} />
-    );
-
-    expect(
-      screen.getByRole('button', { name: /skip to main content/i })
-    ).toHaveFocus();
   });
 
   test('focuses on the main content when SkipLink button is clicked', () => {
@@ -44,9 +31,7 @@ describe('SkipLink Component', () => {
     mainContentRef.current.setAttribute('tabindex', '-1');
     document.body.appendChild(mainContentRef.current);
 
-    renderWithRouter(
-      <SkipLink mainContentRef={mainContentRef} isKeyboardNavigation={false} />
-    );
+    renderWithRouter(<SkipLink mainContentRef={mainContentRef} />);
 
     fireEvent.click(
       screen.getByRole('button', { name: /skip to main content/i })
@@ -58,9 +43,7 @@ describe('SkipLink Component', () => {
 
   test('does not focus the SkipLink button when isKeyboardNavigation is false', () => {
     const mainContentRef = createRef<HTMLDivElement>();
-    renderWithRouter(
-      <SkipLink mainContentRef={mainContentRef} isKeyboardNavigation={false} />
-    );
+    renderWithRouter(<SkipLink mainContentRef={mainContentRef} />);
 
     expect(
       screen.getByRole('button', { name: /skip to main content/i })
@@ -69,9 +52,7 @@ describe('SkipLink Component', () => {
 
   test('clicking SkipLink does nothing if mainContentRef is null', () => {
     const mainContentRef = { current: null };
-    renderWithRouter(
-      <SkipLink mainContentRef={mainContentRef} isKeyboardNavigation={false} />
-    );
+    renderWithRouter(<SkipLink mainContentRef={mainContentRef} />);
 
     fireEvent.click(
       screen.getByRole('button', { name: /skip to main content/i })
@@ -86,7 +67,6 @@ describe('SkipLink Component', () => {
     renderWithRouter(
       <SkipLink
         mainContentRef={mainContentRef}
-        isKeyboardNavigation={false}
         liveRegionTestId="live-region"
       />,
       { initialEntries: ['/'] }
@@ -100,7 +80,6 @@ describe('SkipLink Component', () => {
     renderWithRouter(
       <SkipLink
         mainContentRef={mainContentRef}
-        isKeyboardNavigation={false}
         liveRegionTestId="live-region"
       />,
       { initialEntries: ['/components/button'] }
@@ -122,7 +101,6 @@ describe('SkipLink Component', () => {
         <button onClick={() => navigate('/patterns/forms')}>Go to Forms</button>
         <SkipLink
           mainContentRef={mainContentRef}
-          isKeyboardNavigation={false}
           liveRegionTestId="live-region"
         />
       </>
@@ -160,7 +138,6 @@ describe('SkipLink Component', () => {
     renderWithRouter(
       <SkipLink
         mainContentRef={mainContentRef}
-        isKeyboardNavigation={false}
         liveRegionTestId="live-region"
       />,
       { initialEntries: ['/guidelines/typography/overview'] }
@@ -176,7 +153,6 @@ describe('SkipLink Component', () => {
     renderWithRouter(
       <SkipLink
         mainContentRef={mainContentRef}
-        isKeyboardNavigation={false}
         liveRegionTestId="live-region"
       />,
       { initialEntries: ['/components/skip-link'] }
@@ -192,7 +168,6 @@ describe('SkipLink Component', () => {
     renderWithRouter(
       <SkipLink
         mainContentRef={mainContentRef}
-        isKeyboardNavigation={false}
         liveRegionTestId="live-region"
       />,
       { initialEntries: ['/components/button'] }
@@ -208,10 +183,7 @@ describe('SkipLink Component', () => {
       const mainContentRef = createRef<HTMLDivElement>();
 
       const { asFragment } = renderWithRouter(
-        <SkipLink
-          mainContentRef={mainContentRef}
-          isKeyboardNavigation={false}
-        />
+        <SkipLink mainContentRef={mainContentRef} />
       );
 
       expect(asFragment()).toMatchSnapshot();
