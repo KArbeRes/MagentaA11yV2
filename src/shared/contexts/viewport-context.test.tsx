@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { ViewportProvider, useViewport } from './viewport-context';
 import { useRef } from 'react';
+import { ViewportProvider, useViewport } from './viewport-context';
 
 const TestComponent = () => {
   const { isMobile } = useViewport();

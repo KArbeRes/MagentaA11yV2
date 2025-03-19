@@ -19,9 +19,10 @@ interface NavItem {
 
 interface SideNavProps {
   platform: Platforms;
+  testId?: string;
 }
 
-const SideNav = forwardRef(({ platform }: SideNavProps, ref) => {
+const SideNav = forwardRef(({ platform, testId }: SideNavProps, ref) => {
   const viewportContext = useViewport();
   const location = useLocation();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -54,7 +55,7 @@ const SideNav = forwardRef(({ platform }: SideNavProps, ref) => {
     items: NavItem[],
     parentPath = `/${platform}-criteria`
   ) => (
-    <div className="MagentaA11y__side-nav-container">
+    <div className="MagentaA11y__side-nav-container" data-testid={testId}>
       <div className="MagentaA11y__side-nav">
         <div className="MagentaA11y__side-nav--title-wrapper">
           <h1 className="MagentaA11y__side-nav--title" id="side-nav-title">
@@ -124,7 +125,8 @@ const SideNav = forwardRef(({ platform }: SideNavProps, ref) => {
         ref={dialogRef}
         id="sideNavDialog"
         aria-modal="true"
-        aria-labelledby="side-nav-title">
+        aria-labelledby="side-nav-title"
+        data-testid={testId ? `${testId}-dialog` : undefined}>
         {renderNavItems(contentData[platform] as NavItem[])}
       </dialog>
     );

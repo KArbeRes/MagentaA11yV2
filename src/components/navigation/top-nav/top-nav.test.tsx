@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ViewportProvider } from 'shared/contexts/viewport-context';
+import { Platforms } from 'shared/types/shared-types';
 import { TopNavProps } from '../nav.types';
 import TopNav, { getFirstOverviewLink } from './top-nav';
-import userEvent from '@testing-library/user-event';
-import { Platforms } from 'shared/types/shared-types';
 
 const renderWithProviders = (
   ui: React.ReactElement,
