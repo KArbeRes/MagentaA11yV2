@@ -7,12 +7,12 @@ export const useKeyboardNavigation = () => {
     const handleKeyDown = () => setIsKeyboardNavigation(true);
     const handleMouseDown = () => setIsKeyboardNavigation(false);
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyDown);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('touchstart', handleMouseDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyDown);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('touchstart', handleMouseDown);
     };

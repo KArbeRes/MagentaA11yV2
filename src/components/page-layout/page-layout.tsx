@@ -9,8 +9,7 @@ import { NavItem } from 'components/navigation/nav.types';
 import TopNav from 'components/navigation/top-nav/top-nav';
 import SkipLink from 'components/skip-link/SkipLink';
 import { usePageTitle } from 'hooks/usePageTitle';
-import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { ReactComponent as BookmarkIconOutlined } from '../../assets/svgs/bookmark-outlined.svg';
 
@@ -18,8 +17,6 @@ const PageLayout: React.FC = () => {
   const { savedCriteria } = useCriteria();
   const savedCriteriaCount = savedCriteria.length;
   const mainContentRef = useRef<HTMLDivElement | null>(null);
-  const headerRef = useRef<HTMLElement | null>(null);
-  const location = useLocation();
 
   const badgeString = savedCriteriaCount
     ? savedCriteriaCount > 99
@@ -45,15 +42,9 @@ const PageLayout: React.FC = () => {
 
   usePageTitle();
 
-  useEffect(() => {
-    if (headerRef.current) {
-      headerRef.current.focus();
-    }
-  }, [location]);
-
   return (
     <div className="MagentaA11y">
-      <header className="MagentaA11y-header" tabIndex={-1} ref={headerRef}>
+      <header className="MagentaA11y-header">
         <SkipLink mainContentRef={mainContentRef} />
         <TopNav navItems={navItems} />
       </header>

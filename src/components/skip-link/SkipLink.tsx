@@ -1,4 +1,5 @@
-import React, { MutableRefObject, useRef } from 'react';
+import { useKeyboardNavigation } from 'hooks/useKeyboardNavigation';
+import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './skip-link.scss';
@@ -14,6 +15,7 @@ const SkipLink: React.FC<SkipLinkProps> = ({
 }) => {
   const location = useLocation();
   const skipLinkRef = useRef<HTMLButtonElement | null>(null);
+  const isKeyboardNavigation = useKeyboardNavigation();
 
   const formatNavigationMessage = () => {
     const pathSegments = location.pathname.trim().split('/').filter(Boolean);
@@ -31,6 +33,12 @@ const SkipLink: React.FC<SkipLinkProps> = ({
         : ' page'
     }`.trim();
   };
+
+  useEffect(() => {
+    if (isKeyboardNavigation) {
+      skipLinkRef.current?.focus();
+    }
+  }, [location, isKeyboardNavigation]);
 
   return (
     <>
