@@ -2,6 +2,10 @@
 
 exports[`SkipLink Component SkipLink Component - Snapshot Test matches the snapshot 1`] = `
 <DocumentFragment>
+  <span
+    aria-labelledby="atomic-region"
+    tabindex="-1"
+  />
   <button
     class="skip-link"
   >
@@ -10,6 +14,7 @@ exports[`SkipLink Component SkipLink Component - Snapshot Test matches the snaps
   <div
     aria-atomic="true"
     aria-live="polite"
+    id="atomic-region"
   />
 </DocumentFragment>
 `;

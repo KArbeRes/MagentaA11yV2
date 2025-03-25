@@ -1,4 +1,5 @@
-import React, { MutableRefObject, useRef } from 'react';
+import { useKeyboardNavigation } from 'hooks/useKeyboardNavigation';
+import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './skip-link.scss';
@@ -13,6 +14,8 @@ const SkipLink: React.FC<SkipLinkProps> = ({
   liveRegionTestId,
 }) => {
   const location = useLocation();
+  const isKeyboardNavigation = useKeyboardNavigation();
+  const spanRef = useRef<HTMLDivElement | null>(null);
   const skipLinkRef = useRef<HTMLButtonElement | null>(null);
 
   const formatNavigationMessage = () => {
@@ -32,8 +35,15 @@ const SkipLink: React.FC<SkipLinkProps> = ({
     }`.trim();
   };
 
+  useEffect(() => {
+    if (isKeyboardNavigation) {
+      spanRef.current?.focus();
+    }
+  }, [location.pathname, isKeyboardNavigation]);
+
   return (
     <>
+      <span ref={spanRef} tabIndex={-1} aria-labelledby="atomic-region"></span>
       <button
         className="skip-link"
         ref={skipLinkRef}
@@ -42,7 +52,11 @@ const SkipLink: React.FC<SkipLinkProps> = ({
         }}>
         Skip to main content
       </button>
-      <div data-testid={liveRegionTestId} aria-live="polite" aria-atomic="true">
+      <div
+        id="atomic-region"
+        data-testid={liveRegionTestId}
+        aria-live="polite"
+        aria-atomic="true">
         {formatNavigationMessage()}
       </div>
     </>

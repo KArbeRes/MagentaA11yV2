@@ -8,20 +8,15 @@ import Footer from 'components/navigation/footer/footer';
 import { NavItem } from 'components/navigation/nav.types';
 import TopNav from 'components/navigation/top-nav/top-nav';
 import SkipLink from 'components/skip-link/SkipLink';
-import { useKeyboardNavigation } from 'hooks/useKeyboardNavigation';
 import { usePageTitle } from 'hooks/usePageTitle';
-import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { ReactComponent as BookmarkIconOutlined } from '../../assets/svgs/bookmark-outlined.svg';
 
 const PageLayout: React.FC = () => {
   const { savedCriteria } = useCriteria();
-  const isKeyboardNavigation = useKeyboardNavigation();
-  const location = useLocation();
   const savedCriteriaCount = savedCriteria.length;
   const mainContentRef = useRef<HTMLDivElement | null>(null);
-  const test = useRef<HTMLDivElement | null>(null);
 
   const badgeString = savedCriteriaCount
     ? savedCriteriaCount > 99
@@ -47,17 +42,8 @@ const PageLayout: React.FC = () => {
 
   usePageTitle();
 
-  useEffect(() => {
-    if (isKeyboardNavigation) {
-      console.log('test');
-      test.current?.focus();
-    }
-
-    console.log(document.activeElement);
-  }, [location, isKeyboardNavigation]);
-
   return (
-    <div className="MagentaA11y" ref={test} tabIndex={-1}>
+    <div className="MagentaA11y">
       <header className="MagentaA11y-header">
         <SkipLink mainContentRef={mainContentRef} />
         <TopNav navItems={navItems} />
