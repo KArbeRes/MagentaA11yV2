@@ -15,7 +15,7 @@ const SkipLink: React.FC<SkipLinkProps> = ({
 }) => {
   const location = useLocation();
   const isKeyboardNavigation = useKeyboardNavigation();
-  const spanRef = useRef<HTMLDivElement | null>(null);
+  const atomicHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const skipLinkRef = useRef<HTMLButtonElement | null>(null);
 
   const formatNavigationMessage = () => {
@@ -37,13 +37,22 @@ const SkipLink: React.FC<SkipLinkProps> = ({
 
   useEffect(() => {
     if (isKeyboardNavigation) {
-      spanRef.current?.focus();
+      atomicHeadingRef.current?.focus();
     }
   }, [location.pathname, isKeyboardNavigation]);
 
   return (
     <>
-      <span ref={spanRef} tabIndex={-1} aria-labelledby="atomic-region"></span>
+      <h2
+        id="atomic-region"
+        data-testid={liveRegionTestId}
+        aria-live="polite"
+        aria-atomic="true"
+        tabIndex={-1}
+        ref={atomicHeadingRef}
+        className="hidden-visually">
+        {formatNavigationMessage()}
+      </h2>
       <button
         className="skip-link"
         ref={skipLinkRef}
@@ -52,13 +61,6 @@ const SkipLink: React.FC<SkipLinkProps> = ({
         }}>
         Skip to main content
       </button>
-      <div
-        id="atomic-region"
-        data-testid={liveRegionTestId}
-        aria-live="polite"
-        aria-atomic="true">
-        {formatNavigationMessage()}
-      </div>
     </>
   );
 };
