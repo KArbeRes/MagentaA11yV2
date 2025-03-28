@@ -10,6 +10,43 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
       class="MagentaA11y--footer__nav-list"
     >
       <h2>
+        How-to-test Criteria
+      </h2>
+      <div
+        aria-hidden="true"
+        class="MagentaA11y-divider"
+        data-orientation="horizontal"
+        role="separator"
+      />
+      <ul
+        role="list"
+      >
+        <li
+          role="listitem"
+        >
+          <a
+            class=""
+            href="/how-to-test-criteria/components/overview"
+          >
+            Components
+          </a>
+        </li>
+        <li
+          role="listitem"
+        >
+          <a
+            class=""
+            href="/how-to-test-criteria/page-level/overview"
+          >
+            Page Level
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="MagentaA11y--footer__nav-list"
+    >
+      <h2>
         Native Criteria
       </h2>
       <div

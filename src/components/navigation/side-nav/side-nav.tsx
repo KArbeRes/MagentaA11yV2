@@ -2,7 +2,7 @@ import IconButton from 'components/custom-components/buttons/icon-button/icon-bu
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
 import { useViewport } from '../../../shared/contexts/viewport-context';
@@ -18,11 +18,11 @@ interface NavItem {
 }
 
 interface SideNavProps {
-  platform: Platforms;
+  documentation: DocumentationCategory;
   testId?: string;
 }
 
-const SideNav = forwardRef(({ platform, testId }: SideNavProps, ref) => {
+const SideNav = forwardRef(({ documentation, testId }: SideNavProps, ref) => {
   const viewportContext = useViewport();
   const location = useLocation();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -53,7 +53,7 @@ const SideNav = forwardRef(({ platform, testId }: SideNavProps, ref) => {
 
   const renderNavItems = (
     items: NavItem[],
-    parentPath = `/${platform}-criteria`
+    parentPath = `/${documentation}-criteria`
   ) => (
     <div className="MagentaA11y__side-nav-container" data-testid={testId}>
       <div className="MagentaA11y__side-nav">
@@ -127,12 +127,12 @@ const SideNav = forwardRef(({ platform, testId }: SideNavProps, ref) => {
         aria-modal="true"
         aria-labelledby="side-nav-title"
         data-testid={testId ? `${testId}-dialog` : undefined}>
-        {renderNavItems(contentData[platform] as NavItem[])}
+        {renderNavItems(contentData[documentation] as NavItem[])}
       </dialog>
     );
   }
 
-  return renderNavItems(contentData[platform] as NavItem[]);
+  return renderNavItems(contentData[documentation] as NavItem[]);
 });
 
 export default SideNav;

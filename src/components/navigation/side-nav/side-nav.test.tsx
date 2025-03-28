@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ViewportProvider } from 'shared/contexts/viewport-context';
 import SideNav from './side-nav';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import contentData from 'shared/content.json';
 import userEvent from '@testing-library/user-event';
 
@@ -31,7 +31,7 @@ const renderWithProviders = (ui: React.ReactElement, isMobile = false) => {
 describe('SideNav Component - Snapshot Test', () => {
   test('matches the snapshot in desktop view', () => {
     const { asFragment } = renderWithProviders(
-      <SideNav platform={Platforms.WEB} />,
+      <SideNav documentation={DocumentationCategory.WEB} />,
       false
     );
     expect(asFragment()).toMatchSnapshot();
@@ -39,7 +39,7 @@ describe('SideNav Component - Snapshot Test', () => {
 
   test('matches the snapshot in mobile view', () => {
     const { asFragment } = renderWithProviders(
-      <SideNav platform={Platforms.WEB} />,
+      <SideNav documentation={DocumentationCategory.WEB} />,
       true
     );
     expect(asFragment()).toMatchSnapshot();
@@ -48,13 +48,16 @@ describe('SideNav Component - Snapshot Test', () => {
 
 describe('SideNav Component - Rendering', () => {
   test('renders the SideNav component', () => {
-    renderWithProviders(<SideNav platform={Platforms.WEB} />);
+    renderWithProviders(<SideNav documentation={DocumentationCategory.WEB} />);
     expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
   test('contains the correct class name', () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />
     );
 
     const sideNav = screen.getByTestId('test-side-nav');
@@ -62,20 +65,23 @@ describe('SideNav Component - Rendering', () => {
   });
 
   test('renders the title correctly', () => {
-    renderWithProviders(<SideNav platform={Platforms.WEB} />);
+    renderWithProviders(<SideNav documentation={DocumentationCategory.WEB} />);
     expect(
       screen.getByRole('heading', { name: 'Criteria' })
     ).toBeInTheDocument();
   });
 
   test('renders navigation list', () => {
-    renderWithProviders(<SideNav platform={Platforms.WEB} />);
+    renderWithProviders(<SideNav documentation={DocumentationCategory.WEB} />);
     expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
   test('renders in a dialog element in mobile view', () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />,
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />,
       true
     );
     expect(screen.getByTestId('test-side-nav-dialog')).toBeInTheDocument();
@@ -83,10 +89,15 @@ describe('SideNav Component - Rendering', () => {
 
   test('renders correct nav item labels', () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />
     );
 
-    const navItems = contentData[Platforms.WEB].map((item) => item.label);
+    const navItems = contentData[DocumentationCategory.WEB].map(
+      (item) => item.label
+    );
 
     navItems.forEach((label) => {
       expect(screen.getByText(label)).toBeInTheDocument();
@@ -95,10 +106,13 @@ describe('SideNav Component - Rendering', () => {
 
   test('each nav link has a valid href', async () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />
     );
 
-    for (const item of contentData[Platforms.WEB]) {
+    for (const item of contentData[DocumentationCategory.WEB]) {
       const accordionButton = screen.getByRole('button', { name: item.label });
       await userEvent.click(accordionButton);
 
@@ -120,7 +134,10 @@ describe('SideNav Component - Rendering', () => {
 describe('SideNav Component - Interaction Tests', () => {
   test('clicking an accordion expands and collapses it', async () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />
     );
 
     const accordionButton = screen.getByRole('button', {
@@ -141,7 +158,10 @@ describe('SideNav Component - Interaction Tests', () => {
 
   test('clicking a navigation link inside an accordion closes the menu (Mobile Only)', async () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />
     );
 
     const accordionButton = screen.getByRole('button', {
@@ -161,7 +181,10 @@ describe('SideNav Component - Interaction Tests', () => {
 
   test('keyboard navigation with Tab key cycles through elements correctly', async () => {
     renderWithProviders(
-      <SideNav platform={Platforms.WEB} testId="test-side-nav" />
+      <SideNav
+        documentation={DocumentationCategory.WEB}
+        testId="test-side-nav"
+      />
     );
 
     const accordionButton = screen.getByRole('button', {

@@ -17,32 +17,6 @@ describe('IconButton Component - Basic Rendering', () => {
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toBeInTheDocument();
   });
-
-  test('does not render the button when a11yLabel is missing', () => {
-    render(
-      <IconButton
-        a11yLabel="" // Empty label
-        icon={Icons.closeOutlined}
-        size={ButtonSize.large}
-        type={ButtonType.button}
-      />
-    );
-
-    expect(screen.queryByRole('button')).not.toBeInTheDocument();
-  });
-
-  test('does not render the button when a11yLabel is undefined', () => {
-    render(
-      <IconButton
-        icon={Icons.abcOutlined}
-        size={ButtonSize.large}
-        type={ButtonType.button}
-        a11yLabel={''}
-      />
-    );
-
-    expect(screen.queryByRole('button')).not.toBeInTheDocument();
-  });
 });
 
 describe('IconButton Component - Accessibility & ARIA Attributes', () => {

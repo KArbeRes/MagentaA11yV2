@@ -25,14 +25,14 @@
     counter-reset: list-counter;
   }
 
-  ol li {
+  ol > li {
     position: relative;
     margin-bottom: var(--magentaa11y-spacing-size-16);
     padding-left: var(--magentaa11y-font-size-32);
     counter-increment: list-counter;
   }
 
-  ol li::before {
+  ol > li::before {
     content: counter(list-counter);
     position: absolute;
     left: 0;

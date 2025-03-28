@@ -1,4 +1,4 @@
-import AppRoutes from 'components/app-routes/app-routes';
+import AppRoutes from 'components/navigation/app-routes/app-routes';
 import Divider from 'components/custom-components/divider/divider';
 import {
   DividerModifiers,

@@ -77,6 +77,10 @@ npm run create-md -- <filename> "<relative-path>"
 npm run create-md -- textarea "native/inputs"
 ```
 
+```bash
+npm run create-md -- "links-buttons" "how-to-test/components"
+```
+
 This command will create:
 
 ```

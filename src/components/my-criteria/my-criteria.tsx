@@ -19,7 +19,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { formatTabLabel } from 'utils/string-helpers';
 
 import '../my-criteria/my-criteria.scss';
@@ -199,11 +199,15 @@ const MyCriteria: React.FC = () => {
                 ref={emptyMessageRef}>
                 <p>
                   It seems you haven’t saved any criteria. Start by checking out{' '}
-                  <Link to={`${getFirstOverviewLink(Platforms.WEB)}`}>
+                  <Link
+                    to={`${getFirstOverviewLink(DocumentationCategory.WEB)}`}>
                     Web Criteria
                   </Link>{' '}
                   or{' '}
-                  <Link to={`${getFirstOverviewLink(Platforms.NATIVE)}`}>
+                  <Link
+                    to={`${getFirstOverviewLink(
+                      DocumentationCategory.NATIVE
+                    )}`}>
                     Native Criteria
                   </Link>
                   .

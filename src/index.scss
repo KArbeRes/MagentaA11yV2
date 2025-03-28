@@ -160,6 +160,11 @@ th {
   overflow-wrap: break-word; /* Modern equivalent to word-wrap */
 }
 
+th {
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
 svg {
   fill: var(--color-on-tertiary);
 }
