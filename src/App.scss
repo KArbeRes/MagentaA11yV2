@@ -6,8 +6,10 @@
   min-height: 100vh;
 }
 
-.MagentaA11y--content {
+.MagentaA11y--content,
+main {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
+  min-height: 100vh;
 }

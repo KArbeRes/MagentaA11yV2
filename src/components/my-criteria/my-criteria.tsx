@@ -1,4 +1,3 @@
-import { formatTabLabel } from 'components/content-display/content-display';
 import MarkdownContent from 'components/content-display/markdown-content/markdown-content';
 import {
   ButtonSize,
@@ -15,17 +14,19 @@ import {
 import Divider from 'components/custom-components/divider/divider';
 import { OrientationEnum } from 'components/custom-components/divider/divider.types';
 import { getFirstOverviewLink } from 'components/navigation/top-nav/top-nav';
+import { useClipboard } from 'hooks/useClipboard';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCriteria } from 'shared/contexts/criteria-context';
 import { Icons } from 'shared/Icons';
 import { Platforms } from 'shared/types/shared-types';
+import { formatTabLabel } from 'utils/string-helpers';
 
 import '../my-criteria/my-criteria.scss';
 
 const MyCriteria: React.FC = () => {
   const { savedCriteria, removeCriteria, clearCriteria } = useCriteria();
-  const [copiedContent, setCopiedContent] = useState<string | null>(null);
+  const { copiedContent, copyToClipboard } = useClipboard();
   const [selectedTabIndex, setActiveTab] = useState<number>(0);
   const mergedCriteriaTabs = useMemo(() => {
     return ['Condensed', 'Gherkin'].map((tabName) => ({
@@ -36,9 +37,11 @@ const MyCriteria: React.FC = () => {
         .join('\n\n---\n\n'),
     }));
   }, [savedCriteria]);
+  const [deletedChipIndex, setDeletedChipIndex] = useState<number | null>(null);
 
   const tabsElementRef = useRef<HTMLElement>(null);
-  const chipsContainerRef = useRef<HTMLDivElement>(null);
+  const condensedChipsRef = useRef<HTMLDivElement>(null);
+  const gherkinChipsRef = useRef<HTMLDivElement>(null);
   const emptyMessageRef = useRef<HTMLDivElement>(null);
 
   const currentTabContent = useMemo(() => {
@@ -58,40 +61,20 @@ const MyCriteria: React.FC = () => {
     if (emptyMessageRef.current) {
       const firstLink = emptyMessageRef.current.querySelector('a');
       if (firstLink) {
-        (firstLink as HTMLElement).focus();
+        firstLink.focus();
       }
     }
   };
 
   const deleteCriteriaChip = (id: string) => {
     const index = currentTabChips.findIndex((chip) => chip.id === id);
-    const updatedChips = currentTabChips.filter((chip) => chip.id !== id);
-    let nextFocusIndex = Math.min(index, updatedChips.length - 1);
-
+    setDeletedChipIndex(index);
     removeCriteria(id);
-
-    setTimeout(() => {
-      if (updatedChips.length > 0 && chipsContainerRef.current) {
-        const chipButtons =
-          chipsContainerRef.current.querySelectorAll('button');
-        if (chipButtons[nextFocusIndex]) {
-          (chipButtons[nextFocusIndex] as HTMLElement).focus();
-        }
-      } else if (updatedChips.length === 0) {
-        focusFirstEmptyStateLink();
-      }
-    }, 0);
   };
 
   const copyCurrentCriteria = (): void => {
     if (!currentTabContent.trim()) return;
-
-    navigator.clipboard
-      .writeText(currentTabContent)
-      .then(() => {
-        setCopiedContent(currentTabContent);
-      })
-      .catch((err) => console.error('Failed to copy content:', err));
+    copyToClipboard(currentTabContent);
   };
 
   const clearCurrentTabCriteria = () => {
@@ -106,25 +89,28 @@ const MyCriteria: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!copiedContent) return;
+    if (deletedChipIndex === null) return;
 
-    const interval = setInterval(async () => {
-      const isStillInClipboard = await checkClipboardContent(copiedContent);
-      if (!isStillInClipboard) setCopiedContent(null);
-    }, 3000);
+    const updatedChips = currentTabChips;
+    const nextFocusIndex = Math.min(deletedChipIndex, updatedChips.length - 1);
 
-    return () => clearInterval(interval);
-  }, [copiedContent]);
+    const refToUse =
+      selectedTabIndex === 0 ? condensedChipsRef : gherkinChipsRef;
 
-  const checkClipboardContent = async (content: string) => {
-    try {
-      const clipboardText = await navigator.clipboard.readText();
-      return clipboardText === content;
-    } catch (err) {
-      console.error('Failed to read clipboard content:', err);
-      return false;
+    if (updatedChips.length > 0 && refToUse.current) {
+      const chipButtons = refToUse.current.querySelectorAll('button');
+      if (chipButtons[nextFocusIndex]) {
+        chipButtons[nextFocusIndex].focus();
+      }
+    } else if (updatedChips.length === 0) {
+      focusFirstEmptyStateLink();
     }
-  };
+
+    setDeletedChipIndex(null);
+  }, [currentTabChips, deletedChipIndex, selectedTabIndex]);
+
+  let criteriaIsCopied =
+    copiedContent === mergedCriteriaTabs[selectedTabIndex]?.content;
 
   return (
     <div className="MagentaA11y__my-criteria">
@@ -163,8 +149,8 @@ const MyCriteria: React.FC = () => {
               type={ButtonType.button}
               variant={ButtonVariant.primary}
               size={ButtonSize.large}
-              label={copiedContent ? 'Copied!' : 'Copy Criteria'}
-              decoration={copiedContent ? Icons.checkmark : Icons.copyFilled}
+              label={criteriaIsCopied ? 'Copied!' : 'Copy Criteria'}
+              decoration={criteriaIsCopied ? Icons.checkmark : Icons.copyFilled}
               id="copy-criteria"
             />
           )}
@@ -173,6 +159,8 @@ const MyCriteria: React.FC = () => {
 
       {mergedCriteriaTabs.map((criteria, index) => {
         const formattedLabel = formatTabLabel(criteria.tab);
+        const isCondensed = criteria.tab === 'Condensed';
+
         return (
           <div
             key={formattedLabel}
@@ -190,7 +178,7 @@ const MyCriteria: React.FC = () => {
               onDelete={deleteCriteriaChip}
               size={ChipSize.SMALL}
               legend="Saved Criteria"
-              ref={chipsContainerRef}
+              ref={isCondensed ? condensedChipsRef : gherkinChipsRef}
             />
             {criteria.content ? (
               <>

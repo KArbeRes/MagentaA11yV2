@@ -53,6 +53,39 @@ npm install
 - **`npm run convert-videos`**: Converts video files to `.webm` format for web optimization.
 - **`npm run print-tree`**: Prints the project tree structure, excluding `node_modules`.
 
+### Markdown Generation Script
+
+- **`npm run create-md`**: Generates structured Markdown files with predefined sections.
+
+#### What the Script Does
+
+1. **Creates Markdown files**:
+   Generates files with sections like **General Notes, Criteria, Developer Notes, Gherkin, and more**.
+2. **Ensures a consistent structure**: Every file follows the same format to maintain readability and usability.
+3. **Supports content categorization**: Sections for **Android/iOS Developer Notes and Video embeds**.
+4. **Avoids overwriting existing files**: If a file already exists, the script prevents accidental overwrites.
+
+#### Running the Script
+
+```bash
+npm run create-md -- <filename> "<relative-path>"
+```
+
+#### Example:
+
+```bash
+npm run create-md -- textarea "native/inputs"
+```
+
+This command will create:
+
+```
+public/content/native/inputs/textarea.md
+```
+
+- If the folder does not exist, it will be created.
+- If the file already exists, the script will **exit with an error** to prevent accidental overwrites.
+
 ---
 
 ## Key Features
@@ -71,10 +104,13 @@ The app is deployed via GitHub Pages. Follow these steps to deploy:
 
 1. Ensure GitHub Pages is enabled in your repository settings.
 2. Update the `homepage` field in `package.json`:
+
    ```json
    "homepage": "https://<username>.github.io/<repository-name>"
    ```
+
 3. Run:
+
    ```bash
    npm run deploy
    ```
@@ -100,6 +136,7 @@ The script `convert-videos-to-webm.sh` optimizes video files for the web.
 ### Requirements
 
 - **FFmpeg**: Install via [Homebrew](https://brew.sh/) (macOS):
+
   ```bash
   brew install ffmpeg
   ```
