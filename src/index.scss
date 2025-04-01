@@ -1,5 +1,6 @@
 @use './styles/root' as *;
 @use './styles/utilities' as *;
+@use './styles/md-styles' as *;
 
 html {
   background-color: var(--color-background);
@@ -86,8 +87,7 @@ button {
 }
 
 pre {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   padding: 1em;
   overflow-x: auto;
   border-radius: 4px;

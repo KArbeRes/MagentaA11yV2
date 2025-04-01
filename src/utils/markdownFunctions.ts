@@ -21,12 +21,29 @@ import { NavigateFunction } from 'react-router-dom';
  */
 export const getMarkdownFunctionMap = (
   navigate: NavigateFunction
-): Record<string, () => void> => ({
+): Record<string, (event: React.MouseEvent<Element>) => void> => ({
   showAlert: () => alert('This works with a keyboard and a mouse!'),
   showAlertWhenDisabled: () =>
-    alert(
-      'This disabled button is still actionable for mouse and screen readers users!'
-    ),
+    alert('This disabled button is still actionable for mouse and screen readers users!'),
   showMouseAlert: () => alert('This only works with a mouse'),
   goToHome: () => navigate('/home'),
+
+  toggleAccordionState: (event) => {
+    const targetButton = event.currentTarget as HTMLButtonElement;
+    const expanded = targetButton.getAttribute('aria-expanded') === 'true';
+    targetButton.setAttribute('aria-expanded', String(!expanded));
+  },
+
+  scrollToTopOnly: () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },
+
+  scrollAndFocusMain: () => {
+    const main = document.querySelector('main');
+    if (main) {
+      main.setAttribute('tabindex', '-1');
+      main.focus();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },
 });

@@ -1,11 +1,12 @@
 import fs from 'fs';
-import { RootContent, Heading, Parent, Root, Text } from 'mdast';
+import { Heading, Parent, Root, RootContent, Text } from 'mdast';
 import { gfmTableToMarkdown } from 'mdast-util-gfm-table';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import path from 'path';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -180,14 +181,27 @@ const generateContentData = () => {
       withFileTypes: true,
     });
 
-    const contentData = documentation.reduce((acc, documentation) => {
-      if (documentation.isDirectory()) {
-        acc[documentation.name] = getDirectoryStructure(
-          path.join(documentationDir, documentation.name)
+    const unorderedContentData = documentation.reduce((acc, item) => {
+      if (item.isDirectory()) {
+        acc[item.name] = getDirectoryStructure(
+          path.join(documentationDir, item.name)
         );
       }
       return acc;
     }, {} as Record<string, any>);
+
+    const orderedKeys = [
+      DocumentationCategory.WEB,
+      DocumentationCategory.NATIVE,
+      DocumentationCategory.HOW_TO_TEST,
+    ];
+
+    const contentData: Record<string, any> = {};
+    for (const key of orderedKeys) {
+      if (unorderedContentData[key]) {
+        contentData[key] = unorderedContentData[key];
+      }
+    }
 
     fs.writeFileSync(outputPath, JSON.stringify(contentData, null, 2));
     console.log('Content data generated successfully.');

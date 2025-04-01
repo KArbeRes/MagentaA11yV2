@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import contentData from 'shared/content.json';
 import Footer from './footer';
+import { DocumentationCategory } from 'shared/types/shared-types';
 
 // Custom render function with MemoryRouter
 const renderWithRouter = (
@@ -51,10 +52,19 @@ describe('Footer Component - Content Tests', () => {
   test('renders category headers based on contentData', () => {
     renderWithRouter(<Footer />);
     Object.keys(contentData).forEach((category) => {
-      const formattedCategory =
-        category.charAt(0).toUpperCase() + category.slice(1);
+      const formattedCategory = category
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+      const expectedHeading =
+        category === DocumentationCategory.HOW_TO_TEST
+          ? formattedCategory
+          : `${formattedCategory} Criteria`;
+
       expect(
-        screen.getByRole('heading', { name: `${formattedCategory} Criteria` })
+        screen.getByRole('heading', {
+          name: expectedHeading,
+        })
       ).toBeInTheDocument();
     });
   });

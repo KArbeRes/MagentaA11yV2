@@ -4,6 +4,7 @@ import { OrientationEnum } from 'components/custom-components/divider/divider.ty
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import contentData from 'shared/content.json';
+import { DocumentationCategory } from 'shared/types/shared-types';
 
 import './footer.scss';
 
@@ -13,7 +14,10 @@ const Footer: React.FC = () => {
       {Object.entries(contentData).map(([category, items]) => (
         <div key={category} className="MagentaA11y--footer__nav-list">
           <h2>
-            {category.charAt(0).toUpperCase() + category.slice(1)} Criteria
+            {category
+              .replace(/-/g, ' ')
+              .replace(/\b\w/g, (c) => c.toUpperCase())}{' '}
+            {category === DocumentationCategory.HOW_TO_TEST ? '' : 'Criteria'}
           </h2>
           <Divider orientation={OrientationEnum.HORIZONTAL} />
           <ul role="list">

@@ -10,7 +10,7 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
       class="MagentaA11y--footer__nav-list"
     >
       <h2>
-        How-to-test Criteria
+        Web Criteria
       </h2>
       <div
         aria-hidden="true"
@@ -26,9 +26,9 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class=""
-            href="/how-to-test-criteria/components/overview"
+            href="/web-criteria/header-component/overview"
           >
-            Components
+            Header Component
           </a>
         </li>
         <li
@@ -36,9 +36,19 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class=""
-            href="/how-to-test-criteria/page-level/overview"
+            href="/web-criteria/html-component/overview"
           >
-            Page Level
+            Html Component
+          </a>
+        </li>
+        <li
+          role="listitem"
+        >
+          <a
+            class=""
+            href="/web-criteria/main-component/overview"
+          >
+            Main Component
           </a>
         </li>
       </ul>
@@ -94,7 +104,7 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
       class="MagentaA11y--footer__nav-list"
     >
       <h2>
-        Web Criteria
+        How To Test 
       </h2>
       <div
         aria-hidden="true"
@@ -110,9 +120,9 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class=""
-            href="/web-criteria/header-component/overview"
+            href="/how-to-test-criteria/components/overview"
           >
-            Header Component
+            Components
           </a>
         </li>
         <li
@@ -120,19 +130,9 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class=""
-            href="/web-criteria/html-component/overview"
+            href="/how-to-test-criteria/page-level/overview"
           >
-            Html Component
-          </a>
-        </li>
-        <li
-          role="listitem"
-        >
-          <a
-            class=""
-            href="/web-criteria/main-component/overview"
-          >
-            Main Component
+            Page Level
           </a>
         </li>
       </ul>

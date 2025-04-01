@@ -34,9 +34,7 @@ const PageLayout: React.FC = () => {
       href: '/my-criteria',
       icon: <BookmarkIconOutlined />,
       withBadge: badgeString,
-      ariaLabel: badgeString
-        ? `My Criteria, ${badgeString} criteria has been saved`
-        : '',
+      ariaLabel: badgeString ? `My Criteria, ${badgeString} criteria has been saved` : '',
     },
   ];
 
@@ -48,13 +46,10 @@ const PageLayout: React.FC = () => {
         <SkipLink mainContentRef={mainContentRef} />
         <TopNav navItems={navItems} />
       </header>
-      <main className="MagentaA11y--content" ref={mainContentRef} tabIndex={-1}>
+      <main className="MagentaA11y--content" ref={mainContentRef} tabIndex={-1} id="main-content">
         <AppRoutes />
       </main>
-      <Divider
-        orientation={OrientationEnum.HORIZONTAL}
-        className={DividerModifiers.STRONG}
-      />
+      <Divider orientation={OrientationEnum.HORIZONTAL} className={DividerModifiers.STRONG} />
       <Footer />
     </div>
   );

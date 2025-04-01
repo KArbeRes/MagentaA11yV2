@@ -3,7 +3,7 @@ import { ButtonType } from 'components/custom-components/buttons/button-types';
 import IconButton from 'components/custom-components/buttons/icon-button/icon-button';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -13,10 +13,7 @@ import { MarkdownContentProps, MediaProps } from './markdown-content.types';
 
 import './markdown-content.scss';
 
-const MarkdownContent: React.FC<MarkdownContentProps> = ({
-  content,
-  assetBasePath,
-}) => {
+const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, assetBasePath }) => {
   const navigate = useNavigate();
   const markdownFunctionMap = getMarkdownFunctionMap(navigate);
 
@@ -31,9 +28,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ src, alt }: MediaProps) => {
-            const resolvedSrc = src?.startsWith('http')
-              ? src
-              : `${assetBasePath}/${src}`;
+            const resolvedSrc = src?.startsWith('http') ? src : `${assetBasePath}/${src}`;
             return resolvedSrc ? (
               <img src={resolvedSrc} alt={alt} loading="lazy" />
             ) : (
@@ -41,9 +36,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
             );
           },
           video: ({ poster, children }: MediaProps) => {
-            let posterPath = poster
-              ? `${assetBasePath}/${poster}`
-              : 'MagentaA11yV2/movie.svg';
+            let posterPath = poster ? `${assetBasePath}/${poster}` : 'MagentaA11yV2/movie.svg';
             return (
               <video controls preload="none" poster={posterPath}>
                 {children}
@@ -51,9 +44,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
             );
           },
           source: ({ src, type }: MediaProps) => {
-            const resolvedSrc = src?.startsWith('http')
-              ? src
-              : `${assetBasePath}/${src}`;
+            const resolvedSrc = src?.startsWith('http') ? src : `${assetBasePath}/${src}`;
             return <source src={resolvedSrc} type={type} />;
           },
           a: (props) => {
@@ -62,36 +53,50 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
             const handler = fnKey && markdownFunctionMap[fnKey];
             const { href, children } = props;
 
-            // If a function is defined via data-fn, attach it to the proper event
             if (fnKey && handler) {
+              const sharedProps = { ...props };
+
               switch (eventType) {
                 case 'onMouseDown':
                   return (
-                    <a {...props} onMouseDown={handler}>
+                    <a
+                      {...sharedProps}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        handler(e);
+                      }}>
                       {children}
                     </a>
                   );
                 case 'onMouseUp':
                   return (
-                    <a {...props} onMouseUp={handler}>
+                    <a
+                      {...sharedProps}
+                      onMouseUp={(e) => {
+                        e.preventDefault();
+                        handler(e);
+                      }}>
                       {children}
                     </a>
                   );
                 default:
                   return (
-                    <a {...props} onClick={handler}>
+                    <a
+                      {...sharedProps}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handler(e);
+                      }}>
                       {children}
                     </a>
                   );
               }
             }
 
-            // If there's no href and no fnKey, render the <a> as-is
             if (!href) {
               return <a {...props}>{children}</a>;
             }
 
-            // Handle internal vs external links
             const isExternal = (() => {
               try {
                 const url = new URL(href, window.location.href);
@@ -110,27 +115,26 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
                 {children}
               </a>
             ) : (
-              <NavLink to={href} aria-label={`Navigate to ${href}`}>
+              <Link to={href} aria-label={`Navigate to ${href}`}>
                 {children}
-              </NavLink>
+              </Link>
             );
           },
+
           button: ({ children, ...props }) => {
-            const fnKey = (props as Record<string, unknown>)?.['data-fn'] as
-              | string
-              | undefined;
+            const fnKey = (props as Record<string, unknown>)?.['data-fn'] as string | undefined;
             const fn = fnKey && markdownFunctionMap[fnKey];
 
             const { type: nativeType, ...rest } = props;
 
-            const iconName = (props as Record<string, unknown>)['data-icon'] as
-              | Icon
+            const iconName = (props as Record<string, unknown>)['data-icon'] as Icon | undefined;
+            const a11yLabel = (props as Record<string, unknown>)['data-label'] as
+              | string
               | undefined;
-            const a11yLabel = (props as Record<string, unknown>)[
-              'data-label'
-            ] as string | undefined;
 
-            const onClick = typeof fn === 'function' ? () => fn() : undefined;
+            // ✅ Pass the event so the function can use event.currentTarget
+            const onClick =
+              typeof fn === 'function' ? (event: React.MouseEvent) => fn(event) : undefined;
 
             if (iconName) {
               return (
