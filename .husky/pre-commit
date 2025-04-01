@@ -3,6 +3,3 @@
 
 echo "🔍 Running tests before commit..."
 npm test -- --watchAll=false --silent
-
-echo "🎞️ Converting videos to webm..."
-npm run convert-videos

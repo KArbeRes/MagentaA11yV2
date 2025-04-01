@@ -37,7 +37,6 @@
   "scripts": {
     "generate-faveicons": "npx tsx src/scripts/generateFaveIcons.ts",
     "generate-side-nav-buttons": "npx tsx src/scripts/generateSideNavContentButtons.ts",
-    "convert-videos": "bash src/scripts/convert-videos-to-webm.sh",
     "generate-icons": "npx tsx src/scripts/generateIcons.ts",
     "create-md": "bash src/scripts/createMarkdown.sh",
     "start": "npm run generate-side-nav-buttons && npm run generate-icons && react-scripts start",

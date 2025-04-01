@@ -111,50 +111,11 @@ The app is deployed via GitHub Pages. Follow these steps to deploy:
    npm run deploy
    ```
 
-Your application will be live at:
+   Your application will be live at:
 
-```
-https://<username>.github.io/<repository-name>
-```
-
----
-
-## Optimize Video Assets
-
-The script `convert-videos-to-webm.sh` optimizes video files for the web.
-
-### What the Script Does
-
-1. Converts video files (`.mp4`, `.mov`, etc.) to `.webm` format using FFmpeg.
-2. Updates all references in the project to use the `.webm` files.
-3. Deletes the original video files after successful conversion.
-
-### Requirements
-
-- **FFmpeg**: Install via [Homebrew](https://brew.sh/) (macOS):
-
-  ```bash
-  brew install ffmpeg
-  ```
-
-### Running the Script
-
-Ensure the script has executable permissions:
-
-```bash
-chmod +x src/scripts/convert-videos-to-webm.sh
-```
-
-Run the script:
-
-```bash
-npm run convert-videos
-```
-
-Outputs:
-
-- Converted `.webm` files replace references in the project.
-- Original video files are deleted after successful conversion.
+   ```
+   https://<username>.github.io/<repository-name>
+   ```
 
 ---
 
