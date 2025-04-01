@@ -61,7 +61,6 @@ npm install
 
 1. **Creates Markdown files**:
    Generates files with sections like **General Notes, Criteria, Developer Notes, Gherkin, and more**.
-2. **Ensures a consistent structure**: Every file follows the same format to maintain readability and usability.
 3. **Supports content categorization**: Sections for **Android/iOS Developer Notes and Video embeds**.
 4. **Avoids overwriting existing files**: If a file already exists, the script prevents accidental overwrites.
 
@@ -81,24 +80,17 @@ npm run create-md -- textarea "native/inputs"
 npm run create-md -- "links-buttons" "how-to-test/components"
 ```
 
-This command will create:
+These commands will create:
 
 ```
 public/content/native/inputs/textarea.md
 ```
+```
+public/content/how-to-test/components/links-buttons.md
+```
 
 - If the folder does not exist, it will be created.
 - If the file already exists, the script will **exit with an error** to prevent accidental overwrites.
-
----
-
-## Key Features
-
-- **React-Based Architecture**: Built with React 18 for a modern, component-driven approach.
-- **Dynamic Icon Generation**: Generates type-safe React components for SVG icons.
-- **Accessibility-Focused**: Streamlines testing and verification for accessible digital experiences.
-- **Video Optimization**: Converts video assets to `.webm` format for performance optimization.
-- **GitHub Pages Deployment**: Deploy your app with a single command.
 
 ---
 
