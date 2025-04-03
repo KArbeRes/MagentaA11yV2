@@ -14,7 +14,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Icons } from 'shared/Icons';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { formatTabLabel } from 'utils/string-helpers';
 import Cards from '../custom-components/cards/cards';
 import { SideNavItem } from '../navigation/nav.types';
@@ -25,7 +25,7 @@ import '../../styles/_code-blocks.scss';
 import './content-display.scss';
 
 interface ContentDisplayProps {
-  platform: Platforms;
+  documentation: DocumentationCategory;
   items: SideNavItem[];
   onToggleSideNav: () => void;
 }
@@ -33,7 +33,7 @@ interface ContentDisplayProps {
 const ASSET_BASE_PATH = '/MagentaA11yV2/content/assets';
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({
-  platform,
+  documentation,
   items,
   onToggleSideNav,
 }) => {
@@ -43,7 +43,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   const tabsRef = useRef<HTMLElement>(null);
   const { tabs, activeTab, setActiveTab, currentItem } = useContentTabs(
     items,
-    platform
+    documentation
   );
   const { copiedContent, copyToClipboard } = useClipboard();
 
@@ -160,23 +160,28 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         <div className="MagentaA11y__nav-display__content">
           <div className="MagentaA11y__nav-display__content-actions">
             {/* Tabs */}
-            <md-tabs ref={tabsRef} aria-label="Criteria options" role="tablist">
-              {tabs.map((tab, index) => {
-                const formattedLabel = formatTabLabel(tab.label);
+            {tabs.length > 1 && (
+              <md-tabs
+                ref={tabsRef}
+                aria-label="Criteria options"
+                role="tablist">
+                {tabs.map((tab, index) => {
+                  const formattedLabel = formatTabLabel(tab.label);
 
-                return (
-                  <md-primary-tab
-                    key={tab.label}
-                    aria-selected={activeTab === index ? 'true' : 'false'}
-                    aria-controls={`${formattedLabel}-tabpanel`}
-                    id={`${formattedLabel}-tab`}
-                    role="tab"
-                    {...(activeTab === index && { active: true })}>
-                    {tab.label}
-                  </md-primary-tab>
-                );
-              })}
-            </md-tabs>
+                  return (
+                    <md-primary-tab
+                      key={tab.label}
+                      aria-selected={activeTab === index ? 'true' : 'false'}
+                      aria-controls={`${formattedLabel}-tabpanel`}
+                      id={`${formattedLabel}-tab`}
+                      role="tab"
+                      {...(activeTab === index && { active: true })}>
+                      {tab.label}
+                    </md-primary-tab>
+                  );
+                })}
+              </md-tabs>
+            )}
             {actionsButtonsVisible && (
               <div className="MagentaA11y__nav-display__content-actions__buttons">
                 <Button
@@ -206,13 +211,20 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
           </div>
           {tabs.map((tab, index) => {
             const formattedLabel = formatTabLabel(tab.label);
+            const tabPanelProps =
+              tabs.length > 1
+                ? {
+                    role: 'tabpanel',
+                    'aria-labelledby': `${formattedLabel}-tab`,
+                  }
+                : {};
+
             return (
               <div
-                role="tabpanel"
                 id={`${formattedLabel}-tabpanel`}
-                aria-labelledby={`${formattedLabel}-tab`}
                 key={index}
-                className={index !== activeTab ? 'hidden' : undefined}>
+                className={index !== activeTab ? 'hidden' : undefined}
+                {...tabPanelProps}>
                 <MarkdownContent
                   key={index}
                   content={tab.content}

@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ViewportProvider } from 'shared/contexts/viewport-context';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { TopNavProps } from '../nav.types';
 import TopNav, { getFirstOverviewLink } from './top-nav';
 
@@ -210,12 +210,15 @@ describe('TopNav Component - Navigation Behavior Tests', () => {
 
     expect(screen.getByRole('link', { name: 'Web Criteria' })).toHaveAttribute(
       'href',
-      getFirstOverviewLink(Platforms.WEB)
+      getFirstOverviewLink(DocumentationCategory.WEB)
     );
 
     expect(
       screen.getByRole('link', { name: 'Native Criteria' })
-    ).toHaveAttribute('href', getFirstOverviewLink(Platforms.NATIVE));
+    ).toHaveAttribute(
+      'href',
+      getFirstOverviewLink(DocumentationCategory.NATIVE)
+    );
 
     expect(screen.getByRole('link', { name: 'About Us' })).toHaveAttribute(
       'href',
