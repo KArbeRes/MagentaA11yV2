@@ -1,9 +1,9 @@
+import SideNav from 'components/navigation/side-nav/side-nav';
 import React, { useRef } from 'react';
 import contentData from '../../shared/content.json';
 import { DocumentationCategory } from '../../shared/types/shared-types';
 import ContentDisplay from '../content-display/content-display';
 import { SideNavItem } from '../navigation/nav.types';
-import SideNav from 'components/navigation/side-nav/side-nav';
 
 import './criteria.scss';
 

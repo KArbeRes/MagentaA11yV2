@@ -3,7 +3,7 @@ import { ButtonType } from 'components/custom-components/buttons/button-types';
 import IconButton from 'components/custom-components/buttons/icon-button/icon-button';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -13,7 +13,10 @@ import { MarkdownContentProps, MediaProps } from './markdown-content.types';
 
 import './markdown-content.scss';
 
-const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, assetBasePath }) => {
+const MarkdownContent: React.FC<MarkdownContentProps> = ({
+  content,
+  assetBasePath,
+}) => {
   const navigate = useNavigate();
   const markdownFunctionMap = getMarkdownFunctionMap(navigate);
 
@@ -28,7 +31,9 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, assetBasePat
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ src, alt }: MediaProps) => {
-            const resolvedSrc = src?.startsWith('http') ? src : `${assetBasePath}/${src}`;
+            const resolvedSrc = src?.startsWith('http')
+              ? src
+              : `${assetBasePath}/${src}`;
             return resolvedSrc ? (
               <img src={resolvedSrc} alt={alt} loading="lazy" />
             ) : (
@@ -36,7 +41,9 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, assetBasePat
             );
           },
           video: ({ poster, children }: MediaProps) => {
-            let posterPath = poster ? `${assetBasePath}/${poster}` : 'MagentaA11yV2/movie.svg';
+            let posterPath = poster
+              ? `${assetBasePath}/${poster}`
+              : 'MagentaA11yV2/movie.svg';
             return (
               <video controls preload="none" poster={posterPath}>
                 {children}
@@ -44,7 +51,9 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, assetBasePat
             );
           },
           source: ({ src, type }: MediaProps) => {
-            const resolvedSrc = src?.startsWith('http') ? src : `${assetBasePath}/${src}`;
+            const resolvedSrc = src?.startsWith('http')
+              ? src
+              : `${assetBasePath}/${src}`;
             return <source src={resolvedSrc} type={type} />;
           },
           a: (props) => {
@@ -122,19 +131,25 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, assetBasePat
           },
 
           button: ({ children, ...props }) => {
-            const fnKey = (props as Record<string, unknown>)?.['data-fn'] as string | undefined;
+            const fnKey = (props as Record<string, unknown>)?.['data-fn'] as
+              | string
+              | undefined;
             const fn = fnKey && markdownFunctionMap[fnKey];
 
             const { type: nativeType, ...rest } = props;
 
-            const iconName = (props as Record<string, unknown>)['data-icon'] as Icon | undefined;
-            const a11yLabel = (props as Record<string, unknown>)['data-label'] as
-              | string
+            const iconName = (props as Record<string, unknown>)['data-icon'] as
+              | Icon
               | undefined;
+            const a11yLabel = (props as Record<string, unknown>)[
+              'data-label'
+            ] as string | undefined;
 
             // ✅ Pass the event so the function can use event.currentTarget
             const onClick =
-              typeof fn === 'function' ? (event: React.MouseEvent) => fn(event) : undefined;
+              typeof fn === 'function'
+                ? (event: React.MouseEvent) => fn(event)
+                : undefined;
 
             if (iconName) {
               return (
