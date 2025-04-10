@@ -1,7 +1,6 @@
 ## General Notes
 
-Validate your code
-Use [HTML validation](https://validator.w3.org/nu/) as the foundation for ensuring your page works for everyone.
+Validate your code use HTML validation as the foundation for ensuring your page works for everyone.
 
 ## Gherkin
 
@@ -67,7 +66,8 @@ People with low vision need the ability to enlarge the page on mobile and deskto
   <meta
     name="viewport"
     content="width=device-width, 
-        initial-scale=1" />
+        initial-scale=1"
+  />
 </head>
 ```
 
