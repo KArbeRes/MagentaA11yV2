@@ -2,7 +2,7 @@
 
 Buttons must be implemented as interactive elements for user actions. Avoid using non-interactive elements styled as buttons.
 
-## Criteria
+## Condensed
 
 How to test a button
 

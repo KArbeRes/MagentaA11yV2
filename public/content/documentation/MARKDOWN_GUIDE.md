@@ -2,6 +2,17 @@
 
 This guide outlines how to structure and write Markdown files consumed by the MagentaA11y V2 app.
 
+🛠️ New Markdown files can be generated via: `src/scripts/createMarkdown.sh`  
+Run the script using:
+
+```bash
+npm run create-md <filename> "<relative-path>" <template-type>
+```
+
+- `<filename>` — name of the Markdown file (no `.md` extension)
+- `<relative-path>` — the folder structure under `public/content/documentation/`
+- `<template-type>` — must be either `criteria` or `how-to-test`
+
 ---
 
 ## 📝 Supported Sections
@@ -60,7 +71,7 @@ You can use custom HTML elements with attributes to enhance interactivity:
 > 💡 All available icon names for `data-icon` can be found in `src/shared/Icons.ts`.
 
 ```html
-<button data-fn="logClick" data-icon="copyFilled" data-label="Copy Text">Copy</button>
+<button data-icon="copyFilled" data-label="Copy Text">Copy</button>
 ```
 
 ### 🔗 Functional Links
@@ -115,6 +126,16 @@ Here’s how it works:
 - During rendering, that function is attached to the element as an event listener (e.g., `onClick`).
 - You can also control the event type using `data-event`, and support icons via `data-icon`.
 
+### 🔧 Currently available `data-fn` Attributes
+
+- `showAlert` — shows a native HTML alert for both keyboard and mouse users
+- `showAlertWhenDisabled` — shows an alert from a disabled button (useful for screen readers and mouse users)
+- `showMouseAlert` — shows an alert that works only with a mouse interaction
+- `goToHome` — navigates to the homepage
+- `toggleAccordionState` — toggles an accordion button’s open/closed state
+- `scrollToTopOnly` — scrolls the page to the top with smooth behavior
+- `scrollAndFocusMain` — scrolls to the top and focuses the `<main>` element
+
 Example:
 
 ```html
@@ -141,8 +162,8 @@ This component handles user input and ensures proper accessibility.
 Given a user focuses the input
 When they type a value
 Then the value should be announced
+```
 ````
-
 
 ## 🧾 Notes
 
@@ -150,3 +171,18 @@ Then the value should be announced
 - Only one section of each type is supported per file.
 - You can safely mix markdown and raw HTML.
 
+### ⚠️ Predetermined Section Headings
+
+The following H2 headings are **predetermined** and get mapped to specific areas in the app’s UI template:
+
+- `## General Notes`
+- `## Gherkin`
+- `## Condensed`
+- `## Criteria`
+- `## Android Developer Notes`
+- `## iOS Developer Notes`
+- `## Videos`
+
+Each of these headings is parsed and rendered in its designated slot on the page.
+
+Any other H2 headings that don’t match the above will be grouped into a fallback section labeled **Developer Notes** and rendered together at the bottom or in a general-purpose area of the page.

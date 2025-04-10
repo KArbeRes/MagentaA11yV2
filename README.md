@@ -55,41 +55,63 @@ npm install
 
 ### Markdown Generation Script
 
-- **`npm run create-md`**: Generates structured Markdown files with predefined sections.
+- **`npm run create-md`**: Generates structured Markdown files using predefined templates.
 
 #### What the Script Does
 
 1. **Creates Markdown files**:
-   Generates files with sections like **General Notes, Criteria, Developer Notes, Gherkin, and more**.
-3. **Supports content categorization**: Sections for **Android/iOS Developer Notes and Video embeds**.
-4. **Avoids overwriting existing files**: If a file already exists, the script prevents accidental overwrites.
+   Based on the third argument, it inserts either a _"criteria"_ or _"how-to-test"_ accessibility testing template.
+2. **Supports content categorization**: Sections for **Android/iOS Developer Notes, Video embeds**, and more.
+3. **Avoids overwriting existing files**: If a file already exists, the script exits safely without making changes.
 
 #### Running the Script
 
 ```bash
-npm run create-md -- <filename> "<relative-path>"
+npm run create-md -- <filename> "<relative-path>" <template-type>
 ```
 
-#### Example:
+- `<filename>`: Name of the Markdown file to generate (without `.md`).
+- `<relative-path>`: Folder path under `public/content/documentation/`.
+- `<template-type>`: Must be either `criteria` or `how-to-test`.
+
+#### Examples
 
 ```bash
-npm run create-md -- textarea "native/inputs"
+npm run create-md -- textarea "native/inputs" criteria
 ```
 
 ```bash
-npm run create-md -- "links-buttons" "how-to-test/components"
+npm run create-md -- "images" "how-to-test/components" how-to-test
 ```
+
+> 🗂️ When running the `create-md` script, files are saved to the `public/content/documentation` directory.  
+> The relative path you provide is resolved within this base directory.
+
+### Markdown File Structure
+
+All documentation Markdown files should be stored under the following structure:
+
+```
+public/content/documentation/<section>/<category>/<filename>.md
+```
+
+- `<section>` could be something like `native`, `web`, or `how-to-test`
+- `<category>` groups related content such as `inputs`, `components`, or any custom grouping
+- `<filename>.md` is the name of the actual Markdown file
+
+📁 This structure helps the app dynamically parse and render content correctly in the UI. The script `create-md` automatically respects and creates this structure based on the path you provide.
 
 These commands will create:
 
 ```
-public/content/native/inputs/textarea.md
-```
-```
-public/content/how-to-test/components/links-buttons.md
+public/content/documentation/native/inputs/textarea.md
 ```
 
-- If the folder does not exist, it will be created.
+```
+public/content/documentation/how-to-test/components/images.md
+```
+
+- If the category folder, such as "inputs", does not exist, it will be created.
 - If the file already exists, the script will **exit with an error** to prevent accidental overwrites.
 
 ---

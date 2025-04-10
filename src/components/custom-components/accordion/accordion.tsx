@@ -32,7 +32,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div className="MagentaA11y-accordion">
-      <h2 className="MagentaA11y-accordion__heading">
+      <h3 className="MagentaA11y-accordion__heading">
         <button
           type="button"
           className="MagentaA11y-accordion__headline"
@@ -42,7 +42,7 @@ const Accordion: React.FC<AccordionProps> = ({
         >
           <span className="MagentaA11y-accordion__headline--text">{title}</span>
         </button>
-      </h2>
+      </h3>
       {isOpen && (
         <div className="MagentaA11y-accordion__body" id={`${id}`}>
           {children}
