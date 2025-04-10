@@ -35,6 +35,9 @@
   &__title {
     font: var(--title-font);
   }
+  &__subtitle {
+    line-height: normal;
+  }
 
   &__content {
     display: flex;

@@ -3,123 +3,175 @@
 # Exit on errors
 set -e
 
-# Ensure two arguments are provided
-if [ "$#" -ne 2 ]; then
-   echo "Usage: $0 <filename> <relative-path>"
-   exit 1
+# Ensure exactly three arguments are provided
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <filename> <relative-path> <template-type>"
+  exit 1
 fi
 
 # Define arguments
 FILENAME="$1.md"
 RELATIVE_PATH="$2"
-BASE_PATH="public/content/platforms"
+TEMPLATE_TYPE="$3"
+BASE_PATH="public/content/documentation"
 
 # Construct the full path
 FULL_PATH="${BASE_PATH}/${RELATIVE_PATH}"
 
+# Validate the template type
+if [[ "$TEMPLATE_TYPE" != "criteria" && "$TEMPLATE_TYPE" != "how-to-test" ]]; then
+  echo "Error: template-type must be either 'criteria' or 'how-to-test'"
+  exit 1
+fi
+
+# Detect the section prefix
+IFS='/' read -r SECTION _ <<< "$RELATIVE_PATH"
+
+# Set the criteria prefix based on the section
+case "$SECTION" in
+  web)
+    CRITERIA_PREFIX="web-criteria"
+    ;;
+  native)
+    CRITERIA_PREFIX="native-criteria"
+    ;;
+  *)
+    CRITERIA_PREFIX="$SECTION"
+    ;;
+esac
+
+# Generate dynamic URL path
+SLUG_PATH=$(echo "$RELATIVE_PATH/$1" | sed "s|^$SECTION/||" | sed 's|/|/|g')
+FULL_LINK="https://www.magentaa11y.com/MagentaA11yV2#/${CRITERIA_PREFIX}/${SLUG_PATH}"
+
 # Check if the directory exists, if not create it
 if [ ! -d "$FULL_PATH" ]; then
-   mkdir -p "$FULL_PATH"
-   echo "Created directory: $FULL_PATH"
+  mkdir -p "$FULL_PATH"
+  echo "Created directory: $FULL_PATH"
 fi
 
 # Create the markdown file if it doesn't already exist
 FILE_PATH="${FULL_PATH}/${FILENAME}"
 if [ -f "$FILE_PATH" ]; then
-   echo "Error: File '$FILE_PATH' already exists!"
-   exit 1
+  echo "Error: File '$FILE_PATH' already exists!"
+  exit 1
 fi
 
-# Create the markdown file with a template
-cat >"$FILE_PATH" <<"EOF"
-# General Notes
-> This file was generated using the createMarkdown script.
+# Define additional section for native files
+NATIVE_ADDITIONAL_SECTIONS=$(cat <<'EOF'
 
-This section provides general information about this component, including guidelines and best practices.
+## iOS Developer Notes
+- ios developer notes go here
 
-# Condensed
-This section provides a **high-level summary** of the key accessibility criteria.
+## Android Developer Notes
+- android developer notes go here
+EOF
+)
 
-### Example Summary:
-1. **Keyboard Navigation**
-   - Tab key moves focus logically.
-   - Zoom up to 200% is supported.
+# Template for "how-to-test"
+HOW_TO_TEST_TEMPLATE=$(cat <<'EOF'
+1. **Types of images**
+...
+## Resources
+- [W3C Images Tutorial](https://www.w3.org/WAI/tutorials/images/)
+- [WebAIM Alternative Text](https://webaim.org/techniques/alttext/)
 
-2. **Mobile Screen Reader Gestures**
-   - Swipe moves focus through content.
-   - Orientation change does not disrupt accessibility.
+## General Notes
 
-3. **Screen Reader Support**
-   - The page title is meaningful.
-   - Major landmarks are properly defined.
+Learn how to test and provide appropriate alternative text for different image types—including informative, decorative, and complex images—to ensure they are accessible to all users. Covers both automated tools and manual inspection techniques.
+EOF
+)
 
-4. **Device OS Settings**
-   - Users can resize text without content loss.
+# Template for "criteria" with dynamic URL
+CRITERIA_TEMPLATE=$(cat <<EOF
+## General Notes
 
-More details: [Web Accessibility Checklist](https://www.magentaa11y.com/checklist-web/html/).
+There must only be a singular header/banner element on the page. Contains the site title and typically the primary navigation.
 
-# Gherkin
-Defines web accessibility acceptance criteria using the **Given, When, Then** format.
+## Condensed
 
-## a11y - Web Accessibility Acceptance Criteria
+### a11y - Web Accessibility Acceptance Criteria
 
-### Example Scenario:
-```gherkin
-Feature: Example Feature
-  Scenario: Example Scenario
-    Given I am a keyboard user
-    When I press "Tab" to navigate
-    Then I should see a visible focus on interactive elements
-```
+How to test a header landmark
 
-### Another Scenario:
-```gherkin
-Feature: Responsive Design
-  Scenario: Zooming in
-    Given I zoom in using OS settings
-    When I increase text size to 200%
-    Then content remains readable without loss of information
-```
+1. Test keyboard only, then screen reader + keyboard actions
 
-# Criteria
-Lists the specific criteria required for this component to meet accessibility, usability, and functional standards.
+   &mdash; Skip-links: Focus moves directly to the header or navigation
 
-### Example Criteria List:
-- [ ] The page must have a **unique** and **descriptive title**.
-- [ ] All images must have meaningful **alt text**.
-- [ ] Keyboard navigation should allow access to **all interactive elements**.
-- [ ] The color contrast must meet **WCAG AA standards**.
+   &mdash; Tab: Nothing, headings are not focusable unless they are actionable
 
-# Developer Notes
-Contains developer-specific information, including expected behaviors, implementation details, and best practices.
+   &mdash; Arrow-keys: Headings are browsed
 
-### Example Notes:
-- Use **semantic HTML elements** (`<header>`, `<nav>`, `<main>`, `<footer>`).
-- Ensure **all links are descriptive** (e.g., avoid "Click here").
-- **ARIA attributes should be used sparingly**, and only when necessary.
+2. Test mobile screenreader gestures
 
-# Android Developer Notes
-Provides guidance for implementing this component on **Android** platforms.
+   &mdash; Swipe: Focus moves directly to the header or navigation
 
-### Example Android-Specific Guidance:
-- Ensure **TalkBack** announces elements correctly.
-- Use **focusable Views** (`android:focusable="true"`) for better keyboard support.
-- Implement **custom accessibility actions** when necessary.
+   &mdash; Doubletap: This typically activates most elements
 
-# iOS Developer Notes
-Provides guidance for implementing this component on **iOS** platforms.
+3. Listen to screenreader output on all devices
 
-### Example iOS-Specific Guidance:
-- Test with **VoiceOver** to ensure proper navigation.
-- Use **UIAccessibilityTraits** to define element behavior.
-- Ensure **Dynamic Type** scales properly when users adjust text size.
+   &mdash; Role: It is discoverable with screenreader shortcuts as header/banner landmark
 
-# Videos
-Includes relevant **video demonstrations or tutorials** related to this component.
+   &mdash; Group: It typically contains the name and primary navigation of the website
 
-### Example Embedded Video:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/example" frameborder="0" allowfullscreen></iframe>
+Full information: [$FULL_LINK]($FULL_LINK)
+
+## Gherkin
+
+### a11y - Web Accessibility Acceptance Criteria
+
+How to test a header landmark
+
+GIVEN THAT I am on a page with a header landmark
+
+1. Keyboard for mobile & desktop
+
+   &mdash; WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+
+2. Desktop screenreader
+
+   &mdash; WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+
+   &mdash; I use the tab key to enter the web browser window
+
+   &mdash; I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+
+   &mdash; I HEAR It typically contains the name and primary navigation of the website
+
+3. Mobile screenreader
+
+   &mdash; WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+
+   &mdash; I swipe to focusable elements in the header
+
+   &mdash; I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+
+   &mdash; I HEAR It typically contains the name and primary navigation of the website
+
+
+Full information: [$FULL_LINK]($FULL_LINK)
+
+## Developer Notes
+
+### Name
+
+- Typically doesn’t have a name or description since there must be only one instance per page.
+
 
 EOF
+)
+
+# Append additional sections for native
+if [[ "$SECTION" == "native" ]]; then
+  CRITERIA_TEMPLATE="${CRITERIA_TEMPLATE}
+${NATIVE_ADDITIONAL_SECTIONS}"
+fi
+
+# Write to file based on template type
+if [ "$TEMPLATE_TYPE" = "how-to-test" ]; then
+  echo "$HOW_TO_TEST_TEMPLATE" > "$FILE_PATH"
+else
+  echo -e "$CRITERIA_TEMPLATE" > "$FILE_PATH"
+fi
 
 echo "Markdown file created at: $FILE_PATH"
