@@ -1,5 +1,6 @@
 @use './styles/root' as *;
 @use './styles/utilities' as *;
+@use './styles/md-styles' as *;
 
 html {
   background-color: var(--color-background);
@@ -86,8 +87,7 @@ button {
 }
 
 pre {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   padding: 1em;
   overflow-x: auto;
   border-radius: 4px;
@@ -158,6 +158,11 @@ th {
   word-wrap: break-word; /* Allows long words to break and wrap to the next line */
   word-break: break-word; /* Breaks long unbreakable words at any point (for legacy compatibility) */
   overflow-wrap: break-word; /* Modern equivalent to word-wrap */
+}
+
+th {
+  word-break: keep-all;
+  white-space: nowrap;
 }
 
 svg {

@@ -2,10 +2,13 @@ import { ContentTab } from 'components/content-display/markdown-content/markdown
 import { SideNavItem } from 'components/navigation/nav.types';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { findItemByPath } from 'utils/navigation-helpers';
 
-export const useContentTabs = (items: SideNavItem[], platform: Platforms) => {
+export const useContentTabs = (
+  items: SideNavItem[],
+  documentation: DocumentationCategory
+) => {
   const [searchParams] = useSearchParams();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(0);
@@ -13,7 +16,7 @@ export const useContentTabs = (items: SideNavItem[], platform: Platforms) => {
   const currentItem = findItemByPath(
     items,
     location.pathname,
-    `/${platform}-criteria`
+    `/${documentation}-criteria`
   );
 
   const tabs: ContentTab[] = useMemo(() => {

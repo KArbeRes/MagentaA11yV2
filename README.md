@@ -55,46 +55,64 @@ npm install
 
 ### Markdown Generation Script
 
-- **`npm run create-md`**: Generates structured Markdown files with predefined sections.
+- **`npm run create-md`**: Generates structured Markdown files using predefined templates.
 
 #### What the Script Does
 
 1. **Creates Markdown files**:
-   Generates files with sections like **General Notes, Criteria, Developer Notes, Gherkin, and more**.
-2. **Ensures a consistent structure**: Every file follows the same format to maintain readability and usability.
-3. **Supports content categorization**: Sections for **Android/iOS Developer Notes and Video embeds**.
-4. **Avoids overwriting existing files**: If a file already exists, the script prevents accidental overwrites.
+   Based on the third argument, it inserts either a _"criteria"_ or _"how-to-test"_ accessibility testing template.
+2. **Supports content categorization**: Sections for **Android/iOS Developer Notes, Video embeds**, and more.
+3. **Avoids overwriting existing files**: If a file already exists, the script exits safely without making changes.
 
 #### Running the Script
 
 ```bash
-npm run create-md -- <filename> "<relative-path>"
+npm run create-md -- <filename> "<relative-path>" <template-type>
 ```
 
-#### Example:
+- `<filename>`: Name of the Markdown file to generate (without `.md`).
+- `<relative-path>`: Folder path under `public/content/documentation/`.
+- `<template-type>`: Must be either `criteria` or `how-to-test`.
+
+#### Examples
 
 ```bash
-npm run create-md -- textarea "native/inputs"
+npm run create-md -- textarea "native/inputs" criteria
 ```
 
-This command will create:
-
-```
-public/content/native/inputs/textarea.md
+```bash
+npm run create-md -- "images" "how-to-test/components" how-to-test
 ```
 
-- If the folder does not exist, it will be created.
+> 🗂️ When running the `create-md` script, files are saved to the `public/content/documentation` directory.  
+> The relative path you provide is resolved within this base directory.
+
+### Markdown File Structure
+
+All documentation Markdown files should be stored under the following structure:
+
+```
+public/content/documentation/<section>/<category>/<filename>.md
+```
+
+- `<section>` could be something like `native`, `web`, or `how-to-test`
+- `<category>` groups related content such as `inputs`, `components`, or any custom grouping
+- `<filename>.md` is the name of the actual Markdown file
+
+📁 This structure helps the app dynamically parse and render content correctly in the UI. The script `create-md` automatically respects and creates this structure based on the path you provide.
+
+These commands will create:
+
+```
+public/content/documentation/native/inputs/textarea.md
+```
+
+```
+public/content/documentation/how-to-test/components/images.md
+```
+
+- If the category folder, such as "inputs", does not exist, it will be created.
 - If the file already exists, the script will **exit with an error** to prevent accidental overwrites.
-
----
-
-## Key Features
-
-- **React-Based Architecture**: Built with React 18 for a modern, component-driven approach.
-- **Dynamic Icon Generation**: Generates type-safe React components for SVG icons.
-- **Accessibility-Focused**: Streamlines testing and verification for accessible digital experiences.
-- **Video Optimization**: Converts video assets to `.webm` format for performance optimization.
-- **GitHub Pages Deployment**: Deploy your app with a single command.
 
 ---
 
@@ -115,50 +133,11 @@ The app is deployed via GitHub Pages. Follow these steps to deploy:
    npm run deploy
    ```
 
-Your application will be live at:
+   Your application will be live at:
 
-```
-https://<username>.github.io/<repository-name>
-```
-
----
-
-## Optimize Video Assets
-
-The script `convert-videos-to-webm.sh` optimizes video files for the web.
-
-### What the Script Does
-
-1. Converts video files (`.mp4`, `.mov`, etc.) to `.webm` format using FFmpeg.
-2. Updates all references in the project to use the `.webm` files.
-3. Deletes the original video files after successful conversion.
-
-### Requirements
-
-- **FFmpeg**: Install via [Homebrew](https://brew.sh/) (macOS):
-
-  ```bash
-  brew install ffmpeg
-  ```
-
-### Running the Script
-
-Ensure the script has executable permissions:
-
-```bash
-chmod +x src/scripts/convert-videos-to-webm.sh
-```
-
-Run the script:
-
-```bash
-npm run convert-videos
-```
-
-Outputs:
-
-- Converted `.webm` files replace references in the project.
-- Original video files are deleted after successful conversion.
+   ```
+   https://<username>.github.io/<repository-name>
+   ```
 
 ---
 

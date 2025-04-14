@@ -11,12 +11,12 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
       <div
         class="MagentaA11y__side-nav--title-wrapper"
       >
-        <h1
+        <h2
           class="MagentaA11y__side-nav--title"
           id="side-nav-title"
         >
           Criteria
-        </h1>
+        </h2>
       </div>
       <ul
         class="MagentaA11y__side-nav--list"
@@ -27,7 +27,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
           <div
             class="MagentaA11y-accordion"
           >
-            <h2
+            <h3
               class="MagentaA11y-accordion__heading"
             >
               <button
@@ -42,7 +42,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
                   Header Component
                 </span>
               </button>
-            </h2>
+            </h3>
           </div>
         </li>
         <li
@@ -51,7 +51,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
           <div
             class="MagentaA11y-accordion"
           >
-            <h2
+            <h3
               class="MagentaA11y-accordion__heading"
             >
               <button
@@ -66,7 +66,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
                   Html Component
                 </span>
               </button>
-            </h2>
+            </h3>
           </div>
         </li>
         <li
@@ -75,7 +75,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
           <div
             class="MagentaA11y-accordion"
           >
-            <h2
+            <h3
               class="MagentaA11y-accordion__heading"
             >
               <button
@@ -90,7 +90,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
                   Main Component
                 </span>
               </button>
-            </h2>
+            </h3>
           </div>
         </li>
       </ul>
@@ -115,12 +115,12 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
         <div
           class="MagentaA11y__side-nav--title-wrapper"
         >
-          <h1
+          <h2
             class="MagentaA11y__side-nav--title"
             id="side-nav-title"
           >
             Criteria
-          </h1>
+          </h2>
           <button
             aria-label="close"
             class="MagentaA11y-icon-button"
@@ -151,7 +151,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
             <div
               class="MagentaA11y-accordion"
             >
-              <h2
+              <h3
                 class="MagentaA11y-accordion__heading"
               >
                 <button
@@ -166,7 +166,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
                     Header Component
                   </span>
                 </button>
-              </h2>
+              </h3>
             </div>
           </li>
           <li
@@ -175,7 +175,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
             <div
               class="MagentaA11y-accordion"
             >
-              <h2
+              <h3
                 class="MagentaA11y-accordion__heading"
               >
                 <button
@@ -190,7 +190,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
                     Html Component
                   </span>
                 </button>
-              </h2>
+              </h3>
             </div>
           </li>
           <li
@@ -199,7 +199,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
             <div
               class="MagentaA11y-accordion"
             >
-              <h2
+              <h3
                 class="MagentaA11y-accordion__heading"
               >
                 <button
@@ -214,7 +214,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
                     Main Component
                   </span>
                 </button>
-              </h2>
+              </h3>
             </div>
           </li>
         </ul>

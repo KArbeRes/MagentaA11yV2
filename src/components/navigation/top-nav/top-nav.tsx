@@ -3,7 +3,7 @@ import { ButtonSize } from 'components/custom-components/buttons/button-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icons } from 'shared/Icons';
-import { Platforms } from 'shared/types/shared-types';
+import { DocumentationCategory } from 'shared/types/shared-types';
 import { isPathActive } from 'utils/navigation-helpers';
 import contentData from '../../../shared/content.json';
 import { useViewport } from '../../../shared/contexts/viewport-context';
@@ -12,14 +12,14 @@ import { TopNavProps } from '../nav.types';
 
 import './top-nav.scss';
 
-export const getFirstOverviewLink = (platform: Platforms) => {
-  const items = contentData[platform];
+export const getFirstOverviewLink = (documentation: DocumentationCategory) => {
+  const items = contentData[documentation];
   for (const item of items) {
     if (item.children?.length) {
-      return `/${platform}-criteria/${item.name}/overview`;
+      return `/${documentation}-criteria/${item.name}/overview`;
     }
   }
-  return `/${platform}-criteria`;
+  return `/${documentation}-criteria`;
 };
 
 const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
@@ -122,9 +122,11 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
           {navItems.map((item, index) => {
             const href =
               item.label === 'Web Criteria'
-                ? getFirstOverviewLink(Platforms.WEB)
+                ? getFirstOverviewLink(DocumentationCategory.WEB)
                 : item.label === 'Native Criteria'
-                ? getFirstOverviewLink(Platforms.NATIVE)
+                ? getFirstOverviewLink(DocumentationCategory.NATIVE)
+                : item.label === 'How to test'
+                ? getFirstOverviewLink(DocumentationCategory.HOW_TO_TEST)
                 : item.href;
 
             const isActive = isPathActive(item.href, location);
