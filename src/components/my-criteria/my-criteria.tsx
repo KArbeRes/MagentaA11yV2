@@ -126,8 +126,6 @@ const MyCriteria: React.FC = () => {
   let criteriaIsCopied =
     copiedContent === mergedCriteriaTabs[selectedTabIndex]?.content;
 
-  console.log({ mergedCriteriaTabs });
-
   return (
     <div className="MagentaA11y__my-criteria">
       <div className="MagentaA11y__my-criteria__heading-wrapper">
