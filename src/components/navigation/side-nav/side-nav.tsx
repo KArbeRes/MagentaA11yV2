@@ -59,7 +59,9 @@ const SideNav = forwardRef(({ documentation, testId }: SideNavProps, ref) => {
       <div className="MagentaA11y__side-nav">
         <div className="MagentaA11y__side-nav--title-wrapper">
           <h2 className="MagentaA11y__side-nav--title" id="side-nav-title">
-            Criteria
+            {documentation === DocumentationCategory.HOW_TO_TEST
+              ? "Websites"
+              : "Criteria"}
           </h2>
           {viewportContext.isMobile && (
             <IconButton

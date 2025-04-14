@@ -103,8 +103,6 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
 
   const { label, generalNotes, children } = currentItem;
 
-  console.log({ generalNotes });
-
   let actionsButtonsVisible = Object.values(Criteria).some(
     (criteria) => criteria === tabs[activeTab]?.label
   );
