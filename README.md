@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Getting Started](#getting-started)
+- [Creating a PR](#creating-a-pr)
 - [Available Scripts](#available-scripts)
 - [Key Features](#key-features)
 - [Deployment](#deployment)
@@ -27,6 +28,31 @@ npm install
 ```
 
 ---
+
+## Creating a PR
+
+- start in the main branch, you can check you are there by running `git branch`
+- Run a  `git fetch` to ensure you have the latest
+- If there is new code, pull it down: `git pull origin main`
+- Start a new branch, I recommend using the issue number, such as ARC-101--details or the feat/fix/revert/chore/style convention such as fix--lindsay-400-menu:
+   - feat or feature: (new feature for the user, not a new feature for build script)
+   - fix: (bug fix for the user, not a fix to a build script)
+   - docs: (changes to the documentation)
+   - style: (formatting, missing semi colons, etc; no production code change)
+   - refactor: (refactoring production code, eg. renaming a variable)
+   - test: (adding missing tests, refactoring tests; no production code change)
+   - chore: (updating grunt tasks etc; no production code change)
+- Create the new branch with `git checkout -b ARC-101--criteria-button`
+
+### Pushing your work
+While you are working, make sure you to pull and rebase on main as you go: 
+  - `git fetch`
+  - `git rebase origin/main`
+
+To push your work:
+- `git add .` // adds all new files
+- `git commit -m "fix: x message with updates" // add commit message
+- `git push origin ARC101--criteria-button`
 
 ## Available Scripts
 
