@@ -31,7 +31,6 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
               class="MagentaA11y-accordion__heading"
             >
               <button
-                aria-controls="component-list"
                 aria-expanded="false"
                 class="MagentaA11y-accordion__headline"
                 type="button"
@@ -55,7 +54,6 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
               class="MagentaA11y-accordion__heading"
             >
               <button
-                aria-controls="page-level-list"
                 aria-expanded="false"
                 class="MagentaA11y-accordion__headline"
                 type="button"
@@ -131,7 +129,6 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
                 class="MagentaA11y-accordion__heading"
               >
                 <button
-                  aria-controls="component-list"
                   aria-expanded="false"
                   class="MagentaA11y-accordion__headline"
                   type="button"
@@ -155,7 +152,6 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
                 class="MagentaA11y-accordion__heading"
               >
                 <button
-                  aria-controls="page-level-list"
                   aria-expanded="false"
                   class="MagentaA11y-accordion__headline"
                   type="button"
