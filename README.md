@@ -15,7 +15,6 @@
 ### Prerequisites
 
 - **Node.js**: Ensure you have [Node.js](https://nodejs.org/) installed. It is recommended to use the latest LTS version.
-- **FFmpeg** (Optional): Required for video optimization scripts.
 
 ### Installation
 
@@ -49,9 +48,7 @@ npm install
 
 - **`npm run generate-icons`**: Generates React components for all SVG icons and updates type definitions.
 - **`npm run generate-faveicons`**: Creates favicon assets.
-- **`npm run generate-side-nav-buttons`**: Updates side navigation buttons dynamically.
-- **`npm run convert-videos`**: Converts video files to `.webm` format for web optimization.
-- **`npm run print-tree`**: Prints the project tree structure, excluding `node_modules`.
+- **`npm run create-md`**: Updates side navigation buttons dynamically.
 
 ### Markdown Generation Script
 
