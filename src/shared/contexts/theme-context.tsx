@@ -41,8 +41,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       const systemTheme = e.matches ? Theme.DARK : Theme.LIGHT;
       const savedTheme = localStorage.getItem("theme");
 
-      console.log({ systemTheme, savedTheme });
-
       // Only update theme if user hasn't manually overridden
       if (!savedTheme) {
         setTheme(systemTheme);
