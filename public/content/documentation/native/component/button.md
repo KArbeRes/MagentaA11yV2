@@ -28,7 +28,7 @@ How to test a button
 
    &mdash; **Text resizing**: Text adjusts up to 200% without losing information.
 
-Full information: https://www.magentaa11y.com/checklist-native/button/
+Full information: https://www.magentaa11y.com/#/native-criteria/component/button
 
 ## iOS Developer Notes
 

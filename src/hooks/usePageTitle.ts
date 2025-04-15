@@ -23,7 +23,7 @@ export const usePageTitle = () => {
       if (pathSegments.includes('web-criteria')) {
         category = 'Web Criteria';
       } else if (pathSegments.includes('native-criteria')) {
-        category = 'Native Criteria';
+        category = 'Native App Criteria';
       }
 
       pageTitle = category

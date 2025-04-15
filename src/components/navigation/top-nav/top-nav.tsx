@@ -123,7 +123,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
             const href =
               item.label === 'Web Criteria'
                 ? getFirstOverviewLink(DocumentationCategory.WEB)
-                : item.label === 'Native Criteria'
+                : item.label === 'Native App Criteria'
                 ? getFirstOverviewLink(DocumentationCategory.NATIVE)
                 : item.label === 'How to test'
                 ? getFirstOverviewLink(DocumentationCategory.HOW_TO_TEST)

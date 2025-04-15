@@ -141,7 +141,7 @@ describe('SideNav Component - Interaction Tests', () => {
     );
 
     const accordionButton = screen.getByRole('button', {
-      name: 'Header Component',
+      name: 'Component',
     });
 
     // Initially collapsed
@@ -165,7 +165,7 @@ describe('SideNav Component - Interaction Tests', () => {
     );
 
     const accordionButton = screen.getByRole('button', {
-      name: 'Header Component',
+      name: 'Page Level',
     });
 
     // Open the accordion
@@ -188,7 +188,7 @@ describe('SideNav Component - Interaction Tests', () => {
     );
 
     const accordionButton = screen.getByRole('button', {
-      name: 'Header Component',
+      name: 'Component',
     });
     await userEvent.click(accordionButton);
 

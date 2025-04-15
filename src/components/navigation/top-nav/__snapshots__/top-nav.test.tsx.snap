@@ -30,7 +30,7 @@ exports[`TopNav Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class="MagentaA11y__nav-items--link"
-            href="/web-criteria/header-component/overview"
+            href="/web-criteria/component/overview"
           >
             <span
               class="MagentaA11y__nav-items--label"
@@ -44,12 +44,12 @@ exports[`TopNav Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class="MagentaA11y__nav-items--link"
-            href="/native-criteria/controls/overview"
+            href="/native-criteria/component/overview"
           >
             <span
               class="MagentaA11y__nav-items--label"
             >
-              Native Criteria
+              Native App Criteria
             </span>
           </a>
         </li>

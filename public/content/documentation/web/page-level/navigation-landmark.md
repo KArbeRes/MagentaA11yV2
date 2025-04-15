@@ -28,7 +28,7 @@ How to test a navigation landmark
 
    &mdash; **Name:** It indicates its role and, if multiple navigations are present (e.g., Main navigation, Site map, Breadcrumbs), their respective names.
 
-Full information: [https://www.magentaa11y.com/checklist-web/nav/](https://www.magentaa11y.com/checklist-web/nav/)
+Full information: https://www.magentaa11y.com/#/web-criteria/page-level/navigation-landmark
 
 ## Gherkin
 
@@ -64,7 +64,7 @@ GIVEN THAT I am on a page with a navigation landmark
 
    &mdash; I HEAR It is discoverable with screenreader shortcuts as a navigation landmark.
 
-Full information: [https://www.magentaa11y.com/checklist-web/nav/](https://www.magentaa11y.com/checklist-web/nav/)
+Full information: https://www.magentaa11y.com/#/web-criteria/page-level/navigation-landmark
 
 ## Code Examples
 

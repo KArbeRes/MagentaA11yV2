@@ -23,7 +23,7 @@ const renderWithProviders = (
 
 const mockNavItems: TopNavProps['navItems'] = [
   { label: 'Web Criteria', href: '/web-criteria' },
-  { label: 'Native Criteria', href: '/native-criteria' },
+  { label: 'Native App Criteria', href: '/native-criteria' },
   { label: 'About Us', href: '/about' },
 ];
 
@@ -214,7 +214,7 @@ describe('TopNav Component - Navigation Behavior Tests', () => {
     );
 
     expect(
-      screen.getByRole('link', { name: 'Native Criteria' })
+      screen.getByRole('link', { name: 'Native App Criteria' })
     ).toHaveAttribute(
       'href',
       getFirstOverviewLink(DocumentationCategory.NATIVE)
@@ -253,9 +253,9 @@ describe('TopNav Component - Navigation Behavior Tests', () => {
     await user.click(screen.getByRole('link', { name: 'Web Criteria' }));
     expect(await screen.findByTestId('web-page')).toBeInTheDocument();
 
-    await screen.findByRole('link', { name: 'Native Criteria' });
+    await screen.findByRole('link', { name: 'Native App Criteria' });
 
-    await user.click(screen.getByRole('link', { name: 'Native Criteria' }));
+    await user.click(screen.getByRole('link', { name: 'Native App Criteria' }));
     expect(await screen.findByTestId('native-page')).toBeInTheDocument();
 
     await screen.findByRole('link', { name: 'About Us' });
@@ -277,8 +277,8 @@ describe('TopNav Component - Navigation Behavior Tests', () => {
       'active'
     );
 
-    await user.click(screen.getByRole('link', { name: 'Native Criteria' }));
-    expect(screen.getByRole('link', { name: 'Native Criteria' })).toHaveClass(
+    await user.click(screen.getByRole('link', { name: 'Native App Criteria' }));
+    expect(screen.getByRole('link', { name: 'Native App Criteria' })).toHaveClass(
       'active'
     );
 

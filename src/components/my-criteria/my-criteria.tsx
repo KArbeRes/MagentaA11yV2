@@ -227,7 +227,7 @@ const MyCriteria: React.FC = () => {
                   <Link
                     to={`${getFirstOverviewLink(DocumentationCategory.NATIVE)}`}
                   >
-                    Native Criteria
+                    Native App Criteria
                   </Link>
                   .
                 </p>
