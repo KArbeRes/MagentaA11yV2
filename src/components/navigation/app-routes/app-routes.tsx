@@ -1,4 +1,6 @@
 import AboutUs from 'components/about-us/about-us';
+import InaccessibleDemo from 'components/inaccessible-demo/inaccessible-demo';
+import AccessibleDemo from 'components/accessible-demo/accessible-demo';
 import Criteria from 'components/criteria/criteria';
 import Home from 'components/home/home';
 import MyCriteria from 'components/my-criteria/my-criteria';
@@ -11,6 +13,8 @@ const AppRoutes: React.FC = () => (
     <Route path="/" element={<Home />} />
     <Route path="/home" element={<Home />} />
     <Route path="/about-us" element={<AboutUs />} />
+    <Route path="/basic-inaccessible-webpage" element={<InaccessibleDemo />} />
+    <Route path="/basic-accessible-webpage" element={<AccessibleDemo />} />
     <Route
       path="/web-criteria/*"
       element={<Criteria documentation={DocumentationCategory.WEB} />}
