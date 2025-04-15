@@ -50,6 +50,7 @@ While you are working, make sure you to pull and rebase on main as you go:
   - `git rebase origin/main`
 
 To push your work:
+- `git diff .` // check what has changed in all the files you worked on
 - `git add .` // adds all new files
 - `git commit -m "fix: x message with updates"` // add commit message
 - `git push origin ARC101--criteria-button`
