@@ -217,7 +217,7 @@ If tabular data must be displayed without a `<table>` element, additional attrib
 #### iOS Voiceover
 
 <video controls>
-  <source src="media/video/table_ios.webm" type="video/webm">
+  <source src="media/video/web/table/table_ios.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
