@@ -63,9 +63,29 @@ exports[`Footer Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class=""
-            href="/native-criteria/component/overview"
+            href="/native-criteria/controls/overview"
           >
-            Component
+            Controls
+          </a>
+        </li>
+        <li
+          role="listitem"
+        >
+          <a
+            class=""
+            href="/native-criteria/notifications/overview"
+          >
+            Notifications
+          </a>
+        </li>
+        <li
+          role="listitem"
+        >
+          <a
+            class=""
+            href="/native-criteria/patterns/overview"
+          >
+            Patterns
           </a>
         </li>
       </ul>

@@ -44,7 +44,7 @@ exports[`TopNav Component - Snapshot Test matches the snapshot 1`] = `
         >
           <a
             class="MagentaA11y__nav-items--link"
-            href="/native-criteria/component/overview"
+            href="/native-criteria/controls/overview"
           >
             <span
               class="MagentaA11y__nav-items--label"
