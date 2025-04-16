@@ -125,7 +125,94 @@ const AccessibleDemo: React.FC = () => {
                 <summary>
                 What screen reader should I use to test?
                 </summary>
-                {/* {% include /examples/table-screen-reader-browser-pairing.html %} */}
+                    <table className="comparison">
+                        <caption className="center-text h-charlie">
+                            Screen reader and browser pairings
+                        </caption>
+                        <thead>
+                        <tr><th scope="col">
+                            Platform
+                        </th>
+                        <th scope="col">
+                            Screenreader
+                        </th>
+                        <th scope="col">
+                            Browser
+                        </th>
+                        </tr></thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                            <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" className="icon" />
+                            iOS
+                            </th>
+                            <td>
+                            <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" className="icon" />
+                            VoiceOver
+                            </td>
+                            <td>
+                            <img src="/assets/images/icons/logo-safari.svg" role="img" alt="Apple" className="icon" />
+                            Safari
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                            <img src="/assets/images/icons/logo-android.svg" role="img" alt="" className="icon" />
+                            Android
+                            </th>
+                            <td>
+                            <img src="/assets/images/icons/logo-talkback.svg" role="img" alt="" className="icon" />
+                            Talkback
+                            </td>
+                            <td>
+                            <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" className="icon" />
+                            Chrome
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                            <img src="/assets/images/icons/logo-windows.svg" role="img" alt="" className="icon" />
+                            Windows
+                            </th>
+                            <td>
+                            <img src="/assets/images/icons/logo-jaws.svg" role="img" alt="" className="icon" />
+                            JAWS
+                            </td>
+                            <td>
+                            <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" className="icon" />
+                            Chrome
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                            <img src="/assets/images/icons/logo-windows.svg" role="img" alt="" className="icon" />
+                            Windows
+                            </th>
+                            <td>
+                            <img src="/assets/images/icons/logo-nvda.svg" role="img" alt="" className="icon" />
+                            NVDA
+                            </td>
+                            <td>
+                            <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" className="icon" />
+                            Chrome
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                            <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" className="icon" />
+                            MacOS
+                            </th>
+                            <td>
+                            <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" className="icon" />
+                            VoiceOver
+                            </td>
+                            <td>
+                            <img src="/assets/images/icons/logo-safari.svg" role="img" alt="Apple" className="icon" />
+                            Safari
+                            </td>
+                        </tr>
+                        </tbody>
+                        </table>
             </details>
         </div>
 
