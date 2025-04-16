@@ -64,8 +64,6 @@ To push your work:
   - Automatically generates navigation buttons and icons.
   - Accessible at [http://localhost:3000](http://localhost:3000).
 
-- **`npm run dev`**: Watches for navigation item changes and starts the app concurrently.
-
 ### Building and Deployment
 
 - **`npm run build`**: Builds the app for production, optimizing all assets.
