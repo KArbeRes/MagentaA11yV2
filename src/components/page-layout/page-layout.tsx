@@ -26,7 +26,7 @@ const PageLayout: React.FC = () => {
 
   const navItems: NavItem[] = [
     { label: 'Web Criteria', href: '/web-criteria' },
-    { label: 'Native Criteria', href: '/native-criteria' },
+    { label: 'Native App Criteria', href: '/native-criteria' },
     { label: 'How to test', href: '/how-to-test' },
     { label: 'About us', href: '/about' },
     {

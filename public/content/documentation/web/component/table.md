@@ -24,7 +24,7 @@ How to test a table
 
    &mdash; Group: Column headers and row headers are identified with screenreader shortcuts
 
-Full information: https://www.magentaa11y.com/checklist-web/table/
+Full information: https://www.magentaa11y.com/#/web-criteria/component/table
 
 ## Gherkin
 
@@ -57,7 +57,7 @@ GIVEN THAT I am on a page with a table
    &mdash; I HEAR It identifies itself as a table  
    &mdash; I HEAR Column headers and row headers are identified with screenreader shortcuts
 
-Full information: https://www.magentaa11y.com/checklist-web/table/
+Full information: https://www.magentaa11y.com/#/web-criteria/component/table
 
 ## Code Examples
 
@@ -217,7 +217,7 @@ If tabular data must be displayed without a `<table>` element, additional attrib
 #### iOS Voiceover
 
 <video controls>
-  <source src="media/video/table_ios.webm" type="video/webm">
+  <source src="media/video/web/table/table_ios.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

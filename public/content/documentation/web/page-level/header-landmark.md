@@ -28,7 +28,7 @@ How to test a header landmark
 
    &mdash; Group: It typically contains the name and primary navigation of the website
 
-Full information: [https://www.magentaa11y.com/checklist-web/header/](https://www.magentaa11y.com/checklist-web/header/)
+Full information: https://www.magentaa11y.com/#/web-criteria/page-level/header-landmark
 
 ## Gherkin
 
@@ -62,7 +62,7 @@ GIVEN THAT I am on a page with a header landmark
 
    &mdash; I HEAR It typically contains the name and primary navigation of the website
 
-Full information: https://www.magentaa11y.com/checklist-web/header/
+Full information: https://www.magentaa11y.com/#/web-criteria/page-level/header-landmark
 
 ## Code Examples
 

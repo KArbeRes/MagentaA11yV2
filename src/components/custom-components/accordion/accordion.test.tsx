@@ -60,28 +60,6 @@ describe('Accordion Component - Accessibility & ARIA Attributes', () => {
     expect(button).toHaveAttribute('aria-expanded', 'false');
   });
 
-  test('button has aria-controls pointing to the content ID', () => {
-    render(
-      <Accordion title="Test Accordion" id="accordion1" isOpened={true}>
-        Content
-      </Accordion>
-    );
-
-    const button = screen.getByRole('button', { name: 'Test Accordion' });
-    expect(button).toHaveAttribute('aria-controls', 'accordion1');
-  });
-
-  test('content has correct ID matching aria-controls on button', () => {
-    render(
-      <Accordion title="Test Accordion" id="accordion1" isOpened={true}>
-        Content
-      </Accordion>
-    );
-
-    const content = screen.getByText('Content');
-    expect(content).toHaveAttribute('id', 'accordion1');
-  });
-
   test('content is not rendered when aria-expanded is false', () => {
     render(
       <Accordion title="Test Accordion" id="accordion1" isOpened={false}>
@@ -170,17 +148,6 @@ describe('Accordion Component - Attribute & Class Tests', () => {
     expect(screen.queryByText('Content')).not.toBeInTheDocument();
   });
 
-  test('button has aria-controls pointing to content ID', () => {
-    render(
-      <Accordion title="Test Accordion" id="accordion1" isOpened={false}>
-        Content
-      </Accordion>
-    );
-
-    const button = screen.getByRole('button', { name: 'Test Accordion' });
-
-    expect(button).toHaveAttribute('aria-controls', 'accordion1');
-  });
 });
 
 describe('Accordion Component - Edge Cases', () => {

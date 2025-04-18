@@ -32,7 +32,7 @@ GIVEN THAT I am on a page with a basic web page
 4. Device OS settings
    &mdash; EN I use zoom/pinch THEN I see text can resize up to 200% without losing information
 
-Full information: https://www.magentaa11y.com/checklist-web/html/
+Full information: https://www.magentaa11y.com/#/web-criteria/page-level/basic-web-page
 
 ## Code Examples
 
@@ -142,4 +142,4 @@ How to test a basic web page
 
    &mdash; Zoom/pinch: text can resize up to 200% without losing information
 
-Full information: https://www.magentaa11y.com/checklist-web/html/
+Full information: https://www.magentaa11y.com/#/web-criteria/page-level/basic-web-page
