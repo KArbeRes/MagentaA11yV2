@@ -1,10 +1,10 @@
 ## General Notes
 
-Validate your code use HTML validation as the foundation for ensuring your page works for everyone.
+How to test a basic web page
 
 ## Gherkin
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a basic web page
 
@@ -12,33 +12,36 @@ GIVEN THAT I am on a page with a basic web page
 
 1. Keyboard for mobile & desktop
 
-   &mdash; EN I use the keyboard to open a new web page I SEE the page has a unique logical title in the browser tab
+   - WHEN I use the keyboard to open a new web page I SEE the page has a unique logical title in the browser tab
 
 2. Desktop screenreader
 
-   &mdash; EN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-   &mdash; use the keyboard to open a new web page
-   &mdash; HEAR The page has a unique logical title in the browser tab
-   &mdash; HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
+   - I use the keyboard to open a new web page
+      - I HEAR The page has a unique logical title in the browser tab
+      - I HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
 
 3. Mobile screenreader
 
-   &mdash; EN I use a mobile screenreader (Talkback, VoiceOver) AND
-   &mdash; swipe to enter from the web browser tabs
-   &mdash; HEAR The page has a unique logical title in the browser tab
-   &mdash; HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
-   &mdash; EN when I change orientations I HEAR content is accessible in landscape or portrait orientation
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+   - I swipe to enter from the web browser tabs
+      - I HEAR The page has a unique logical title in the browser tab
+      - I HEAR Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
+   - THEN when I change orientations I HEAR content is accessible in landscape or portrait orientation
 
 4. Device OS settings
-   &mdash; EN I use zoom/pinch THEN I see text can resize up to 200% without losing information
+   - WHEN I use zoom/pinch THEN I see text can resize up to 200% without losing information
 
 Full information: https://www.magentaa11y.com/#/web-criteria/page-level/basic-web-page
+
+## Validate your code
+Use [HTML validation](https://validator.w3.org/nu/) as the foundation for ensuring your page works for everyone.
 
 ## Code Examples
 
 ### Declare a language
 
-This affects the screenreader pronunciation.
+This aids a screen reader in reading a content in the proper language.
 
 ```html
 <html lang="en"></html>
@@ -65,8 +68,7 @@ People with low vision need the ability to enlarge the page on mobile and deskto
 <head>
   <meta
     name="viewport"
-    content="width=device-width, 
-        initial-scale=1"
+    content="width=device-width, initial-scale=1"
   />
 </head>
 ```
@@ -77,10 +79,10 @@ Landmarks give structure to the page for the screenreader user to be able to nav
 
 Each page must include:
 
-- Header
-- Nav
-- Main
-- Footer
+- [Header](https://www.magentaa11y.com/#/web-criteria/page-level/header-landmark)
+- [Nav](https://www.magentaa11y.com/#/web-criteria/page-level/navigation-landmark) 
+- [Main]() TODO
+- [Footer]() TODO
 
 ```html
 <header>
@@ -97,49 +99,30 @@ Each page must include:
 </footer>
 ```
 
-## Developer Notes
-
-### Name
-
-- The page must have a unique, logical title visible in the browser tab.
-
-### Role
-
-- Major landmarks (header/banner, navigation, main, footer) must be discoverable with screenreader shortcuts.
-
-### Group
-
-- Ensure the page includes all necessary structural landmarks.
-
-### Focus
-
-- The page title should be strongly visually indicated when the page is loaded.
-- Zoom/pinch/stretch should allow resizing up to 200% without losing information.
-
 ## Condensed
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a basic web page
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   &mdash; Tab: Enters the page and visibly focuses only interactive elements
-   &mdash; Zoom: Content zooms up to 200%
+    - Tab: Enters the page and visibly focuses only interactive elements
+    - Zoom: Content zooms up to 200%
 
 2. Test mobile screenreader gestures
 
-   &mdash; Swipe: Focus moves within page
-   &mdash; Pinch/stretch: Content zooms up to 200%
-   &mdash; Orientation: Content is accessible in landscape or portrait orientation
+    - Swipe: Focus moves within page
+    - Pinch/stretch: Content zooms up to 200%
+    - Orientation: Content is accessible in landscape or portrait orientation
 
 3. Listen to screenreader output on all devices
 
-   &mdash; Name: The page has a unique logical title in the browser tab
-   &mdash; Role: Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
+    - Name: The page has a unique logical title in the browser tab
+    - Role: Major landmarks are discoverable with screenreader shortcuts: header/banner, navigation, main and footer/content info landmarks
 
 4. Device OS settings
 
-   &mdash; Zoom/pinch: text can resize up to 200% without losing information
+    - Zoom/pinch: text can resize up to 200% without losing information
 
 Full information: https://www.magentaa11y.com/#/web-criteria/page-level/basic-web-page
