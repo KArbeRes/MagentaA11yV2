@@ -94,13 +94,19 @@ pre {
   width: -webkit-fill-available;
 }
 
-video,
 table {
   width: 100%;
 }
 
 video {
   aspect-ratio: 3/2;
+  width: 70%;
+  display: flex;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+  }
 }
 
 table {

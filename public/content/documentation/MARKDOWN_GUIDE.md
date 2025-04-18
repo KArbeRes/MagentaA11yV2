@@ -94,6 +94,17 @@ You can use custom HTML elements with attributes to enhance interactivity:
 </video>
 ```
 
+### Examples with background color & padding
+* Use `<example>` or `<div class="example>` to wrap code blocks or live HTML with background color.
+
+```html
+<example>
+   <button>
+   Continue
+   </button>
+</example>
+```
+
 Relative paths are resolved based on:
 
 ```

@@ -159,67 +159,67 @@ EOF
 CRITERIA_TEMPLATE=$(cat <<EOF
 ## General Notes
 
-There must only be a singular header/banner element on the page. Contains the site title and typically the primary navigation.
+How to test a header
 
 ## Condensed
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header landmark
+How to test a header
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   &mdash; Skip-links: Focus moves directly to the header or navigation
+   - Skip-links: Focus moves directly to the header or navigation
 
-   &mdash; Tab: Nothing, headings are not focusable unless they are actionable
+   - Tab: Nothing, headings are not focusable unless they are actionable
 
-   &mdash; Arrow-keys: Headings are browsed
+   - Arrow-keys: Headings are browsed
 
 2. Test mobile screenreader gestures
 
-   &mdash; Swipe: Focus moves directly to the header or navigation
+   - Swipe: Focus moves directly to the header or navigation
 
-   &mdash; Doubletap: This typically activates most elements
+   - Doubletap: This typically activates most elements
 
 3. Listen to screenreader output on all devices
 
-   &mdash; Role: It is discoverable with screenreader shortcuts as header/banner landmark
+   - It is discoverable with screenreader shortcuts as header/banner landmark
 
-   &mdash; Group: It typically contains the name and primary navigation of the website
+   - Group: It typically contains the name and primary navigation of the website
 
 Full information: [$FULL_LINK]($FULL_LINK)
 
 ## Gherkin
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header landmark
+How to test a header
 
 GIVEN THAT I am on a page with a header landmark
 
 1. Keyboard for mobile & desktop
 
-   &mdash; WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
 
 2. Desktop screenreader
 
-   &mdash; WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
 
-   &mdash; I use the tab key to enter the web browser window
+   - I use the tab key to enter the web browser window
 
-   &mdash; I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
 
-   &mdash; I HEAR It typically contains the name and primary navigation of the website
+   - I HEAR It typically contains the name and primary navigation of the website
 
 3. Mobile screenreader
 
-   &mdash; WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
 
-   &mdash; I swipe to focusable elements in the header
+   - I swipe to focusable elements in the header
 
-   &mdash; I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
 
-   &mdash; I HEAR It typically contains the name and primary navigation of the website
+   - I HEAR It typically contains the name and primary navigation of the website
 
 
 Full information: [$FULL_LINK]($FULL_LINK)
