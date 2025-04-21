@@ -79,6 +79,11 @@ To push your work:
 
 - **`npm run create-md`**: Generates structured Markdown files using predefined templates.
 
+### Parse Markdown file updates
+
+- **`npm run parse-md-files`**: Generates updates to Markdown files.
+
+
 #### What the Script Does
 
 1. **Creates Markdown files**:
