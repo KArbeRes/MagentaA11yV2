@@ -99,6 +99,6 @@ This custom header requires extra attributes.
 
 ### Focus
 
-- Can be targeted with a skip link, but the skip link will typically be labeled “skip to navigation.”
+- Can be targeted with a skip link, but the skip link will typically be labeled “skip to navigation”
 - Use `tabindex="-1"` to make the header targetable with a skip link.
 - The `<header>` itself isn’t focusable with the tab key.

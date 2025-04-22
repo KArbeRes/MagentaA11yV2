@@ -53,6 +53,8 @@ Full information: https://www.magentaa11y.com/#/web-criteria/page-level/navigati
 This semantic HTML contains all accessibility features by default.
 
 ```html
+<a href="#nav-example">Skip to example navigation</a>
+<a href="#">Not the navigation</a>
 <nav tabindex="-1" class="nav-example" id="nav-example">
   <ul>
     <li><a href="/">Home</a></li>
@@ -110,7 +112,7 @@ Use semantic elements where possible.
 </nav>
 ```
 
-### When You Can’t Use Semantic HTML
+### When you can’t use semantic HTML
 
 This custom navigation requires extra attributes.
 

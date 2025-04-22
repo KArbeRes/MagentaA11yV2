@@ -51,7 +51,7 @@ Full information: https://www.magentaa11y.com/#/native-criteria/controls/button
 
 - A button is accessible by default prior to customization. Use the native button when at all possible to avoid additional development effort
 - A button is a control that executes an action or navigates within the app
-To redirect users outside of the app, use links
+  - To redirect users outside of the app, use links
 - Even if the control visibly looks like a link, implement the control as a button to cue the screen reader that the action will keep them within the app
 - Name, Role, State must be stated in a single announcement when focus is on the control
 
@@ -59,10 +59,10 @@ To redirect users outside of the app, use links
 
 ### Name
 
-- Programmatic name describes the purpose of the control.
+- Name describes the purpose of the control.
 - If visible text label exists, the programmatic name should match the visible text label.
   - **Note**: Setting a programmatic name while a visible text label exists may cause VoiceOver to duplicate the announcement of the name. If this happens, hide the visible text label from VoiceOver recognization.
-- When naming a button, do not add “button” to the programmatic name (label). - Assigning “Button” as the role will handle this announcement.
+- When naming a button, do not add “button” to the programmatic name (label). Assigning “Button” as the role will handle this announcement.
   - **Incorrect announcement**: “Submit button, Button”
   - **Correct announcement**: “Submit, Button”
 
@@ -100,7 +100,7 @@ Group visible label with button, if applicable, to provide a programmatic name f
 #### UIKit
 * Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
 * Set `isAccessibilityElement` to true for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
-  * If frame does not exist due to custom button, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
+* If frame does not exist due to custom button, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
   * You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
 * Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
 * Use `shouldGroupAccessibilityChildre`n to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
@@ -115,7 +115,7 @@ Group visible label with button, if applicable, to provide a programmatic name f
 #### UIKit
 * For enabled: Set `isEnabled` to `true`.
 * For disabled: Set `isEnabled` to `false`. Announcement for disabled is “Dimmed”.
-* If necessary, you may change the accessibility trait of the button to `notEnabled`, but this may overwrite the current accessibility role of the button.
+  * If necessary, you may change the accessibility trait of the button to `notEnabled`, but this may overwrite the current accessibility role of the button.
 
 #### SwiftUI
 * For selected, use `accessibilityAddTraits(.isSelected)`.

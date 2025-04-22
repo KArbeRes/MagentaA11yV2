@@ -29,7 +29,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-GIVEN THAT I am on a page with a button landmark
+GIVEN THAT I am on a page with a button
 
 1. Keyboard for mobile & desktop
 
@@ -73,14 +73,14 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
   Your browser does not support the video tag.
 </video>
 
-### NVDA
+### Windows NVDA Chrome
 
 <video controls>
   <source src="media/video/web/button/buttonNVDA.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
-### JAWS
+### Windows JAWS Chrome
 
 <video controls>
   <source src="media/video/web/button/buttonJaws.mp4" type="video/webm">
@@ -105,9 +105,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 ## Code examples
 ### Use semantic HTML
 
-This semantic HTML contains all accessibility features by default.
-
-It uses <u>CSS pseudo attributes</u> to create the arrow indicator, no Javascript.
+- This semantic HTML contains all accessibility features by default.
+- It uses <u>CSS pseudo attributes</u> to create the arrow indicator, no Javascript.
 
 ```html
 <button>
@@ -123,7 +122,7 @@ It uses <u>CSS pseudo attributes</u> to create the arrow indicator, no Javascrip
 
 ## Focusable disabled button
 
-The preferred method is to use aria-disabled="true" so screen reader users can find the button, click submit and be notified of errors in the form.
+The preferred method is to use `aria-disabled="true"` so screen reader users can find the button, click submit and be notified of errors in the form.
 
 ```html
 <button aria-disabled="true">
@@ -154,7 +153,7 @@ A button that uses the disabled attribute will not be focusable, but it is still
 </example>
 
 ## When you can’t use semantic HTML
-This custom button requires extra attributes and JS event listeners. Adding tabindex="0" makes it focusable.
+This custom button requires extra attributes and JS event listeners. Adding `tabindex="0"` makes it focusable.
 
 ```html
 <div role="button" tabindex="0" >

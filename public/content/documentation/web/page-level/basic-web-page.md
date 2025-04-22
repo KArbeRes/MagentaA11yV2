@@ -51,7 +51,7 @@ This aids a screen reader in reading a content in the proper language.
 
 Each page must have unique `<title>` in the `<head>`:
 
-- This includes single-page dynamic apps if the URI changes during the user journey.
+- This includes single-page dynamic apps *if* the URL changes during the user journey.
 - Do not use the `|` pipe character as a divider (it is read by screen readers).
 
 ```html
