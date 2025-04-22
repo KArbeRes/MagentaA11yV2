@@ -49,6 +49,7 @@
     }
 
     &[aria-disabled='true'],
+    &[disabled],
     &.visually-disabled {
       --button--bg: var(--button-disabled);
       --button--text-color: var(--button-disabled-text);
