@@ -44,9 +44,9 @@ GIVEN THAT I am on a page with a skip link
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
    - I use the tab key to move focus to a skip link
-      - I HEAR It describes which landmark it's targeting
-      - I HEAR It identifies itself as a link
-      - I HEAR It is typically the first element in the page
+      - I HEAR it describes which landmark it's targeting
+      - I HEAR it identifies itself as a link
+      - I HEAR it is typically the first element in the page
    - THEN when I use the enter key to activate the link I HEAR my focus moves directly to the targeted element
 
 
@@ -54,9 +54,9 @@ GIVEN THAT I am on a page with a skip link
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
    - I swipe to focus on a skip link
-      - I HEAR It describes which landmark it's targeting
-      - I HEAR It identifies itself as a link
-      - I HEAR It is typically the first element in the page
+      - I HEAR it describes which landmark it's targeting
+      - I HEAR it identifies itself as a link
+      - I HEAR it is typically the first element in the page
    - THEN when I doubletap with the link in focus I HEAR my focus moves directly to the targeted element
 
 
