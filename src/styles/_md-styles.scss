@@ -20,4 +20,8 @@ example,
   margin-top: 1rem;
   margin-bottom: 3rem;
   display: block;
+  main {
+    min-height:auto;
+    display: block;
+  }
 }
