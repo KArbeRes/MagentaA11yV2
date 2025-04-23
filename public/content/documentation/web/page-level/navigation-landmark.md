@@ -64,6 +64,20 @@ This semantic HTML contains all accessibility features by default.
   </ul>
 </nav>
 ```
+
+<example>
+  <a href="#nav-example">Skip to example navigation</a>
+  <a href="#">Not the navigation</a>
+  <nav tabindex="-1" class="nav-example" id="nav-example">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><button class="Magentaa11y-button Magentaa11y-button--primary" aria-haspopup="true">Sign in</button></li>
+    </ul>
+  </nav>
+</example>
+
 ### Keep custom menus as simple as possible
 Use semantic elements where possible.
 
@@ -75,33 +89,15 @@ Use semantic elements where possible.
         Home
       </a>
     </li>
-    <li class="expander-group">
-      <button type="button"
-              class="menu expander-toggle"
-              aria-expanded="false"
-              aria-haspopup="true">
+    <li class="expander-group MagentaA11y-accordion">
+      <h3 className="MagentaA11y-accordion__heading">
+        <button className="MagentaA11y-accordion__headline" data-fn="toggleAccordionState" type="button" class="menu expander-toggle" aria-expanded="false" aria-haspopup="true">
         Menu
-      </button>
-
-      <ul class="subnav expander-content">
+        </button>
+      </h3>
+      <ul className="MagentaA11y-accordion__body">
         <li>
           <a href="/about/">About</a>
-          <button type="button"
-                  class="subnav expander-toggle"
-                  aria-expanded="false"
-                  aria-haspopup="true">
-            <span class="hidden">About</span>
-          </button>
-
-          <ul class="expander-content">
-            <li>
-              <a href="/history/">Our history</a>
-            </li>
-            <li>
-              <a href="/values/">Our values</a>
-            </li>
-          </ul>
-
         </li>
         <li>
           <a href="/contact">Contact</a>
@@ -111,6 +107,33 @@ Use semantic elements where possible.
   </ul>
 </nav>
 ```
+
+<example>
+  <nav id="example-expanding-nav" class="menu">
+    <ul>
+      <li>
+        <a class="home" href="/">
+          Home
+        </a>
+      </li>
+      <li class="expander-group MagentaA11y-accordion">
+        <h3 className="MagentaA11y-accordion__heading">
+          <button className="MagentaA11y-accordion__headline" data-fn="toggleAccordionState" type="button" class="menu expander-toggle" aria-expanded="false" aria-haspopup="true">
+          Menu
+          </button>
+        </h3>
+        <ul className="MagentaA11y-accordion__body">
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</example>
 
 ### When you can’t use semantic HTML
 
