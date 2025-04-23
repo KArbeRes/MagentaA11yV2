@@ -39,6 +39,7 @@
       flex-direction: column;
       justify-content: center;
       gap: var(--magentaa11y-spacing-size-16);
+      align-items: center;
 
       span {
         color: var(--magentaa11y-color-brand-grayscale-white);
@@ -50,10 +51,6 @@
       }
       :nth-child(2) {
         font: var(--title-second-headline-font);
-      }
-
-      @media (min-width: 768px) {
-        align-items: center;
       }
     }
 
