@@ -72,7 +72,7 @@ This semantic HTML contains all accessibility features by default.
 <example>
    <a href="#example-main">Skip to main content</a>
    <a href="#">Not main content</a>
-   <main tabindex="-1" id="example-main">
+   <main tabindex="-1" id="example-main" aria-label="example">
       <h1>About main content</h1>
       <p>The main content of the page belongs here.</p>
       <p><a href="#">Focus moves here next</a></p>
