@@ -2,7 +2,7 @@
   --nav-display-gap: 36px;
   --title-font: var(--magentaa11y-typeset-display-md-xtrastrong);
   --sub-lists-flex-direction: row;
-  --intro-padding-bottom: var(--magentaa11y-spacing-size-32);
+  --intro-padding: var(--magentaa11y-spacing-size-32);
   --intro-gap: var(--magentaa11y-line-height-16);
   --criteria-button-visibility: none;
 
@@ -22,7 +22,7 @@
     flex-direction: column;
     gap: var(--intro-gap);
     text-align: center;
-    padding-bottom: var(--intro-padding-bottom);
+    padding: var(--intro-padding) 0;
     border-bottom: var(--magentaa11y-border-weight-size-1) solid
       var(--color-background-tertiary);
 
