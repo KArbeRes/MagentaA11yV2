@@ -88,6 +88,35 @@ Use `fieldset` and `legend` to group related fields, such as:
 - Autofill attributes to help customers complete fields with less effort.
 - Using inputmode="numeric" brings up the numeric keyboard on mobile devices making entry easier.
 
+<example>
+    <form aria-label="Payment information">
+      <fieldset>
+        <legend>
+          Enter your payment information
+        </legend>
+        <div class="card-number-container">
+          <label for="card-number">Card Number</label>
+          <button type="button" class="cc-camera secondary">
+             <span class="hidden">Use camera to</span> 
+             Scan
+             <span class="hidden">card number</span>
+          </button>
+          <input type="text" 
+                  name="cardnumber" 
+                  id="card-number" 
+                  autocomplete="cc-number"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  aria-describedby="description-card-number"
+                  required>
+          <div id="description-card-number" class="hint secure-icon">
+            Secure form protected by 8 bit encryption
+          </div>
+        </div>
+      </fieldset>
+    </form>
+</example>
+
 ```html
 <form aria-label="Payment information">
   <fieldset>
