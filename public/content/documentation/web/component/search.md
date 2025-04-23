@@ -59,11 +59,6 @@ GIVEN THAT I am on a page with a header landmark
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search/search](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search/search)
 
-## Developer Notes
-
-### Name
-
-- Typically doesn’t have a name or description since there must be only one instance per page.
 
 ## Videos
 
@@ -116,8 +111,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 </form>
 ```
 
+<!-- Something funky is up with the search button here and I can't figure it out. It is submitting on focus when not using VoiceOver.  -->
 <example>
-   <form role="search">
+   <form role="search" action="/search/">
       <label for="search" class="hidden-visually">
          Search this website:
       </label>
@@ -134,7 +130,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
          <option value="Header / banner">
          <option value="Heading: h1, h2, h3">
       </datalist>
-      <button type="submit">
+      <button>
          <span class="hidden-visually">Search</span>
       </button>
    </form>
