@@ -87,24 +87,24 @@ This semantic HTML contains all accessibility features by default.
 This custom footer requires extra attributes.
 
 ```html
-    <div role="contentinfo" tabindex="-1" id="example-footer">
-        &copy; 2025 Site Name
-    </div>
+<div role="contentinfo" tabindex="-1" id="example-footer">
+   &copy; 2025 Site Name
+</div>
 ```
 
 ## Developer notes
 
 ### Name
-- Typically doesn't have a name
+- Typically doesn't have a name, unless there are multiple footers.
 
 ### Role
 
-- Identifies itself as a footer or contentinfo landmark
+- Identifies itself as a footer or contentinfo landmark.
 - If a non-semantic element must be used (like a `<div>`) use `role="contentinfo"`.
 
 ### Group
 
-- Typically contains copyright information, navigation links, and privacy statements.
+- Typically contains copyright information, navigation links, site map, and privacy statements.
 
 ### Focus
 
