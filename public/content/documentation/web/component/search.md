@@ -22,15 +22,16 @@ How to test a search input
    - Role: It identifies itself as a search input
    - Group: The form itself is discoverable with screenreader shortcuts as search landmark
 
-Full information: [https://www.magentaa11y.com/checklist-web/search/](https://www.magentaa11y.com/checklist-web/search/)
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search)
+
 
 ## Gherkin
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a search input
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with a search input
 
 1. Keyboard for mobile & desktop
 
@@ -42,9 +43,9 @@ GIVEN THAT I am on a page with a header landmark
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
    - I use the tab key to move focus to a search input
-      - I HEAR Its purpose is clear
-      - I HEAR It identifies itself as a search input
-      - I HEAR The form itself is discoverable with screenreader shortcuts as search landmark
+      - I HEAR its purpose is clear
+      - I HEAR it identifies itself as a search input
+      - I HEAR the form itself is discoverable with screenreader shortcuts as search landmark
    - THEN when I use the tab key to move focus to the search submit button I HEAR the button is focused
    - THEN when I use the enter or spacebar key I HEAR the search results are presented
 
@@ -52,12 +53,12 @@ GIVEN THAT I am on a page with a header landmark
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
    - I swipe to focus on a search input
-      - I HEAR Its purpose is clear
-      - I HEAR It identifies itself as a search input
-      - I HEAR The form itself is discoverable with screenreader
+      - I HEAR its purpose is clear
+      - I HEAR it identifies itself as a search input
+      - I HEAR the form itself is discoverable with screenreader
 
 
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search/search](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search/search)
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search)
 
 
 ## Videos
@@ -76,6 +77,24 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
   Your browser does not support the video tag.
 </video>
 
+### Windows Jaws Chrome
+<video controls>
+  <source src="media/video/web/search/search-JAWS.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+### Windows NVDA Chrome
+<video controls>
+  <source src="media/video/web/search/search-NVDA.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+### MacOS Voiceover Safari
+<video controls>
+  <source src="media/video/web/search/search-desktop-safari.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
 ## Code examples
 ### Use semantic HTML
 
@@ -87,7 +106,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 - For search autocomplete see [Autocomplete input with listbox](/checklist-web/listbox-autocomplete/)
 
 ```html
-<form role="search" action="/search/">
+<form role="search">
   <label for="search">
     Search this website:
   </label>
@@ -113,7 +132,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 <!-- Something funky is up with the search button here and I can't figure it out. It is submitting on focus when not using VoiceOver.  -->
 <example>
-   <form role="search" action="/search/">
+   <form role="search">
       <label for="search" class="hidden-visually">
          Search this website:
       </label>
