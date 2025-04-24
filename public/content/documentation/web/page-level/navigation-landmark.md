@@ -1,68 +1,48 @@
 ## General Notes
 
-Navigation landmarks are essential for guiding users through a website's structure, especially for screen reader and keyboard users. This document provides a comprehensive guide to testing and implementing navigation landmarks.
+How to test a navigation landmark
 
 ## Condensed
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a navigation landmark
 
-1. Test keyboard only, then screen reader + keyboard actions
 
-   &mdash; **Skip-links:** Focus moves directly to the navigation element.
-
-   &mdash; **Tab:** Focus moves to links and buttons within the navigation.
-
-   &mdash; **Arrow-keys:** Navigation elements are browsed correctly.
-
+1. Test keyboard only, then screen reader + keyboard actions  
+   - Skip-links: Focus moves directly to the nav element
+   - Tab: Focus moves to Links and buttons within the nav
 2. Test mobile screenreader gestures
-
-   &mdash; **Swipe:** Focus moves within the navigation.
-
-   &mdash; **Doubletap:** This typically activates most elements.
-
+   - Swipe: Focus moves within the nav
+   - Doubletap: This typically activates most elements
 3. Listen to screenreader output on all devices
-
-   &mdash; **Role:** It is discoverable with screenreader shortcuts as a navigation landmark.
-
-   &mdash; **Name:** It indicates its role and, if multiple navigations are present (e.g., Main navigation, Site map, Breadcrumbs), their respective names.
+   - **Name**: It indicates its role AND IF multiple navigations are present (ex: Main navigation, Site map, Breadcrumbs), the name of the navigation
+   - **Role**: It is discoverable with screenreader shortcuts as a navigation landmark
 
 Full information: https://www.magentaa11y.com/#/web-criteria/page-level/navigation-landmark
 
 ## Gherkin
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a navigation landmark
 
 GIVEN THAT I am on a page with a navigation landmark
 
-1. **Keyboard for mobile & desktop**
+1. Keyboard for mobile & desktop
+   - WHEN I use the arrow keys to browse the navigation menu, I SEE the screen scrolls through the page.
+  
+2. Desktop screenreader
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+   - I use the arrow keys to browse the navigation menu
+     - I HEAR It indicates its role AND IF multiple navigations are present (ex: Main navigation, Site map, Breadcrumbs), the name of the navigation
+     - I HEAR It is discoverable with screenreader shortcuts as a navigation landmark.
 
-   &mdash; WHEN I use the arrow keys to browse the navigation menu
-
-   &mdash; I SEE the screen scrolls through the page.
-
-2. **Desktop screenreader**
-
-   &mdash; WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-
-   &mdash; I use the arrow keys to browse the navigation menu
-
-   &mdash; I HEAR It indicates its role and, if multiple navigations are present (e.g., Main navigation, Site map, Breadcrumbs), their names.
-
-   &mdash; I HEAR It is discoverable with screenreader shortcuts as a navigation landmark.
-
-3. **Mobile screenreader**
-
-   &mdash; WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   &mdash; I swipe to focusable elements in the navigation
-
-   &mdash; I HEAR It indicates its role and, if multiple navigations are present, their names.
-
-   &mdash; I HEAR It is discoverable with screenreader shortcuts as a navigation landmark.
+3. Mobile screenreader
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+   - I swipe to focusable elements in the navigation
+     - I HEAR It indicates its role AND IF multiple navigations are present (ex: Main navigation, Site map, Breadcrumbs), the name of the navigation
+     - I HEAR It is discoverable with screenreader shortcuts as a navigation landmark.
 
 Full information: https://www.magentaa11y.com/#/web-criteria/page-level/navigation-landmark
 
@@ -73,6 +53,8 @@ Full information: https://www.magentaa11y.com/#/web-criteria/page-level/navigati
 This semantic HTML contains all accessibility features by default.
 
 ```html
+<a href="#nav-example">Skip to example navigation</a>
+<a href="#">Not the navigation</a>
 <nav tabindex="-1" class="nav-example" id="nav-example">
   <ul>
     <li><a href="/">Home</a></li>
@@ -83,7 +65,77 @@ This semantic HTML contains all accessibility features by default.
 </nav>
 ```
 
-### When You Can’t Use Semantic HTML
+<example>
+  <a href="#destination" data-fn="scrollToHref">Skip to example navigation</a>
+  <a href="#">Not the navigation</a>
+  <nav tabindex="-1" class="nav-example" id="destination">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><button class="Magentaa11y-button Magentaa11y-button--primary" aria-haspopup="true">Sign in</button></li>
+    </ul>
+  </nav>
+</example>
+
+### Keep custom menus as simple as possible
+Use semantic elements where possible.
+
+```html
+<nav id="example-expanding-nav" class="menu">
+  <ul>
+    <li>
+      <a class="home" href="/">
+        Home
+      </a>
+    </li>
+    <li class="expander-group MagentaA11y-accordion">
+      <h3 className="MagentaA11y-accordion__heading">
+        <button className="MagentaA11y-accordion__headline" data-fn="toggleAccordionState" type="button" class="menu expander-toggle" aria-expanded="false" aria-haspopup="true">
+        Menu
+        </button>
+      </h3>
+      <ul className="MagentaA11y-accordion__body">
+        <li>
+          <a href="/about/">About</a>
+        </li>
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+```
+
+<example>
+  <nav id="example-expanding-nav" class="menu">
+    <ul>
+      <li>
+        <a class="home" href="/">
+          Home
+        </a>
+      </li>
+      <li class="expander-group MagentaA11y-accordion">
+        <h3 className="MagentaA11y-accordion__heading">
+          <button className="MagentaA11y-accordion__headline" data-fn="toggleAccordionState" type="button" class="menu expander-toggle" aria-expanded="false" aria-haspopup="true">
+          Menu
+          </button>
+        </h3>
+        <ul className="MagentaA11y-accordion__body">
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</example>
+
+### When you can’t use semantic HTML
 
 This custom navigation requires extra attributes.
 
@@ -95,6 +147,38 @@ This custom navigation requires extra attributes.
     <li><a href="/contact/">Contact</a></li>
   </ul>
 </div>
+```
+
+### Multiple navigation elements
+When there is more than one navigation element, they must have a name.
+
+```html
+<nav tabindex="-1" id="nav" aria-label="Main">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</nav>
+
+<h2 id="cat-heading">Categories</h2>
+<nav id="cat-nav" aria-labelledby="#cat-heading">
+  <ul>
+    <li><a href="/alpha/">Alpha</a></li>
+    <li><a href="/bravo/">Bravo</a></li>
+    <li><a href="/charlie/">Charlie</a></li>
+  </ul>
+</nav>
+
+<footer>
+  <nav aria-label="Site map">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</footer>
 ```
 
 ## Developer Notes
@@ -114,90 +198,6 @@ This custom navigation requires extra attributes.
 
 - When skip links are used, add `tabindex="-1"` so focus can move to the `nav` element, not just bring it into view.
 
-## Additional Criteria
-
-#### Example Navigation
-
-```html
-<a href="#nav-example">Skip to example navigation</a>
-<a href="#">Not the navigation</a>
-<nav tabindex="-1" class="nav-example" id="nav-example">
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/contact/">Contact</a></li>
-    <li><button aria-haspopup="true">Sign in</button></li>
-  </ul>
-</nav>
-```
-
-#### Expanding Navigation Example
-
-```html
-<nav id="example-expanding-nav" class="menu">
-  <ul>
-    <li>
-      <a class="home" href="/">Home</a>
-    </li>
-    <li class="expander-group">
-      <button
-        type="button"
-        class="menu expander-toggle"
-        aria-expanded="true"
-        aria-haspopup="true">
-        Menu
-      </button>
-      <ul class="subnav expander-content" aria-hidden="false">
-        <li>
-          <a href="/about/">About</a>
-          <button
-            type="button"
-            class="subnav expander-toggle"
-            aria-expanded="false"
-            aria-haspopup="true">
-            <span class="hidden">About</span>
-          </button>
-          <ul class="expander-content" aria-hidden="true">
-            <li><a href="/history/">Our history</a></li>
-            <li><a href="/values/">Our values</a></li>
-          </ul>
-        </li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-```
-
-### Multiple Navigation Elements
-
-When there is more than one navigation element, they must have a name.
-
-```html
-<nav tabindex="-1" id="nav" aria-label="Main">
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/contact/">Contact</a></li>
-  </ul>
-</nav>
-
-<h2 id="cat-heading">Categories</h2>
-<nav id="cat-nav" aria-labelledby="cat-heading">
-  <ul>
-    <li><a href="/alpha/">Alpha</a></li>
-    <li><a href="/bravo/">Bravo</a></li>
-    <li><a href="/charlie/">Charlie</a></li>
-  </ul>
-</nav>
-
-<footer>
-  <nav aria-label="Site map">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/contact/">Contact</a></li>
-    </ul>
-  </nav>
-</footer>
-```
+## Further Reading
+- [WCAG 3.2.3 Consistent Navigation (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation)
+- [WCAG 4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value)

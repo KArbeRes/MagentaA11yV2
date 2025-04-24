@@ -12,3 +12,16 @@
   outline: 1px solid #ddd;
   color: black;
 }
+
+example, 
+.example {
+  padding: 2rem;
+  background: var(--color-code-block); /* Adapts to theme */
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  display: block;
+  main {
+    min-height:auto;
+    display: block;
+  }
+}

@@ -1,68 +1,55 @@
 ## General Notes
 
-There must only be a singular header/banner element on the page. Contains the site title and typically the primary navigation.
+How to test a header landmark
 
 ## Condensed
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a header landmark
 
 1. Test keyboard only, then screen reader + keyboard actions
-
-   &mdash; Skip-links: Focus moves directly to the header or navigation
-
-   &mdash; Tab: Nothing, headings are not focusable unless they are actionable
-
-   &mdash; Arrow-keys: Headings are browsed
+   - Skip-links: Focus moves directly to the header or navigation
+   - Tab: Nothing, headers are not focusable unless they are actionable
+   - Arrow-keys: headers are browsed
 
 2. Test mobile screenreader gestures
-
-   &mdash; Swipe: Focus moves directly to the header or navigation
-
-   &mdash; Doubletap: This typically activates most elements
+   - Swipe: Focus moves directly to the header or navigation
+   - Doubletap: This typically activates most elements
 
 3. Listen to screenreader output on all devices
-
-   &mdash; Role: It is discoverable with screenreader shortcuts as header/banner landmark
-
-   &mdash; Group: It typically contains the name and primary navigation of the website
+   - Role: It is discoverable with screenreader shortcuts as header/banner landmark
+   - Group: It typically contains the name and primary navigation of the website
 
 Full information: https://www.magentaa11y.com/#/web-criteria/page-level/header-landmark
 
 ## Gherkin
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a header landmark
 
 GIVEN THAT I am on a page with a header landmark
 
 1. Keyboard for mobile & desktop
-
-   &mdash; WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
 
 2. Desktop screenreader
-
-   &mdash; WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-
-   &mdash; I use the tab key to enter the web browser window
-
-   &mdash; I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   &mdash; I HEAR It typically contains the name and primary navigation of the website
-
+    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+    - I use the tab key to enter the web browser window
+       - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+       - I HEAR It typically contains the name and primary navigation of the website
 3. Mobile screenreader
-
-   &mdash; WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   &mdash; I swipe to focusable elements in the header
-
-   &mdash; I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   &mdash; I HEAR It typically contains the name and primary navigation of the website
+    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+    - I swipe to focusable elements in the header
+       - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+       - I HEAR It typically contains the name and primary navigation of the website
 
 Full information: https://www.magentaa11y.com/#/web-criteria/page-level/header-landmark
+
+## General
+* There must only be a singular header/banner element on the page. 
+* Contains the site title and typically the primary navigation.
 
 ## Code Examples
 
@@ -84,6 +71,21 @@ This semantic HTML contains all accessibility features by default.
   </nav>
 </header>
 ```
+
+<example>
+   <header aria-label="example">
+   <a href="#destination" data-fn="scrollToHref">Skip to example navigation</a>
+   <a href="#">Not the navigation</a>
+   <nav tabindex="-1" class="nav-example" id="destination">
+      <ul>
+         <li><a href="/">Home</a></li>
+         <li><a href="/about/">About</a></li>
+         <li><a href="/contact/">Contact</a></li>
+         <li><button class="Magentaa11y-button Magentaa11y-button--primary" aria-haspopup="true">Sign in</button></li>
+      </ul>
+   </nav>
+   </header>
+</example>
 
 ### When You Can’t Use Semantic HTML
 
@@ -112,6 +114,6 @@ This custom header requires extra attributes.
 
 ### Focus
 
-- Can be targeted with a skip link, but the skip link will typically be labeled “skip to navigation.”
+- Can be targeted with a skip link, but the skip link will typically be labeled “skip to navigation”
 - Use `tabindex="-1"` to make the header targetable with a skip link.
 - The `<header>` itself isn’t focusable with the tab key.
