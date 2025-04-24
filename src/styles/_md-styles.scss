@@ -21,26 +21,17 @@ example,
   margin-bottom: 3rem;
   display: block;
 
-  .icon {
-    height: 2rem;
-    width: 2rem;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: .25rem;
+  .decorated {
+    display: flex;
+}
+
+  &--contains-icon {
+    img {
+      height: 2rem;
+      width: 2rem;
+      display: block;
+    }
   }
-
-  .icon-large {
-    height: 64px;
-    width: 64px;
 }
 
-.decorated {
-  display: flex;
-}
-
-.decorated .icon {
-  margin: 0;
-}
-
-}
 
