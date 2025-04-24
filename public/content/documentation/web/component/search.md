@@ -20,7 +20,7 @@ How to test a search input
 
    - Name: Its purpose is clear
    - Role: It identifies itself as a search input
-   - Group: The form itself is discoverable with screenreader shortcuts as search landmark
+   - Group: The form itself is discoverable with screenreader shortcuts as a search input
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/search)
 
@@ -45,7 +45,7 @@ GIVEN THAT I am on a page with a search input
    - I use the tab key to move focus to a search input
       - I HEAR its purpose is clear
       - I HEAR it identifies itself as a search input
-      - I HEAR the form itself is discoverable with screenreader shortcuts as search landmark
+      - I HEAR the form itself is discoverable with screenreader shortcuts as a search input
    - THEN when I use the tab key to move focus to the search submit button I HEAR the button is focused
    - THEN when I use the enter or spacebar key I HEAR the search results are presented
 
