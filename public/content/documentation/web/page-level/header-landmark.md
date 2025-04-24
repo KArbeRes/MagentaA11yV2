@@ -72,6 +72,21 @@ This semantic HTML contains all accessibility features by default.
 </header>
 ```
 
+<example>
+   <header aria-label="example">
+   <a href="#destination" data-fn="scrollToHref">Skip to example navigation</a>
+   <a href="#">Not the navigation</a>
+   <nav tabindex="-1" class="nav-example" id="destination">
+      <ul>
+         <li><a href="/">Home</a></li>
+         <li><a href="/about/">About</a></li>
+         <li><a href="/contact/">Contact</a></li>
+         <li><button class="Magentaa11y-button Magentaa11y-button--primary" aria-haspopup="true">Sign in</button></li>
+      </ul>
+   </nav>
+   </header>
+</example>
+
 ### When You Can’t Use Semantic HTML
 
 This custom header requires extra attributes.

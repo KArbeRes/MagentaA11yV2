@@ -146,6 +146,7 @@ Here’s how it works:
 - `toggleAccordionState` — toggles an accordion button’s open/closed state
 - `scrollToTopOnly` — scrolls the page to the top with smooth behavior
 - `scrollAndFocusMain` — scrolls to the top and focuses the `<main>` element
+- `scrollToHref` - mimics same page link behavior to head to the id of an element with id="destination"
 
 Example:
 

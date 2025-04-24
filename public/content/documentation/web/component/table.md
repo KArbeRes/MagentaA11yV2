@@ -1,6 +1,6 @@
 ## General Notes
 
-Tables must be used to structure tabular data. Avoid using tables for layout purposes.
+How to test a table
 
 ## Condensed
 
@@ -60,6 +60,7 @@ GIVEN THAT I am on a page with a table
 Full information: https://www.magentaa11y.com/#/web-criteria/component/table
 
 ## Code Examples
+Tables must be used to structure tabular data. Avoid using tables for layout purposes.
 
 ### Use Semantic HTML
 
