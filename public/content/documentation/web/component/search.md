@@ -103,7 +103,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### Search with autocomplete suggestions
 
-- For search autocomplete see [Autocomplete input with listbox](/checklist-web/listbox-autocomplete/)
+- For search autocomplete see [Autocomplete input with listbox](/checklist-web/listbox-autocomplete/) 
+<!-- TODO update link above -->
 
 ```html
 <form role="search">
@@ -130,7 +131,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 </form>
 ```
 
-<!-- Something funky is up with the search button here and I can't figure it out. It is submitting on focus when not using VoiceOver.  -->
+<!-- TODO issues with focus when tabbing to search button -->
+<!-- TODO Something funky is up with the search button here and I can't figure it out. It is submitting on focus when not using VoiceOver.  -->
 <example>
    <form role="search">
       <label for="search" class="hidden-visually">
