@@ -38,6 +38,13 @@ export const getMarkdownFunctionMap = (
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
+  scrollToHref: () => {
+    const dest = document.getElementById('destination');
+    if (dest) {
+      dest.focus();
+    }
+  },
+
   scrollAndFocusMain: () => {
     const main = document.querySelector('main');
     if (main) {
