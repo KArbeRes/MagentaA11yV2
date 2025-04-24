@@ -69,8 +69,8 @@ This semantic HTML contains all accessibility features by default.
 ```
 
 <example>
-    <a href="#example-footer">Skip to example footer</a>
-    <footer tabindex="-1" id="example-footer">
+    <a href="#destination" data-fn="scrollToHref">Skip to example footer</a>
+    <footer tabindex="-1" id="destination">
     <nav aria-label="Site map">
         <ul>
             <li><a href="/">Home</a></li>
