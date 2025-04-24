@@ -7,7 +7,7 @@ const cardContent = [
   {
     "title": "Web accessibility checker",
     "description": "Choose components to define your accessibility success criteria",
-    "link": "/web-criteria/page-level/overview"
+    "link": "/web-criteria/component/overview"
   },
   {
     "title": "Native accessibility checker",
