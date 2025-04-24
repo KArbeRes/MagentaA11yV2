@@ -70,9 +70,9 @@ This semantic HTML contains all accessibility features by default.
 </main>
 ```
 <example>
-   <a href="#example-main">Skip to main content</a>
+   <a href="#destination" data-fn="scrollToHref">Skip to main content</a>
    <a href="#">Not main content</a>
-   <main tabindex="-1" id="example-main" aria-label="example">
+   <main tabindex="-1" id="destination" aria-label="example">
       <h1>About main content</h1>
       <p>The main content of the page belongs here.</p>
       <p><a href="#">Focus moves here next</a></p>

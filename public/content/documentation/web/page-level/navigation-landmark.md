@@ -66,9 +66,9 @@ This semantic HTML contains all accessibility features by default.
 ```
 
 <example>
-  <a href="#nav-example">Skip to example navigation</a>
+  <a href="#destination" data-fn="scrollToHref">Skip to example navigation</a>
   <a href="#">Not the navigation</a>
-  <nav tabindex="-1" class="nav-example" id="nav-example">
+  <nav tabindex="-1" class="nav-example" id="destination">
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/about/">About</a></li>
