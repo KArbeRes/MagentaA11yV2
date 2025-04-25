@@ -16,10 +16,9 @@ How to test a web form for accessibility
 2. Test mobile screenreader gestures
    - Swipe: Focus moves to form controls inside the form.
    - Doubletap: Activates controls as expected.
-   - Forms mode: Automatically enabled.
 
 3. Listen to screenreader output on all devices
-   - Role: Each input and group is correctly identified (e.g. textbox, combobox, radiogroup).
+    - Role: It is discoverable with screenreader shortcuts as a form landmark along with its name
    - Name: If multiple forms are present (Ex: Search, Sign in, Newsletter subscription), the form must have a name.
    - Group: Groups of related fields are identified with fieldset/legend or aria attributes.
    - Instructions: Presented before the form or inline, announced in order.
@@ -56,11 +55,11 @@ GIVEN THAT I am on a page with a web form
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/page-level/form](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/page-level/form)
 
-## Developer Notes
+## Building accessible forms
 
 ### Do not auto focus inputs
 
-Automatically moving focus to an input field is very confusing for people using assistive technology.
+- Automatically moving focus to an input field is very confusing for people using assistive technology.
 
 ### Group inputs
 
@@ -71,28 +70,35 @@ Use `fieldset` and `legend` to group related fields, such as:
 
 ### Error handling
 
-- Individual inputs must have programmatically described errors read by the screen reader on focus.
-- For long forms, list all errors in an alert with links back to each invalid input on submission attempts.
+- Individual inputs must have [programmatically described errors](https://www.magentaa11y.com/checklist-web/hint-help-error/) read by the screen reader on focus.
+- For long forms, list all errors in an [alert](https://www.magentaa11y.com/checklist-web/alert/) with links back to each invalid input on submission attempts.
 
-### Field width affordance
+## UX guidance
 
-- Inputs should visually reflect the expected data length.
-    - Middle initial: 1 character
-    - State abbreviation: 2 characters
-    - Zip code: 5 characters
-    - PIN: depends on expected digits
+### Affordance: field width indicates the expected input
 
-### Layout: Stack inputs vertically
+Form field width should afford the user space to enter the characters that will be required. Do not arbitrarily limit the width of names, usernames, passwords or emails.
 
-Avoid multiple columns:
-- Vertical scrolling is more accessible and expected.
-- Screen magnifiers make it difficult to find right-column fields.
-- Submit buttons should not be placed in sidebars only.
+Practical Examples
+  - Middle initial should be wide enough to accommodate 1 character
+  - State abbreviations should be wide enough to accommodate 2 characters
+  - Zip code must be wide enough to accommodate 5 characters
+  - Pin numbers reflect the number of digits expected
 
-### Use autocomplete
 
-- Enables quicker completion for all users.
-- Especially useful for people with motor disabilities.
+### Why we stack inputs
+
+Do not put forms in multiple columns.
+- People are accustomed to scrolling vertically. There is no advantage to making the page take up less vertical space.
+- People with low vision may be using a zoom tool, enlarging the view of their screen and thus only seeing a portion of the form. If there is a column on the right side, it will be difficult to discover the fields.
+- Do not place submit buttons in a sidebar unless there is also a submit button at the bottom of the form
+
+
+### Why we use autocomplete
+- Utilizing [autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete) allows users automated assistance in filling out form field values.
+- Autocomplete is helpful for all customers leading to a speedier conversion
+- For those with motor disabilities, it eliminates the need to laboriously enter information
+
 
 ## Code examples
 
@@ -126,7 +132,7 @@ Avoid multiple columns:
 Use `fieldset` and `legend` to group related fields, such as:
 - This form uses minimal unobtrusive masking to make the credit card number more readable. (When done poorly, masking can can cause the field to be read repeatedly as the mask refreshes)
 - Autofill attributes to help customers complete fields with less effort.
-- Using inputmode="numeric" brings up the numeric keyboard on mobile devices making entry easier.
+- Using `inputmode="numeric"` brings up the numeric keyboard on mobile devices making entry easier.
 
 ```html
 <form aria-label="Payment information">
@@ -600,4 +606,6 @@ Use `fieldset` and `legend` to group related fields, such as:
 </form>
 ```
 
+## Further Reading
+- [WebAIM Accessible Form validation and error recovery](https://webaim.org/techniques/formvalidation/)
 
