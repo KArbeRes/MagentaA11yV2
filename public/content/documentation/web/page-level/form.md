@@ -140,13 +140,16 @@ Use `fieldset` and `legend` to group related fields, such as:
     <legend>
       Enter your payment information
     </legend>
+      
     <div class="card-number-container">
       <label for="card-number">Card Number</label>
+        
       <button type="button" class="cc-camera secondary">
          <span class="hidden">Use camera to</span> 
          Scan
          <span class="hidden">card number</span>
       </button>
+        
       <input type="text" 
               name="cardnumber" 
               id="card-number" 
@@ -160,11 +163,13 @@ Use `fieldset` and `legend` to group related fields, such as:
         Secure form protected by 8 bit encryption
       </div>
     </div>
+      
     <fieldset>
       <legend>
         Expiration <span aria-hidden="true">(MM YY)</span>
       </legend>
       <div class="expiry-container">
+          
         <label class="hidden" for="cc-exp-month">Expiration Month (MM)</label>
         <input type="text"
               maxlength="2"  
@@ -174,6 +179,7 @@ Use `fieldset` and `legend` to group related fields, such as:
               autocomplete="cc-exp-month"
               pattern="[0-9]*"
               required>
+          
         <label class="hidden" for="cc-exp-year">Expiration Year (YY)</span></label>
         <input type="text"
               maxlength="2"  
@@ -205,7 +211,8 @@ Use `fieldset` and `legend` to group related fields, such as:
             aria-describedby="description-cc-cvc"
             required>
     <div id="description-cc-cvc" class="hint">
-      <button type="button" class="inline-link">What's a security code?</a>
+      <button type="button" class="inline-link">What's a security code?</button>
+          
     </div>
   </fieldset>
 </form>
@@ -289,18 +296,21 @@ Use `fieldset` and `legend` to group related fields, such as:
     <legend>
       Shipping information
     </legend>
+      
     <label for="address-line1">
       Address line 1
     </label>
     <input type="text" 
             id="address-line1"
             autocomplete="address-line1">
+      
     <label for="address-line2">
       Address line 2
     </label>
     <input type="text" 
             id="address-line2"
             autocomplete="address-line2">
+      
     <label for="address-level2">
       City
     </label>
@@ -308,6 +318,7 @@ Use `fieldset` and `legend` to group related fields, such as:
             id="address-level2"
             autocomplete="address-level2">
     <label for="address-level1">
+        
       State
     </label>
     <select id="address-level1" 
@@ -365,6 +376,7 @@ Use `fieldset` and `legend` to group related fields, such as:
       <option value="WI">Wisconsin</option>
       <option value="WY">Wyoming</option>
     </select>
+      
     <label for="postal-code">
       Zip postal code
     </label>
