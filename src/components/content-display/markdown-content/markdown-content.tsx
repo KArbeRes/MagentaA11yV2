@@ -119,9 +119,9 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
               <a
                 href={href}
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${href} in a new tab`}>
+                rel="noopener noreferrer">
                 {children}
+                <svg role="img" aria-label="- opens in a new tab" width="24" height="24"><path d="M3.5 20.5V3.5H11.6153V4.99998H4.99997V19H19V12.3846H20.5V20.5H3.5ZM9.7192 15.3346L8.66538 14.2808L17.9461 4.99998H14V3.5H20.5V9.99998H19V6.0538L9.7192 15.3346Z"></path></svg>
               </a>
             ) : (
               <Link to={href} aria-label={`Navigate to ${href}`}>
