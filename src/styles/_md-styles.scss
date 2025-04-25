@@ -20,6 +20,20 @@ example,
   margin-top: 1rem;
   margin-bottom: 3rem;
   display: block;
+
+
+  .decorated {
+    display: flex;
+}
+
+  &--contains-icon {
+    img {
+      height: 2rem;
+      width: 2rem;
+      display: block;
+    }
+  }
+}
   
   main {
     min-height:auto;
@@ -99,3 +113,4 @@ example,
     }
   }
 }
+
