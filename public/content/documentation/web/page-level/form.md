@@ -590,8 +590,9 @@ Use `fieldset` and `legend` to group related fields, such as:
 </example>
 
 ## Output from inputs
-- Screenreader support varies output can be used for a dynamic content that changes based on user inputs (example: a calculator).
-- Alternatively, using a custom element with role=”status” will achieve more predictable results
+- Screenreader support varies
+- Output can be used for a dynamic content that changes based on user inputs (example: a calculator).
+- Alternatively, using a custom element with `role=”status”` will achieve more predictable results.
 
 ```html
 <form oninput="result.value=parseInt(rent.value)+parseInt(utilities.value)">
