@@ -43,28 +43,29 @@ GIVEN THAT I am on a screen with a captcha
 1. Scenario: Test keyboard actions 
 
     - WHEN the user presses Tab, Arrow Keys, or Ctrl+Tab 
-        - THEN the focus must visibly move to the CAPTCHA button 
+        - THEN the focus must visibly move to the captcha button 
     - WHEN the user presses Spacebar and or Enter 
         - THEN the button is activated 
 
 2. Scenario: Test mobile screen reader gestures 
 
     - WHEN the user swipes to interactive elements 
-        - THEN focus must move sequentially to the CAPTCHA button 
-         - AND the screen reader must announce the state of the CAPTCHA button (e.g., enabled or disabled) 
+        - THEN focus must move sequentially to the captcha button 
+         - AND the screen reader must announce the state of the captcha button (e.g., enabled or disabled) 
     - WHEN the user performs a double-tap gesture 
-        - THEN the CAPTCHA button must activate 
+        - THEN the captcha button must activate 
 
 3. Scenario: Test screen reader output on all devices 
 
     - WHEN a screen reader reads the button 
-        - THEN its name should clearly describe its purpose, CAPTCHA 
+        - THEN its name should clearly describe its purpose, captcha 
             - AND its role should be identified as a button or image button in iOS and as a button or "double tap to activate" in Android 
             - AND its state (DISABLED/DIMMED) should be expressed if applicable 
 
 4. Scenario: Test device OS settings for text resize 
 
-    - Text resize: n/a 
+    - WHEN a user adjusts text resizing settings up to 200% 
+        - THEN text resizing does not apply to the captcha functionality (n/a) 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/captcha](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/captcha)
 
@@ -74,7 +75,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
     1. A non-interactive image in a table row, where the whole table row acts like a button.  
     2. A single interactive element, like an image button
     3. An audio challenge as an equivalent experience to the image challenge
-- When selecting the type of Captcha, do not limit the options to only <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html#dfn-cognitive-function-test"> cognitive function tests</a> (e.g. remembering or transcribing a word, or recognizing a picture the website provided).  When possible, leverage <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html#examples"> recommended techniques recommended by the W3C</a> such as email link authentication, 3rd party  authentication, or 2 factor authentication.
+- When selecting the type of Captcha, do not limit the options to only <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html#dfn-cognitive-function-test">cognitive function tests</a> (e.g. remembering or transcribing a word, or recognizing a picture the website provided).  When possible, leverage <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html#examples">recommended techniques recommended by the W3C</a> such as email link authentication, 3rd party  authentication, or 2 factor authentication.
 - Captcha is not common in native apps, as there are other options for authentication
 
 ### Name
