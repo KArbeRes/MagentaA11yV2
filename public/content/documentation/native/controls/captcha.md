@@ -75,7 +75,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
     1. A non-interactive image in a table row, where the whole table row acts like a button.  
     2. A single interactive element, like an image button
     3. An audio challenge as an equivalent experience to the image challenge
-- When selecting the type of Captcha, do not limit the options to only <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html#dfn-cognitive-function-test">cognitive function tests</a> (e.g. remembering or transcribing a word, or recognizing a picture the website provided).  When possible, leverage <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html#examples">recommended techniques recommended by the W3C</a> such as email link authentication, 3rd party  authentication, or 2 factor authentication.
+- When selecting the type of Captcha, do not limit the options to only <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html#dfn-cognitive-function-test">cognitive function tests</a> (e.g. remembering or transcribing a word, or recognizing a picture the website provided). When possible, leverage <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html#examples">recommended techniques recommended by the W3C</a> such as email link authentication, 3rd party authentication, or 2 factor authentication.
 - Captcha is not common in native apps, as there are other options for authentication
 
 ### Name
@@ -173,7 +173,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
     1. A non-interactive image in a table row, where the whole table row acts like a button.  
     2. A single interactive element, like an image button
     3. An audio challenge as an equivalent experience to the image challenge
-- When selecting the type of Captcha, do not limit the options to only <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html#dfn-cognitive-function-test"> cognitive function tests</a> (e.g. remembering or transcribing a word, or recognizing a picture the website provided).  When possible, leverage <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html#examples"> recommended techniques recommended by the W3C</a> such as email link authentication, 3rd party  authentication, or 2 factor authentication.
+- When selecting the type of Captcha, do not limit the options to only <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html#dfn-cognitive-function-test"> cognitive function tests</a> (e.g. remembering or transcribing a word, or recognizing a picture the website provided). When possible, leverage <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html#examples"> recommended techniques recommended by the W3C</a> such as email link authentication, 3rd party authentication, or 2 factor authentication.
 - Captcha is not common in apps, as there are other options for authentication
   
 ### Name  
@@ -231,7 +231,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 #### **Jetpack Compose**
 - Active: default state is active and enabled. Use `Button(enabled = true)` to specify explicitly
-- Disabled:  `Button(enabled = false)` announces as disabled
+- Disabled: `Button(enabled = false)` announces as disabled
 - Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
 - Use `modifier = Modifier.semantics { stateDescription = "" }` to have a customized state announcement
 
