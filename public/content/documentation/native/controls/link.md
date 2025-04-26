@@ -308,7 +308,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 ### Further reading
 
-- [App Links](https://developer.android.com/training/app-links)
+- [Handling Android App Links](https://developer.android.com/training/app-links)
 
 ### Announcement examples
 Options for announcements below depend on device framework and versions. Announcement order can vary. "Double tap to activate" hint announcement varies with implementation.
