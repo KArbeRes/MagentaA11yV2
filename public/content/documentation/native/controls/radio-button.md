@@ -40,35 +40,32 @@ How to test a radio butotn
 
 GIVEN THAT I am on a screen with a radio button
 
-1. Keyboard for mobile & desktop
+1. Scenario: Test keyboard actions 
 
-   - GIVEN I am using keyboard navigation 
    - WHEN I press the "TAB", "ARROW KEYS", or "CTRL+TAB" 
-   - THEN the focus should visibly move to the radio button 
+      - THEN the focus should visibly move to the radio button 
    - WHEN I press the "SPACEBAR" key 
-   - THEN the radio button should be activated on iOS and Android 
+      - THEN the radio button should be activated on iOS and Android 
    - WHEN I press the "ENTER" key 
-   - THEN the radio button should be activated on Android 
+      - THEN the radio button should be activated on Android 
 
-2. Desktop screenreader
+2. Scenario: Test mobile screen reader gestures 
 
-   - GIVEN I am using a mobile screen reader 
    - WHEN I swipe to navigate to the radio button 
-   - THEN the focus should move to the radio button 
-   - AND the radio button's name, role, and state should be expressed 
+      - THEN the focus should move to the radio button 
+         - AND the radio button's name, role, and state should be expressed 
    - WHEN I double-tap the radio button 
-   - THEN the radio button state should toggle 
+      - THEN the radio button state should toggle 
 
-3. Mobile screenreader
+3. Scenario: Test screen reader output on all devices 
 
-   - GIVEN the radio button is visible on the screen 
    - WHEN a screen reader reads the radio button 
-   - THEN its name should clearly describe its purpose and match any visible label 
-   - AND its role should be identified as a button in iOS and as a radio button in Android 
-   - AND its visible label should be grouped or associated with the radio button in a single swipe 
-   - AND express its state (disabled/dimmed, iOS: checked/unchecked, selected/unselected. Android: checked/not checked) 
+      - THEN its name should clearly describe its purpose and match any visible label 
+         - AND its role should be identified as a button in iOS and as a radio button in Android 
+         - AND its visible label should be grouped or associated with the radio button in a single swipe 
+         - AND its state (DISABLED/DIMMED, iOS: CHECKED/UNCHECKED, SELECTED/UNSELECTED, Android: CHECKED/NOT CHECKED) should be expressed 
 
-4. Device OS Settings
+4. Scenario: Test device OS settings for text resize 
 
    - GIVEN the text label of the radio button is visible 
    - WHEN I adjust the device text resize setting to 200% 
@@ -297,7 +294,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 ### Announcement examples 
 
-   - "button" in announcements below comes from the accessibility services most of the time when a native component is used, not from the label. Options for announcements below depend on framework and versions. Announcement order can vary.
-   - "Checked, label, radio button, double tap to toggle" (selected state)
-   - "Not checked, label, radio button, double tap to toggle" (unselected state)
-   - "Not checked, label, radio button, double tap to select" (unselected state)
+- "button" in announcements below comes from the accessibility services most of the time when a native component is used, not from the label. Options for announcements below depend on framework and versions. Announcement order can vary.
+- "Checked, label, radio button, double tap to toggle" (selected state)
+- "Not checked, label, radio button, double tap to toggle" (unselected state)
+- "Not checked, label, radio button, double tap to select" (unselected state)
