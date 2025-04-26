@@ -15,7 +15,7 @@
           "videos": "* Videos go here\n  <video controls>\n  <source src=\"media/video/native/button/buttonIosVoiceover.webm\" type=\"video/webm\">\n  Your browser does not support the video tag.\n\n</video>",
           "androidDeveloperNotes": null,
           "iosDeveloperNotes": null,
-          "developerNotes": "## Developer Notes\n\n### Name\n\n* Typically doesn’t have a name or description since there must be only one instance per page."
+          "developerNotes": "## Developer Notes\n\n### Name\n\n* Typically does not have a name or description since there must be only one instance per page."
         },
         {
           "label": "Animation",

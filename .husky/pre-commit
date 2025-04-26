@@ -3,3 +3,14 @@
 
 echo "🔍 Running tests before commit..."
 npm test -- --watchAll=false --silent
+
+echo "📄 Parsing markdown files..."
+npm run parse-md-files
+
+echo "🔍 Checking for changes after parsing markdown files..."
+if ! git diff --quiet; then
+  echo "❌ Changes detected after running parse-md-files. Please commit the updated files."
+  exit 1
+fi
+
+echo "✅ No changes detected. Proceeding with the commit..."
