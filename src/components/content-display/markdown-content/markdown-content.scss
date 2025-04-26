@@ -1,4 +1,4 @@
-@use '../../../styles/links' as *;
+@use "../../../styles/links" as *;
 
 .MagentaA11y__content-details {
   --content-details-padding: var(--magentaa11y-spacing-size-24);
@@ -51,15 +51,16 @@
     justify-content: center;
   }
 
-  p > a {
-    @include base-inline-link;
-    color: var(--color-primary);
-  }
-
   a {
     color: var(--color-primary);
     text-decoration: none;
     font-size: var(--magentaa11y-font-size-16);
+  }
+
+  p > a {
+    @include base-inline-link;
+
+    color: var(--color-primary);
   }
 
   img {

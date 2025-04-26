@@ -5,18 +5,15 @@
   --magentaa11y-color-brand-status-critical-300: #d20d00;
   --magentaa11y-color-brand-status-critical-200: #f44125;
   --magentaa11y-color-brand-status-critical-100: #ffedec;
-
   --magentaa11y-color-brand-status-caution-400: #321800;
   --magentaa11y-color-brand-status-caution-300: #ad590b;
   --magentaa11y-color-brand-status-caution-200: #f8a50c;
   --magentaa11y-color-brand-status-caution-150: #ffea92;
   --magentaa11y-color-brand-status-caution-100: #fff3de;
-
   --magentaa11y-color-brand-status-positive-400: #002805;
   --magentaa11y-color-brand-status-positive-300: #008110;
   --magentaa11y-color-brand-status-positive-200: #2dbf3b;
   --magentaa11y-color-brand-status-positive-100: #e6fce8;
-
   --magentaa11y-color-brand-status-info-500: #25d3fc;
   --magentaa11y-color-brand-status-info-400: #001338;
   --magentaa11y-color-brand-status-info-300: #0c48bd;
@@ -24,8 +21,8 @@
   --magentaa11y-color-brand-status-info-100: #eaf1ff;
 
   // Grayscale colors
-  --magentaa11y-color-brand-grayscale-black: #000000;
-  --magentaa11y-color-brand-grayscale-white: #ffffff;
+  --magentaa11y-color-brand-grayscale-black: #000;
+  --magentaa11y-color-brand-grayscale-white: #fff;
   --magentaa11y-color-brand-grayscale-1000: #121212;
   --magentaa11y-color-brand-grayscale-900: #1c1c1c;
   --magentaa11y-color-brand-grayscale-800: #2b2b2b;
@@ -33,7 +30,7 @@
   --magentaa11y-color-brand-grayscale-700: #414141;
   --magentaa11y-color-brand-grayscale-600: #6a6a6a;
   --magentaa11y-color-brand-grayscale-500: #8c8c8c;
-  --magentaa11y-color-brand-grayscale-400: #cccccc;
+  --magentaa11y-color-brand-grayscale-400: #ccc;
   --magentaa11y-color-brand-grayscale-350: #eaeaea;
   --magentaa11y-color-brand-grayscale-300: #e6e6e6;
   --magentaa11y-color-brand-grayscale-200: #f5f5f5;
@@ -54,23 +51,21 @@
   --magentaa11y-color-brand-secondary-300: #f6288f;
   --magentaa11y-color-brand-secondary-200: #ff52a3;
   --magentaa11y-color-brand-secondary-100: #ffcee7;
-
   --magentaa11y-color-brand-accent-100: #f7f2fa;
   --magentaa11y-color-brand-accent-200: #eae9ff;
   --magentaa11y-color-brand-accent-300: #4c477b;
   --magentaa11y-color-brand-accent-400: #3a2d4d;
 
-  //shadows
-  --magentaa11y-elevation-onDark-shadow-far: 0px 8px 24px 0px
-    rgba(0, 0, 0, 0.51); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
-  --magentaa11y-elevation-onDark-shadow-near: 0px 3px 10px 0px
-    rgba(0, 0, 0, 0.51); /* Default shadow for components, elevation slightly above surface. */
-  --magentaa11y-elevation-onDark-shadow-close: 0px 2px 2px 0px
-    rgba(0, 0, 0, 0.51); /* Pressed shadow for components, elevation rests on top of surface. */
+  // Shadows
+  --magentaa11y-elevation-onDark-shadow-far: 0px 8px 24px 0px rgb(0 0 0 / 51%); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+  --magentaa11y-elevation-onDark-shadow-near: 0px 3px 10px 0px rgb(0 0 0 / 51%); /* Default shadow for components, elevation slightly above surface. */
+  --magentaa11y-elevation-onDark-shadow-close: 0px 2px 2px 0px rgb(0 0 0 / 51%); /* Pressed shadow for components, elevation rests on top of surface. */
   --magentaa11y-elevation-onLight-shadow-far: 0px 8px 24px 0px
-    rgba(65, 65, 65, 0.19); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+    rgb(65 65 65 / 19%); /* Hover shadow for components, elevation rises from it's default position, further away from surface. */
+
   --magentaa11y-elevation-onLight-shadow-near: 0px 3px 10px 0px
-    rgba(65, 65, 65, 0.19); /* Default shadow for components, elevation slightly above surface. */
+    rgb(65 65 65 / 19%); /* Default shadow for components, elevation slightly above surface. */
+
   --magentaa11y-elevation-onLight-shadow-close: 0px 2px 2px 0px
-    rgba(65, 65, 65, 0.19); /* Pressed shadow for components, elevation rests on top of surface. */
+    rgb(65 65 65 / 19%); /* Pressed shadow for components, elevation rests on top of surface. */
 }

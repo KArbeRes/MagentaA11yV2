@@ -1,4 +1,4 @@
-@use './foundation-colors' as *;
+@use "./foundation-colors" as *;
 
 @mixin color-tokens($theme: light) {
   @if $theme == light {
@@ -8,28 +8,36 @@
     --color-text-primary: var(
       --magentaa11y-color-brand-grayscale-900
     ); /* Default text color */
+
     --color-text-secondary: var(
       --magentaa11y-color-brand-grayscale-800
     ); /* Less emphasized text */
+
     --color-text-disabled: var(
       --magentaa11y-color-brand-grayscale-600
     ); /* Less emphasized text */
+
     --color-text-hovered: var(
       --magentaa11y-color-brand-grayscale-600
     ); /* Disabled text */
+
     --color-text-on-primary: var(
       --magentaa11y-color-brand-grayscale-white
     ); /* Text on primary backgrounds */
+
     --color-text-on-secondary: var(
       --magentaa11y-color-brand-grayscale-white
     ); /* Text on secondary backgrounds */
+
     --color-text-error: var(
       --magentaa11y-color-brand-status-critical-300
     ); /* Error text */
+
     --color-text-link: var(--magentaa11y-color-brand-primary-400); /* Links */
     --color-text-inverse: var(
       --magentaa11y-color-brand-grayscale-100
     ); /* Text on dark/inverse surfaces */
+
     --color-text-heading: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Heading text */
@@ -38,9 +46,11 @@
     --color-background: var(
       --magentaa11y-color-brand-grayscale-white
     ); /* Page background */
+
     --color-background-secondary: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Secondary background */
+
     --color-background-tertiary: var(
       --magentaa11y-color-brand-grayscale-300
     ); /* Tertiary background */
@@ -101,10 +111,8 @@
 
     // Background and Surface
     --color-on-background: var(--magentaa11y-color-brand-grayscale-900);
-
     --color-surface: var(--magentaa11y-color-brand-grayscale-100);
     --color-on-surface: var(--magentaa11y-color-brand-grayscale-800);
-
     --color-surface-variant: var(--magentaa11y-color-brand-grayscale-300);
     --color-on-surface-variant: var(--magentaa11y-color-brand-grayscale-700);
 
@@ -132,42 +140,42 @@
     --color-inverse-on-surface: var(--magentaa11y-color-brand-grayscale-100);
     --color-inverse-primary: var(--magentaa11y-color-brand-primary-300);
 
-    //sidenav
+    // sidenav
     --color-sidenav: var(--magentaa11y-color-brand-grayscale-100);
 
-    //topnav
+    // topnav
     --top-nav-background-color: var(--magentaa11y-color-brand-grayscale-black);
 
-    //borders
+    // borders
     --color-input-border: var(--magentaa11y-color-brand-grayscale-350);
 
-    // Shadows
+    //  Shadows
     --shadow-far: var(--magentaa11y-elevation-onLight-shadow-far);
     --shadow-near: var(--magentaa11y-elevation-onLight-shadow-near);
     --shadow-close: var(--magentaa11y-elevation-onLight-shadow-close);
 
-    //codeblocks backgrounds
-    --color-code-block: #EEEEFF;
+    // codeblocks backgrounds
+    --color-code-block: #eef;
 
-    //Cards
+    // Cards
     --card-color-background: var(--magentaa11y-color-brand-grayscale-white);
 
-    //Background disabled
+    // Background disabled
     --color-surface-disabled: var(--magentaa11y-color-brand-grayscale-500);
 
-    //Icons color
+    // Icons color
     --color-icons: var(--magentaa11y-color-brand-grayscale-1000);
 
-    //Icon button hover
+    // Icon button hover
     --color-icons-hover: var(--magentaa11y-color-brand-grayscale-700);
 
-    //IconButton hover
+    // IconButton hover
     --color-icon-button-hover: var(--magentaa11y-color-brand-grayscale-300);
 
-    //IconButton pressed
+    // IconButton pressed
     --color-icon-button-pressed: var(--magentaa11y-color-brand-grayscale-400);
 
-    //button colors
+    // button colors
     --button-default: var(--magentaa11y-color-brand-primary-400);
     --button-hover: var(--magentaa11y-color-brand-primary-500);
     --button-pressed: var(--magentaa11y-color-brand-primary-600);
@@ -177,7 +185,7 @@
     --button-disabled: var(--magentaa11y-color-brand-grayscale-200);
     --button-disabled-text: var(--magentaa11y-color-brand-grayscale-500);
 
-    //secondary button colors
+    // secondary button colors
     --button-secondary-color: var(--magentaa11y-color-brand-grayscale-1000);
     --button-secondary-hover: var(--magentaa11y-color-brand-grayscale-200);
     --button-secondary-pressed: var(--magentaa11y-color-brand-grayscale-600);
@@ -185,47 +193,57 @@
       --magentaa11y-color-brand-grayscale-200
     );
 
-    //tertiary button colors
+    // tertiary button colors
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-black);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-600);
 
-    //Divider tokens
+    // Divider tokens
     --magentaa11y-color-fill-divider-brand: var(
       --magentaa11y-color-brand-primary-400
     ); /* Fill for branded  dividers */
+
     --magentaa11y-color-fill-divider-strong: var(
       --magentaa11y-color-brand-grayscale-600
     ); /* Fill for strong dividers */
+
     --magentaa11y-color-fill-divider-default: var(
       --magentaa11y-color-brand-grayscale-300
     ); /* Fill for default dividers */
 
-    //Chip tokens
+    // Chip tokens
     --magentaa11y-color-border-chips-default: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Border for default & unavailable chips. */
+
     --magentaa11y-color-fill-chips-icon-selected: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Fill for icons on selected chip variant. */
+
     --magentaa11y-color-fill-chips-icon-hover: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Fill for icons on hover chip variant. */
+
     --magentaa11y-color-fill-chips-icon-default: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Fill for icons on default chip variant. */
+
     --magentaa11y-color-fill-chips-selected: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Background fill for selected chip variant. */
+
     --magentaa11y-color-fill-chips-hover: var(
       --magentaa11y-color-brand-grayscale-600
     ); /* Background fill for hover chip variant. */
+
     --magentaa11y-color-text-chips-selected: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Reserved for text on selected chip variant. */
+
     --magentaa11y-color-text-chips-hover: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Reserved for text on default chip variant. */
+
     --magentaa11y-color-text-chips-default: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Reserved for text on default chip variant. */
@@ -238,28 +256,36 @@
     --color-text-primary: var(
       --magentaa11y-color-brand-grayscale-100
     ); /* Default text color */
+
     --color-text-secondary: var(
       --magentaa11y-color-brand-grayscale-300
     ); /* Less emphasized text */
+
     --color-text-disabled: var(
       --magentaa11y-color-brand-grayscale-500
     ); /* Less emphasized text */
+
     --color-text-hovered: var(
       --magentaa11y-color-brand-grayscale-400
     ); /* Disabled text */
+
     --color-text-on-primary: var(
       --magentaa11y-color-brand-grayscale-black
     ); /* Text on primary backgrounds */
+
     --color-text-on-secondary: var(
       --magentaa11y-color-brand-grayscale-white
     ); /* Text on secondary backgrounds */
+
     --color-text-error: var(
       --magentaa11y-color-brand-status-critical-400
     ); /* Error text */
+
     --color-text-link: var(--magentaa11y-color-brand-primary-300); /* Links */
     --color-text-inverse: var(
       --magentaa11y-color-brand-grayscale-900
     ); /* Text on light/inverse surfaces */
+
     --color-text-heading: var(
       --magentaa11y-color-brand-grayscale-100
     ); /* Heading text */
@@ -325,11 +351,9 @@
 
     // Background and Surface
     --color-on-background: var(--magentaa11y-color-brand-grayscale-100);
-
     --color-surface: var(--magentaa11y-color-brand-grayscale-900)
       var(--magentaa11y-color-brand-grayscale-800);
     --color-on-surface: var(--magentaa11y-color-brand-grayscale-200);
-
     --color-surface-variant: var(--magentaa11y-color-brand-grayscale-700);
     --color-on-surface-variant: var(--magentaa11y-color-brand-grayscale-300);
 
@@ -357,13 +381,13 @@
     --color-inverse-on-surface: var(--magentaa11y-color-brand-grayscale-900);
     --color-inverse-primary: var(--magentaa11y-color-brand-primary-400);
 
-    //sidenav
+    // sidenav
     --color-sidenav: var(--magentaa11y-color-brand-grayscale-900);
 
-    //topnav
+    // topnav
     --top-nav-background-color: var(--magentaa11y-color-brand-grayscale-black);
 
-    //borders
+    // borders
     --color-input-border: var(--magentaa11y-color-brand-grayscale-750);
 
     // Shadows
@@ -371,37 +395,39 @@
     --shadow-near: var(--magentaa11y-elevation-onDark-shadow-near);
     --shadow-close: var(--magentaa11y-elevation-onDark-shadow-close);
 
-    //codeblocks backgrounds
+    // codeblocks backgrounds
     --color-code-block: var(--magentaa11y-color-brand-grayscale-750);
-
     --img-svgs: invert(1);
 
-    //Cards
+    // Cards
     --card-color-background: var(--magentaa11y-color-brand-grayscale-900);
 
-    //Background disabled
+    // Background disabled
     --color-surface-disabled: var(--magentaa11y-color-brand-grayscale-600);
-    //Icons color
+
+    // Icons color
     --color-icons: var(--magentaa11y-color-brand-grayscale-200);
-    //Icon color hover
+
+    // Icon color hover
     --color-icons-hover: var(--magentaa11y-color-brand-grayscale-300);
-    //IconButton hover
+
+    // IconButton hover
     --color-icon-button-hover: var(--magentaa11y-color-brand-grayscale-900);
-    //IconButton pressed
+
+    // IconButton pressed
     --color-icon-button-pressed: var(--magentaa11y-color-brand-grayscale-700);
 
-    //button colors
+    // button colors
     --button-default: var(--magentaa11y-color-brand-primary-400);
     --button-hover: var(--magentaa11y-color-brand-primary-500);
     --button-pressed: var(--magentaa11y-color-brand-primary-600);
     --button-text-color: var(--magentaa11y-color-brand-grayscale-white);
     --button-text-hover: var(--magentaa11y-color-brand-grayscale-200);
     --button-text-pressed: var(--magentaa11y-color-brand-grayscale-200);
-    --button-text-pressed: var(--magentaa11y-color-brand-grayscale-200);
     --button-disabled: var(--magentaa11y-color-brand-grayscale-800);
     --button-disabled-text: var(--magentaa11y-color-brand-grayscale-600);
 
-    //secondary button colors
+    // secondary button colors
     --button-secondary-color: var(--magentaa11y-color-brand-grayscale-white);
     --button-secondary-hover: var(--magentaa11y-color-brand-grayscale-1000);
     --button-secondary-pressed: var(--magentaa11y-color-brand-grayscale-300);
@@ -409,50 +435,60 @@
       --magentaa11y-color-brand-grayscale-1000
     );
 
-    //tertiary button colors
+    // tertiary button colors
     --button-tertiary-color: var(--magentaa11y-color-brand-grayscale-white);
     --button-tertiary-color-hover: var(--magentaa11y-color-brand-primary-400);
     --button-tertiary-color-pressed: var(--magentaa11y-color-brand-primary-100);
-
     --magentaa11y-color-fill-divider-brand: var(
       --magentaa11y-color-brand-primary-300
     ); /* Fill for branded  dividers */
+
     --magentaa11y-color-fill-divider-strong: var(
       --magentaa11y-color-brand-grayscale-600
     ); /* Fill for strong dividers */
+
     --magentaa11y-color-fill-divider-default: var(
       --magentaa11y-color-brand-grayscale-700
     ); /* Fill for default dividers */
 
-    //chips tokens
+    // chips tokens
 
     --magentaa11y-color-border-chips-default: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Border for default & unavailable chips. */
+
     --magentaa11y-color-fill-chips-icon-selected: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Fill for icons on selected chip variant. */
+
     --magentaa11y-color-fill-chips-icon-hover: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Fill for icons on hover chip variant. */
+
     --magentaa11y-color-fill-chips-icon-default: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Fill for icons on default chip variant. */
+
     --magentaa11y-color-fill-chips-selected: var(
       --magentaa11y-color-brand-grayscale-100
     ); /* Background fill for selected chip variant. */
+
     --magentaa11y-color-fill-chips-hover: var(
       --magentaa11y-color-brand-grayscale-300
     ); /* Background fill for hover chip variant. */
+
     --magentaa11y-color-text-chips-selected: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Reserved for text on selected chip variant. */
+
     --magentaa11y-color-text-chips-hover: var(
       --magentaa11y-color-brand-grayscale-1000
     ); /* Reserved for text on hover chip variant. */
+
     --magentaa11y-color-text-chips-default: var(
       --magentaa11y-color-brand-grayscale-200
     ); /* Reserved for text on default chip variant. */
+
     --footer-background-color: var(--magentaa11y-color-brand-grayscale-black);
     --footer-text-color: var(--magentaa11y-color-brand-grayscale-white);
   }

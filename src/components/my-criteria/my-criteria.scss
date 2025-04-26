@@ -6,7 +6,6 @@
   --page-padding: var(--magentaa11y-spacing-size-24)
     var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-80)
     var(--magentaa11y-spacing-size-16);
-
   --clear-all-btn-margin: auto;
   --tab-container-flex-direction: column;
 
@@ -26,6 +25,7 @@
   &__heading {
     font: var(--heading-font);
   }
+
   &__headline {
     font: var(--headline-font);
     margin: 0;

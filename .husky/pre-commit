@@ -13,4 +13,15 @@ if ! git diff --quiet; then
   exit 1
 fi
 
-echo "✅ No changes detected. Proceeding with the commit..."
+echo "✅ No changes detected. Moving on..."
+
+echo "🔍 Running SCSS lint check..."
+npm run lint:scss
+if [ $? -ne 0 ]; then
+  echo "❌ SCSS linting failed. Please fix the errors before committing."
+  exit 1
+fi
+
+echo "✅ All checks passed. Proceeding with the commit..."
+
+

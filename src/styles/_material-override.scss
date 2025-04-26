@@ -26,10 +26,8 @@
   // Background and Surface
   --md-sys-color-background: var(--color-background);
   --md-sys-color-on-background: var(--color-on-background);
-
   --md-sys-color-surface: var(--color-surface);
   --md-sys-color-on-surface: var(--color-on-surface);
-
   --md-sys-color-surface-variant: var(--color-surface-variant);
   --md-sys-color-on-surface-variant: var(--color-on-surface-variant);
 
@@ -56,16 +54,16 @@
   --md-sys-color-inverse-primary: var(--color-inverse-primary);
 
   // Shadow
-  --md-sys-color-shadow: rgba(0, 0, 0, 0.25);
-  --md-sys-color-scrim: rgba(0, 0, 0, 0.5);
+  --md-sys-color-shadow: rgb(0 0 0 / 25%);
+  --md-sys-color-scrim: rgb(0 0 0 / 50%);
 
-  //Primary Tabs
+  // Primary Tabs
   --md-primary-tab-container-color: var(--color-on-primary);
   --md-primary-tab-active-label-text-color: var(--color-text-heading);
   --md-primary-tab-active-focus-label-text-color: var(--color-text-heading);
   --md-primary-tab-active-hover-label-text-color: var(--color-on-tertiary);
 
-  //Buttons
+  // Buttons
   --md-filled-button-label-text-color: var(
     --magentaa11y-color-brand-grayscale-white
   );

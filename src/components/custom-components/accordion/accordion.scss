@@ -1,9 +1,8 @@
 .MagentaA11y-accordion {
   --headline-font: var(--magentaa11y-typeset-body-md-strong);
-  --headline-caret-icon: url('../../../assets/svgs/chevron-down.svg');
+  --headline-caret-icon: url("../../../assets/svgs/chevron-down.svg");
   --headline-caret-color: var(--color-text-heading);
   --headline-text-color: var(--color-text-heading);
-
   --body-font: var(--magentaa11y-typeset-body-sm-normal);
   --body-text-color: var(--color-text-primary);
 
@@ -19,14 +18,14 @@
     border: none;
     cursor: pointer;
 
-    &[aria-expanded='true'] {
-      &:after {
+    &[aria-expanded="true"] {
+      &::after {
         transform: rotate(180deg);
       }
     }
 
-    &:after {
-      content: '';
+    &::after {
+      content: "";
       -webkit-mask: var(--headline-caret-icon);
       mask: var(--headline-caret-icon);
       -webkit-mask-position: center center;
@@ -75,9 +74,9 @@
     font: var(--body-font);
   }
 
-  &__heading:has(&__headline[aria-expanded='true']) + &__body {
+  &__heading:has(&__headline[aria-expanded="true"]) + &__body {
     display: block;
-    animation: expandAccordion 250ms ease-in-out;
+    animation: expand-accordion 250ms ease-in-out;
   }
 
   @media (min-width: 769px) {
@@ -89,7 +88,7 @@
   }
 }
 
-@keyframes expandAccordion {
+@keyframes expand-accordion {
   0% {
     opacity: 0;
     transform: translateY(-5%);

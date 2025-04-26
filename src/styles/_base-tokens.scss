@@ -38,10 +38,11 @@
   --magentaa11y-font-weight-regular: normal; /* Used for header and body copy. */
 
   // Font families
-  --magentaa11y-font-family-body: BlinkMacSystemFont, -apple-system, Roboto,
-    Helvetica, 'Segoe UI', Arial, sans-serif; /* Used for body copy, buttons, and links on web. */
-  --magentaa11y-font-family-display: TeleNeo; /* Reserved for headline display. */
-  --magentaa11y-font-family-header: TeleNeo; /* Reserved for headline display. */
+  --magentaa11y-font-family-body: blinkmacsystemfont, -apple-system, roboto,
+    helvetica, "Segoe UI", arial, sans-serif; /* Used for body copy, buttons, and links on web. */
+
+  --magentaa11y-font-family-display: teleneo; /* Reserved for headline display. */
+  --magentaa11y-font-family-header: teleneo; /* Reserved for headline display. */
 
   // Border radius
   --magentaa11y-border-radius-size-24: 24px; /* Border radius for cards. */

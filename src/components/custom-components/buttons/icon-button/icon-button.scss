@@ -1,17 +1,17 @@
-@mixin high-contrast-iconButton-colors {
+@mixin high-contrast-icon-button-colors {
   @media (forced-colors: active) {
     --icon-color: buttontext;
 
-    &[aria-disabled='true'] {
+    &[aria-disabled="true"] {
       --icon-color: graytext;
 
-      &[data-background='primary']::after,
-      &[data-background='secondary']::after {
+      &[data-background="primary"]::after,
+      &[data-background="secondary"]::after {
         border: var(--tdds-border-weight-size-1) solid graytext;
       }
     }
 
-    &[data-background='secondary']::after {
+    &[data-background="secondary"]::after {
       border: var(--tdds-border-weight-size-1) solid buttonborder;
     }
   }
@@ -29,17 +29,17 @@
   border: none;
   background-color: transparent;
 
-  &:hover:not([aria-disabled='true']) {
+  &:hover:not([aria-disabled="true"]) {
     --icon-color: var(--color-icons-hover);
     --button-background-color: var(--color-icon-button-hover);
   }
 
-  &:active:not([aria-disabled='true']) {
+  &:active:not([aria-disabled="true"]) {
     --icon-color: var(--color-icons);
     --button-background-color: var(--color-icon-button-pressed);
   }
 
-  &[aria-disabled='true'] {
+  &[aria-disabled="true"] {
     --icon-color: var(--color-surface-disabled);
     --button-cursor: not-allowed;
   }
@@ -47,6 +47,7 @@
   .MagentaA11y-badge {
     --badge-background-color: var(--color-primary);
     --badge-text-color: var(--color-text-on-primary);
+
     position: absolute;
     top: 6px;
     right: 7px;
@@ -58,6 +59,7 @@
 
     @media (forced-colors: active) {
       --badge-background-color: ButtonFace;
+
       border: 1px solid ButtonText;
     }
 
@@ -77,15 +79,14 @@
     }
   }
 
-  &[data-size='small'] {
+  &[data-size="small"] {
     --icon-size: 20px;
     --button-background-size: 40px;
     --button-padding: var(--tdds-spacing-size-4);
   }
 
   display: grid;
-  justify-items: center;
-  align-items: center;
+  place-items: center center;
   grid-template-columns: max-content;
   grid-template-rows: max-content;
   padding: var(--button-padding);
@@ -101,8 +102,8 @@
     transition: fill 200ms ease-out;
   }
 
-  &:after {
-    content: '';
+  &::after {
+    content: "";
     background-color: var(--button-background-color);
     width: var(--button-background-size);
     height: var(--button-background-size);
@@ -112,5 +113,5 @@
     transition: background-color 200ms ease-in-out;
   }
 
-  @include high-contrast-iconButton-colors;
+  @include high-contrast-icon-button-colors;
 }

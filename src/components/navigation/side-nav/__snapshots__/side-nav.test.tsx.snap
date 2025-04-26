@@ -101,7 +101,7 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
   <dialog
     aria-labelledby="side-nav-title"
     aria-modal="true"
-    id="sideNavDialog"
+    id="side-nav-dialog"
   >
     <div
       class="MagentaA11y__side-nav-container"
