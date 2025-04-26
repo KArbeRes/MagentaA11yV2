@@ -40,32 +40,29 @@ How to test a captcha
 
 GIVEN THAT I am on a screen with a captcha
 
-1. Keyboard for mobile & desktop
+1. Scenario: Test keyboard actions 
 
-    - GIVEN a user is navigating using a keyboard 
     - WHEN the user presses Tab, Arrow Keys, or Ctrl+Tab 
-    - THEN the focus must visibly move to the CAPTCHA button 
-        - WHEN the user presses Spacebar and or Enter 
+        - THEN the focus must visibly move to the CAPTCHA button 
+    - WHEN the user presses Spacebar and or Enter 
         - THEN the button is activated 
 
-2. Desktop screenreader
+2. Scenario: Test mobile screen reader gestures 
 
-    - GIVEN a user is navigating with a mobile screen reader 
     - WHEN the user swipes to interactive elements 
-    - THEN focus must move sequentially to the CAPTCHA button 
-    - AND the screen reader must announce the state of the CAPTCHA button (e.g., enabled or disabled) 
+        - THEN focus must move sequentially to the CAPTCHA button 
+         - AND the screen reader must announce the state of the CAPTCHA button (e.g., enabled or disabled) 
     - WHEN the user performs a double-tap gesture 
-    - THEN the CAPTCHA button must activate 
+        - THEN the CAPTCHA button must activate 
 
-3. Mobile screenreader
+3. Scenario: Test screen reader output on all devices 
 
-    - GIVEN screen reader user is navigating to the CAPTCHA 
     - WHEN a screen reader reads the button 
-    - THEN its name should clearly describe its purpose, CAPTCHA 
-    - AND its role should be identified as a button or image button in iOS and as a button or "double tap to activate" in Android 
-    - AND its state (DISABLED/DIMMED) should be expressed if applicable 
+        - THEN its name should clearly describe its purpose, CAPTCHA 
+            - AND its role should be identified as a button or image button in iOS and as a button or "double tap to activate" in Android 
+            - AND its state (DISABLED/DIMMED) should be expressed if applicable 
 
-4. Device OS Settings
+4. Scenario: Test device OS settings for text resize 
 
     - Text resize: n/a 
 
