@@ -41,42 +41,38 @@ How to test a link
 
 GIVEN THAT I am on a screen with a link
 
-1. Keyboard for mobile & desktop
+1. Scenario: Test keyboard actions 
 
-   - GIVEN I am using keyboard navigation 
    - WHEN I press the "TAB", "ARROW KEYS", or "CTRL+TAB" keys 
-   - THEN the focus should visibly move to the link 
+      - THEN the focus should visibly move to the link 
    - WHEN I press the "SPACEBAR" key 
-   - THEN the link should be activated on iOS and Android 
+      - THEN the link should be activated on iOS and Android 
    - WHEN I press the "ENTER" key 
-   - THEN the link should be activated on Android 
+      - THEN the link should be activated on Android  
 
-2. Desktop screenreader
+2. Scenario: Test mobile screen reader gestures 
 
-   - GIVEN I am using a mobile screen reader 
    - WHEN I swipe to navigate to the link 
-   - THEN the focus should move to the link 
-   - AND the link's name, role, and state (if applicable) should be expressed 
+      - THEN the focus should move to the link 
+         - AND the link's name, role, and state (if applicable) should be expressed 
    - WHEN I use the Rotor/TalkBack menu 
-   - THEN the link should be navigable and activatable from the Rotor/TalkBack menu or by focus and double-tap 
-   - AND at least one method should work 
+      - THEN the link should be navigable and activatable from the Rotor/TalkBack menu or by focus and double-tap 
+         - AND at least one method should work 
    - WHEN I double-tap the link 
-   - THEN the link should be activated 
-   - AND KNOWN ISSUE: Links do not currently appear in iOS Rotor using SwiftUI 
+      - THEN the link should be activated 
+          - AND KNOWN ISSUE: Links do not currently appear in iOS Rotor using SwiftUI 
 
-3. Mobile screenreader
+3. Scenario: Test screen reader output on all devices 
 
-   - GIVEN the link is visible on the screen 
    - WHEN a screen reader reads the link 
-   - THEN its name should clearly describe its purpose and destination 
-   - AND its role should be identified as a link 
-   - AND its state (DISABLED/DIMMED) should be expressed, if applicable 
+      - THEN its name should clearly describe its purpose and destination 
+         - AND its role should be identified as a link 
+         - AND its state (DISABLED/DIMMED) should be expressed, if applicable  
 
-4. Device OS Settings
+4. Scenario: Test device OS settings for text resize 
 
-   - GIVEN the text of the link is visible 
    - WHEN I adjust the device text resize setting to 200% 
-   - THEN the text of the link should resize up to 200% without losing information 
+      - THEN the text of the link should resize up to 200% without losing information 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/link](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/link)
 
