@@ -34,7 +34,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   }
 
   main {
-    min-height:auto;
+    min-height: auto;
     display: block;
   }
 
@@ -43,16 +43,16 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     display: flex;
     max-width: auto;
     padding: 1rem;
-    transition: .7s;
-    border-radius: .125rem;
-    box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary),.1);
+    transition: 0.7s;
+    border-radius: 0.125rem;
+    box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary), 0.1);
     background: var(--color-background-secondary);
-    
+
     /* stylelint-disable no-descending-specificity */
     &:focus-within,
     &:hover {
       background: var(--color-on-primary);
-      box-shadow: 0 1px 4px 1px rgba(var(--color-on-tertiary),.3);
+      box-shadow: 0 1px 4px 1px rgba(var(--color-on-tertiary), 0.3);
     }
     /* stylelint-enable no-descending-specificity */
 
@@ -61,7 +61,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       position: relative;
       display: block;
       width: 100%;
-      text-indent: .5rem;
+      text-indent: 0.5rem;
       line-height: 0;
       margin: 0;
       padding: 0;
@@ -95,7 +95,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       }
 
       &::after {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         transform: rotate(0deg);
@@ -105,12 +105,13 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         height: 2rem;
         background-size: 140% 140%;
         background-repeat: no-repeat;
-        background-image: url("data:image/svg+xml,... rest of the SVG data ...)");
+
+        // background-image: url("data:image/svg+xml,... rest of the SVG data ...)");
         background-position: 80% 40%;
-        
-        [data-theme="dark"] & {
-          background-image: url("data:image/svg+xml, ... rest of the SVG data ...");
-        }
+
+        // [data-theme="dark"] & {
+        //   background-image: url("data:image/svg+xml, ... rest of the SVG data ...");
+        // }
       }
     }
   }
