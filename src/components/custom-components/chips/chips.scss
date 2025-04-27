@@ -49,7 +49,7 @@
       fill: var(--icon-color);
       visibility: visible;
 
-      @if not is-null($svg-size) {
+      @if is-null($svg-size) {
         width: $svg-size;
         height: $svg-size;
       }
