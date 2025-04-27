@@ -2,6 +2,7 @@
 
 .MagentaA11y--footer {
   --footer-flex-direction: row;
+
   display: flex;
   flex-direction: var(--footer-flex-direction);
   justify-content: space-around;
@@ -12,6 +13,7 @@
 
   &__nav-list {
     width: 100%;
+
     h2,
     a {
       color: var(--footer-text-color);
@@ -25,6 +27,7 @@
 
     a {
       @include base-link;
+
       font: var(--magentaa11y-typeset-body-sm-strong);
       padding: var(--magentaa11y-spacing-size-4)
         var(--magentaa11y-spacing-size-24);

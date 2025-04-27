@@ -42,7 +42,7 @@ code {
 
 /* Attribute values (e.g., "example-header") */
 .hljs-string {
-  color: var(--color-on-primary); /* Light color for attribute values */
+  color: var(--color-on-tertiary); /* Light color for attribute values */
   font-weight: normal;
 }
 
@@ -78,11 +78,6 @@ code {
 .hljs-function,
 .hljs-property {
   color: var(--color-secondary); /* Function and property colors */
-}
-
-/* Strings and chars */
-.hljs-string {
-  color: var(--color-success); /* Success color for strings */
 }
 
 /* Numbers */

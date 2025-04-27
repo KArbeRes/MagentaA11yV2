@@ -1,12 +1,13 @@
-import AboutUs from 'components/about-us/about-us';
-import InaccessibleDemo from 'components/inaccessible-demo/inaccessible-demo';
-import AccessibleDemo from 'components/accessible-demo/accessible-demo';
-import Criteria from 'components/criteria/criteria';
-import Home from 'components/home/home';
-import MyCriteria from 'components/my-criteria/my-criteria';
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { DocumentationCategory } from 'shared/types/shared-types';
+import AboutUs from "components/about-us/about-us";
+import InaccessibleDemo from "components/inaccessible-demo/inaccessible-demo";
+import AccessibleDemo from "components/accessible-demo/accessible-demo";
+import Criteria from "components/criteria/criteria";
+import Home from "components/home/home";
+import MyCriteria from "components/my-criteria/my-criteria";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { DocumentationCategory } from "shared/types/shared-types";
+import NotFound from "../not-found/not-found";
 
 const AppRoutes: React.FC = () => (
   <Routes>
@@ -28,6 +29,8 @@ const AppRoutes: React.FC = () => (
       path="/how-to-test-criteria/*"
       element={<Criteria documentation={DocumentationCategory.HOW_TO_TEST} />}
     />
+
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 

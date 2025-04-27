@@ -1,16 +1,16 @@
-@use '../../../styles/links' as *;
+@use "../../../styles/links" as *;
 
 nav {
   display: flex;
 }
+
 .MagentaA11y__side-nav-container {
   display: flex;
 
   .MagentaA11y__side-nav {
     --side-nav-background-color: var(--color-sidenav);
-    --side-nav-width: 'fit-content';
+    --side-nav-width: "fit-content";
     --side-nav-max-width: 360px;
-
     --sub-link-height: 0px;
     --sub-link-opacity: 0;
 
@@ -22,7 +22,7 @@ nav {
     flex-grow: 1;
     gap: 10px;
     background-color: var(--side-nav-background-color);
-    padding: 24px 12px 36px 12px;
+    padding: 24px 12px 36px;
 
     &--list,
     &--sub-list {
@@ -35,17 +35,6 @@ nav {
       border-top: solid 1px var(--color-surface-variant);
     }
 
-    &--item {
-      &:has(
-          .MagentaA11y__side-nav--link.active,
-          .MagentaA11y__side-nav--sub-link.active
-        ) {
-        > .MagentaA11y__side-nav--link > svg {
-          rotate: 180deg;
-        }
-      }
-    }
-
     &--link {
       @include base-link;
 
@@ -55,7 +44,6 @@ nav {
       ~ ul > li {
         max-height: var(--sub-link-height);
         opacity: var(--sub-link-opacity);
-
         overflow: hidden;
         transition: max-height 0.3s ease, opacity 0.3s ease;
 
@@ -68,14 +56,19 @@ nav {
 
       &.active {
         border-radius: 25px;
-        // background-color: var(--color-background-secondary);
         background-color: var(--color-background-tertiary);
         font: var(--magentaa11y-typeset-body-md-strong);
       }
+    }
 
-      svg {
-        transition: rotate 0.3s ease;
-        fill: var(--color-text-primary);
+    &--item {
+      &:has(
+          .MagentaA11y__side-nav--link.active,
+          .MagentaA11y__side-nav--sub-link.active
+        ) {
+        > .MagentaA11y__side-nav--link > svg {
+          rotate: 180deg;
+        }
       }
     }
 
@@ -94,6 +87,7 @@ nav {
     @media (max-width: 768px) {
       --side-nav-width: 100%;
       --side-nav-max-width: 100%;
+
       position: fixed;
       top: 0;
       height: 100vh;
@@ -102,7 +96,7 @@ nav {
   }
 }
 
-#sideNavDialog {
+#side-nav-dialog {
   border: none;
   margin: 0;
   padding: 0;

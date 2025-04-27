@@ -2,6 +2,7 @@
   color: var(--color-on-tertiary);
   text-decoration: none;
 }
+
 @mixin nav-item-link {
   font: var(--magentaa11y-typeset-body-lg-strong);
   transition: box-shadow 0.3s ease;
@@ -22,11 +23,11 @@
   justify-content: space-between;
   padding: var(--magentaa11y-spacing-size-16) var(--magentaa11y-spacing-size-40);
 
-  button[aria-expanded='false'] + &__nav {
+  button[aria-expanded="false"] + &__nav {
     display: none;
   }
 
-  button[aria-expanded='true'] + &__nav {
+  button[aria-expanded="true"] + &__nav {
     --nav-items-flex-direction: column;
 
     position: absolute;
@@ -59,6 +60,7 @@
     margin: 0;
     text-align: center;
     position: relative;
+    height: max-content;
     height: -webkit-max-content;
     display: flex;
     align-items: center;
@@ -67,17 +69,17 @@
     gap: 4px;
 
     &::before {
-      content: 'Magenta';
+      content: "Magenta";
       color: var(--color-primary);
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      background-image: url('../../../assets/svgs/brand-logo-white.svg');
+      background-image: url("../../../assets/svgs/brand-logo-white.svg");
       background-size: contain;
       background-repeat: no-repeat;
       width: var(--magentaa11y-spacing-size-40);
@@ -112,9 +114,7 @@
     position: relative;
     padding-inline-end: var(--magentaa11y-spacing-size-8);
 
-    &[data-count]:not([data-count='']):not([data-count*='e']):not(
-        [data-count*='.']
-      ) {
+    &[data-count]:not([data-count=""], [data-count*="e"], [data-count*="."]) {
       &::before {
         content: attr(data-count);
         position: absolute;
@@ -132,8 +132,8 @@
       }
 
       /* When data-count is exactly '0', show a small badge with no content */
-      &[data-count='0']::before {
-        content: '';
+      &[data-count="0"]::before {
+        content: "";
         width: 8px;
         height: 8px;
         min-width: 8px;

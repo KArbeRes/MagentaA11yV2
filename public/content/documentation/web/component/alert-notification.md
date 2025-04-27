@@ -62,14 +62,13 @@ GIVEN THAT I am on a page with a header landmark
 
    - I HEAR It typically contains the name and primary navigation of the website
 
-
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/alert-notification](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/alert-notification)
 
 ## Developer Notes
 
 ### Name
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+- Typically does not have a name or description since there must be only one instance per page.
 
 ## Videos
 

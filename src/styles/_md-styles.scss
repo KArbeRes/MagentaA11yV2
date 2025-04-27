@@ -4,6 +4,7 @@
     align-content: baseline;
   }
 }
+
 .keyboard-key {
   padding: 3px 6px;
   background: #eee;
@@ -12,7 +13,7 @@
   color: black;
 }
 
-example,
+example, /* stylelint-disable-line selector-type-no-unknown */
 .example {
   padding: 2rem;
   background: var(--color-code-block); /* Adapts to theme */
@@ -41,16 +42,20 @@ example,
   form[role="search"] {
     display: flex;
     max-width: auto;
-    padding: 1rem 1rem;
+    padding: 1rem;
     transition: .7s;
     border-radius: .125rem;
     box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary),.1);
     background: var(--color-background-secondary);
+    
+    /* stylelint-disable no-descending-specificity */
     &:focus-within,
     &:hover {
       background: var(--color-on-primary);
       box-shadow: 0 1px 4px 1px rgba(var(--color-on-tertiary),.3);
     }
+    /* stylelint-enable no-descending-specificity */
+
     input[type="search"] {
       border-right: none;
       position: relative;
@@ -72,6 +77,7 @@ example,
         display: none !important;
       }
     }
+
     button {
       display: block;
       position: relative;
@@ -83,22 +89,25 @@ example,
       width: 2.25rem;
       background: var(--color-on-primary);
       border-radius: 0;
-      &:before {
+
+      &::before {
         display: none;
       }
-      &:after {
+
+      &::after {
         content: '';
         display: block;
         position: absolute;
         transform: rotate(0deg);
-        top: 0rem;
-        right: 0rem;
+        top: 0;
+        right: 0;
         width: 2rem;
         height: 2rem;
         background-size: 140% 140%;
         background-repeat: no-repeat;
         background-image: url("data:image/svg+xml,... rest of the SVG data ...)");
         background-position: 80% 40%;
+        
         [data-theme="dark"] & {
           background-image: url("data:image/svg+xml, ... rest of the SVG data ...");
         }

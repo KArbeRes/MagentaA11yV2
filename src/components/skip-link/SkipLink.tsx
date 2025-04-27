@@ -1,8 +1,7 @@
-import { useKeyboardNavigation } from 'hooks/useKeyboardNavigation';
-import React, { MutableRefObject, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { MutableRefObject, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
-import './skip-link.scss';
+import "./skip-link.scss";
 
 interface SkipLinkProps {
   mainContentRef: MutableRefObject<HTMLDivElement | null>;
@@ -14,32 +13,29 @@ const SkipLink: React.FC<SkipLinkProps> = ({
   liveRegionTestId,
 }) => {
   const location = useLocation();
-  const isKeyboardNavigation = useKeyboardNavigation();
   const atomicHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const skipLinkRef = useRef<HTMLButtonElement | null>(null);
 
   const formatNavigationMessage = () => {
-    const pathSegments = location.pathname.trim().split('/').filter(Boolean);
+    const pathSegments = location.pathname.trim().split("/").filter(Boolean);
 
-    if (pathSegments.length === 0) return '';
+    if (pathSegments.length === 0) return "";
 
     const [category, component, section] = pathSegments;
 
-    const formattedComponent = component?.replace(/-/g, ' ') || '';
-    const formattedSection = section ? `${section} ` : '';
+    const formattedComponent = component?.replace(/-/g, " ") || "";
+    const formattedSection = section ? `${section} ` : "";
 
     return `Navigated to: ${category}${
       formattedComponent
         ? ` "${formattedComponent} ${formattedSection}page"`
-        : ' page'
+        : " page"
     }`.trim();
   };
 
   useEffect(() => {
-    if (isKeyboardNavigation) {
-      atomicHeadingRef.current?.focus();
-    }
-  }, [location.pathname, isKeyboardNavigation]);
+    atomicHeadingRef.current?.focus();
+  }, [location.pathname]);
 
   return (
     <>
@@ -50,7 +46,8 @@ const SkipLink: React.FC<SkipLinkProps> = ({
         aria-atomic="true"
         tabIndex={-1}
         ref={atomicHeadingRef}
-        className="hidden-visually">
+        className="hidden-visually"
+      >
         {formatNavigationMessage()}
       </h2>
       <button
@@ -58,7 +55,8 @@ const SkipLink: React.FC<SkipLinkProps> = ({
         ref={skipLinkRef}
         onClick={() => {
           mainContentRef.current?.focus();
-        }}>
+        }}
+      >
         Skip to main content
       </button>
     </>

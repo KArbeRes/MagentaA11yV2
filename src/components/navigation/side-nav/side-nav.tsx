@@ -130,7 +130,7 @@ const SideNav = forwardRef(({ documentation, testId }: SideNavProps, ref) => {
     return (
       <dialog
         ref={dialogRef}
-        id="sideNavDialog"
+        id="side-nav-dialog"
         aria-modal="true"
         aria-labelledby="side-nav-title"
         data-testid={testId ? `${testId}-dialog` : undefined}

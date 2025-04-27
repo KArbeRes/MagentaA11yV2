@@ -1,6 +1,6 @@
-@use './styles/root' as *;
-@use './styles/utilities' as *;
-@use './styles/md-styles' as *;
+@use "./styles/root" as *;
+@use "./styles/utilities" as *;
+@use "./styles/md-styles" as *;
 
 html {
   background-color: var(--color-background);
@@ -87,15 +87,12 @@ button {
 }
 
 pre {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
   padding: 1em;
   overflow-x: auto;
   border-radius: 4px;
   width: -webkit-fill-available;
-}
-
-table {
-  width: 100%;
 }
 
 video {
@@ -109,13 +106,43 @@ video {
   }
 }
 
+/* General Text Wrapping */
+body,
+p,
+li,
+span,
+a,
+div,
+textarea,
+input,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+td,
+th,
+table {
+  word-wrap: break-word; /* Allows long words to break and wrap to the next line */
+  word-break: break-word; /* Breaks long unbreakable words at any point (for legacy compatibility) */
+  overflow-wrap: break-word; /* Modern equivalent to word-wrap */
+}
+
+th {
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
 table {
   margin-bottom: var(--magentaa11y-spacing-size-48);
   border-collapse: collapse;
+  width: 100%;
 
   caption {
     font-size: 1.25rem;
-    margin: 0rem 0 1rem 0;
+    margin: 0 0 1rem;
     font-family: var(--magentaa11y-font-family-display);
     font-weight: var(--magentaa11y-font-weight-extrabold);
   }
@@ -137,43 +164,15 @@ table {
     height: 2rem;
     width: 2rem;
     display: block;
-    margin: 0px auto 0.25rem auto;
+    margin: 0 auto 0.25rem;
     filter: var(--img-svgs);
   }
-}
-
-/* General Text Wrapping */
-body,
-p,
-li,
-span,
-a,
-div,
-textarea,
-input,
-button,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-table,
-td,
-th {
-  word-wrap: break-word; /* Allows long words to break and wrap to the next line */
-  word-break: break-word; /* Breaks long unbreakable words at any point (for legacy compatibility) */
-  overflow-wrap: break-word; /* Modern equivalent to word-wrap */
-}
-
-th {
-  word-break: keep-all;
-  white-space: nowrap;
 }
 
 svg {
   fill: var(--color-on-tertiary);
 }
+
 :focus-visible {
   outline: 0.5rem auto Highlight;
   outline: -webkit-focus-ring-color auto 10px;

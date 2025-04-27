@@ -1,4 +1,11 @@
-%MagentaA11y-visually-hidden {
+/* stylelint-disable no-descending-specificity */
+
+/* TODO: Temporarily disabled the "no-descending-specificity" rule to save time. 
+   Error received: 
+   "Expected selector '.MagentaA11y-chip__label' to come before selector '.MagentaA11y-chip-container input[type="checkbox"]:checked + .MagentaA11y-chip .MagentaA11y-chip__label--wrapper svg .MagentaA11y-chip__label'"
+   When we have time, reorder the selectors to resolve the issue properly. */
+
+%magenta-a11y-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -11,7 +18,7 @@
 }
 
 @mixin legend() {
-  font-family: 'TeleNeo', sans-serif;
+  font-family: TeleNeo, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -41,7 +48,8 @@
     @if $is-visible {
       fill: var(--icon-color);
       visibility: visible;
-      @if $svg-size != null {
+
+      @if is-null($svg-size) {
         width: $svg-size;
         height: $svg-size;
       }
@@ -55,70 +63,16 @@
   }
 }
 
-.MagentaA11y-chips {
-  --magentaa11y-spacing-size-6: 6px;
-  display: flex;
-  overflow-x: auto;
-  align-self: center;
-
-  &__legend {
-    @include legend();
-  }
-
-  button {
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    color: inherit;
-    -webkit-appearance: none;
-  }
-
-  fieldset {
-    display: flex;
-    border-width: 0;
-    margin: 0;
-    padding: 0 0 0.8rem 0;
-
-    &:has(> .MagentaA11y-chip-container > button) {
-      flex-wrap: wrap;
-      min-width: 0;
-
-      .MagentaA11y-chip-container,
-      .MagentaA11y-chip__label--wrapper,
-      button {
-        max-width: 100%;
-      }
-    }
-
-    // @include MagentaA11y-media-query($xxlarge) {
-    //   flex-wrap: wrap;
-    // }
-  }
-
-  &[data-size='xs'] {
-    .MagentaA11y-chip {
-      --chip-font-weight: var(--magentaa11y-typeset-body-xs-strong);
-      --label-line-height: 12px;
-      --label-padding: var(--magentaa11y-spacing-size-4)
-        var(--magentaa11y-spacing-size-12);
-    }
-
-    .MagentaA11y-chip-container {
-      --svg-size: 12px;
-    }
-  }
-}
-
 .MagentaA11y-chip-container {
   --svg-size: 24px;
+
   display: flex;
   position: relative;
 
-  input[type='checkbox'],
-  input[type='radio'] {
-    @extend %MagentaA11y-visually-hidden;
+  input[type="checkbox"],
+  input[type="radio"] {
+    @extend %magenta-a11y-visually-hidden;
+
     top: 0;
     left: 0;
     width: 100%;
@@ -127,7 +81,7 @@
     &:checked {
       + .MagentaA11y-chip {
         .MagentaA11y-chip__label--wrapper {
-          @include selected-chip-styles();
+          @include selected-chip-styles;
           @include svg-styles(
             end,
             var(--magentaa11y-spacing-size-8),
@@ -150,7 +104,7 @@
     &:active {
       .MagentaA11y-chip {
         .MagentaA11y-chip__label--wrapper {
-          @include selected-chip-styles();
+          @include selected-chip-styles;
         }
       }
     }
@@ -167,18 +121,6 @@
       }
     }
   }
-
-  input[type='checkbox'] {
-    &:checked {
-      + .MagentaA11y-chip--unavailable {
-        .MagentaA11y-chip__label--wrapper {
-          &:before {
-            left: calc(50% - var(--magentaa11y-spacing-size-8));
-          }
-        }
-      }
-    }
-  }
 }
 
 .MagentaA11y-chip {
@@ -187,6 +129,7 @@
   --label-padding: var(--magentaa11y-spacing-size-4)
     var(--magentaa11y-spacing-size-16);
   --strikethrough-width: 55px;
+
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -205,7 +148,7 @@
     padding: var(--label-padding);
     transition: all 0.2s ease-in-out;
 
-    @include svg-styles();
+    @include svg-styles;
 
     &--wrapper {
       --icon-color: var(--magentaa11y-color-fill-chips-icon-default);
@@ -213,12 +156,13 @@
       --background-color: transparent;
       --border: var(--magentaa11y-border-weight-size-2) solid
         var(--magentaa11y-color-border-chips-default);
+
       border-radius: var(--magentaa11y-border-radius-size-24);
       margin-block: 2px;
     }
 
     &--sr-only {
-      @extend %MagentaA11y-visually-hidden;
+      @extend %magenta-a11y-visually-hidden;
     }
   }
 
@@ -227,8 +171,8 @@
       position: relative;
       overflow: hidden;
 
-      &:before {
-        content: '';
+      &::before {
+        content: "";
         border-bottom: var(--magentaa11y-border-weight-size-2) solid
           var(--text-color);
         width: var(--strikethrough-width);
@@ -243,10 +187,10 @@
 
   @media (pointer: fine) {
     &:hover,
-    input[type='checkbox']:checked + &:hover,
-    input[type='checkbox']:checked + &.force-hover,
-    input[type='radio']:not(:checked) + &:hover,
-    input[type='radio']:not(:checked) + &.force-hover {
+    input[type="checkbox"]:checked + &:hover,
+    input[type="checkbox"]:checked + &.force-hover,
+    input[type="radio"]:not(:checked) + &:hover,
+    input[type="radio"]:not(:checked) + &.force-hover {
       .MagentaA11y-chip__label--wrapper {
         --background-color: var(--magentaa11y-color-fill-chips-hover);
         --border: var(--magentaa11y-border-weight-size-2) solid
@@ -258,12 +202,65 @@
   }
 }
 
+.MagentaA11y-chips {
+  --magentaa11y-spacing-size-6: 6px;
+
+  display: flex;
+  overflow-x: auto;
+  align-self: center;
+
+  &__legend {
+    @include legend;
+  }
+
+  button {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    -webkit-appearance: none;
+  }
+
+  &[data-size="xs"] {
+    .MagentaA11y-chip {
+      --chip-font-weight: var(--magentaa11y-typeset-body-xs-strong);
+      --label-line-height: 12px;
+      --label-padding: var(--magentaa11y-spacing-size-4)
+        var(--magentaa11y-spacing-size-12);
+    }
+
+    .MagentaA11y-chip-container {
+      --svg-size: 12px;
+    }
+  }
+
+  fieldset {
+    display: flex;
+    border-width: 0;
+    margin: 0;
+    padding: 0 0 0.8rem;
+
+    &:has(> .MagentaA11y-chip-container > button) {
+      flex-wrap: wrap;
+      min-width: 0;
+
+      .MagentaA11y-chip-container,
+      .MagentaA11y-chip__label--wrapper,
+      button {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
 // Styles for selected chips in  Windows High Contrast Mode
 // The stylings above are currently overriden by Windows' High Contrast Mode
 // Without the styles below, it won't be possible to distinguish a selected chip from an unselected one in High Contrast Mode
 @media (forced-colors: active) {
   .MagentaA11y-chip-container {
-    input[type='checkbox']:checked
+    input[type="checkbox"]:checked
       + .MagentaA11y-chip
       .MagentaA11y-chip__label--wrapper
       svg,

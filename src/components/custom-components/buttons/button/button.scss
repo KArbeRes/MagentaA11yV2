@@ -48,7 +48,7 @@
       --icon-color: var(--button-text-pressed);
     }
 
-    &[aria-disabled='true'],
+    &[aria-disabled="true"],
     &[disabled],
     &.visually-disabled {
       --button--bg: var(--button-disabled);
@@ -96,7 +96,7 @@
 
     padding: 10px 0;
 
-    &[data-size='small'] {
+    &[data-size="small"] {
       --button-min-height: var(--magentaa11y-spacing-size-48);
       --button-padding: 13px 0;
     }
@@ -127,7 +127,7 @@
     color: inherit;
   }
 
-  &[data-size='small'] {
+  &[data-size="small"] {
     --button-min-height: 36px;
     --button-padding: var(--magentaa11y-spacing-size-8)
       var(--magentaa11y-spacing-size-16);
