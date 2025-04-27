@@ -85,6 +85,10 @@
       font: var(--title-first-headline-font);
     }
 
+    &--beige {
+      background-color: var(--color-background-secondary);
+    }
+
     @media (max-width: 768px) {
       padding: var(--magentaa11y-spacing-size-24)
         var(--magentaa11y-spacing-size-40);
