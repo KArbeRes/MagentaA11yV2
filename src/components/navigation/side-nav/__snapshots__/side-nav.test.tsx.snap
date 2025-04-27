@@ -61,6 +61,29 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in desktop view 
                 <span
                   class="MagentaA11y-accordion__headline--text"
                 >
+                  Form
+                </span>
+              </button>
+            </h3>
+          </div>
+        </li>
+        <li
+          class="MagentaA11y__side-nav--item"
+        >
+          <div
+            class="MagentaA11y-accordion"
+          >
+            <h3
+              class="MagentaA11y-accordion__heading"
+            >
+              <button
+                aria-expanded="false"
+                class="MagentaA11y-accordion__headline"
+                type="button"
+              >
+                <span
+                  class="MagentaA11y-accordion__headline--text"
+                >
                   Page Level
                 </span>
               </button>
@@ -137,6 +160,29 @@ exports[`SideNav Component - Snapshot Test matches the snapshot in mobile view 1
                     class="MagentaA11y-accordion__headline--text"
                   >
                     Component
+                  </span>
+                </button>
+              </h3>
+            </div>
+          </li>
+          <li
+            class="MagentaA11y__side-nav--item"
+          >
+            <div
+              class="MagentaA11y-accordion"
+            >
+              <h3
+                class="MagentaA11y-accordion__heading"
+              >
+                <button
+                  aria-expanded="false"
+                  class="MagentaA11y-accordion__headline"
+                  type="button"
+                >
+                  <span
+                    class="MagentaA11y-accordion__headline--text"
+                  >
+                    Form
                   </span>
                 </button>
               </h3>
