@@ -4,7 +4,6 @@
     align-content: baseline;
   }
 }
-
 .keyboard-key {
   padding: 3px 6px;
   background: #eee;
@@ -13,7 +12,11 @@
   color: black;
 }
 
+<<<<<<< HEAD
 example, /* stylelint-disable-line selector-type-no-unknown */
+=======
+example,
+>>>>>>> 926bba4 (feat: ARC-502 add web form criteria (#29))
 .example {
   padding: 2rem;
   background: var(--color-code-block); /* Adapts to theme */
@@ -47,6 +50,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     border-radius: 0.125rem;
     box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary), 0.1);
     background: var(--color-background-secondary);
+<<<<<<< HEAD
 
     /* stylelint-disable no-descending-specificity */
     &:focus-within,
@@ -56,6 +60,13 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     }
     /* stylelint-enable no-descending-specificity */
 
+=======
+    &:focus-within,
+    &:hover {
+      background: var(--color-on-primary);
+      box-shadow: 0 1px 4px 1px rgba(var(--color-on-tertiary),.3);
+    }
+>>>>>>> 926bba4 (feat: ARC-502 add web form criteria (#29))
     input[type="search"] {
       border-right: none;
       position: relative;
@@ -77,7 +88,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         display: none !important;
       }
     }
-
     button {
       display: block;
       position: relative;
@@ -87,6 +97,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       height: 2.375rem;
       width: 2.25rem;
       background: var(--color-on-primary);
+<<<<<<< HEAD
       border: 3px solid var(--color-input-border);
       border-left: none;
     }
@@ -96,3 +107,29 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 .bad-example {
   color: var(--color-error);
 }
+=======
+      border-radius: 0;
+      &:before {
+        display: none;
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        transform: rotate(0deg);
+        top: 0rem;
+        right: 0rem;
+        width: 2rem;
+        height: 2rem;
+        background-size: 140% 140%;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,... rest of the SVG data ...)");
+        background-position: 80% 40%;
+        [data-theme="dark"] & {
+          background-image: url("data:image/svg+xml, ... rest of the SVG data ...");
+        }
+      }
+    }
+  }
+}
+>>>>>>> 926bba4 (feat: ARC-502 add web form criteria (#29))
