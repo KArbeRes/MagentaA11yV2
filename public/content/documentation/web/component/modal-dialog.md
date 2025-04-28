@@ -153,6 +153,7 @@ Some browsers require additional scripting. This simple example works in Chrome,
    </section>
    </dialog>
 ```
+<!-- TODO: The code sample example is not currently functional - fix needed. -->
 
 <example>
    <button id="showModal">
