@@ -284,7 +284,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 ### Code Example
 
 #### **Jetpack Compose**
-```html
+```java
    /**
    * Custom Composable with AndroidView to support link in textView and the links accessibility features from talkback menu
    */
