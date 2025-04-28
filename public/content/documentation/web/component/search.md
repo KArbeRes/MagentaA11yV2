@@ -151,7 +151,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
          <option value="Header / banner">
          <option value="Heading: h1, h2, h3">
       </datalist>
-      <button>
+      <button data-icon="search">
          <span class="hidden-visually">Search</span>
       </button>
    </form>
