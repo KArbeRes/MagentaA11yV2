@@ -31,25 +31,16 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 ### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a link
-How to test a link
 
-GIVEN THAT I am on a page with a link
 GIVEN THAT I am on a page with a link
 
 1. Keyboard for mobile & desktop
 
    - WHEN I use the tab key to move focus to a link I SEE focus is strongly visually indicated
    - THEN when I use the enter key to activate the link I SEE my browser goes somewhere
-   - WHEN I use the tab key to move focus to a link I SEE focus is strongly visually indicated
-   - THEN when I use the enter key to activate the link I SEE my browser goes somewhere
 
 2. Desktop screenreader
 
-   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
-   - I use the tab key to move focus to a link
-      - I HEAR its purpose is clear
-      - I HEAR it identifies itself as a link
-   - THEN when I use the enter key to activate the link I HEAR my browser goes somewhere
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
    - I use the tab key to move focus to a link
       - I HEAR its purpose is clear
@@ -108,7 +99,6 @@ This semantic HTML contains all accessibility features by default.
 - **Do not** use a heading with a generic link below. 
 - Instead, make the heading a link or programmatically associate the link with the heading using <code>aria-describedby</code>.
 
-<h4 class="bad-example"> Bad example</h4>
 <h4 class="bad-example"> Bad example</h4>
 
 ```html
@@ -182,8 +172,6 @@ Sometimes the design will call for multiple links with the same text label. In a
 
 <h4 class="bad-example"> Bad example</h4>
 
-<h4 class="bad-example"> Bad example</h4>
-
 ```html
 <a href="/do-NOT-repeat-yourself/" 
    aria-label="Do NOT repeat yourself">
@@ -198,8 +186,6 @@ Sometimes the design will call for multiple links with the same text label. In a
 
 <h4 class="bad-example"> Bad example</h4>
 
-<h4 class="bad-example"> Bad example</h4>
-
 ```html
 <a href="javascript:void(0)">
    Do not use javascript in href
@@ -208,7 +194,6 @@ Sometimes the design will call for multiple links with the same text label. In a
 
 ### Don't use "#" in `href`
 
-<h4 class="bad-example"> Bad example</h4>
 <h4 class="bad-example"> Bad example</h4>
 
 ```html
