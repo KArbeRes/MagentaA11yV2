@@ -198,8 +198,41 @@ Some browsers require additional scripting. This simple example works in Chrome,
 
 ## Videos
 
-- Videos go here
+### Android Talkback
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/web/modal-dialog/modalDialog_AndroidTalkback.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+### iOS VoiceOver
+
+<video controls>
+  <source src="media/video/web/modal-dialog/modalDialog_IosVoiceOver.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+### Windows JAWS Chrome
+
+<video controls>
+  <source src="media/video/web/modal-dialog/modalDialog_WindowsJawsChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+### Windows NVDA Chrome
+
+<video controls>
+  <source src="media/video/web/modal-dialog/modalDialog_WindowsNvdaChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+### MacOS VoiceOver Safari
+
+<video controls>
+  <source src="media/video/web/modal-dialog/modalDialog_MacOsVoiceOverSafari.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
