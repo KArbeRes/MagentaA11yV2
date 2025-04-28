@@ -99,14 +99,13 @@ This semantic HTML contains all accessibility features by default.
 - **Do not** use a heading with a generic link below. 
 - Instead, make the heading a link or programmatically associate the link with the heading using <code>aria-describedby</code>.
 
-#### Bad example
+<h4 class="bad-example"> Bad example</h4>
 
 ```html
 <h3>About our coffee subscriptions</h3>
 <p>Get the best coffee delivered to your door</p>
 <a href="/about/">
    Learn more
-</div>
 ```
 
 #### Good examples
@@ -171,7 +170,8 @@ Sometimes the design will call for multiple links with the same text label. In a
 
 **Do not** repeat the inner text content of a link in the `aria-label`.
 
-#### Bad example
+<h4 class="bad-example"> Bad example</h4>
+
 ```html
 <a href="/do-NOT-repeat-yourself/" 
    aria-label="Do NOT repeat yourself">
@@ -184,7 +184,8 @@ Sometimes the design will call for multiple links with the same text label. In a
 - **Do not** use `"href="javascript:void(0)"`. 
 - When screen readers read the href, it becomes confusing and nonsensical 
 
-#### Bad example
+<h4 class="bad-example"> Bad example</h4>
+
 ```html
 <a href="javascript:void(0)">
    Do not use javascript in href
@@ -193,7 +194,7 @@ Sometimes the design will call for multiple links with the same text label. In a
 
 ### Don't use "#" in href
 
-#### Bad example
+<h4 class="bad-example"> Bad example</h4>
 
 ```html
 <a href="#">
