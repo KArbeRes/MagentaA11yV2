@@ -77,9 +77,124 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ## Developer Notes
 
-### Name
+## Required attributes
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+### Launch button
+   - Should be a `<button>`, not a `<a>` link.
+   - Upon closing, focus must return to the button that launched the dialog.
+   - **Do not** use`aria-haspopup`. This attribute has very low and support and unpredictable output across screen readers. 
+
+### Name
+   - The modal window has a logical descriptive name from either:
+      - `aria-label="Modal title"` or
+      - `aria-labelledby="heading-id"` pointing to an `<h2>` as a title
+
+### Role
+   - Use `role="dialog"` so the screen reader can identify this as a dialog or modal.
+
+### Group
+   - Upon closing, focus must return to the button that launched the dialog.
+
+### State
+   - Use `aria-modal="true"` to indicate content beneath the modal is inert and that the screen reader must not browse outside the dialog.
+
+### Focus
+   - Use `tabindex="-1"` to make the modal itself targetable for focus.
+   - Upon closing, focus must return to the button that launched the dialog.
+
+### Documentation
+   - [Browser Support](https://caniuse.com/?search=dialog)
+
+## Screenreader differences
+
+### NVDA
+   - By default, NVDA may read the entire modal upon launch. This is expected behavior.
+
+## Code examples
+
+### Use semantic HTML where possible
+
+Browser support for `<dialog>` is still incomplete. 
+
+Some browsers require additional scripting. This simple example works in Chrome, but [may not work correctly in all browsers](https://caniuse.com/?search=dialog) such as Safari and Firefox.
+
+```html
+   <button id="showModal">
+   Things you should know
+   </button>
+
+   <dialog role="dialog"
+         id="modal"
+         tabindex="-1"
+         aria-modal="true"
+         aria-labelledby="dialog-title">
+   <button type="button"
+            id="closeModal"
+            class="close">
+      <span class="hidden">Close</span>
+   </button>
+   <div class="dialog-content">
+      <h2 id="dialog-title" class="h-bravo">
+         Things you should know
+      </h2>
+      <h3>Keyboard</h3>
+      <ul>
+         <li>Focus must not enter the rest of the page.</li>
+         <li>The escape key must close the modal.</li>
+      </ul>
+      <h3>Screenreader</h3>
+      <ul>
+         <li>The modal's title is announced on launch.</li>
+         <li>The screen reader cannot read content behind the dialog.</li>
+      </ul>
+      <button type="submit">
+         Continue
+      </button>
+   </section>
+   </dialog>
+```
+
+<example>
+   <button id="showModal">
+   Things you should know
+   </button>
+
+   <dialog role="dialog"
+         id="modal"
+         tabindex="-1"
+         aria-modal="true"
+         aria-labelledby="dialog-title">
+   <button type="button"
+            id="closeModal"
+            class="close">
+      <span class="hidden">Close</span>
+   </button>
+   <div class="dialog-content">
+      <h2 id="dialog-title" class="h-bravo">
+         Things you should know
+      </h2>
+      <h3>Keyboard</h3>
+      <ul>
+         <li>Focus must not enter the rest of the page.</li>
+         <li>The escape key must close the modal.</li>
+      </ul>
+      <h3>Screenreader</h3>
+      <ul>
+         <li>The modal's title is announced on launch.</li>
+         <li>The screen reader cannot read content behind the dialog.</li>
+      </ul>
+      <button type="submit">
+         Continue
+      </button>
+   </section>
+   </dialog>
+</example>
+
+## Further Reading
+- [WCAG 1.3.1 Info and Relationships (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)
+- [WCAG 2.1.1 Keyboard (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard)
+- [WCAG 2.4.3 Focus Order (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
+- [WCAG 4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value)
 
 ## Videos
 
