@@ -205,14 +205,12 @@ Some browsers require additional scripting. This simple example works in Chrome,
   Your browser does not support the video tag.
 </video>
 
-
 ### iOS VoiceOver
 
 <video controls>
   <source src="media/video/web/modal-dialog/modalDialog_IosVoiceOver.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-
 
 ### Windows JAWS Chrome
 
@@ -221,14 +219,12 @@ Some browsers require additional scripting. This simple example works in Chrome,
   Your browser does not support the video tag.
 </video>
 
-
 ### Windows NVDA Chrome
 
 <video controls>
   <source src="media/video/web/modal-dialog/modalDialog_WindowsNvdaChrome.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-
 
 ### MacOS VoiceOver Safari
 
