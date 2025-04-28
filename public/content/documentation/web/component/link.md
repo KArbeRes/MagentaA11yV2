@@ -10,8 +10,8 @@ How to test a link
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Tab: Focus visibly moves to the link.
-   - Enter: Activates the link.
+   - Tab: Focus visibly moves to the link
+   - Enter: Activates the link
 
 2. Test mobile screenreader gestures
 
@@ -43,16 +43,16 @@ GIVEN THAT I am on a page with a link
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
    - I use the tab key to move focus to a link
-      - I HEAR Its purpose is clear
-      - I HEAR It identifies itself as a link
+      - I HEAR its purpose is clear
+      - I HEAR it identifies itself as a link
    - THEN when I use the enter key to activate the link I HEAR my browser goes somewhere
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
    - I swipe to focus on a link
-      - I HEAR Its purpose is clear
-      - I HEAR It identifies itself as a link
+      - I HEAR its purpose is clear
+      - I HEAR it identifies itself as a link
    - THEN when I doubletap with the link in focus I HEAR my browser goes somewhere
 
 
@@ -61,9 +61,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ## Links vs buttons
 
-### If it goes somewhere, it's `<a>` link.
+### If it goes somewhere, it's `<a>` link
 
-- When the user clicks a link, they are taken to a different location in the site.
+- When the user clicks a link, they are taken to a different location in the site
   - Either another page or even another area of the same page
 - A link can look like a big shiny button but it must be coded as `<a>` link
 
@@ -125,7 +125,7 @@ This semantic HTML contains all accessibility features by default.
 
 ### Making a link with no `href` focusable
 
-- **Do not** put anything but a URI in the `href`
+- **Do not** put anything but a URL in the `href`
 - A link with no `href` will not be focusable with the keyboard without `tabindex="0"`.
 - Add `role="link"` to ensure screen reader reads the role
 
@@ -166,7 +166,7 @@ Sometimes the design will call for multiple links with the same text label. In a
 </a>
 ```
 
-### Don't duplicate the visible text name in the aria-label
+### Don't duplicate the visible text name in the `aria-label`
 
 **Do not** repeat the inner text content of a link in the `aria-label`.
 
@@ -179,10 +179,10 @@ Sometimes the design will call for multiple links with the same text label. In a
 </div>
 ```
 
-### Don't use javascript in href
+### Don't use javascript in `href`
 
 - **Do not** use `"href="javascript:void(0)"`. 
-- When screen readers read the href, it becomes confusing and nonsensical 
+- When screen readers read the `href`, it becomes confusing and nonsensical 
 
 <h4 class="bad-example"> Bad example</h4>
 
@@ -192,19 +192,22 @@ Sometimes the design will call for multiple links with the same text label. In a
 </div>
 ```
 
-### Don't use "#" in href
+### Don't use "#" in `href`
 
 <h4 class="bad-example"> Bad example</h4>
 
 ```html
 <a href="#">
-   Do not use # to populate the href
+   Do not use # to populate the `href`
 </div>
 ```
 
 ## Disabled links
 
-- If it's unavoidable to have a disabled link present you'll need these attributes for the screen reader.
+- If it's unavoidable to have a disabled link present you'll need these attributes for the screen reader:
+  - `tabindex="0"`
+  - `role="link"`
+  - `aria-disabled="true"`
 
 ```html
 <a tabindex="0" role="link" aria-disabled="true">
