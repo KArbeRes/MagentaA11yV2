@@ -58,14 +58,44 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ## Developer Notes
 
-### Name
+### Code examples
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+```html
+<p>
+   People read footnotes and find them helpful.
+   <a class="footnote-link" id="ref-alpha-link" href="#ref-alpha">
+      <sup>
+         1
+         <span class="hidden">Footnote details</span>
+      </sup>
+   </a>
+ </p>
+<div class="vertical-spacer">
+</div>
+<p class="footnote" id="ref-alpha" tabindex="-1">
+   1. This is where your footnotes will go.
+   <a href="#ref-alpha-link">Back to content</a>
+</p>
+```
 
-## Videos
+<example>
+<p>
+   People read footnotes and find them helpful.
+   <a class="footnote-link" id="ref-alpha-link" href="#ref-alpha">
+      <sup>
+         1
+         <span class="hidden">Footnote details</span>
+      </sup>
+   </a>
+ </p>
+<div class="vertical-spacer">
+</div>
+<p class="footnote" id="ref-alpha" tabindex="-1">
+   1. This is where your footnotes will go.
+   <a href="#ref-alpha-link">Back to content</a>
+</p>
+</example>
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+### Alternate approach
+
+- [Foonotes using a dedicated footnotes section (SitePoint)](https://www.sitepoint.com/accessible-footnotes-css/)
