@@ -77,42 +77,42 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ## Developer Notes
 
-## Required attributes
+### Required attributes
 
-### Launch button
+#### Launch button
    - Should be a `<button>`, not a `<a>` link.
    - Upon closing, focus must return to the button that launched the dialog.
    - **Do not** use`aria-haspopup`. This attribute has very low and support and unpredictable output across screen readers. 
 
-### Name
+#### Name
    - The modal window has a logical descriptive name from either:
       - `aria-label="Modal title"` or
       - `aria-labelledby="heading-id"` pointing to an `<h2>` as a title
 
-### Role
+#### Role
    - Use `role="dialog"` so the screen reader can identify this as a dialog or modal.
 
-### Group
+#### Group
    - Upon closing, focus must return to the button that launched the dialog.
 
-### State
+#### State
    - Use `aria-modal="true"` to indicate content beneath the modal is inert and that the screen reader must not browse outside the dialog.
 
-### Focus
+#### Focus
    - Use `tabindex="-1"` to make the modal itself targetable for focus.
    - Upon closing, focus must return to the button that launched the dialog.
 
-### Documentation
+#### Documentation
    - [Browser Support](https://caniuse.com/?search=dialog)
 
-## Screenreader differences
+### Screenreader differences
 
-### NVDA
+#### NVDA
    - By default, NVDA may read the entire modal upon launch. This is expected behavior.
 
-## Code examples
+### Code examples
 
-### Use semantic HTML where possible
+#### Use semantic HTML where possible
 
 Browser support for `<dialog>` is still incomplete. 
 
@@ -191,7 +191,7 @@ Some browsers require additional scripting. This simple example works in Chrome,
    </dialog>
 </example>
 
-## Further Reading
+### Further Reading
 - [WCAG 1.3.1 Info and Relationships (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)
 - [WCAG 2.1.1 Keyboard (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard)
 - [WCAG 2.4.3 Focus Order (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
