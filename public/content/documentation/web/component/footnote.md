@@ -78,6 +78,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 </p>
 ```
 
+<!-- TODO: class="vertical-spacer" isn't showcasing the vast difference between the footnote link and the footnote note; also the href intentions aren't set up correctly - will need fixing -->
+
 <example>
 <p>
    People read footnotes and find them helpful.
