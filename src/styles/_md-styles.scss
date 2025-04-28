@@ -92,3 +92,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     }
   }
 }
+
+.bad-example {
+  color: var(--color-error);
+}
