@@ -79,8 +79,7 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 <svg role="img" focusable="false">
   <title>Accessible Name</title>
   <use xlink:href="#svg-id" aria-hidden="true" />
-  <!-- if not using <use> then the child elements 
-       of the inline SVG would go here -->
+  <!-- if not using <use> then the child elements of the inline SVG would go here -->
 </svg>
 ```
 
@@ -89,8 +88,7 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 ```html
 <svg role="img" aria-label="Accessible name" focusable="false">
   <use href="#svg-id" aria-hidden="true" />
-  <!-- if not using <use> then the child elements 
-       of the inline SVG would go here -->
+  <!-- if not using <use> then the child elements of the inline SVG would go here -->
 </svg>
 ```
 
