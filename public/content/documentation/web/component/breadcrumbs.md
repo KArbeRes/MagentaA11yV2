@@ -20,7 +20,7 @@ How to test breadcrumbs
    - State: The current page link is indicated when focused
    - Group: Is discoverable with screenreader shortcuts as a navigation landmark
 
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/button](https://www.magentaa11y.com/checklist-web/breadcrumbs/)
+Full information: [https://www.magentaa11y.com/checklist-web/breadcrumbs/](https://www.magentaa11y.com/checklist-web/breadcrumbs/)
 
 ## Gherkin
 
