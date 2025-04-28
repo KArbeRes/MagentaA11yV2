@@ -52,15 +52,14 @@ GIVEN THAT I am on a page with a list
       - I HEAR it identifies itself as a list
       - I HEAR it declares the number of items in the list
 
-
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/list](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/list)
 
 ## Developer Notes
 
 ### Lists are not focusable with the tab key
 
-- When using a screen reader, the **arrow keys** are used to browse non-focusable content
-- The tab key only focuses interactive elements (ex: buttons, links or inputs) inside the list item.
+   - When using a screen reader, the **arrow keys** are used to browse non-focusable content
+   - The tab key only focuses interactive elements (ex: buttons, links or inputs) inside the list item.
 
 ### Code examples
 
@@ -68,89 +67,88 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 This semantic HTML contains all accessibility features by default.
 
-{% highlight html %}
+```html
 <ul>
-  <li>Charlie</li>
-  <li>Romeo</li>
-  <li>Juliet</li>
-  <li>Mike</li>
-  <li>Victor</li>
+  <li>Flour</li>
+  <li>Sugar</li>
+  <li>Oil</li>
+  <li>Butter</li>
+  <li>Eggs</li>
 </ul>
-{% endhighlight %}
+```
 
-{::nomarkdown}
 <example>
-<h3>NATO letters that are common first names</h3>
+<h4>Common household pantry items</h4>
 <ul>
-  <li>Charlie</li>
-  <li>Romeo</li>
-  <li>Juliet</li>
-  <li>Mike</li>
-  <li>Victor</li>
+  <li>Sugar</li>
+  <li>Flour</li>
+  <li>Butter</li>
+  <li>Oil</li>
+  <li>Eggs</li>
 </ul>
 </example>
-{:/}
-
 
 #### Ordered list
 
-{% highlight html %}
+```html
 <ol>
-  <li>Alpha</li>
-  <li>Bravo</li>
-  <li>Charlie</li>
+  <li>Elmo</li>
+  <li>Big Bird</li>
+  <li>Cookie Monster</li>
 </ol>
-{% endhighlight %}
+```
 
-{::nomarkdown}
 <example>
-<h3>The NATO alphabet</h3>
+<h4>Top three Sesame Street characters</h4>
 <ol>
-  <li>Alpha</li>
-  <li>Bravo</li>
-  <li>Charlie</li>
+  <li>Elmo</li>
+  <li>Big Bird</li>
+  <li>Cookie Monster</li>
 </ol>
 </example>
-{:/}
 
 #### When you can't use semantic HTML
 
 As a **last resort**, this custom list uses extra attributes if it's not possible to edit the markup structure.
 
-{% highlight html %}
-<!-- The NATO alphabet -->
+```html
+<!-- Top three Sesame Street characters, according to some -->
 <div role="list">
-  <div role="listitem">Alpha</div>
-  <div role="listitem">Bravo</div>
-  <div role="listitem">Charlie</div>
+  <div role="listitem">Elmo</div>
+  <div role="listitem">Big Bird</div>
+  <div role="listitem">Cookie Monster</div>
 </div>
-{% endhighlight %}
+```
 
 ### Do not interrupt the list
 
 The `<ul>` or `<ol>` list must only contain `<li>` list items.
 
-{% highlight html %}
-<!-- Starcrossed NATO letters -->
+<h4 class="bad-example"> Bad example</h4>
+
+```html
+<!-- Were they or weren't they? -->
 <ul>
-  <li>Romeo</li>
+  <li>Ross</li>
   <div>
-    <a href="#">Buy tickets to Romeo and Juliet, The Experience</a>
+    <a href="#">Stream it all over again and decide</a>
   </div>
-  <li>Juliet</li>
+  <li>Rachel</li>
 </ul>
-{% endhighlight %}{: .bad-example}
+```
 
 ### Do not create fake lists
 
 Adding returns or generic markup does not produce a list navigable by screen reader.
 
-{% highlight html %}
-Charlie <br/>
-Romeo <br/>
-Juliet <br/>
+<h4 class="bad-example"> Bad example</h4>
 
-<div>Alpha</div>
-<div>Bravo</div>
-<div>Charlie</div>
-{% endhighlight %}{: .bad-example}
+```html
+Sugar <br/>
+Flour <br/>
+Butter <br/>
+
+<div>Sugar</div>
+<div>Flour</div>
+<div>Butter</div>
+```
