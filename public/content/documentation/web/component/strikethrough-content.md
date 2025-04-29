@@ -6,27 +6,19 @@ How to test a strikethrough element
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a strikethrough element
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Skip-links: Focus moves directly to the header or navigation
-
-   - Tab: Nothing, headings are not focusable unless they are actionable
-
-   - Arrow-keys: Headings are browsed
+      - Arrow: Browses the content
 
 2. Test mobile screenreader gestures
 
-   - Swipe: Focus moves directly to the header or navigation
-
-   - Doubletap: This typically activates most elements
+      - Swipe: The content makes sense and is in logical order
 
 3. Listen to screenreader output on all devices
 
-   - It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - Group: It typically contains the name and primary navigation of the website
+      - Name: The content makes sense and is in logical order
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content)
 
@@ -34,47 +26,74 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a strikethrough element
 
 GIVEN THAT I am on a page with a header landmark
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+      - WHEN I use the arrow key to browse the content I SEE the content comes into view
 
 2. Desktop screenreader
 
-   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-
-   - I use the tab key to enter the web browser window
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
+      - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
+      - I use the arrow key to browse the content
+         - I HEAR the content makes sense and is in logical order
 
 3. Mobile screenreader
 
-   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   - I swipe to focusable elements in the header
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
-
+      - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+      - I swipe to browse the content
+         - I HEAR the content makes sense and is in logical order
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content)
 
-## Developer Notes
+## Developer notes
 
-### Name
+- Do not use `aria-label` to add context. Some screenreaders will not read `aria-label` from non-interactive components.
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+## Code examples
 
-## Videos
+```html
+<p>Get a $10/mo discount with autopay</p>
+<s class="h-bravo">
+  <!-- Give context to the first number -->
+  <span class="hidden-visually">
+    Original price:
+  </span>
+  $50
+  <!-- Give context to the first number -->
+  <span class="hidden-visually">
+    /mo
+  </span>
+</s>
+<span class="h-bravo">
+  <!-- Give context to the second number -->
+  <span class="hidden-visually">
+    Price with $10 autopay discount
+  </span>
+  $40/mo
+</span>
+```
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+<example>
+<p>Get a $10/mo discount with autopay</p>
+<s class="h-bravo">
+  <!-- Give context to the first number -->
+  <span class="hidden-visually">
+    Original price:
+  </span>
+  $50
+  <!-- Give context to the first number -->
+  <span class="hidden-visually">
+    /mo
+  </span>
+</s>
+<span class="h-bravo">
+  <!-- Give context to the second number -->
+  <span class="hidden-visually">
+    Price with $10 autopay discount
+  </span>
+  $40/mo
+</span>
+</example>
