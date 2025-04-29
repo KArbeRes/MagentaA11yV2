@@ -69,10 +69,10 @@ This semantic HTML contains all accessibility features by default.
 
 ```html
 <ul>
-  <li>Flour</li>
   <li>Sugar</li>
-  <li>Oil</li>
+  <li>Flour</li>
   <li>Butter</li>
+  <li>Oil</li>
   <li>Eggs</li>
 </ul>
 ```
