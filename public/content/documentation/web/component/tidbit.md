@@ -305,7 +305,7 @@ Typical Tidbit markup consists of an SVG icon, heading, paragraph text, and a li
 
 ### Role
    - The "i" icon is an image due to the use of `role="img"` on the SVG.
-   - The bold text found the top of the Tidbit has a role of `heading` due to the use of an `<h2>` element.
+   - The bold text found the top of the Tidbit has a role of heading due to the use of an `<h2>` element.
 
 ## Documentation
    - [WCAG 2.4.4 Link Purpose](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html)
