@@ -83,7 +83,7 @@ An alert is dynamic content that is injected into the page when it changes and a
 
 ### Basic notification
 
-<!-- TODO: Needs JS to inject the alert in the code sample -->
+<!-- TODO: Needs JS to inject the alert in the code sample + error message + stylings -->
 
 ```html
 <div role="alert" 
@@ -111,7 +111,7 @@ An alert is dynamic content that is injected into the page when it changes and a
 
 ### Error alert from an input field
 
-<!-- TODO: Needs JS to inject the alert in the code sample + update error message -->
+<!-- TODO: Needs JS to inject the alert in the code sample + update error + stylings -->
 
 ```html
 <label for="favorite-sesame-street-character">
