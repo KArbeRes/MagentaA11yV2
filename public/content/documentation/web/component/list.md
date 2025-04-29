@@ -35,7 +35,7 @@ GIVEN THAT I am on a page with a list
 1. Keyboard for mobile & desktop
 
    - WHEN I use the arrow key to browse to a list I SEE the list comes into view
-   - WHEN when I use the tab key I SEE nothing happens to the list itself because lists must NOT be focusable
+   - WHEN I use the tab key I SEE nothing happens to the list itself because lists must NOT be focusable
 
 2. Desktop screenreader
 
@@ -43,7 +43,7 @@ GIVEN THAT I am on a page with a list
    - I use the arrow key to browse to a list
       - I HEAR it identifies itself as a list
       - I HEAR it declares the number of items in the list
-   - WHEN when I use the tab key I HEAR nothing happens to the list itself because lists must NOT be focusable
+   - WHEN I use the tab key I HEAR nothing happens to the list itself because lists must NOT be focusable
 
 3. Mobile screenreader
 
