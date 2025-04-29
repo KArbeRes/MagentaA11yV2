@@ -6,27 +6,21 @@ How to test an iframe
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test an iframe
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Skip-links: Focus moves directly to the header or navigation
-
-   - Tab: Nothing, headings are not focusable unless they are actionable
-
-   - Arrow-keys: Headings are browsed
+   - Arrow keys: Content within the iframe is browsed
+   - Tab: Interactive content in the iframe come into view
 
 2. Test mobile screenreader gestures
 
-   - Swipe: Focus moves directly to the header or navigation
-
-   - Doubletap: This typically activates most elements
+   - Swipe: Content within the iframe is browsed
 
 3. Listen to screenreader output on all devices
 
-   - It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - Group: It typically contains the name and primary navigation of the website
+   - Name: The title of the iframe is read if the iframe contains content 
+   - Group: If the iframe does not contain content, the iframe is ignored
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/iframe](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/iframe)
 
@@ -34,47 +28,45 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test an iframe
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with an iframe
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+   - WHEN I use the arrow keys or tab key I SEE the content of the iframe is browsed
 
 2. Desktop screenreader
 
-   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-
-   - I use the tab key to enter the web browser window
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the arrow keys or tab key
+      - I HEAR the title of the iframe is read if the iframe contains content 
+      - I HEAR if the iframe does not contain content, the iframe is ignored
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   - I swipe to focusable elements in the header
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
+      - I swipe to content in the iframe
+      - I HEAR the title of the iframe is read if the iframe contains content 
+      - I HEAR if the iframe does not contain content, the iframe is ignored
 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/iframe](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/iframe)
 
-## Developer Notes
+## Code examples
 
-### Name
+### When an iframe contains content
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+```html
+<iframe title="Coffee maker demonstration" 
+        src="coffee-maker-demo.html">
+</iframe>
+```
 
-## Videos
+### When an iframe does not contain content
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+```html
+<iframe title="Hidden intentionally"
+        aria-hidden="true" 
+        src="script-injection.net">
+</iframe>
+```
