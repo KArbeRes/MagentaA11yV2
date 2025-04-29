@@ -231,9 +231,11 @@ This example dynamically injects progress updates that will be read by a screen 
 </div>
 </example> -->
 
+<!-- TODO: commenting out and waiting for feedback
+
 ## Reference
 
-   - MagentaA11y applies [WCAG Graphics Contrast Guidelines](https://www.w3.org/WAI/GL/low-vision-a11y-tf/wiki/Graphics_Contrast)
+   - MagentaA11y applies [WCAG Graphics Contrast Guidelines](https://www.w3.org/WAI/GL/low-vision-a11y-tf/wiki/Graphics_Contrast) -->
 
 ## Further Reading
    - [WCAG 1.1.1 Non-text Content (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)
