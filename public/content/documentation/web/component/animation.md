@@ -130,12 +130,12 @@ If your device is set to reduce motion, the animation will softly fade from one 
 <div class="animation">Animated element</div>
 </example>
 
-### Detecting with JavaScript
-```css
+<!-- ### Detecting with JavaScript
+```____
 const pref = 
   window.matchMedia(
     '(prefers-reduced-motion: reduce)'
-  );```
+  );``` -->
 
 ## Further Reading
 - [WCAG 2.2.1 Timing Adjustable (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable)
