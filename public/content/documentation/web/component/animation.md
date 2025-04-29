@@ -69,19 +69,76 @@ GIVEN THAT I am on a page with an animation
 
    - WHEN I use reduced motion THEN I see large motion, animations or effects are reduced or eliminated
 
-
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/animation](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/animation)
 
 ## Developer Notes
 
-### Name
+### Animations (like animated gifs or animated SVG) can be accessible if:
+- it automatically stops after 5 seconds or 
+- if users are presented with an intuitive way to pause it
+- it has `alt` text or an alternative method of consumption is available
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+## Code examples
 
-## Videos
+### Allow animations to be disabled with CSS
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+People with vestibular disorders can be made ill by sweeping animations on screen.
+
+It is important to change or disable animations when device reduce motion settings are activated.
+
+This can be accomplished via CSS media query.
+
+<!-- TODO: the colors displaying CSS code snippet is rough on the eyes -->
+
+```CSS
+@keyframes bounce {
+  0% { transform: scale(1); }
+  25% { transform: scale(.9); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes dissolve {
+  0% { background-color: green; }
+  50% { background-color: darkgreen; }
+  100% { background-color: green; }
+}
+
+.animation {
+  background-color: green;
+  animation: bounce 2s linear infinite both;
+}
+
+@media (prefers-reduced-motion) {
+  .animation {
+    animation-name: dissolve;
+  }
+}
+```
+
+```html
+<div class="animation">Animated element</div>
+```
+
+<!-- TODO: the below bouncy box should do what our example demo suggests -->
+
+### Bouncy box
+If your device is set to reduce motion, the animation will softly fade from one color to the next instead of bounce; otherwise it will bounce.
+
+<example>
+<div class="animation">Animated element</div>
+</example>
+
+### Detecting with JavaScript
+```css
+const pref = 
+  window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );```
+
+## Further Reading
+- [WCAG 2.2.1 Timing Adjustable (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable)
+- [WCAG 2.2.2 Pause, Stop, Hide (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
+- [WCAG 2.3.1 Three Flashes or Below Threshold (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold)
+- [WCAG 2.3.3 Animation from Interactions (Level AAA)](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html)
