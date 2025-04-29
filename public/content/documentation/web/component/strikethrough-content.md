@@ -14,11 +14,11 @@ How to test a strikethrough element
 
 2. Test mobile screenreader gestures
 
-      - Swipe: The content makes sense and is in logical order
+      - Swipe: The content makes sense and is in a logical order
 
 3. Listen to screenreader output on all devices
 
-      - Name: The content makes sense and is in logical order
+      - Name: The content makes sense and is in a logical order
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content)
 
@@ -28,7 +28,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 How to test a strikethrough element
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with strikethrough content
 
 1. Keyboard for mobile & desktop
 
@@ -38,13 +38,13 @@ GIVEN THAT I am on a page with a header landmark
 
       - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
       - I use the arrow key to browse the content
-         - I HEAR the content makes sense and is in logical order
+         - I HEAR the content makes sense and is in a logical order
 
 3. Mobile screenreader
 
       - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
       - I swipe to browse the content
-         - I HEAR the content makes sense and is in logical order
+         - I HEAR the content makes sense and is in a logical order
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/strikethrough-content)
 
