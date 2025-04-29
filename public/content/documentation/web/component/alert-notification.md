@@ -52,16 +52,126 @@ GIVEN THAT I am on a page with a alert notification
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/alert-notification](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/alert-notification)
 
-## Developer Notes
+## Notes
+
+An alert is dynamic content that is injected into the page when it changes and a person using a screenreader needs to know that some state of the page or application has changed.
+
+   - Use alerts sparingly. 
+   - If an alert is present on page load, it won't be read automatically.
+      - If an element is present on page load, it is not technically an alert.
+   - The alert will be read by the screen reader when it becomes visible and or appears new in the DOM.
+
+### Browser + screenreader quirks
+
+   - Screenreaders do not implement alerts uniformly and must be tested.
+      - Just because an alert pattern works in one screenreader doesn't mean it will work in all three screenreaders (JAWS, NVDA, and MacOS VoiceOver).
+   - The element referenced by the `aria-describedby` attribute cannot use the `role="alert"` attribute (see example below for workaround). 
+      - [VoiceOver fails to read a referenced `role="alert"` element when the input is in focus (AccessibilitySupport)](https://a11ysupport.io/tests/tech__aria__aria-describedby-with-role-alert).
+   - NVDA will read the alert twice if it appears while the input is in focus: once from the `role="alert"` being injected and a second time from the `aria-describedby` association.
+   - NVDA needs a fraction of a second to catch up with changes in the DOM; we suggest using a `setTimeout` to delay displaying the alert.
 
 ### Name
+   - Inner text describes alert when it appears on screen.
 
-- Typically does not have a name or description since there must be only one instance per page.
+### Role
+   - Use `role="alert"` for elements injected into the page.
 
-## Videos
+### Focus
+   - Focus does not move to the element when the alert appears.
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+## Code examples
+
+### Basic notification
+
+<!-- TODO: Needs JS to inject the alert in the code sample -->
+
+```html
+<div role="alert" 
+     id="alert-notification" 
+     class="alert notification inert">
+    <!--- Use JS to inject the alert here -->
+</div>
+
+<button id="show-alert-notification">
+  Save my settings
+</button>
+```
+
+<example>
+<div role="alert" 
+     id="alert-notification" 
+     class="alert notification inert">
+    <!--- Use JS to inject the alert here -->
+</div>
+
+<button id="show-alert-notification">
+  Save my settings
+</button>
+</example>
+
+### Error alert from an input field
+
+<!-- TODO: Needs JS to inject the alert in the code sample + update error message -->
+
+```html
+<label for="favorite-sesame-street-character">
+  What is your favorite Sesame Street character?
+  <span>Required</span>
+</label>
+
+<input type="text"
+       id="favorite-sesame-street-character"
+       aria-describedby="favorite-character-error favorite-character-hint"
+       required>
+
+<div role="alert" 
+     id="favorite-character-alert" 
+     class="alert inert">
+  <!--- Do not reference this alert element
+        directly with aria-describedby -->
+  <div id="favorite-character-error">
+    <!--- Use JS to inject the alert here -->
+  </div>     
+</div>
+
+<div class="hint" id="favorite-character-hint">
+  Example: Elmo, Big Bird, Cookie Monster
+</div>
+
+<button id="show-error">
+  Toggle error
+</button>
+```
+
+<example>
+<label for="favorite-sesame-street-character">
+  What is your favorite Sesame Street character?
+  <span>Required</span>
+</label>
+
+<input type="text"
+       id="favorite-sesame-street-character"
+       aria-describedby="favorite-character-error favorite-character-hint"
+       required>
+
+<div role="alert" 
+     id="favorite-character-alert" 
+     class="alert inert">
+  <!--- Do not reference this alert element
+        directly with aria-describedby -->
+  <div id="favorite-character-error">
+    <!--- Use JS to inject the alert here -->
+  </div>     
+</div>
+
+<div class="hint" id="favorite-character-hint">
+  Example: Elmo, Big Bird, Cookie Monster
+</div>
+
+<button id="show-error">
+  Toggle error
+</button>
+</example>
+
+## Further reading
+[WCAG 4.1.3 Status Messages (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)
