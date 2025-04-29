@@ -6,27 +6,21 @@ How to test a progress indicator
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a progress indicator
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Skip-links: Focus moves directly to the header or navigation
-
-   - Tab: Nothing, headings are not focusable unless they are actionable
-
-   - Arrow-keys: Headings are browsed
+   - Arrow keys: Content within the progress indicator is browsed in logical order
 
 2. Test mobile screenreader gestures
 
-   - Swipe: Focus moves directly to the header or navigation
-
-   - Doubletap: This typically activates most elements
+   - Swipe: Content within the progress indicator is browsed in logical order
 
 3. Listen to screenreader output on all devices
 
-   - It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - Group: It typically contains the name and primary navigation of the website
+   - Name: The progress indicator purpose is clear
+   - Role: It identifies itself as some kind of progress indicator
+   - State: It expresses its current value if it dynamically changes
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/progress-indicator](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/progress-indicator)
 
@@ -34,34 +28,29 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a progress indicator
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with a progress indicator
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+   - WHEN I use the arrow key to browse to a progress bar I SEE the progress bar comes into view
 
 2. Desktop screenreader
 
-   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-
-   - I use the tab key to enter the web browser window
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
+   - I use the arrow key to browse to a progress bar
+      - I HEAR the progress indicator purpose is clear
+      - I HEAR it identifies itself as some kind of progress indicator
+      - I HEAR it expresses its current value if it dynamically changes
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   - I swipe to focusable elements in the header
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
-
+   - I swipe to browse to a progress bar
+      - I HEAR the progress indicator purpose is clear
+      - I HEAR it identifies itself as some kind of progress indicator
+      - I HEAR it expresses its current value if it dynamically changes
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/progress-indicator](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/progress-indicator)
 
