@@ -244,22 +244,22 @@ Sometimes the design will call for multiple links with the same text label. In a
          </div>
          <ul id="meta" class="product-meta">
          <li class="rating">4.8 Stars</li>
-         <li class="network">7G <span class="hidden">network compatibility</span></li>
+         <li class="network">7G <span class="hidden-visually">network compatibility</span></li>
          </ul>
          <div class="end-cap">
          <ul id="colors" class="product-colors">
-            <li class="red"><span class="hidden">Sunset Red</span></li>
-            <li class="gold"><span class="hidden">Golden Canyon</span></li>
-            <li class="blue"><span class="hidden">Blue</span></li>
-            <li class="gray"><span class="hidden">Graphite</span></li>
+            <li class="red"><span class="hidden-visually">Sunset Red</span></li>
+            <li class="gold"><span class="hidden-visually">Golden Canyon</span></li>
+            <li class="blue"><span class="hidden-visually">Blue</span></li>
+            <li class="gray"><span class="hidden-visually">Graphite</span></li>
          </ul>
          <ul id="pricing" class="product-pricing">
             <li class="monthly">
                <div><strong>Monthly</strong></div>
                <strong>
-               $22.00<span class="hidden">,</span>
+               $22.00<span class="hidden-visually">,</span>
                </strong>
-               <span class="hidden">
+               <span class="hidden-visually">
                Original price:
                </span>        
                <s>$50.00</s>
@@ -271,8 +271,8 @@ Sometimes the design will call for multiple links with the same text label. In a
                <div>down + tax</div>
             </li>
             <li class="full-price">
-               <strong>Full price</strong> $1,789<span class="hidden">,</span>
-               <span class="hidden">
+               <strong>Full price</strong> $1,789<span class="hidden-visually">,</span>
+               <span class="hidden-visually">
                Original price:
                </span>        
                <s>$1,998</s>
@@ -306,10 +306,10 @@ Sometimes the design will call for multiple links with the same text label. In a
          </div>
          <ul id="meta" class="product-meta">
             <li class="rating" id="prod-0-meta-rating">4.8 Stars</li>
-            <li class="network" id="prod-0-meta-network">7G <span class="hidden">network compatibility</span></li>
+            <li class="network" id="prod-0-meta-network">7G <span class="hidden-visually">network compatibility</span></li>
          </ul>
          <div class="end-cap">
-            <span id="prod-0-colors" class="hidden">Four colors available</span>
+            <span id="prod-0-colors" class="hidden-visually">Four colors available</span>
             <!-- hide colors - use visually hidden text x colors avialable 
             <!-- reduces verbosity and all colors are available on PDP 
             <ul id="colors" class="product-colors" aria-hidden="true">
@@ -322,9 +322,9 @@ Sometimes the design will call for multiple links with the same text label. In a
                <li class="monthly" id="product-0-price-monthly">
                <div><strong>Monthly</strong></div>
                <strong>
-                  $22.00<span class="hidden">,</span>
+                  $22.00<span class="hidden-visually">,</span>
                </strong>
-               <span class="hidden">
+               <span class="hidden-visually">
                   Original price:
                </span>        
                <s>$50.00</s>
@@ -336,8 +336,8 @@ Sometimes the design will call for multiple links with the same text label. In a
                <div>down + tax</div>
                </li>
                <li class="full-price" id="product-0-price-full">
-               <strong>Full price</strong> $1,789<span class="hidden">,</span>
-               <span class="hidden">
+               <strong>Full price</strong> $1,789<span class="hidden-visually">,</span>
+               <span class="hidden-visually">
                   Original price:
                </span>        
                <s>$1,998</s>
@@ -379,22 +379,22 @@ Sometimes the design will call for multiple links with the same text label. In a
       </div>
       <ul id="meta" class="product-meta">
         <li class="rating">4.8 Stars</li>
-        <li class="network">7G <span class="hidden">network compatibility</span></li>
+        <li class="network">7G <span class="hidden-visually">network compatibility</span></li>
       </ul>
       <div class="end-cap">
         <ul id="colors" class="product-colors">
-          <li class="red"><span class="hidden">Sunset Red</span></li>
-          <li class="gold"><span class="hidden">Golden Canyon</span></li>
-          <li class="blue"><span class="hidden">Blue</span></li>
-          <li class="gray"><span class="hidden">Graphite</span></li>
+          <li class="red"><span class="hidden-visually">Sunset Red</span></li>
+          <li class="gold"><span class="hidden-visually">Golden Canyon</span></li>
+          <li class="blue"><span class="hidden-visually">Blue</span></li>
+          <li class="gray"><span class="hidden-visually">Graphite</span></li>
         </ul>
         <ul id="pricing" class="product-pricing">
           <li class="monthly">
             <div><strong>Monthly</strong></div>
             <strong>
-              $22.00<span class="hidden">,</span>
+              $22.00<span class="hidden-visually">,</span>
             </strong>
-            <span class="hidden">
+            <span class="hidden-visually">
               Original price:
             </span>        
             <s>$50.00</s>
@@ -406,8 +406,8 @@ Sometimes the design will call for multiple links with the same text label. In a
             <div>down + tax</div>
           </li>
           <li class="full-price">
-            <strong>Full price</strong> $1,789<span class="hidden">,</span>
-            <span class="hidden">
+            <strong>Full price</strong> $1,789<span class="hidden-visually">,</span>
+            <span class="hidden-visually">
               Original price:
             </span>        
             <s>$1,998</s>
@@ -441,10 +441,10 @@ Sometimes the design will call for multiple links with the same text label. In a
         </div>
         <ul id="meta" class="product-meta">
           <li class="rating" id="prod-0-meta-rating">4.8 Stars</li>
-          <li class="network" id="prod-0-meta-network">7G <span class="hidden">network compatibility</span></li>
+          <li class="network" id="prod-0-meta-network">7G <span class="hidden-visually">network compatibility</span></li>
         </ul>
         <div class="end-cap">
-          <span id="prod-0-colors" class="hidden">Four colors available</span>
+          <span id="prod-0-colors" class="hidden-visually">Four colors available</span>
           <!-- hide colors - use visually hidden text x colors avialable
           <!-- reduces verbosity and all colors are available on PDP
           <ul id="colors" class="product-colors" aria-hidden="true">
@@ -457,9 +457,9 @@ Sometimes the design will call for multiple links with the same text label. In a
             <li class="monthly" id="product-0-price-monthly">
               <div><strong>Monthly</strong></div>
               <strong>
-                $22.00<span class="hidden">,</span>
+                $22.00<span class="hidden-visually">,</span>
               </strong>
-              <span class="hidden">
+              <span class="hidden-visually">
                 Original price:
               </span>        
               <s>$50.00</s>
@@ -471,8 +471,8 @@ Sometimes the design will call for multiple links with the same text label. In a
               <div>down + tax</div>
             </li>
             <li class="full-price" id="product-0-price-full">
-              <strong>Full price</strong> $1,789<span class="hidden">,</span>
-              <span class="hidden">
+              <strong>Full price</strong> $1,789<span class="hidden-visually">,</span>
+              <span class="hidden-visually">
                 Original price:
               </span>        
               <s>$1,998</s>

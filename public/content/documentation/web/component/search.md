@@ -126,7 +126,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
   </datalist>
 
   <button type="submit">
-    <span class="hidden">Search</span>
+    <span class="hidden-visually">Search</span>
   </button>
 </form>
 ```
