@@ -63,11 +63,11 @@ GIVEN THAT I am on a page with an animation
       - I HEAR it identifies its role of button
       - I HEAR the control expresses its state if applicable (pressed, expanded)
    - THEN when I doubletap to activate control I HEAR the intended action occurs
-   - THEN when I when animation is focused I HEAR I HEAR An alternative method of consumption or interaction is available
+   - THEN when an animation is focused I HEAR an alternative method of consumption or interaction is available
 
 4. Device OS Settings
 
-   - WHEN I use reduced motion THEN I see Large motion, animations or effects are reduced or eliminated
+   - WHEN I use reduced motion THEN I see large motion, animations or effects are reduced or eliminated
 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/animation](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/animation)
