@@ -127,7 +127,7 @@ best practices.
               <tbody>
                   <tr>
               <td>
-                  <button data-icon="playCircleOutlined" data-label="Play video" />
+                  <button data-icon="playCircleOutlined" aria-label="Play video" />
               </td>
               <td>
                   <button data-icon="playCircleOutlined">
