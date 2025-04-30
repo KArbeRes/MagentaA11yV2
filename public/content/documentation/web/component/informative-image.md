@@ -10,16 +10,16 @@ How to test an informative image
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Arrow-keys: Screen reader reads the alt text (ignored if decorative)
+   - Arrow-keys: Screen reader reads the alt text 
 
 2. Test mobile screenreader gestures
 
-   - Swipe: The screenreader reads the alt text (ignored if decorative)
+   - Swipe: The screenreader reads the alt text 
 
 3. Listen to screenreader output on all devices
 
-   - Name: The content of the image alt text is clear (ignored if decorative)
-   - Role: It identifies its role as an image or graphic (ignored if decorative)    
+   - Name: The content of the image alt text is clear 
+   - Role: It identifies its role as an image or graphic     
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/informative-image](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/informative-image)
 
@@ -38,20 +38,20 @@ GIVEN THAT I am on a page with an informative image
 2. Desktop screenreader
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the arrow keys to browse to an image
-      - I HEAR the content of the image alt text is clear (ignored if decorative)
-      - I HEAR it identifies its role as an image or graphic (ignored if decorative)
+      - I HEAR the content of the image alt text is clear 
+      - I HEAR it identifies its role as an image or graphic 
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to browse to an image
-      - I HEAR the content of the image alt text is clear (ignored if decorative)
-      - I HEAR it identifies its role as an image or graphic (ignored if decorative)
+      - I HEAR the content of the image alt text is clear 
+      - I HEAR it identifies its role as an image or graphic 
 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/informative-image](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/informative-image)
 
 ## Is this image decorative or informative?
-If the image conveys important meaning, and there's no other text on the page which explains the concept within it, then the image is likely informative. If the image is included for purely stylistic purposes and doesn't impart any meaning to the rest of the content on the page, then the image is likely decorative. In this case, check out the [decorative image checklist](/checklist-web/image-decorative) item instead. 
+If the image conveys important meaning, and there's no other text on the page which explains the concept within it, then the image is likely informative. If the image is included for purely stylistic purposes and doesn't impart any meaning to the rest of the content on the page, then the image is likely decorative. In this case, check out the [decorative image checklist](/web-criteria/component/decorative-image) item instead. 
 
 If your image contains text inside it, it should not! This is a violation of [WCAG AA 1.4.5 Images of Text](https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html). Exceptions exist for logos.
 
