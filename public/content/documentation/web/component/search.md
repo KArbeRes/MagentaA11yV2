@@ -125,8 +125,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
     <option value="Heading: h1, h2, h3">
   </datalist>
 
-  <button type="submit">
-    <span class="hidden-visually">Search</span>
+  <button type="submit" aria-label="search">
+   <svg focusable="false" aria-hidden="true"></svg>
   </button>
 </form>
 ```
@@ -151,9 +151,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
          <option value="Header / banner">
          <option value="Heading: h1, h2, h3">
       </datalist>
-      <button data-icon="search">
-         <span class="hidden-visually">Search</span>
-      </button>
+      <button data-icon="search" aria-label="Search"></button>
    </form>
 </example>
 
