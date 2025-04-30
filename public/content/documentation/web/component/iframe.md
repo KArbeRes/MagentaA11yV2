@@ -11,7 +11,7 @@ How to test an iframe
 1. Test keyboard only, then screen reader + keyboard actions
 
    - Arrow keys: Content within the iframe is browsed
-   - Tab: Interactive content in the iframe come into view
+   - Tab: Interactive content in the iframe comes into view
 
 2. Test mobile screenreader gestures
 
