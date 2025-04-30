@@ -56,29 +56,29 @@ GIVEN THAT I am on a page with a pagination nav
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/pagination-nav](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/pagination-nav)
 
-## Developer Notes
-
-### Name
-
-   - Use `aria-label="Pagination"` when there is not a visible nav title.
-      - `aria-describedby="title-id"` can be used when the nav title is a visible heading.
-         - If using `aria-describedby` in this way, the element it is referencing must have an `id` attribute applied with the same value, such as `id="title-id"`. 
-   - Use `aria-label="Page X"` for each entry link.
-
-### Role
-
-   - Identifies itself as navigation.
-   - Use `role="navigation"` when it's not possible to use `<nav>`. 
-   - **DO NOT** add menu or option roles with arrow key event listeners unless you're building an actual application like Gmail.
-
-### State
-
-   - Use `aria-current="page"` on the current page item.
-
 ## Code examples
 
 ### Use semantic HTML
 This semantic HTML contains all accessibility features by default.
+
+```html
+   <nav class="pagination" aria-label="Pagination">
+      <ul>
+         <li>
+            <a href="/1/"
+            aria-label="Page 1"
+            aria-current="page">
+            1
+            </a>
+         </li>
+         <li><a href="/2/" aria-label="Page 2">2</a></li>
+         <li><a href="/3/" aria-label="Page 3">3</a></li>
+         <li><a href="/4/" aria-label="Page 4">4</a></li>
+         <li><a href="/5/" aria-label="Page 5">5</a></li>
+         <li><a href="/2/">Next</a></li>
+      </ul>
+   </nav>
+```
 
 <!-- TODO: code example needs updated stylings to remove bullets from list items and display horizontally instead of vertically. -->
 
@@ -101,24 +101,23 @@ This semantic HTML contains all accessibility features by default.
    </nav>
 </example>
 
-```html
-   <nav class="pagination" aria-label="Pagination">
-      <ul>
-         <li>
-            <a href="/1/"
-               aria-label="Page 1"
-               aria-current="page">
-               1
-            </a>
-         </li>
-         <li><a href="/2/" aria-label="Page 2">2</a></li>
-         <li><a href="/3/" aria-label="Page 3">3</a></li>
-         <li><a href="/4/" aria-label="Page 4">4</a></li>
-         <li><a href="/5/" aria-label="Page 5">5</a></li>
-         <li><a href="/2/">Next</a></li>
-      </ul>
-   </nav>
-```
+## Developer Notes
+
+### Name
+
+   - Use `aria-label="Pagination"` when there is not a visible nav title.
+      - `aria-labelledby="title-id"` can be used when the nav title is a visible heading.
+   - Use `aria-label="Page X"` for each entry link.
+
+### Role
+
+   - Identifies itself as navigation.
+   - Use `role="navigation"` when it's not possible to use `<nav>`. 
+   - **DO NOT** add menu or option roles with arrow key event listeners unless you're building an actual application like Gmail.
+
+### State
+
+   - Use `aria-current="page"` on the current page item.
 
 ## Further Reading
    - [WCAG 2.1.1 Keyboard (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard)
