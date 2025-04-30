@@ -57,14 +57,159 @@ if [ -f "$FILE_PATH" ]; then
   exit 1
 fi
 
-# Define additional section for native files
-NATIVE_ADDITIONAL_SECTIONS=$(cat <<'EOF'
+# Define section for native files
+NATIVE_SECTIONS=$(cat <<'EOF'
+
+## Condensed
+
+### #a11y - Native Accessibility Acceptance Criteria
+
+How to test a button
+
+1. Test keyboard only, then screen reader + keyboard actions
+
+   - Skip-links: Focus moves directly to the header or navigation
+
+   - Tab: Nothing, headings are not focusable unless they are actionable
+
+   - Arrow-keys: Headings are browsed
+
+2. Test mobile screenreader gestures
+
+   - Swipe: Focus moves directly to the header or navigation
+
+   - Doubletap: This typically activates most elements
+
+3. Listen to screenreader output on all devices
+
+   - It is discoverable with screenreader shortcuts as header/banner landmark
+
+   - Group: It typically contains the name and primary navigation of the website
+
+4. Test device settings
+
+   - Text resize: Text can resize up to 200% without losing information
+
+Full information: [$FULL_LINK]($FULL_LINK)
+
+## Gherkin
+
+### #a11y - Native Accessibility Acceptance Criteria
+
+How to test a button
+
+GIVEN THAT I am on a screen with a button
+
+1. Keyboard for mobile & desktop
+
+   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+
+2. Desktop screenreader
+
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+
+   - I use the tab key to enter the web browser window
+
+   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+
+   - I HEAR It typically contains the name and primary navigation of the website
+
+3. Mobile screenreader
+
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+
+   - I swipe to focusable elements in the header
+
+   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+
+   - I HEAR It typically contains the name and primary navigation of the website
+
+4. Scenario: Test device OS settings for text resize
+
+   - WHEN I adjust the device text resize setting to 200%
+   
+      - THEN the text on the button should resize up to 200% without losing information
+
+Full information: [$FULL_LINK]($FULL_LINK)
 
 ## iOS Developer Notes
 - ios developer notes go here
 
 ## Android Developer Notes
 - android developer notes go here
+EOF
+)
+
+# Define section for web files
+WEB_SECTIONS=$(cat <<'EOF'
+
+## Condensed
+
+### #a11y - Web Accessibility Acceptance Criteria
+
+How to test a header
+
+1. Test keyboard only, then screen reader + keyboard actions
+
+   - Skip-links: Focus moves directly to the header or navigation
+
+   - Tab: Nothing, headings are not focusable unless they are actionable
+
+   - Arrow-keys: Headings are browsed
+
+2. Test mobile screenreader gestures
+
+   - Swipe: Focus moves directly to the header or navigation
+
+   - Doubletap: This typically activates most elements
+
+3. Listen to screenreader output on all devices
+
+   - It is discoverable with screenreader shortcuts as header/banner landmark
+
+   - Group: It typically contains the name and primary navigation of the website
+
+Full information: [$FULL_LINK]($FULL_LINK)
+
+## Gherkin
+
+### #a11y - Web Accessibility Acceptance Criteria
+
+How to test a header
+
+GIVEN THAT I am on a page with a header landmark
+
+1. Keyboard for mobile & desktop
+
+   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
+
+2. Desktop screenreader
+
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
+
+   - I use the tab key to enter the web browser window
+
+   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+
+   - I HEAR It typically contains the name and primary navigation of the website
+
+3. Mobile screenreader
+
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
+
+   - I swipe to focusable elements in the header
+
+   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
+
+   - I HEAR It typically contains the name and primary navigation of the website
+
+Full information: [$FULL_LINK]($FULL_LINK)
+
+## Developer Notes
+
+### Name
+
+- Typically doesn’t have a name or description since there must be only one instance per page.
 EOF
 )
 
@@ -161,75 +306,6 @@ CRITERIA_TEMPLATE=$(cat <<EOF
 
 How to test a header
 
-## Condensed
-
-### #a11y - Web Accessibility Acceptance Criteria
-
-How to test a header
-
-1. Test keyboard only, then screen reader + keyboard actions
-
-   - Skip-links: Focus moves directly to the header or navigation
-
-   - Tab: Nothing, headings are not focusable unless they are actionable
-
-   - Arrow-keys: Headings are browsed
-
-2. Test mobile screenreader gestures
-
-   - Swipe: Focus moves directly to the header or navigation
-
-   - Doubletap: This typically activates most elements
-
-3. Listen to screenreader output on all devices
-
-   - It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - Group: It typically contains the name and primary navigation of the website
-
-Full information: [$FULL_LINK]($FULL_LINK)
-
-## Gherkin
-
-### #a11y - Web Accessibility Acceptance Criteria
-
-How to test a header
-
-GIVEN THAT I am on a page with a header landmark
-
-1. Keyboard for mobile & desktop
-
-   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
-
-2. Desktop screenreader
-
-   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
-
-   - I use the tab key to enter the web browser window
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
-
-3. Mobile screenreader
-
-   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   - I swipe to focusable elements in the header
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
-
-
-Full information: [$FULL_LINK]($FULL_LINK)
-
-## Developer Notes
-
-### Name
-
-- Typically doesn’t have a name or description since there must be only one instance per page.
-
 ## Videos
 
 - Videos go here
@@ -241,10 +317,15 @@ Full information: [$FULL_LINK]($FULL_LINK)
 EOF
 )
 
-# Append additional sections for native
+# Append additional sections for native and web
 if [[ "$SECTION" == "native" ]]; then
   CRITERIA_TEMPLATE="${CRITERIA_TEMPLATE}
-${NATIVE_ADDITIONAL_SECTIONS}"
+${NATIVE_SECTIONS}"
+fi
+
+if [[ "$SECTION" == "web" ]]; then
+   CRITERIA_TEMPLATE="${CRITERIA_TEMPLATE}
+${WEB_SECTIONS}"
 fi
 
 # Write to file based on template type
