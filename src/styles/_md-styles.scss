@@ -77,7 +77,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         display: none !important;
       }
     }
-
+    
     button {
       display: block;
       position: relative;
@@ -91,4 +91,8 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       border-left: none;
     }
   }
+}
+
+.bad-example {
+  color: var(--color-error);
 }

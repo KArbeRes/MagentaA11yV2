@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { ButtonType } from 'components/custom-components/buttons/button-types';
-import IconButton from 'components/custom-components/buttons/icon-button/icon-button';
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Link, useNavigate } from 'react-router-dom';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeRaw from 'rehype-raw';
-import remarkGfm from 'remark-gfm';
-import { Icon } from 'shared/Icons';
-import { getMarkdownFunctionMap } from 'utils/markdownFunctions';
-import { MarkdownContentProps, MediaProps } from './markdown-content.types';
+import { ButtonType } from "components/custom-components/buttons/button-types";
+import IconButton from "components/custom-components/buttons/icon-button/icon-button";
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import { Link, useNavigate } from "react-router-dom";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+import { Icon } from "shared/Icons";
+import { getMarkdownFunctionMap } from "utils/markdownFunctions";
+import { MarkdownContentProps, MediaProps } from "./markdown-content.types";
 
-import './markdown-content.scss';
+import "./markdown-content.scss";
 
 const MarkdownContent: React.FC<MarkdownContentProps> = ({
   content,
@@ -31,7 +31,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ src, alt }: MediaProps) => {
-            const resolvedSrc = src?.startsWith('http')
+            const resolvedSrc = src?.startsWith("http")
               ? src
               : `${assetBasePath}/${src}`;
             return resolvedSrc ? (
@@ -43,7 +43,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
           video: ({ poster, children }: MediaProps) => {
             let posterPath = poster
               ? `${assetBasePath}/${poster}`
-              : 'MagentaA11yV2/movie.svg';
+              : "MagentaA11yV2/movie.svg";
             return (
               <video controls preload="none" poster={posterPath}>
                 {children}
@@ -51,14 +51,14 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
             );
           },
           source: ({ src, type }: MediaProps) => {
-            const resolvedSrc = src?.startsWith('http')
+            const resolvedSrc = src?.startsWith("http")
               ? src
               : `${assetBasePath}/${src}`;
             return <source src={resolvedSrc} type={type} />;
           },
           a: (props) => {
-            const fnKey = (props as any)['data-fn'];
-            const eventType = (props as any)['data-event'] || 'onClick';
+            const fnKey = (props as any)["data-fn"];
+            const eventType = (props as any)["data-event"] || "onClick";
             const handler = fnKey && markdownFunctionMap[fnKey];
             const { href, children } = props;
 
@@ -66,25 +66,27 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
               const sharedProps = { ...props };
 
               switch (eventType) {
-                case 'onMouseDown':
+                case "onMouseDown":
                   return (
                     <a
                       {...sharedProps}
                       onMouseDown={(e) => {
                         e.preventDefault();
                         handler(e);
-                      }}>
+                      }}
+                    >
                       {children}
                     </a>
                   );
-                case 'onMouseUp':
+                case "onMouseUp":
                   return (
                     <a
                       {...sharedProps}
                       onMouseUp={(e) => {
                         e.preventDefault();
                         handler(e);
-                      }}>
+                      }}
+                    >
                       {children}
                     </a>
                   );
@@ -95,7 +97,8 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
                       onClick={(e) => {
                         e.preventDefault();
                         handler(e);
-                      }}>
+                      }}
+                    >
                       {children}
                     </a>
                   );
@@ -120,7 +123,8 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Open ${href} in a new tab`}>
+                aria-label={`Open ${href} in a new tab`}
+              >
                 {children}
               </a>
             ) : (
@@ -131,23 +135,23 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
           },
 
           button: ({ children, ...props }) => {
-            const fnKey = (props as Record<string, unknown>)?.['data-fn'] as
+            const fnKey = (props as Record<string, unknown>)?.["data-fn"] as
               | string
               | undefined;
             const fn = fnKey && markdownFunctionMap[fnKey];
 
             const { type: nativeType, ...rest } = props;
 
-            const iconName = (props as Record<string, unknown>)['data-icon'] as
+            const iconName = (props as Record<string, unknown>)["data-icon"] as
               | Icon
               | undefined;
             const a11yLabel = (props as Record<string, unknown>)[
-              'data-label'
+              "aria-label"
             ] as string | undefined;
 
             // ✅ Pass the event so the function can use event.currentTarget
             const onClick =
-              typeof fn === 'function'
+              typeof fn === "function"
                 ? (event: React.MouseEvent) => fn(event)
                 : undefined;
 
@@ -156,7 +160,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
                 <IconButton
                   icon={iconName}
                   onClick={onClick}
-                  a11yLabel={a11yLabel || ''}
+                  a11yLabel={a11yLabel || ""}
                   type={
                     nativeType === ButtonType.button ||
                     nativeType === ButtonType.submit ||
@@ -183,8 +187,8 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
           },
 
           div: (props) => {
-            const fnKey = (props as any)['data-fn'];
-            const eventType = (props as any)['data-event'] || 'onClick';
+            const fnKey = (props as any)["data-fn"];
+            const eventType = (props as any)["data-event"] || "onClick";
             const handler = fnKey && markdownFunctionMap[fnKey];
 
             if (!fnKey || !handler) {
@@ -193,24 +197,25 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 
             const commonProps = {
               ...props,
-              role: props.role || 'button',
+              role: props.role || "button",
               tabIndex: props.tabIndex ?? 0,
 
               children: props.children,
             };
 
             switch (eventType) {
-              case 'onMouseDown':
+              case "onMouseDown":
                 return <div {...commonProps} onMouseDown={handler} />;
-              case 'onMouseUp':
+              case "onMouseUp":
                 return <div {...commonProps} onMouseUp={handler} />;
-              case 'onClick':
+              case "onClick":
               default:
                 return <div {...commonProps} onClick={handler} />;
             }
           },
-        }}>
-        {content || ''}
+        }}
+      >
+        {content || ""}
       </ReactMarkdown>
     </div>
   );

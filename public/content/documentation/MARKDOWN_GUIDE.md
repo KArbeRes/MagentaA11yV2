@@ -71,7 +71,7 @@ You can use custom HTML elements with attributes to enhance interactivity:
 > 💡 All available icon names for `data-icon` can be found in `src/shared/Icons.ts`.
 
 ```html
-<button data-icon="copyFilled" data-label="Copy Text">Copy</button>
+<button data-icon="copyFilled" aria-label="Copy Text">Copy</button>
 ```
 
 ### 🔗 Functional Links
@@ -95,13 +95,12 @@ You can use custom HTML elements with attributes to enhance interactivity:
 ```
 
 ### Examples with background color & padding
-* Use `<example>` or `<div class="example>` to wrap code blocks or live HTML with background color.
+
+- Use `<example>` or `<div class="example>` to wrap code blocks or live HTML with background color.
 
 ```html
 <example>
-   <button>
-   Continue
-   </button>
+  <button>Continue</button>
 </example>
 ```
 

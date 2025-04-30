@@ -45,6 +45,20 @@ export const getMarkdownFunctionMap = (
     }
   },
 
+  alertSuccess: () => {
+    const alertDiv = document.getElementById('alertSuccessExample');
+    if (alertDiv) {
+      alertDiv.innerHTML.length === 0 ? alertDiv.innerHTML = 'Success: Your account has been updated!' : alertDiv.innerHTML = '';
+    }
+  },
+
+  alertWarning: () => {
+    const warningDiv = document.getElementById('favorite-character-error');
+    if (warningDiv) {
+      warningDiv.innerHTML.length === 0 ? warningDiv.innerHTML = 'Warning: The correct answer is all of them' : warningDiv.innerHTML = '';
+    }
+  },
+
   scrollAndFocusMain: () => {
     const main = document.querySelector('main');
     if (main) {

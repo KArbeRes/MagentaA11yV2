@@ -145,9 +145,9 @@ Use `fieldset` and `legend` to group related fields, such as:
       <label for="card-number">Card Number</label>
         
       <button type="button" class="cc-camera secondary">
-         <span class="hidden">Use camera to</span> 
+         <span class="hidden-visually">Use camera to</span> 
          Scan
-         <span class="hidden">card number</span>
+         <span class="hidden-visually">card number</span>
       </button>
         
       <input type="text" 
@@ -170,7 +170,7 @@ Use `fieldset` and `legend` to group related fields, such as:
       </legend>
       <div class="expiry-container">
           
-        <label class="hidden" for="cc-exp-month">Expiration Month (MM)</label>
+        <label class="hidden-visually" for="cc-exp-month">Expiration Month (MM)</label>
         <input type="text"
               maxlength="2"  
               name="ccmonth" 
@@ -180,7 +180,7 @@ Use `fieldset` and `legend` to group related fields, such as:
               pattern="[0-9]*"
               required>
           
-        <label class="hidden" for="cc-exp-year">Expiration Year (YY)</span></label>
+        <label class="hidden-visually" for="cc-exp-year">Expiration Year (YY)</span></label>
         <input type="text"
               maxlength="2"  
               name="ccyear" 
@@ -225,9 +225,9 @@ Use `fieldset` and `legend` to group related fields, such as:
             <div class="card-number-container">
                 <label for="card-number">Card Number</label>
                 <button type="button" class="cc-camera secondary">
-                   <span class="hidden">Use camera to</span> 
+                   <span class="hidden-visually">Use camera to</span> 
                    Scan
-                   <span class="hidden">card number</span>
+                   <span class="hidden-visually">card number</span>
                 </button>
                 <input type="text" 
                        name="cardnumber" 
@@ -245,7 +245,7 @@ Use `fieldset` and `legend` to group related fields, such as:
         <fieldset>
             <legend>Expiration <span aria-hidden="true">(MM YY)</span></legend>
             <div class="expiry-container">
-                <label class="hidden" for="cc-exp-month">Expiration Month (MM)</label>
+                <label class="hidden-visually" for="cc-exp-month">Expiration Month (MM)</label>
                 <input type="text"
                        maxlength="2"  
                        name="ccmonth" 
@@ -254,7 +254,7 @@ Use `fieldset` and `legend` to group related fields, such as:
                        autocomplete="cc-exp-month"
                        pattern="[0-9]*"
                        required>
-                <label class="hidden" for="cc-exp-year">Expiration Year (YY)</label>
+                <label class="hidden-visually" for="cc-exp-year">Expiration Year (YY)</label>
                 <input type="text"
                       maxlength="2"  
                       name="ccyear" 
