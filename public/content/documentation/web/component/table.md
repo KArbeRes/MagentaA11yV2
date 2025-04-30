@@ -4,192 +4,248 @@ How to test a table
 
 ## Condensed
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a table
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   &mdash; Arrow-keys: The table scrolls into view (and with a screenreader the cells become individually readable)
+   - Arrow-keys: The table scrolls into view (and with a screenreader the cells become individually readable)
 
 2. Test mobile screenreader gestures
 
-   &mdash; Swipe: The table is browsed from cell to cell
+   - Swipe: The table is browsed from cell to cell
 
 3. Listen to screenreader output on all devices
 
-   &mdash; Name: The table has a caption or a heading to describe its purpose
+   - Name: The table has a caption or a heading to describe its purpose
+   - Role: It identifies itself as a table
+   - Group: Column headers and row headers are identified with screenreader shortcuts
 
-   &mdash; Role: It identifies itself as a table
-
-   &mdash; Group: Column headers and row headers are identified with screenreader shortcuts
-
-Full information: https://www.magentaa11y.com/#/web-criteria/component/table
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/table](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/table)
 
 ## Gherkin
 
-### a11y - Web Accessibility Acceptance Criteria
+### #a11y - Web Accessibility Acceptance Criteria
 
 How to test a table
 
-GIVEN THAT I am on a page with a table
+GIVEN THAT I am on a page with a table landmark
 
 1. Keyboard for mobile & desktop
 
-   &mdash; WHEN I use the arrow keys  
-   &mdash; I SEE the table scrolls into view (but is not focusable)
+   - WHEN I use the arrow keys I SEE the table scrolls into view (but is not focusable)
 
 2. Desktop screenreader
 
-   &mdash; WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND  
-   &mdash; I use the arrow keys
-
-   &mdash; I HEAR The table has a caption or a heading to describe its purpose  
-   &mdash; I HEAR It identifies itself as a table  
-   &mdash; I HEAR Column headers and row headers are identified with screenreader shortcuts
+   - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver)
+   - AND use the arrow keys
+      - I HEAR The table has a caption or a heading to describe its purpose
+      - I HEAR It identifies itself as a table
+      - I HEAR Column headers and row headers are identified with screenreader shortcuts
 
 3. Mobile screenreader
 
-   &mdash; WHEN I use a mobile screenreader (Talkback, VoiceOver) AND  
-   &mdash; I swipe to focusable elements in the footer
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver)
+   - AND I swipe to focusable elements in the footer
+      - I HEAR The table has a caption or a heading to describe its purpose
+      - I HEAR It identifies itself as a table
+      - I HEAR Column headers and row headers are identified with screenreader shortcuts
 
-   &mdash; I HEAR The table has a caption or a heading to describe its purpose  
-   &mdash; I HEAR It identifies itself as a table  
-   &mdash; I HEAR Column headers and row headers are identified with screenreader shortcuts
 
-Full information: https://www.magentaa11y.com/#/web-criteria/component/table
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/table](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/table)
 
-## Code Examples
-Tables must be used to structure tabular data. Avoid using tables for layout purposes.
 
-### Use Semantic HTML
+## Code examples
+### Use semantic HTML
+This semantic HTML contains all accessibility features by default.
 
-This semantic HTML contains all accessibility features by default.  
 Optional: The table is wrapped in a `<figure>` to indicate author and source.
 
 ```html
-<table id="nato-table">
-  <caption class="h-charlie">
-    Nato phonetic Alphabet
-  </caption>
-  <thead>
-    <tr>
-      <th scope="row">Letter</th>
-      <th scope="col">A</th>
-      <th scope="col">B</th>
-      <th scope="col">C</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">NATO</th>
-      <td>Alpha</td>
-      <td>Bravo</td>
-      <td>Charlie</td>
-    </tr>
-  </tbody>
+<table id="sesame-table">
+   <caption>
+      Sesame Street Characters
+   </caption>
+   <thead>
+      <tr>
+         <th scope="row">
+         Letter
+         </th>
+         <th scope="col">
+         Elmo
+         </th>
+         <th scope="col">
+         B
+         </th>
+         <th scope="col">
+         C
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <th scope="row">
+         Name
+         </th>
+         <td>
+         Elmo
+         </td>
+         <td>
+         Big Bird
+         </td>
+         <td>
+         Cookie Monster
+         </td>
+      </tr>
+   </tbody>
 </table>
 ```
 
-<table class="text-center">
-  <caption>
-    Nato phonetic Alphabet
-  </caption>
-  <thead>
-    <tr>
-      <th scope="row">Letter</th>
-      <th scope="col">A</th>
-      <th scope="col">B</th>
-      <th scope="col">C</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">NATO</th>
-      <td>Alpha</td>
-      <td>Bravo</td>
-      <td>Charlie</td>
-    </tr>
-  </tbody>
-</table>
+<example>
+   <div class="table-wrapper">
+      <table id="sesame-table">
+         <caption>
+            Sesame Street Characters
+         </caption>
+         <thead>
+            <tr>
+               <th scope="row">
+               Letter
+               </th>
+               <th scope="col">
+               Elmo
+               </th>
+               <th scope="col">
+               B
+               </th>
+               <th scope="col">
+               C
+               </th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <th scope="row">
+               Name
+               </th>
+               <td>
+               Elmo
+               </td>
+               <td>
+               Big Bird
+               </td>
+               <td>
+               Cookie Monster
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</example>
 
-<table class="text-center">
-<caption>
-    Screen reader and browser pairings
-  </caption>
-  <thead>
-    <tr>
-      <th>Platform</th>
-      <th>Screenreader</th>
-      <th>Browser</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <img src="media/images/icons/logo-apple.svg" alt="Apple"> 
-      </td>
-      <td>
-        <img src="media/images/icons/logo-apple.svg" alt="VoiceOver"> 
-      </td>
-      <td>
-        <img src="media/images/icons/logo-safari.svg" alt="Safari"> 
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="media/images/icons/logo-android.svg" alt="Android"> 
-      </td>
-      <td>
-        <img src="media/images/icons/logo-talkback.svg" alt="Talkback"> 
-      </td>
-      <td>
-        <img src="media/images/icons/logo-chrome.svg" alt="Chrome">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="media/images/icons/logo-windows.svg" alt="Windows"> 
-      </td>
-      <td>
-        <img src="media/images/icons/logo-jaws.svg" alt="JAWS">
-      </td>
-      <td>
-        <img src="media/images/icons/logo-chrome.svg" alt="Chrome"> 
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="media/images/icons/logo-windows.svg" alt="Windows">
-      </td>
-      <td>
-        <img src="media/images/icons/logo-nvda.svg" alt="NVDA">
-      </td>
-      <td>
-        <img src="media/images/icons/logo-chrome.svg" alt="Chrome"> 
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="media/images/icons/logo-apple.svg" alt="Apple">
-      </td>
-      <td>
-        <img src="media/images/icons/logo-apple.svg" alt="VoiceOver"> 
-      </td>
-      <td>
-        <img src="media/images/icons/logo-safari.svg" alt="Safari"> 
-      </td>
-    </tr>
-  </tbody>
-</table>
+<!-- TODO broken image references -->
+<example>
+   <div class="table-wrapper">
+      <table class="comparison">
+         <caption class="center-text h-charlie">
+            Screen reader and browser pairings
+         </caption>
+         <thead>
+         <tr><th scope="col">
+            Platform
+         </th>
+         <th scope="col">
+            Screenreader
+         </th>
+         <th scope="col">
+            Browser
+         </th>
+         </tr></thead>
+         <tbody>
+         <tr>
+            <th scope="row">
+               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               iOS
+            </th>
+            <td>
+               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               VoiceOver
+            </td>
+            <td>
+               <img src="/assets/images/icons/logo-safari.svg" role="img" alt="Apple" class="icon">
+               Safari
+            </td>
+         </tr>
+         <tr>
+            <th scope="row">
+               <img src="/assets/images/icons/logo-android.svg" role="img" alt="" class="icon">
+               Android
+            </th>
+            <td>
+               <img src="/assets/images/icons/logo-talkback.svg" role="img" alt="" class="icon">
+               Talkback
+            </td>
+            <td>
+               <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
+               Chrome
+            </td>
+         </tr>
+         <tr>
+            <th scope="row">
+               <img src="/assets/images/icons/logo-windows.svg" role="img" alt="" class="icon">
+               Windows
+            </th>
+            <td>
+               <img src="/assets/images/icons/logo-jaws.svg" role="img" alt="" class="icon">
+               JAWS
+            </td>
+            <td>
+               <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
+               Chrome
+            </td>
+         </tr>
+         <tr>
+            <th scope="row">
+               <img src="/assets/images/icons/logo-windows.svg" role="img" alt="" class="icon">
+               Windows
+            </th>
+            <td>
+               <img src="/assets/images/icons/logo-nvda.svg" role="img" alt="" class="icon">
+               NVDA
+            </td>
+            <td>
+               <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
+               Chrome
+            </td>
+         </tr>
+         <tr>
+            <th scope="row">
+               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               MacOS
+            </th>
+            <td>
+               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               VoiceOver
+            </td>
+            <td>
+               <img src="/assets/images/icons/logo-safari.svg" role="img" alt="Apple" class="icon">
+               Safari
+            </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</example>
 
-### When You Can’t Use Semantic HTML
-
-If tabular data must be displayed without a `<table>` element, additional attributes are required.
+### When you can’t use semantic HTML
+If it’s required to display tabular data without using a `<table>` element, attributes will have to added.
 
 ```html
 <div role="table" aria-describedby="table-desc">
-  <div id="table-desc">Nato phonetic alphabet</div>
+  <div id="table-desc">
+    Nato phonetic alphabet
+  </div>
   <div role="rowgroup">
     <div role="row">
       <span role="columnheader">Letter</span>
@@ -207,35 +263,57 @@ If tabular data must be displayed without a `<table>` element, additional attrib
     </div>
     <div role="row">
       <span role="cell">C</span>
-      <span role="cell">Charlie</span>
+      <span role="cell">thead</span>
     </div>
   </div>
 </div>
 ```
 
+## Developer notes
+Don't use tables purely for layout. Only use tables to structure tabular data. 
+
+### Name
+- The table can be named by a heading above or a `<caption>`
+
+### Role
+- Semantic `<table>` structures identify headers appropriately and honors screen reader keyboard shortcuts.
+
+### Group
+- Wrapping a table in a [`<figure>` element](/OpenA11yEngineer/checklist-web/figure/) can be used to build a relationship to `<figcaption>` and `<cite>`
+
+### State
+- Sortable tables can use `aria-sort` to indicate state.
+
+## Documentation
+- [MSDN Web Docs - ARIA: table role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Table_Role)
+- [WAI-ARIA table example](https://www.w3.org/TR/wai-aria-practices/examples/table/table.html)
+
 ## Videos
 
-#### iOS Voiceover
+### Android Talkback
+
+<video controls>
+  <source src="media/video/web/table/table_android.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+### iOS VoiceOver
 
 <video controls>
   <source src="media/video/web/table/table_ios.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
-## Developer Notes
+### Windows NVDA Chrome
 
-### Name
+<video controls>
+  <source src="media/video/web/table/table_nvda.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
 
-- The table can be named by a heading above or a `<caption>`.
+### Windows JAWS Chrome
 
-### Role
-
-- Semantic `<table>` structures identify headers appropriately and honor screenreader keyboard shortcuts.
-
-### Group
-
-- Wrapping a table in a `<figure>` element can build a relationship to `<figcaption>` and `<cite>`.
-
-### State
-
-- Sortable tables can use `aria-sort` to indicate state.
+<video controls>
+  <source src="media/video/web/table/table_macos.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>

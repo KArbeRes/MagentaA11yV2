@@ -24,98 +24,105 @@ best practices.
 
       <div class="how-to-test-checklist-item">
         <h3>✓ Ensure each link and button receives focus and has a visible focus indicator</h3>
-        <table >
-        <thead>
-            <th scope="col">
-            Pass
-            </th>
-            <th scope="col">
-            Fail
-            </th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-            <button class="Magentaa11y-button Magentaa11y-button--primary">I get focus!</button>
-            </td>
-            <td>
-            <div class="Magentaa11y-button Magentaa11y-button--primary">I do NOT get focus</div>
-            </td>
-        </tr>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+                <th scope="col">
+                Pass
+                </th>
+                <th scope="col">
+                Fail
+                </th>
+            </thead>
+            <tbody>
             <tr>
-            <td>
-            <a href="#">I get focus!</a>
-            </td>
-            <td>
-            <a>I do NOT get focus</a>
-            </td>
-        </tr>
-        </tbody>
-        </table>
+                <td>
+                <button class="Magentaa11y-button Magentaa11y-button--primary">I get focus!</button>
+                </td>
+                <td>
+                <div class="Magentaa11y-button Magentaa11y-button--primary">I do NOT get focus</div>
+                </td>
+            </tr>
+                <tr>
+                <td>
+                <a href="#">I get focus!</a>
+                </td>
+                <td>
+                <a>I do NOT get focus</a>
+                </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="how-to-test-checklist-item">
         <h3>✓ Ensure buttons and links can be activated with the <code>enter</code> key and that buttons can also be activated with the <code>space</code> key</h3>
-        <table >
-            <thead>
-            <th scope="col">
-                Pass
-            </th>
-            <th scope="col">
-                Fail
-            </th>
-            </thead>
-            <tbody>
-            <tr>
-            <td>
-                <button class="Magentaa11y-button Magentaa11y-button--primary" data-fn="showAlert">Show alert</button>
-            </td>
-            <td>
-                <div class="Magentaa11y-button Magentaa11y-button--primary" type="button" tabindex="0" data-fn="showMouseAlert" data-event="onMouseDown">
-                Show alert
-                </div>
-            </td>
-            </tr>
-                <tr>
-            <td>
-                <a href="/home">Magentaa11y home</a>
-            </td>
-            <td>
-                <a tabindex="0" data-fn="goToHome" data-event="onMouseUp" >Magentaa11y home</a>
-            </td>
-            </tr>
-            </tbody>
-        </table>
-      </div>
-
-      <div class="how-to-test-checklist-item">
-          <h3>✓ Ensure disabled controls are focusable but not actionable, and have an <code>aria-disabled="true"</code> attribute</h3>
-          <p><strong>Note:</strong> A control that is disabled should not be interactive to any users. Nothing should happen when activated.</p>
-          <table >
+        <div class="table-wrapper">
+          <table>
               <thead>
               <th scope="col">
-                  Preferred
+                  Pass
               </th>
               <th scope="col">
-                  Visually disabled but actionable
+                  Fail
               </th>
               </thead>
               <tbody>
               <tr>
               <td>
-                  <button class="Magentaa11y-button Magentaa11y-button--primary" aria-disabled="true">Save</button>
+                  <button class="Magentaa11y-button Magentaa11y-button--primary" data-fn="showAlert">Show alert</button>
               </td>
               <td>
-                  <button class="Magentaa11y-button Magentaa11y-button--primary visually-disabled" tabindex="-1" data-fn="showAlertWhenDisabled">Save</button>
+                  <div class="Magentaa11y-button Magentaa11y-button--primary" type="button" tabindex="0" data-fn="showMouseAlert" data-event="onMouseDown">
+                  Show alert
+                  </div>
+              </td>
+              </tr>
+                  <tr>
+              <td>
+                  <a href="/home">Magentaa11y home</a>
+              </td>
+              <td>
+                  <a tabindex="0" data-fn="goToHome" data-event="onMouseUp" >Magentaa11y home</a>
               </td>
               </tr>
               </tbody>
           </table>
+        </div>
+      </div>
+
+      <div class="how-to-test-checklist-item">
+          <h3>✓ Ensure disabled controls are focusable but not actionable, and have an <code>aria-disabled="true"</code> attribute</h3>
+          <p><strong>Note:</strong> A control that is disabled should not be interactive to any users. Nothing should happen when activated.</p>
+          <div class="table-wrapper">
+            <table >
+                <thead>
+                <th scope="col">
+                    Preferred
+                </th>
+                <th scope="col">
+                    Visually disabled but actionable
+                </th>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                    <button class="Magentaa11y-button Magentaa11y-button--primary" aria-disabled="true">Save</button>
+                </td>
+                <td>
+                    <button class="Magentaa11y-button Magentaa11y-button--primary visually-disabled" tabindex="-1" data-fn="showAlertWhenDisabled">Save</button>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+          </div>
       </div>
 
       <div class="how-to-test-checklist-item">
           <h3>✓ Ensure all links and buttons have clear labels and that all graphical controls have accurate <code>aria-label</code> attributes</h3>
-          <table >
+          <div class="table-wrapper>
+            <table>
               <thead>
               <th scope="col">
                   Pass
@@ -148,112 +155,119 @@ best practices.
               </tr>
               </tbody>
           </table>
+        </div>
       </div>
 
       <div class="how-to-test-checklist-item">
           <h3>✓ Ensure all CTA buttons or links have appropriate <code>aria-label</code> values.</h3>
           <p><strong>Note:</strong> If a control has <code>aria-label</code>, the <code>aria-label</code> must contain the text that is presented visually. The text should not be broken up and be the first part of the label.</p>
-          <table>
-          <thead>
-              <th scope="col">
-              Pass
-              </th>
-              <th scope="col">
-              Fail
-              </th>
-          </thead>
-          <tbody>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                  <th scope="col">
+                  Pass
+                  </th>
+                  <th scope="col">
+                  Fail
+                  </th>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>
+                  <h2>iPhone 14</h2>
+                  <p>I am the product information.</p>
+                  <button class="Magentaa11y-button Magentaa11y-button--primary" aria-label="Buy now, iPhone 14">Buy Now</button>
+                  </td>
+                  <td>
+                  <h2>iPhone 14</h2>
+                  <p>I am the product information.</p>
+                  <button class="Magentaa11y-button Magentaa11y-button--primary" aria-label="Learn more about our specials">Buy Now</button>
+                  </td>
+              </tr>
               <tr>
-              <td>
-              <h2>iPhone 14</h2>
-              <p>I am the product information.</p>
-              <button class="Magentaa11y-button Magentaa11y-button--primary" aria-label="Buy now, iPhone 14">Buy Now</button>
-              </td>
-              <td>
-              <h2>iPhone 14</h2>
-              <p>I am the product information.</p>
-              <button class="Magentaa11y-button Magentaa11y-button--primary" aria-label="Learn more about our specials">Buy Now</button>
-              </td>
-          </tr>
-          <tr>
-              <td>
-              <code>aria-label="Buy now, iPhone 14"</code>
-              </td>
-              <td>
-              <code>aria-label="Learn more about our specials"</code>
-              </td>
-          </tr>
-          </tbody>
-          </table>
+                  <td>
+                  <code>aria-label="Buy now, iPhone 14"</code>
+                  </td>
+                  <td>
+                  <code>aria-label="Learn more about our specials"</code>
+                  </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
       </div>
 
       <div class="how-to-test-checklist-item">
         <h3>✓ Ensure screen readers accurately announce any button or link state that is conveyed visually</h3>
         <p><strong>Note:</strong> States such as expanded,collapsed, or current can be communicated to screen reader users.</p>
-        <table>
-          <thead>
-            <th scope="col">Pass</th>
-            <th scope="col">Fail</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="MagentaA11y-accordion">
-                  <h2 class="MagentaA11y-accordion__heading">
-                    <button
-                      class="MagentaA11y-accordion__headline"
-                      aria-expanded="false"
-                      data-fn="toggleAccordionState"
-                      aria-controls="list">
-                      <span class="MagentaA11y-accordion__headline--text">More details</span>
-                    </button>
-                  </h2>
-                  <div class="MagentaA11y-accordion__body" id="list">
-                    This button expressed its state as expanded or collapsed
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <th scope="col">Pass</th>
+              <th scope="col">Fail</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="MagentaA11y-accordion">
+                    <h2 class="MagentaA11y-accordion__heading">
+                      <button
+                        class="MagentaA11y-accordion__headline"
+                        aria-expanded="false"
+                        data-fn="toggleAccordionState"
+                        aria-controls="list">
+                        <span class="MagentaA11y-accordion__headline--text">More details</span>
+                      </button>
+                    </h2>
+                    <div class="MagentaA11y-accordion__body" id="list">
+                      This button expressed its state as expanded or collapsed
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td>
-                <!--  -->
-                <div class="MagentaA11y-accordion">
-                  <h2 class="MagentaA11y-accordion__heading">
-                    <button class="MagentaA11y-accordion__headline" aria-controls="listB">
-                      <span class="MagentaA11y-accordion__headline--text">More details</span>
-                    </button>
-                  </h2>
-                  <div class="MagentaA11y-accordion__body" id="listB">
-                    This button is not conveying it's state.
+                </td>
+                <td>
+                  <!--  -->
+                  <div class="MagentaA11y-accordion">
+                    <h2 class="MagentaA11y-accordion__heading">
+                      <button class="MagentaA11y-accordion__headline" aria-controls="listB">
+                        <span class="MagentaA11y-accordion__headline--text">More details</span>
+                      </button>
+                    </h2>
+                    <div class="MagentaA11y-accordion__body" id="listB">
+                      This button is not conveying it's state.
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="how-to-test-checklist-item">
         <h3>✓ Ensure skip to &amp; same-page links move focus for screen reader and keyboard users</h3>
-        <table class="column-2">
-          <thead>
-            <tr><th scope="col">
-              Pass
-            </th>
-            <th scope="col">
-              Fail
-            </th>
-          </tr></thead>
-          <tbody>
-          <tr>
-            <td>
-            <a id="return-to-top-link" data-fn="scrollAndFocusMain" href="#">Return to top</a>
-            </td>
-            <td>
-            <a href="#" data-fn="scrollToTopOnly">
-            Return to top</a>
-            </td>
-          </tr> 
-          </tbody>
-        </table>
+        <div class="table-wrapper">
+          <table class="column-2">
+            <thead>
+              <tr><th scope="col">
+                Pass
+              </th>
+              <th scope="col">
+                Fail
+              </th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>
+              <a id="return-to-top-link" data-fn="scrollAndFocusMain" href="#">Return to top</a>
+              </td>
+              <td>
+              <a href="#" data-fn="scrollToTopOnly">
+              Return to top</a>
+              </td>
+            </tr> 
+            </tbody>
+          </table>
+        </div>
       </div>
 
 3.  **What's the difference between a link and a button**
