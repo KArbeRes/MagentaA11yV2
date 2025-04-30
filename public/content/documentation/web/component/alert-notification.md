@@ -83,7 +83,7 @@ An alert is dynamic content that is injected into the page when it changes and a
 
 ### Basic notification
 
-<!-- TODO: Needs JS to inject the alert in the code sample + error message + stylings -->
+<!-- TODO: Needs JS to update error message stylings -->
 
 ```html
 <div role="alert" 
@@ -98,20 +98,21 @@ An alert is dynamic content that is injected into the page when it changes and a
 ```
 
 <example>
-<div role="alert" 
+<div id="alertSuccessExample"
+     role="alert" 
      id="alert-notification" 
      class="alert notification inert">
     <!--- Use JS to inject the alert here -->
 </div>
 
-<button id="show-alert-notification">
+<button data-fn="alertSuccess" id="show-alert-notification">
   Save my settings
 </button>
 </example>
 
 ### Error alert from an input field
 
-<!-- TODO: Needs JS to inject the alert in the code sample + update error + stylings -->
+<!-- TODO: Needs to update error/warning stylings -->
 
 ```html
 <label for="favorite-sesame-street-character">
@@ -121,7 +122,7 @@ An alert is dynamic content that is injected into the page when it changes and a
 
 <input type="text"
        id="favorite-sesame-street-character"
-       aria-describedby="favorite-character-error favorite-character-hint"
+       aria-describedby="favorite-character-error-example favorite-character-hint"
        required>
 
 <div role="alert" 
@@ -129,7 +130,7 @@ An alert is dynamic content that is injected into the page when it changes and a
      class="alert inert">
   <!--- Do not reference this alert element
         directly with aria-describedby -->
-  <div id="favorite-character-error">
+  <div id="favorite-character-error-example">
     <!--- Use JS to inject the alert here -->
   </div>     
 </div>
@@ -168,7 +169,7 @@ An alert is dynamic content that is injected into the page when it changes and a
   Example: Elmo, Big Bird, Cookie Monster
 </div>
 
-<button id="show-error">
+<button data-fn="alertWarning" id="show-error">
   Toggle error
 </button>
 </example>
