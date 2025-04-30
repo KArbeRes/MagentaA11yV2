@@ -52,15 +52,10 @@
   }
 
   a {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-size: var(--magentaa11y-font-size-16);
-  }
-
-  p > a {
     @include base-inline-link;
-
+    
     color: var(--color-primary);
+    font-size: var(--magentaa11y-font-size-16);
   }
 
   img {
