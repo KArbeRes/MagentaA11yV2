@@ -55,7 +55,9 @@
     @include base-inline-link;
     
     color: var(--color-primary);
+    position: relative;
     font-size: var(--magentaa11y-font-size-16);
+    margin-right: 24px;
   }
 
   img {
@@ -67,5 +69,11 @@
 
   @media (max-width: 768px) {
     --content-details-padding: var(--magentaa11y-spacing-size-16);
+  }
+
+  .Magenta-icon {
+    position: absolute;
+    bottom: 0;
+    fill: var(--magentaa11y-color-fill-divider-brand);
   }
 }
