@@ -55,7 +55,7 @@ export const getMarkdownFunctionMap = (
   alertWarning: () => {
     const warningDiv = document.getElementById('favorite-character-error');
     if (warningDiv) {
-      warningDiv.innerHTML.length === 0 ? warningDiv.innerHTML = 'Warning: The correct answer is Charlie' : warningDiv.innerHTML = '';
+      warningDiv.innerHTML.length === 0 ? warningDiv.innerHTML = 'Warning: The correct answer is all of them' : warningDiv.innerHTML = '';
     }
   },
 

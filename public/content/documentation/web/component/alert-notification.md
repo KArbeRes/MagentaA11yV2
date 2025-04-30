@@ -112,7 +112,7 @@ An alert is dynamic content that is injected into the page when it changes and a
 
 ### Error alert from an input field
 
-<!-- TODO: Needs to update error/warning stylings -->
+<!-- TODO: Needs to update warning stylings -->
 
 ```html
 <label for="favorite-sesame-street-character">
