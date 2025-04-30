@@ -123,12 +123,12 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Open ${href} in a new tab`}
               >
                 {children}
+                <span className="hidden-visually"> - opens in a new tab</span>
               </a>
             ) : (
-              <Link to={href} aria-label={`Navigate to ${href}`}>
+              <Link to={href}>
                 {children}
               </Link>
             );
