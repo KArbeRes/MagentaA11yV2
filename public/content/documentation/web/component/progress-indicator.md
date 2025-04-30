@@ -10,11 +10,11 @@ How to test a progress indicator
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Arrow keys: Content within the progress indicator is browsed in logical order
+   - Arrow keys: Content within the progress indicator is browsed in a logical order
 
 2. Test mobile screenreader gestures
 
-   - Swipe: Content within the progress indicator is browsed in logical order
+   - Swipe: Content within the progress indicator is browsed in a logical order
 
 3. Listen to screenreader output on all devices
 
@@ -63,7 +63,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
    - Use `role="progressbar"`.
 
 ### Group
-   - If the progress bar is describing another region of the page, use `aria-describedby="progressbar-id"` with its paired `id="progressbar-id` to connect the two elements.
+   - If the progress bar is describing another region of the page, use `aria-describedby="progressbar-id"` with its paired `id="progressbar-id"` to connect the two elements.
 
 ### State
    - The state will be read out to the screen reader user by default.
@@ -190,7 +190,7 @@ This example dynamically injects progress updates that will be read by a screen 
    - `aria-busy="true"` indicates that the region is busy
    - `aria-describedby` allows the current progress to be read when the button is focused
    - `aria-disabled` reinforces that the save action is incomplete
-   - `role="status` has an implicit `aria-live="polite"` and `aria-atomic="true"`, meaning the entire content of the status will be read on each update
+   - `role="status"` has an implicit `aria-live="polite"` and `aria-atomic="true"`, meaning the entire content of the status will be read on each update
 
 ```html
 <div 
@@ -210,6 +210,7 @@ This example dynamically injects progress updates that will be read by a screen 
   </div>
 </div>
 ```
+
 <!-- TODO: demo doesn't currently work
 
 <example>
