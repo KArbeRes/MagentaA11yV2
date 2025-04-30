@@ -186,11 +186,6 @@ Sometimes the design will call for multiple links with the same text label. In a
 
 <h4 class="bad-example"> Bad example</h4>
 
-<<<<<<< HEAD
-=======
-<h4 class="bad-example"> Bad example</h4>
-
->>>>>>> 08dce93 (add example styles)
 ```html
 <a href="javascript:void(0)">
    Do not use javascript in href
