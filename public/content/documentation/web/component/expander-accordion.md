@@ -60,16 +60,89 @@ GIVEN THAT I am on a page with a expander accordion
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/expander-accordion](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/expander-accordion)
 
-## Developer Notes
+## Code examples
+
+### Custom Expander Accordion (ARIA Disclosure Widget)
+This custom expander uses a semantic button with `aria-expanded` with additional scripting to toggle content and states.
+
+```html
+<div class="expander-group">
+  <button class="expander-toggle" aria-expanded="false">
+    About Sesame Street
+  </button>
+  <div class="expander-content">
+    Sesame Street is an American educational 
+    children's television series that combines 
+    live-action, sketch comedy, animation, and puppetry.
+  </div>
+</div>
+```
+
+<example>
+<div class="expander-group">
+  <button class="expander-toggle" aria-expanded="false">
+    About Sesame Street
+  </button>
+  <div class="expander-content">
+    Sesame Street is an American educational 
+    children's television series that combines 
+    live-action, sketch comedy, animation, and puppetry.
+  </div>
+</div>
+</example>
+
+## Native HTML expander accordion (details/summary)
+   - This semantic HTML contains all accessibility features by default with no scripting required.
+   - It uses [CSS pseudo attributes](https://github.com/tmobile/magentaA11y/blob/main/_sass/modules/_details-summary.scss) to create the expanded/collapsed indicator, no Javascript.
+
+**Note:** Due to known accessibility support issues in recent versions of iOS, `<details>` is not recommended for expander accordions. We recommend the use of an ARIA Disclosure Widget which has very robust support.
+
+```html
+<details>
+  <summary>
+    About Sesame Street
+  </summary>
+    Sesame Street is an American educational 
+    children's television series that combines 
+    live-action, sketch comedy, animation, and puppetry.
+</details>
+```
+
+<example>
+<details>
+  <summary>
+    About Sesame Street
+  </summary>
+    Sesame Street is an American educational 
+    children's television series that combines 
+    live-action, sketch comedy, animation, and puppetry.
+</details>
+</example>
+
+## Developer notes
 
 ### Name
+   - Inner text must describe the purpose.
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+### Role
+   - Native button identifies as button by default.
+   - If using custom elements, use `role="button"` and `tabindex="0"`.
 
-## Videos
+### Group
+   - You *can* use `aria-controls="popupId"`, but it is not well supported.
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+### State
+   - Expander accordions use `aria-expanded` which toggles between "true" and "false" when the content is expanded or collapsed.
+
+### Focus
+   - Focus must be visible.
+
+## Design notes
+
+   - [Nielsen Norman Group study](https://www.nngroup.com/articles/accordion-icons/): The caret icon most clearly indicated to users that it would open an accordion in place, rather than linking directly to a new page.
+   - Not all users will notice there is hidden content or understand how these work. For this reason, you should only use them in specific situations and if user research supports it.
+   - [ARIA Disclosure Widget](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)
+
+## Further Reading
+   - [WCAG 2.1.1 Keyboard (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard)
+   - [WCAG 4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value)
