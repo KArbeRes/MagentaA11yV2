@@ -48,16 +48,26 @@ GIVEN THAT I am on a page with a separator / horizontal rule
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/separator-horizontal-rule](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/separator-horizontal-rule)
 
-## Developer Notes
+## Developer notes
 
-### Name
+Separators must be ignored by the screenreader.
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+It is preferred to create these lines with CSS rather than using a DOM element.
 
-## Videos
+## Code examples
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+If you are unable to use CSS styles, add `aria-hidden="true"` to ensure it doesn't distract from the experience.
+
+### Semantic HTML
+
+```html
+<hr aria-hidden="true">
+```
+
+### Custom elements
+
+Angular Material uses a DOM element to create separators.
+
+```html
+<div role="separator" aria-hidden="true"></div>
+```
