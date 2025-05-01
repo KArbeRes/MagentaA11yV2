@@ -388,6 +388,19 @@
           "developerNotes": "## Developer Notes\n\n### Name\n\n* Typically doesn’t have a name or description since there must be only one instance per page."
         },
         {
+          "label": "Help Hint Error",
+          "name": "help-hint-error",
+          "type": "file",
+          "generalNotes": "How to test a hint, help, or error",
+          "gherkin": "### #a11y - Web Accessibility Acceptance Criteria\n\nHow to test a hint, help, or error\n\nGIVEN THAT I am on a page with a hint, help, or error\n\n1. Keyboard for mobile & desktop\n\n   * WHEN I use the tab key to move focus to an input I SEE hint, help or error text meets size and contrast requirements\n\n2. Desktop screenreader\n\n   * WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND\n   * I use the tab key to move focus to an input\n     * I HEAR after the input name, role and state is read, THEN the hint, help, or error is read\n     * I HEAR when it appears dynamically, an error is read automatically\n\n3. Mobile screenreader\n\n   * WHEN I use a mobile screenreader (Talkback, VoiceOver) AND\n   * I swipe to focus on an input\n     * I HEAR after the input name, role and state is read, THEN the hint, help, or error is read\n     * I HEAR when it appears dynamically, an error is read automatically\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error>",
+          "condensed": "### #a11y - Web Accessibility Acceptance Criteria\n\nHow to test a hint, help, or error\n\n1. Test keyboard only, then screen reader + keyboard actions\n\n   * Tab: The input comes into focus\n\n2. Test mobile screenreader gestures\n\n   * Swipe: The input's name is read. Then the hint, help or error text is read\n\n3. Listen to screenreader output on all devices\n\n   * Name: After the input name, role and state is read. Then the hint, help or error is read\n   * Role: When it appears dynamically, an error is read automatically\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error>",
+          "criteria": null,
+          "videos": "* Videos go here\n  <video controls>\n  <source src=\"media/video/native/button/buttonIosVoiceover.webm\" type=\"video/webm\">\n  Your browser does not support the video tag.\n\n</video>",
+          "androidDeveloperNotes": null,
+          "iosDeveloperNotes": null,
+          "developerNotes": "## Developer Notes\n\n### Name\n\n* Typically doesn’t have a name or description since there must be only one instance per page."
+        },
+        {
           "label": "Radio Button",
           "name": "radio-button",
           "type": "file",
