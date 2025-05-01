@@ -63,16 +63,79 @@ GIVEN THAT I am on a page with a range slider input
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider)
 
-## Developer Notes
+## Code examples
 
-### Name
+This is one of the exceedingly rare instances where a custom element makes a lot of sense.
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+### Use a custom element
 
-## Videos
+   - Custom elements are **easier to style reliably** across browsers.
+   - [Working slider pattern examples](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+```html
+<div id="range-label">
+  How much cowbell?
+</div>
+<div class="track">
+  <div id="thumb"
+       role="slider"
+       tabindex="0"
+       aria-valuemin="0"
+       aria-valuenow="10"
+       aria-valuemax="11"
+       aria-labelledby="range-label">
+  </div>
+</div>
+```
+
+### Semantic HTML
+
+While there is a native HTML range input, it is **difficult to style reliably** across browsers.
+
+```html
+<div class="range-group">
+  <!-- Input hidden from the screen reader 
+    and keyboard to avoid repetition -->
+  <input tabindex="-1" 
+          value="10" 
+          aria-hidden="true"
+          class="range-value" 
+          id="cowbell-range-value">
+  <div>
+    <label for="cowbell-range">
+      How much cowbell?
+    </label>
+    <input type="range"
+      id="cowbell-range"
+      name="cowbell"
+      min="0"
+      max="11"
+      value="10"
+      step="1">
+  </div>
+</div>
+```
+
+<example>
+<div class="range-group">
+  <!-- Input hidden from the screen reader 
+    and keyboard to avoid repetition -->
+  <input tabindex="-1" 
+          value="10" 
+          aria-hidden="true"
+          class="range-value" 
+          id="cowbell-range-value">
+  <div>
+    <label for="cowbell-range">
+      How much cowbell?
+    </label>
+    <input type="range"
+      id="cowbell-range"
+      name="cowbell"
+      min="0"
+      max="11"
+      value="10"
+      step="1">
+  </div>
+</div>
+</example>
