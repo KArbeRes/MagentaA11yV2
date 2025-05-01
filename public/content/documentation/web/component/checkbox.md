@@ -62,11 +62,251 @@ GIVEN THAT I am on a page with a checkbox
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/checkbox](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/checkbox)
 
-## Developer Notes
+## Code examples
+
+### Use semantic HTML
+
+   - This semantic HTML contains all accessibility features by default.
+   - It uses [CSS pseudo attributes](https://github.com/tmobile/magentaA11y/blob/main/_sass/modules/_input-checkbox.scss) to create the checkbox indicator, without Javascript.
+
+```html
+<fieldset>
+  <legend>Choose your favorite Sesame Street characters:</legend>
+
+  <input type="checkbox" id="elmoCheckbox">
+  <label for="elmoCheckbox">Elmo</label>
+
+  <input type="checkbox" id="bigBirdCheckbox">
+  <label for="bigBirdCheckbox">Big Bird</label>
+
+  <input type="checkbox" id="cookieCheckbox" checked>
+  <label for="cookieCheckbox">Cookie Monster</label>
+</fieldset>
+```
+
+<example>
+<fieldset>
+  <legend>Choose your favorite Sesame Street characters:</legend>
+
+  <input type="checkbox" id="elmoCheckbox">
+  <label for="elmoCheckbox">Elmo</label>
+
+  <input type="checkbox" id="bigBirdCheckbox">
+  <label for="bigBirdCheckbox">Big Bird</label>
+
+  <input type="checkbox" id="cookieCheckbox" checked>
+  <label for="cookieCheckbox">Cookie Monster</label>
+</fieldset>
+</example>
+
+### Don't put interactive elements inside the label
+
+Even though this is valid HTML, it creates unpredictable results with screenreaders. A (currently) reliable method is to keep interactive elements outside the label and reference it with `aria-describedby="hint-id"`
+
+```html
+<fieldset>
+  <legend>Legal disclaimers</legend>
+  <div id="hint-tc" class="hint-checkbox">
+    <a href="/code-of-conduct/">Read terms and conditions</a>
+  </div>
+  <input type="checkbox"
+         id="tc-agree"
+         aria-describedby="hint-tc">
+  <label for="tc-agree">
+    I agree to the terms and conditions
+  </label>
+</fieldset>
+```
+
+<example>
+<fieldset>
+  <legend>Legal disclaimers</legend>
+  <div id="hint-tc" class="hint-checkbox">
+    <a href="/code-of-conduct/">Read terms and conditions</a>
+  </div>
+  <input type="checkbox"
+         id="tc-agree"
+         aria-describedby="hint-tc">
+  <label for="tc-agree">
+    I agree to the terms and conditions
+  </label>
+</fieldset>
+</example>
+
+### Disabled and focusable checkbox (preferred)
+
+   - An input using `aria-disabled="true` will be focusable with the tab key
+   - Use JS to `preventDefault()`
+
+```html
+<fieldset>
+  <legend>Choose your favorite fruit</legend>
+
+  <input type="checkbox" id="lemonsCheckbox" aria-disabled="true" checked>
+  <label for="lemonsCheckbox">Lemons</label>
+
+  <input type="checkbox" id="limesCheckbox" aria-disabled="true">
+  <label for="limesCheckbox">Limes</label>
+
+</fieldset>
+```
+
+<example>
+<fieldset>
+  <legend>Choose your favorite fruit</legend>
+
+  <input type="checkbox" id="lemonsCheckbox" aria-disabled="true" checked>
+  <label for="lemonsCheckbox">Lemons</label>
+
+  <input type="checkbox" id="limesCheckbox" aria-disabled="true">
+  <label for="limesCheckbox">Limes</label>
+
+</fieldset>
+</example>
+
+### Fully disabled checkbox
+
+   - An input using the `disabled` attribute will not be focusable with the tab key
+   - Arrow keys will still be able to browse disabled inputs
+
+```html
+<fieldset>
+  <legend>Choose your favorite video game</legend>
+
+  <input type="checkbox" id="marioCheckbox" disabled checked>
+  <label for="marioCheckbox">MarioKart</label>
+
+  <input type="checkbox" id="zeldaCheckbox" disabled>
+  <label for="zeldaCheckbox">Legend of Zelda</label>
+
+</fieldset>
+```
+
+<example>
+<fieldset>
+  <legend>Choose your favorite video game</legend>
+
+  <input type="checkbox" id="marioCheckbox" disabled checked>
+  <label for="marioCheckbox">MarioKart</label>
+
+  <input type="checkbox" id="zeldaCheckbox" disabled>
+  <label for="zeldaCheckbox">Legend of Zelda</label>
+
+</fieldset>
+</example>
+
+### When you can't use semantic HTML
+
+This custom checkbox requires extra attributes and event listeners:
+
+```html
+<div role="checkbox" tabindex="0" aria-checked="true">
+  Elmo
+</div>
+```
+
+### Speciality checkboxes
+
+Sometimes a design may call for a card-type checkbox. 
+   - Its core should still be a semantic checkbox input
+   - Use `aria-describedby` to read extra content _after_ the the name, role, and state
+
+```html
+<ul class="cards">
+  <li class="card interactive">
+    <input type="checkbox"
+           id="oscarCheckboxCard"
+           aria-describedby="descriptionOscar" >
+    <label for="oscarCheckboxCard">
+      Oscar the Grouch
+    </label>
+    <div class="extended-description"
+         id="descriptionOscar">
+      Oscar has a green body, no visible 
+      nose, and lives in a trash can.
+    </div>
+  </li>
+  <li class="card interactive">
+    <input type="checkbox"
+           id="groverCheckboxCard"
+           aria-describedby="descriptionGrover" >
+    <label for="groverCheckboxCard">
+      Grover
+      </label>
+    <div class="extended-description"
+         id="descriptionGrover">
+      Grover is a self-described as lovable, cute, 
+      and furry, he is a blue monster who rarely 
+      uses contractions when he speaks or sings.
+    </div>
+  </li>
+</ul>
+```
+
+<example>
+<ul class="cards">
+  <li class="card interactive">
+    <input type="checkbox"
+           id="oscarCheckboxCard"
+           aria-describedby="descriptionOscar" >
+    <label for="oscarCheckboxCard">
+      Oscar the Grouch
+    </label>
+    <div class="extended-description"
+         id="descriptionOscar">
+      Oscar has a green body, no visible 
+      nose, and lives in a trash can.
+    </div>
+  </li>
+  <li class="card interactive">
+    <input type="checkbox"
+           id="groverCheckboxCard"
+           aria-describedby="descriptionGrover" >
+    <label for="groverCheckboxCard">
+      Grover
+      </label>
+    <div class="extended-description"
+         id="descriptionGrover">
+      Grover is a self-described as lovable, cute, 
+      and furry, he is a blue monster who rarely 
+      uses contractions when he speaks or sings.
+    </div>
+  </li>
+</ul>
+</example>
+
+## Developer notes
 
 ### Name
+   - The `label` text must describe the checkbox input
+   - Use `aria-describedby="hint-id"` for hints or additional descriptions
+   - `aria-label="Checkbox input purpose"` can also be used (as a last resort)
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+### Role
+   - **By default**, semantic HTML checkbox inputs identify as a checkbox
+   - Use `role="checkbox"` for custom elements
+
+### Group
+   - Semantic HTML
+      - `<fieldset>` wraps a checkbox group
+      - `<legend>` describes the group's purpose
+      - Each `<label>` must include `for="input-id"` to be associated with its input
+   - Custom elements
+      - Use `role="group"` in the place of fieldset
+      - Use `aria-labelledby="label-id"` to associate an element as a label
+      - `aria-label="Group purpose"` can also be used if there's no label with an `id`
+
+### State
+   - Semantic HTML
+      - Use `checked` for native HTML
+      - Use the `disabled` state for inactive checkboxes
+   - Custom element
+      - Use `aria-checked="true/false"` to express state
+      - Use `aria-disabled="true"` to declare inactive elements
+
+### Focus
+   - Focus must be visible
+   - Custom elements will require keyboard event listeners
 
 ## Videos
 
