@@ -26,7 +26,11 @@ How to test a range slider input
    - Group: Its label is read with the input
    - State: Its current value
 
+<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
+=======
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider)
+>>>>>>> 98c80da (Updated condensed and gherkin criteria):public/content/documentation/web/form/range-slider.md
 
 ## Gherkin
 
@@ -61,6 +65,7 @@ GIVEN THAT I am on a page with a range slider input
       - I HEAR its current value
    - THEN when I swipe up/down in iOS or use the volume buttons in Android I HEAR the value is changed one step
 
+<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
 
 ## Code examples
@@ -141,3 +146,20 @@ While there is a native HTML range input, it is **difficult to style reliably** 
   </div>
 </div>
 </example> -->
+=======
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider)
+
+## Developer Notes
+
+### Name
+
+- Typically doesn’t have a name or description since there must be only one instance per page.
+
+## Videos
+
+- Videos go here
+<video controls>
+  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+>>>>>>> 98c80da (Updated condensed and gherkin criteria):public/content/documentation/web/form/range-slider.md
