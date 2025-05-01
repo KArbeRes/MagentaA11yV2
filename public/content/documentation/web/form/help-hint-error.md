@@ -51,16 +51,143 @@ GIVEN THAT I am on a page with a hint, help, or error
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error)
 
-## Developer Notes
+## Code examples
 
-### Name
+### Adding hint/help text
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+```html
+<label for="best-sesame-street-character">
+  The best Sesame Street character is:
+</label>
+<input type="text" 
+       id="best-sesame-street-character" 
+       aria-describedby="best-sesame-street-character-hint">
 
-## Videos
+<div class="hint" id="best-sesame-street-character-hint">
+  Example: Elmo, Big Bird, Cookie Monster, Grover, Oscar the Grouch
+</div>
+```
 
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+<example>
+<label for="best-sesame-street-character">
+  The best Sesame Street character is:
+</label>
+<input type="text" 
+       id="best-sesame-street-character" 
+       aria-describedby="best-sesame-street-character-hint">
+
+<div class="hint" id="best-sesame-street-character-hint">
+  Example: Elmo, Big Bird, Cookie Monster, Grover, Oscar the Grouch
+</div>
+</example>
+
+### Adding an error
+
+**Note:** The alert must be structured as below to function properly in VoiceOver, with the alert text nested inside the `role="alert"` element.
+
+```html
+<label for="favorite-sesame-street-character-letter">
+  What is your Sesame Street character?
+  <span>Required</span>
+</label>
+
+<input type="text"
+       id="favorite-sesame-street-character"
+       aria-describedby="favorite-sesame-street-character-error favorite-sesame-street-character-hint"
+       required>
+
+<div role="alert" 
+     id="favorite-sesame-street-character-alert" 
+     class="alert inert">
+  <!--- Do not reference this alert element
+        directly with aria-describedby -->
+  <div id="favorite-sesame-street-character-error">
+    <!--- Use JS to inject the alert here -->
+  </div>     
+</div>
+
+<div class="hint" id="favorite-sesame-street-character-hint">
+  Example: Elmo, Big Bird, Cookie Monster, Grover, Oscar the Grouch
+</div>
+
+<button id="show-error">
+  Toggle error
+</button>
+```
+
+<example>
+<label for="favorite-sesame-street-character-letter">
+  What is your Sesame Street character?
+  <span>Required</span>
+</label>
+
+<input type="text"
+       id="favorite-sesame-street-character"
+       aria-describedby="favorite-sesame-street-character-error favorite-sesame-street-character-hint"
+       required>
+
+<div role="alert" 
+     id="favorite-sesame-street-character-alert" 
+     class="alert inert">
+  <!--- Do not reference this alert element
+        directly with aria-describedby -->
+  <div id="favorite-sesame-street-character-error">
+    <!--- Use JS to inject the alert here -->
+  </div>     
+</div>
+
+<div class="hint" id="favorite-sesame-street-character-hint">
+  Example: Elmo, Big Bird, Cookie Monster, Grover, Oscar the Grouch
+</div>
+
+<button id="show-error">
+  Toggle error
+</button>
+</example>
+
+### When there is no hint or alert
+
+Using `aria-describedby` with a `"uniqueID"` that doesn't exist on page yet will generate errors in automated syntax checking tools. 
+
+If it's not possible to remove the attribute, there are ways to avoid the error flag.
+
+#### Option 1: Leave `aria-describedby=""` empty until the hint exists (preferred)
+
+This is preferred because the DOM is cleaner.
+
+```html 
+<label for="favorite-pickle">
+  What is your favorite pickle?
+</label>
+<input type="text"
+       id="favorite-pickle"
+       aria-describedby="">
+       <!-- Leave aria-describedby attribute empty -->
+```
+
+#### Option 2: Leave the empty hint element in the DOM
+
+This technique shouldn't have any significant side effects; however it does additional elements in the DOM which is unnecessary.
+
+```html
+<label for="favorite-snack">
+  What is your favorite snack?
+</label>
+<input type="text"
+       id="favorite-snack"
+       aria-describedby="hint-favorite-snack">
+<div class="hint" id="hint-favorite-snack">
+  <!-- Leave the hint element empty -->
+</div>
+```
+
+## Developer notes
+
+### Browser + screenreader quirks
+
+   - Screenreaders do not implement alerts uniformly and must be tested.
+      - Just because an alert pattern works in one screenreader doesn't mean it will work in all three screenreaders.
+   - The element referenced by the `aria-describedby` attribute cannot use the `role="alert"` attribute (see example above for workaround). 
+      - [VoiceOver fails to read a referenced `role="alert"` element when the input is in focus](https://a11ysupport.io/tests/tech__aria__aria-describedby-with-role-alert).
+   - NVDA will read the alert twice if it appears while the input is in focus: once from the `role="alert"` being injected and again from the `aria-describedby` association.
+   - NVDA needs a fraction of a second to catch up with changes in the DOM, use a `setTimeout` to delay displaying the alert.
