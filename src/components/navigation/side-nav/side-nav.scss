@@ -33,6 +33,7 @@ nav {
 
     &--list {
       border-top: solid 1px var(--color-surface-variant);
+      overflow: scroll;
     }
 
     &--link {
