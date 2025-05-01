@@ -62,7 +62,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ## Code examples
 
-### Custom Expander Accordion (ARIA Disclosure Widget)
+### Custom expander accordion (ARIA Disclosure Widget)
 This custom expander uses a semantic button with `aria-expanded` with additional scripting to toggle content and states.
 
 ```html
@@ -78,6 +78,8 @@ This custom expander uses a semantic button with `aria-expanded` with additional
 </div>
 ```
 
+<!-- TODO: This example needs more styles support
+
 <example>
 <div class="expander-group">
   <button class="expander-toggle" aria-expanded="false">
@@ -89,7 +91,7 @@ This custom expander uses a semantic button with `aria-expanded` with additional
     live-action, sketch comedy, animation, and puppetry.
   </div>
 </div>
-</example>
+</example> -->
 
 ## Native HTML expander accordion (details/summary)
    - This semantic HTML contains all accessibility features by default with no scripting required.
