@@ -13,7 +13,7 @@ pre {
 
 code {
   font-family: "Courier New", Courier, monospace;
-  font-style: italic;
+
 }
 
 /* Syntax Highlighting with hljs classes */
@@ -37,7 +37,6 @@ code {
 /* Tag attributes (e.g., id, class) */
 .hljs-attr {
   color: var(--color-info); /* Tertiary color for attributes */
-  font-style: italic;
 }
 
 /* Attribute values (e.g., "example-header") */
@@ -49,7 +48,7 @@ code {
 /* Comments */
 .hljs-comment {
   color: var(--color-text-secondary); /* Muted color for comments */
-  font-style: italic;
+
 }
 
 /* Punctuation (e.g., <> and =) */
