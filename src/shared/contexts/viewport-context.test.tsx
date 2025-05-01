@@ -44,7 +44,7 @@ test('ViewportProvider updates context when viewport changes', () => {
 
   expect(screen.getByTestId('viewport-status')).toHaveTextContent('Desktop');
 
-  window.matchMedia('(max-width: 768px)').addEventListener('change', () => {});
+  window.matchMedia('(max-width: 936px)').addEventListener('change', () => {});
 
   setTimeout(() => {
     expect(screen.getByTestId('viewport-status')).toHaveTextContent('Mobile');
@@ -112,7 +112,7 @@ test('ViewportProvider correctly detects various screen sizes', () => {
   expect(screen.getByTestId('viewport-status')).toHaveTextContent('Desktop');
 
   mockMatchMedia.mockImplementation((query) => ({
-    matches: query === '(max-width: 768px)' ? true : false,
+    matches: query === '(max-width: 936px)' ? true : false,
     media: query,
     onchange: null,
     addListener: jest.fn(),
@@ -126,7 +126,7 @@ test('ViewportProvider correctly detects various screen sizes', () => {
     dispatchEvent: jest.fn(),
   }));
 
-  window.matchMedia('(max-width: 768px)').addEventListener('change', () => {});
+  window.matchMedia('(max-width: 936px)').addEventListener('change', () => {});
 
   setTimeout(() => {
     expect(screen.getByTestId('viewport-status')).toHaveTextContent('Mobile');
@@ -165,7 +165,7 @@ test('ViewportProvider updates all consumers when viewport changes', () => {
     'Desktop'
   );
 
-  window.matchMedia('(max-width: 768px)').addEventListener('change', () => {});
+  window.matchMedia('(max-width: 936px)').addEventListener('change', () => {});
 
   setTimeout(() => {
     expect(screen.getAllByTestId('viewport-status')[0]).toHaveTextContent(

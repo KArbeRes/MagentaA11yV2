@@ -8,7 +8,7 @@ beforeEach(() => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation((query) => ({
-      matches: query === '(max-width: 768px)' ? false : true,
+      matches: query === '(max-width: 936px)' ? false : true,
       media: query,
       onchange: null,
       addListener: jest.fn(), // Deprecated
