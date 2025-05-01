@@ -310,8 +310,37 @@ Sometimes a design may call for a card-type checkbox.
 
 ## Videos
 
-- Videos go here
+### iOS VoiceOver
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/web/checkbox/checkbox_IosVoiceOver.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Android Talkback
+
+<video controls>
+  <source src="media/video/web/checkbox/checkbox_AndroidTalkback.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Windows JAWS Chrome
+
+<video controls>
+  <source src="media/video/web/checkbox/checkbox_WindowsJawsChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Windows NVDA Chrome
+
+<video controls>
+  <source src="media/video/web/checkbox/checkbox_WindowsNvdaChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### MacOS VoiceOver Safari
+
+<video controls>
+  <source src="media/video/web/checkbox/checkbox_MacOsVoiceOverSafari.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
