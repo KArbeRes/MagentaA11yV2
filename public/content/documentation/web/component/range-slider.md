@@ -210,10 +210,12 @@ While there is a native HTML range input, it is **difficult to style reliably** 
 </div>
 ```
 
+<!-- TODO: styling and js? need to be added to help this demo function! 
+
 <example>
 <div class="range-group">
-  <!-- Input hidden from the screen reader 
-    and keyboard to avoid repetition -->
+  Input hidden from the screen reader (comment out later)
+    and keyboard to avoid repetition (comment out later)
   <input tabindex="-1" 
           value="10" 
           aria-hidden="true"
@@ -232,5 +234,9 @@ While there is a native HTML range input, it is **difficult to style reliably** 
       step="1">
   </div>
 </div>
+<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
 </example>
 >>>>>>> 956e585 (Ported over range slider input documentation):public/content/documentation/web/form/range-slider.md
+=======
+</example> -->
+>>>>>>> fbc8ca1 (Commented out the code example that needs further support to be functional):public/content/documentation/web/form/range-slider.md
