@@ -6,7 +6,7 @@ How to test an expander accordion
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a expander accordion
+How to test an expander accordion
 
 1. Test keyboard only, then screen reader + keyboard actions
 
@@ -31,9 +31,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a expander accordion
+How to test an expander accordion
 
-GIVEN THAT I am on a page with a expander accordion
+GIVEN THAT I am on a page with an expander accordion
 
 1. Keyboard for mobile & desktop
 
