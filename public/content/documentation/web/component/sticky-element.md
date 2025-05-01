@@ -60,11 +60,25 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ## Videos
 
-- Videos go here
+### Android Talkback
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/web/sticky/Android Talkback-sticky-content.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
+
+### iOS Voiceover
+<video controls>
+  <source src="media/video/web/sticky/iOS Voiceover-sticky-content.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+### MacOS Voiceover Safari
+<video controls>
+  <source src="media/video/web/sticky/MacOS-Voiceover-Safari-sticky-content.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+
 
 ## Pitfalls of sticky content
 
@@ -88,12 +102,71 @@ This semantic HTML appears in logical order in the page.
 It uses only CSS (no JavaScript) to float content as desired.
 
 ```html
-{% include /examples/sticky-content.html %}
+
+<div class="sticky-wrapper">
+  <div class="promo-bar sticky tops">
+    <button>Upgrade today</button>
+    <p>Content that sticks to the top</p>
+  </div>
+  <div class="vertical-spacer">
+    <p><a href="/checklist-web/html/">Web page content</a> 
+    and <a href="/checklist-web/link/">links</a>
+    or <a href="/checklist-web/button/">buttons</a>
+    will be <a href="/how-to-test/">read</a>  
+    in <a href="/checklist-web/html/">DOM (code) order</a>.</p>
+  </div>
+</div>
+<div class="promo-bar">
+  <button class="secondary">See more</button>
+  <p>Content that is <em>not</em> sticky</p>
+</div>
+<div class="sticky-wrapper">
+  <div class="vertical-spacer">
+    <p><a href="/checklist-web/html/">Web page content</a>
+    and <a href="/checklist-web/link/">links</a>
+    or <a href="/checklist-web/button/">buttons</a>
+    will be <a href="/how-to-test/">read</a>  
+    in <a href="/checklist-web/html/">DOM (code) order</a>.</p>
+  </div>
+  <div class="promo-bar sticky">
+    <button>Buy now</button>
+    <p>Content that sticks to the bottom</p>
+  </div>
+</div>
 ```
 
 
 <example>
-{% include /examples/sticky-content.html %}
+<div class="sticky-wrapper">
+  <div class="promo-bar sticky top">
+    <button class="Magentaa11y-button Magentaa11y-button--primary">Upgrade today</button>
+    <p>Content that sticks to the top</p>
+  </div>
+  <div class="vertical-spacer">
+    <p><a href="/checklist-web/html/">Web page content</a> 
+    and <a href="/checklist-web/link/">links</a>
+    or <a href="/checklist-web/button/">buttons</a>
+    will be <a href="/how-to-test/">read</a>  
+    in <a href="/checklist-web/html/">DOM (code) order</a>.</p>
+  </div>
+</div>
+<div class="promo-bar">
+  <button class="Magentaa11y-button Magentaa11y-button--primary">See more</button>
+  <p>Content that is <em>not</em> sticky</p>
+</div>
+<div class="sticky-wrapper">
+  <div class="vertical-spacer">
+    <p><a href="/checklist-web/html/">Web page content</a>
+    and <a href="/checklist-web/link/">links</a>
+    or <a href="/checklist-web/button/">buttons</a>
+    will be <a href="/how-to-test/">read</a>  
+    in <a href="/checklist-web/html/">DOM (code) order</a>.</p>
+  </div>
+  <div class="promo-bar sticky">
+    <button class="Magentaa11y-button Magentaa11y-button--primary">Buy now</button>
+    <p>Content that sticks to the bottom</p>
+  </div>
+</div>
 </example>
 
 
