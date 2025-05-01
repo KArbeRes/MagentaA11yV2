@@ -116,10 +116,12 @@ While there is a native HTML range input, it is **difficult to style reliably** 
 </div>
 ```
 
+<!-- TODO: styling and js? need to be added to help this demo function! 
+
 <example>
 <div class="range-group">
-  <!-- Input hidden from the screen reader 
-    and keyboard to avoid repetition -->
+  Input hidden from the screen reader (comment out later)
+    and keyboard to avoid repetition (comment out later)
   <input tabindex="-1" 
           value="10" 
           aria-hidden="true"
@@ -138,4 +140,4 @@ While there is a native HTML range input, it is **difficult to style reliably** 
       step="1">
   </div>
 </div>
-</example>
+</example> -->
