@@ -75,6 +75,8 @@ Toast snackbars might seem like an easy way to provide feedback, but they’re o
    - Accessible Undo/Redo Options: Place these buttons in clear, easy-to-navigate locations.
    - Thoughtful Confirmations: Use a confirmation screen for critical actions or when users are exiting an important flow.
 
+<!-- TODO: Needs JS support to activate the toast!
+
 <example>
 <fieldset>
   <legend>Marketing preferences</legend>
@@ -84,11 +86,11 @@ Toast snackbars might seem like an easy way to provide feedback, but they’re o
    </label>
   <div id="hint-spam" role="alert" class="alert notification inert">
     <div id="hint-spam-message">
-      <!--- Use JS to inject the alert here -->
+      - Use JS to inject the alert here (comment out in the future)
     </div>     
   </div>
 </fieldset>
-</example>
+</example> -->
 
 ### When Toast Snackbars Don’t Work:
 There are certain scenarios where snackbars simply aren’t the right tool:
