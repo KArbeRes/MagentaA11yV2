@@ -58,11 +58,251 @@ GIVEN THAT I am on a page with a text input
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//text-input](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//text-input)
 
-## Developer Notes
+## Code examples
+
+### Use semantic HTML
+This semantic HTML contains all accessibility features by default. 
+
+```html
+<label for="best-character-letter">
+  The best Sesame Street character is:
+</label>
+<input type="text" 
+       id="best-character-letter" 
+       aria-describedby="best-character-letter-hint">
+
+<div class="hint" id="best-character-letter-hint">
+  Example: Elmo, Big Bird, Cookie Monster
+</div>
+```
+
+<example>
+<label for="best-character-letter">
+  The best Sesame Street character is:
+</label>
+<input type="text" 
+       id="best-character-letter" 
+       aria-describedby="best-character-letter-hint">
+
+<div class="hint" id="best-character-letter-hint">
+  Example: Elmo, Big Bird, Cookie Monster
+</div>
+</example>
+
+### Required input
+
+```html
+<label for="second-nato-letter">
+ The second NATO letter is: <span>Required</span>
+</label>
+<input type="text"
+       id="second-nato-letter"
+       aria-required="true"
+       required
+       value="Bravo">
+```
+
+<example>
+<label for="second-nato-letter">
+ The second NATO letter is: <span>Required</span>
+</label>
+<input type="text"
+       id="second-nato-letter"
+       aria-required="true"
+       required
+       value="Bravo">
+</example>
+
+### Disabled but focusable input
+
+   - There may be times that it is advantageous for the input to be disabled but still focusable
+   - Fully disabled inputs are not focusable and may not be as discoverable in a form
+   - Use `readonly` to prevent editing
+
+```html
+<label for="first-nato-letter">
+  The first NATO letter is:
+</label>
+<input type="text" 
+       id="first-nato-letter" 
+       aria-disabled="true"
+       value="Alpha"
+       readonly>
+```
+
+<example>
+<label for="first-nato-letter">
+  The first NATO letter is:
+</label>
+<input type="text" 
+       id="first-nato-letter" 
+       aria-disabled="true"
+       value="Alpha"
+       readonly>
+</example>
+
+### Fully disabled input
+
+   - Fully `disabled` inputs are not focusable so may not be as discoverable in a form
+
+```html
+<label for="last-nato-letter">
+  The last NATO letter is:
+</label>
+<input type="text" 
+       id="last-nato-letter"
+       value="Zulu"
+       disabled>
+```
+
+<example>
+<label for="last-nato-letter">
+  The last NATO letter is:
+</label>
+<input type="text" 
+       id="last-nato-letter"
+       value="Zulu"
+       disabled>
+</example>
+
+### `readonly` input
+
+   - Only use readonly when presenting **already submitted** information.
+   - `readonly` inputs are focusable but not editable.
+   - VoiceOver does not describe `readonly` attribute, so `aria-disabled` was added to reinforce that it's not editable.
+
+```html
+<label for="fourth-nato-letter">
+  The fourth NATO letter is:
+</label>
+<input type="text"
+       id="fourth-nato-letter"
+       aria-readonly="true"
+       aria-disabled="true"
+       readonly
+       value="Delta">
+```
+
+<example>
+<label for="fourth-nato-letter">
+  The fourth NATO letter is:
+</label>
+<input type="text"
+       id="fourth-nato-letter"
+       aria-readonly="true"
+       aria-disabled="true"
+       readonly
+       value="Delta">
+</example>
+
+### Email input
+
+   - Setting `type="email"` changes the keyboard for mobile app users
+
+```html
+<label for="email">
+  Email address
+</label>
+<input id="email"
+       type="email"
+       autocomplete="email"
+       spellcheck="false"
+       aria-describedby="hint-email">
+<div class="hint" id="hint-email">
+  We’ll never sell or share your information
+</div>
+```
+
+<example>
+<label for="email">
+  Email address
+</label>
+<input id="email"
+       type="email"
+       autocomplete="email"
+       spellcheck="false"
+       aria-describedby="hint-email">
+<div class="hint" id="hint-email">
+  We’ll never sell or share your information
+</div>
+</example>
+
+### Group of inputs
+
+After the screenreader focuses on each input, it will read the group name "Enter your personal information" after the input.
+
+```html
+<fieldset>
+  <legend>
+    Enter your personal information
+  </legend>
+
+  <label for="first-name">
+    First name
+  </label>
+  <input type="text" id="first-name">
+
+  <label for="last-name">
+    Last name
+  </label>
+  <input type="text" id="last-name">
+
+  <label for="username">
+    Username
+  </label>
+  <input type="text" id="username">
+</fieldset>
+```
+
+<example>
+<fieldset>
+  <legend>
+    Enter your personal information
+  </legend>
+
+  <label for="first-name">
+    First name
+  </label>
+  <input type="text" id="first-name">
+
+  <label for="last-name">
+    Last name
+  </label>
+  <input type="text" id="last-name">
+
+  <label for="username">
+    Username
+  </label>
+  <input type="text" id="username">
+</fieldset>
+</example>
+
+## Developer notes
 
 ### Name
+   - Include `for="input-id"` in each `<label>` label to associate it with the input
+   - Use `aria-label="Input name"` as a last resort if a `<label>` can't be used
+   - Don't hide the label on focus
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+### Role
+   - Identifies as a text input
+
+### Group
+   - Include `for="input-id"` in each `<label>` label to associate it with the input
+   - Use `<fieldset>` and `<legend>` to name a group of inputs
+
+### Focus
+   - Focus must be visible
+
+## Further Reading
+   - [WCAG 1.3.1 Info and Relationships (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
+   - [WCAG 1.3.5 Identify Input Purpose (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose)
+   - [WCAG 2.1.1 Keyboard (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard)
+   - [WCAG SC 2.4.6 Headings and Labels (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)
+   - [WCAG 3.3.1 Error Identification (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/error-identification)
+   - [WCAG 3.3.3 Error Suggestion (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion)
+   - [WCAG 3.3.2 Labels or Instructions (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions) 
+   - [WCAG 4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value)
 
 ## Videos
 
