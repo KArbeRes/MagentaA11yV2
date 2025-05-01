@@ -399,6 +399,19 @@
           "androidDeveloperNotes": null,
           "iosDeveloperNotes": null,
           "developerNotes": "## Developer Notes\n\n### Name\n\n* Typically doesn’t have a name or description since there must be only one instance per page."
+        },
+        {
+          "label": "Text Input",
+          "name": "text-input",
+          "type": "file",
+          "generalNotes": "How to test a text input",
+          "gherkin": "### #a11y - Web Accessibility Acceptance Criteria\n\nHow to test a text input\n\nGIVEN THAT I am on a page with a text input\n\n1. Keyboard for mobile & desktop\n\n   * WHEN I use the tab key to move focus to a text input I SEE focus is strongly visually indicated\n\n2. Desktop screenreader\n\n   * WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND\n   * I use the tab key to move focus to a text input\n     * I HEAR its purpose is clear\n     * I HEAR it identifies itself as a text input\n     * I HEAR hints or errors are read after the label, related inputs include a group name (Ex: Enter your personal information)\n     * I HEAR if applicable, it expresses its state (required, disabled / dimmed / unavailable)\n\n3. Mobile screenreader\n\n   * WHEN I use a mobile screenreader (Talkback, VoiceOver) AND\n   * I swipe to focus on a text input\n     * I HEAR its purpose is clear\n     * I HEAR it identifies itself as a text input\n     * I HEAR hints or errors are read after the label, related inputs include a group name (Ex: Enter your personal information)\n     * I HEAR if applicable, it expresses its state (required, disabled / dimmed / unavailable)\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//text-input>",
+          "condensed": "### #a11y - Web Accessibility Acceptance Criteria\n\nHow to test a text input\n\n1. Test keyboard only, then screen reader + keyboard actions\n\n   * Tab: Focus moves visibly to the input unless it's disabled\n\n2. Test mobile screenreader gestures\n\n   * Swipe: Focus moves to the input\n   * Keyboard: Keyboard appears\n\n3. Listen to screenreader output on all devices\n\n   * Name: Its purpose is clear\n   * Role: It identifies itself as a text input\n   * Group: Hints or errors are read after the label, related inputs include a group name (Ex: Enter your personal information)\n   * State: If applicable, it expresses its state (required, disabled / dimmed / unavailable)\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//text-input>",
+          "criteria": null,
+          "videos": "* Videos go here\n  <video controls>\n  <source src=\"media/video/native/button/buttonIosVoiceover.webm\" type=\"video/webm\">\n  Your browser does not support the video tag.\n\n</video>",
+          "androidDeveloperNotes": null,
+          "iosDeveloperNotes": null,
+          "developerNotes": "## Developer Notes\n\n### Name\n\n* Typically doesn’t have a name or description since there must be only one instance per page."
         }
       ]
     },
