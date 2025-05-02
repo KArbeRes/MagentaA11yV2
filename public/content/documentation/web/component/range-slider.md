@@ -26,15 +26,7 @@ How to test a range slider input
    - Group: Its label is read with the input
    - State: Its current value
 
-<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
-<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
-=======
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider)
->>>>>>> 98c80da (Updated condensed and gherkin criteria):public/content/documentation/web/form/range-slider.md
-=======
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
->>>>>>> 1571a7f (Fixing URL typos):public/content/documentation/web/form/range-slider.md
 
 ## Gherkin
 
@@ -69,10 +61,6 @@ GIVEN THAT I am on a page with a range slider input
       - I HEAR its current value
    - THEN when I swipe up/down in iOS or use the volume buttons in Android I HEAR the value is changed one step
 
-<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
-<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
-=======
->>>>>>> 1571a7f (Fixing URL typos):public/content/documentation/web/form/range-slider.md
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
 
 ## Code examples
@@ -153,97 +141,3 @@ While there is a native HTML range input, it is **difficult to style reliably** 
   </div>
 </div>
 </example> -->
-=======
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider)
-
-## Code examples
-
-This is one of the exceedingly rare instances where a custom element makes a lot of sense.
-
-### Use a custom element
-
-   - Custom elements are **easier to style reliably** across browsers.
-   - [Working slider pattern examples](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)
-
-<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
->>>>>>> 98c80da (Updated condensed and gherkin criteria):public/content/documentation/web/form/range-slider.md
-=======
-```html
-<div id="range-label">
-  How much cowbell?
-</div>
-<div class="track">
-  <div id="thumb"
-       role="slider"
-       tabindex="0"
-       aria-valuemin="0"
-       aria-valuenow="10"
-       aria-valuemax="11"
-       aria-labelledby="range-label">
-  </div>
-</div>
-```
-
-### Semantic HTML
-
-While there is a native HTML range input, it is **difficult to style reliably** across browsers.
-
-```html
-<div class="range-group">
-  <!-- Input hidden from the screen reader 
-    and keyboard to avoid repetition -->
-  <input tabindex="-1" 
-          value="10" 
-          aria-hidden="true"
-          class="range-value" 
-          id="cowbell-range-value">
-  <div>
-    <label for="cowbell-range">
-      How much cowbell?
-    </label>
-    <input type="range"
-      id="cowbell-range"
-      name="cowbell"
-      min="0"
-      max="11"
-      value="10"
-      step="1">
-  </div>
-</div>
-```
-
-<!-- TODO: styling and js? need to be added to help this demo function! 
-
-<example>
-<div class="range-group">
-  Input hidden from the screen reader (comment out later)
-    and keyboard to avoid repetition (comment out later)
-  <input tabindex="-1" 
-          value="10" 
-          aria-hidden="true"
-          class="range-value" 
-          id="cowbell-range-value">
-  <div>
-    <label for="cowbell-range">
-      How much cowbell?
-    </label>
-    <input type="range"
-      id="cowbell-range"
-      name="cowbell"
-      min="0"
-      max="11"
-      value="10"
-      step="1">
-  </div>
-</div>
-<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
-</example>
->>>>>>> 956e585 (Ported over range slider input documentation):public/content/documentation/web/form/range-slider.md
-=======
-</example> -->
->>>>>>> fbc8ca1 (Commented out the code example that needs further support to be functional):public/content/documentation/web/form/range-slider.md
