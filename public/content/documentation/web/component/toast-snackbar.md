@@ -38,12 +38,12 @@ GIVEN THAT I am on a page with a toast snackbar
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use use features that trigger the toast I SEE the toast (BUT focus DOES NOT transfer automatically when the alert appears)
+   - WHEN I use features that trigger the toast I SEE the toast (BUT focus DOES NOT transfer automatically when the alert appears)
 
 2. Desktop screenreader
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
-   - I use use features that trigger the toast
+   - I use features that trigger the toast
       - I HEAR the toast is read when it appears (BUT focus DOES NOT transfer automatically when the toast appears)
       - I HEAR it identifies itself as an alert or status when it appears
       - I HEAR if it is possible to close the toast, focus then returns to a logical place in the page
