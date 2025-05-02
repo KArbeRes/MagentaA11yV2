@@ -38,20 +38,23 @@ GIVEN THAT I am on a page with an informative image
 2. Desktop screenreader
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the arrow keys to browse to an image
+   - 
       - I HEAR the content of the image alt text is clear 
       - I HEAR it identifies its role as an image or graphic 
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to browse to an image
+   - 
       - I HEAR the content of the image alt text is clear 
       - I HEAR it identifies its role as an image or graphic 
-
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/informative-image](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/informative-image)
 
 ## Is this image decorative or informative?
+
 If the image conveys important meaning, and there's no other text on the page which explains the concept within it, then the image is likely informative. If the image is included for purely stylistic purposes and doesn't impart any meaning to the rest of the content on the page, then the image is likely decorative. In this case, check out the [decorative image checklist](/web-criteria/component/decorative-image) item instead. 
+
 
 If your image contains text inside it, it should not! This is a violation of [WCAG AA 1.4.5 Images of Text](https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html). Exceptions exist for logos.
 
@@ -79,7 +82,9 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 <svg role="img" focusable="false">
   <title>Accessible Name</title>
   <use xlink:href="#svg-id" aria-hidden="true" />
+  
   <!-- if not using <use> then the child elements of the inline SVG would go here -->
+
 </svg>
 ```
 
@@ -88,7 +93,9 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 ```html
 <svg role="img" aria-label="Accessible name" focusable="false">
   <use href="#svg-id" aria-hidden="true" />
+
   <!-- if not using <use> then the child elements of the inline SVG would go here -->
+
 </svg>
 ```
 
@@ -97,13 +104,6 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 ### Animations (like gifs) can be accessible if:
 - they are set to stop after 5 seconds or 
 - if users are presented with a way to pause it
-
-## Further reading
-- This page owes a lot to this exhaustive blog post: [Contextually Marking up accessible images and SVGs by Scott O'Hara](https://www.scottohara.me/blog/2019/05/22/contextual-images-svgs-and-a11y.html)
-- [W3C Image decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
-- [WCAG 1.1.1 Non-text Content (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content)
-- [WCAG SC 1.4.5 Images of Text (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text)
-- [WCAG SC 2.2.2 Pause, Stop, Hide (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
 
 ## Videos
 
@@ -139,7 +139,14 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 ### MacOS Voiceover Safari 
 
 <video controls>
-  <source src="media/video/web/informative-image/MacOS-VoiceOver-Safari.mp4" type="video/webm">
+  <source src="media/video/web/informative-image/Android-Talkback.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
+
+## Further reading
+- This page owes a lot to this exhaustive blog post: [Contextually Marking up accessible images and SVGs by Scott O'Hara](https://www.scottohara.me/blog/2019/05/22/contextual-images-svgs-and-a11y.html)
+- [W3C Image decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
+- [WCAG 1.1.1 Non-text Content (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content)
+- [WCAG SC 1.4.5 Images of Text (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text)
+- [WCAG SC 2.2.2 Pause, Stop, Hide (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
