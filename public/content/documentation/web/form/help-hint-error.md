@@ -14,14 +14,14 @@ How to test a hint, help, or error
 
 2. Test mobile screenreader gestures
 
-   - Swipe: The input's name is read. Then the hint, help or error text is read
+   - Swipe: The input's name is read. Then the hint, help, or error text is read
 
 3. Listen to screenreader output on all devices
 
-   - Name: After the input name, role and state is read. Then the hint, help or error is read
+   - Name: After the input name, the role and state is read. Then the hint, help, or error is read
    - Role: When it appears dynamically, an error is read automatically
 
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error)
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/component/form/help-hint-error](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/component/form/help-hint-error)
 
 ## Gherkin
 
@@ -33,23 +33,23 @@ GIVEN THAT I am on a page with a hint, help, or error
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use the tab key to move focus to an input I SEE hint, help or error text meets size and contrast requirements
+   - WHEN I use the tab key to move focus to an input I SEE hint, help, or error text meets size and contrast requirements
 
 2. Desktop screenreader
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
    - I use the tab key to move focus to an input
-      - I HEAR after the input name, role and state is read, THEN the hint, help, or error is read
+      - I HEAR after the input name, the role and state is read, THEN the hint, help, or error is read
       - I HEAR when it appears dynamically, an error is read automatically
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
    - I swipe to focus on an input
-      - I HEAR after the input name, role and state is read, THEN the hint, help, or error is read
+      - I HEAR after the input name, the role and state is read, THEN the hint, help, or error is read
       - I HEAR when it appears dynamically, an error is read automatically
 
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/help-hint-error)
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/component/form/help-hint-error](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/component/form/help-hint-error)
 
 ## Code examples
 
@@ -67,6 +67,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/doc
   Example: Elmo, Big Bird, Cookie Monster, Grover, Oscar the Grouch
 </div>
 ```
+
+<!-- TODO: needs JS added to ensure it functions well -->
 
 <example>
 <label for="best-sesame-street-character">
@@ -115,9 +117,11 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/doc
 </button>
 ```
 
+<!-- TODO: needs JS added to ensure it functions well -->
+
 <example>
 <label for="favorite-sesame-street-character-letter">
-  What is your Sesame Street character?
+  What is your favorite Sesame Street character?
   <span>Required</span>
 </label>
 
