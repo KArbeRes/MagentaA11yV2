@@ -54,7 +54,7 @@
 
   &--name {
     @include base-link-styles;
-
+    
     font: var(--magentaa11y-typeset-headline-lg-xtrastrong);
     line-height: var(--magentaa11y-spacing-size-40);
     margin: 0;
@@ -67,6 +67,10 @@
     padding: 0 0 0 50px;
     letter-spacing: 0.1px;
     gap: 4px;
+
+    @media (max-width: 960px) {
+      font: var(--magentaa11y-typeset-headline-md-xtrastrong);
+    }
 
     &::before {
       content: "Magenta";
@@ -84,6 +88,11 @@
       background-repeat: no-repeat;
       width: var(--magentaa11y-spacing-size-40);
       height: var(--magentaa11y-spacing-size-40);
+
+      @media (max-width: 960px) {
+        width: var(--magentaa11y-spacing-size-36);
+        height: var(--magentaa11y-spacing-size-36);
+      }
     }
   }
 }

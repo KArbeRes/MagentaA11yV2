@@ -33,7 +33,10 @@ nav {
 
     &--list {
       border-top: solid 1px var(--color-surface-variant);
-      overflow: scroll;
+
+      @media (max-width: 768px) {
+        overflow-y: scroll;
+      }
     }
 
     &--link {

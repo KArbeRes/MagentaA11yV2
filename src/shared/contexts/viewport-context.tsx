@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 interface ViewportContextProps {
   isMobile: boolean;
+  isLargeTablet: boolean;
 }
 
 const ViewportContext = createContext<ViewportContextProps | undefined>(
@@ -12,21 +13,28 @@ export const ViewportProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLargeTablet, setIsLargeTablet] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 936px)");
-    setIsMobile(mediaQuery.matches);
+    const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
+    const tabletMediaQuery = window.matchMedia("(max-width: 936px)");
 
-    const handleResize = () => setIsMobile(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleResize);
+    setIsMobile(mobileMediaQuery.matches);
+    setIsLargeTablet(tabletMediaQuery.matches);
+
+    const handleMobileResize = () => setIsMobile(mobileMediaQuery.matches);
+    const handleTableteResize = () => setIsLargeTablet(tabletMediaQuery.matches);
+    mobileMediaQuery.addEventListener("change", handleMobileResize);
+    tabletMediaQuery.addEventListener("change", handleTableteResize);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleResize);
+      mobileMediaQuery.removeEventListener("change", handleMobileResize);
+      tabletMediaQuery.removeEventListener("change", handleTableteResize);
     };
   }, []);
 
   return (
-    <ViewportContext.Provider value={{ isMobile }}>
+    <ViewportContext.Provider value={{ isMobile, isLargeTablet }}>
       {children}
     </ViewportContext.Provider>
   );
