@@ -1,12 +1,12 @@
 ## General Notes
 
-How to test textarea multiline input
+How to test a textarea multiline input
 
 ## Condensed
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test textarea multiline input
+How to test a textarea multiline input
 
 1. Test keyboard only, then screen reader + keyboard actions
 
@@ -25,15 +25,15 @@ How to test textarea multiline input
    - State: If applicable, it expresses its state (required, disabled / dimmed / unavailable)
    - Status: Character counter updates dynamically after keypress and a short delay
 
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea)
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea-multiline-input](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea-multiline-input)
 
 ## Gherkin
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test textarea multiline input
+How to test a textarea multiline input
 
-GIVEN THAT I am on a page with textarea multiline input
+GIVEN THAT I am on a page with a textarea multiline input
 
 1. Keyboard for mobile & desktop
 
@@ -58,7 +58,7 @@ GIVEN THAT I am on a page with textarea multiline input
       - I HEAR Character counter updates dynamically after keypress and a short delay
 
 
-Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea)
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea-multiline-input](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/form/textarea-multiline-input)
 
 
 
@@ -98,11 +98,13 @@ if(textarea) {
 <label for="message">
   Your message
 </label>
+
 <textarea 
   id="message"
   maxlength="50"
   aria-describedby="charcounter">
 </textarea>
+
 <div role="status">
   <!-- Do not reference the status element with aria-describedby 
        Doing so will not work in VoiceOver -->
