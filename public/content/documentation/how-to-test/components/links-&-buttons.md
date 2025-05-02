@@ -121,7 +121,7 @@ best practices.
 
       <div class="how-to-test-checklist-item">
           <h3>✓ Ensure all links and buttons have clear labels and that all graphical controls have accurate <code>aria-label</code> attributes</h3>
-          <div class="table-wrapper>
+          <div class="table-wrapper">
             <table>
               <thead>
               <th scope="col">

@@ -30,7 +30,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 How to test a table
 
-GIVEN THAT I am on a page with a table landmark
+GIVEN THAT I am on a page with a table
 
 1. Keyboard for mobile & desktop
 
@@ -40,17 +40,17 @@ GIVEN THAT I am on a page with a table landmark
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver)
    - AND use the arrow keys
-      - I HEAR The table has a caption or a heading to describe its purpose
-      - I HEAR It identifies itself as a table
-      - I HEAR Column headers and row headers are identified with screenreader shortcuts
+      - I HEAR the table has a caption or a heading to describe its purpose
+      - I HEAR it identifies itself as a table
+      - I HEAR column headers and row headers are identified with screenreader shortcuts
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver)
    - AND I swipe to focusable elements in the footer
-      - I HEAR The table has a caption or a heading to describe its purpose
-      - I HEAR It identifies itself as a table
-      - I HEAR Column headers and row headers are identified with screenreader shortcuts
+      - I HEAR the table has a caption or a heading to describe its purpose
+      - I HEAR it identifies itself as a table
+      - I HEAR column headers and row headers are identified with screenreader shortcuts
 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/table](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/table)
@@ -73,7 +73,7 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
          Letter
          </th>
          <th scope="col">
-         Elmo
+         E
          </th>
          <th scope="col">
          B
@@ -104,7 +104,7 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
 
 <example>
    <div class="table-wrapper">
-      <table id="sesame-table">
+      <table id="sesame-table" class="text-center">
          <caption>
             Sesame Street Characters
          </caption>
@@ -114,7 +114,7 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
                Letter
                </th>
                <th scope="col">
-               Elmo
+               E
                </th>
                <th scope="col">
                B
@@ -145,10 +145,10 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
 </example>
 
 <!-- TODO broken image references -->
-<example>
+<example class="example example--contains-icon">
    <div class="table-wrapper">
-      <table class="comparison">
-         <caption class="center-text h-charlie">
+      <table class="comparison text-center">
+         <caption>
             Screen reader and browser pairings
          </caption>
          <thead>
@@ -165,71 +165,71 @@ Optional: The table is wrapped in a `<figure>` to indicate author and source.
          <tbody>
          <tr>
             <th scope="row">
-               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               <img src="media/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
                iOS
             </th>
             <td>
-               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               <img src="media/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
                VoiceOver
             </td>
             <td>
-               <img src="/assets/images/icons/logo-safari.svg" role="img" alt="Apple" class="icon">
+               <img src="media/images/icons/logo-safari.svg" role="img" alt="Apple" class="icon">
                Safari
             </td>
          </tr>
          <tr>
             <th scope="row">
-               <img src="/assets/images/icons/logo-android.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-android.svg" role="img" alt="" class="icon">
                Android
             </th>
             <td>
-               <img src="/assets/images/icons/logo-talkback.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-talkback.svg" role="img" alt="" class="icon">
                Talkback
             </td>
             <td>
-               <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
                Chrome
             </td>
          </tr>
          <tr>
             <th scope="row">
-               <img src="/assets/images/icons/logo-windows.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-windows.svg" role="img" alt="" class="icon">
                Windows
             </th>
             <td>
-               <img src="/assets/images/icons/logo-jaws.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-jaws.svg" role="img" alt="" class="icon">
                JAWS
             </td>
             <td>
-               <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
                Chrome
             </td>
          </tr>
          <tr>
             <th scope="row">
-               <img src="/assets/images/icons/logo-windows.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-windows.svg" role="img" alt="" class="icon">
                Windows
             </th>
             <td>
-               <img src="/assets/images/icons/logo-nvda.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-nvda.svg" role="img" alt="" class="icon">
                NVDA
             </td>
             <td>
-               <img src="/assets/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
+               <img src="media/images/icons/logo-chrome.svg" role="img" alt="" class="icon">
                Chrome
             </td>
          </tr>
          <tr>
             <th scope="row">
-               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               <img src="media/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
                MacOS
             </th>
             <td>
-               <img src="/assets/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
+               <img src="media/images/icons/logo-apple.svg" role="img" alt="Apple" class="icon">
                VoiceOver
             </td>
             <td>
-               <img src="/assets/images/icons/logo-safari.svg" role="img" alt="Apple" class="icon">
+               <img src="media/images/icons/logo-safari.svg" role="img" alt="Apple" class="icon">
                Safari
             </td>
             </tr>
@@ -244,26 +244,26 @@ If it’s required to display tabular data without using a `<table>` element, at
 ```html
 <div role="table" aria-describedby="table-desc">
   <div id="table-desc">
-    Nato phonetic alphabet
+    Sesame Street Characters
   </div>
   <div role="rowgroup">
     <div role="row">
       <span role="columnheader">Letter</span>
-      <span role="columnheader">NATO</span>
+      <span role="columnheader">Name</span>
     </div>
   </div>
   <div role="rowgroup">
     <div role="row">
-      <span role="cell">A</span>
-      <span role="cell">Alpha</span>
+      <span role="cell">E</span>
+      <span role="cell">Elmo</span>
     </div>
     <div role="row">
       <span role="cell">B</span>
-      <span role="cell">Bravo</span>
+      <span role="cell">Big Bird</span>
     </div>
     <div role="row">
       <span role="cell">C</span>
-      <span role="cell">thead</span>
+      <span role="cell">Cookie Monster</span>
     </div>
   </div>
 </div>
@@ -311,7 +311,7 @@ Don't use tables purely for layout. Only use tables to structure tabular data.
   Your browser does not support the video tag.
 </video>
 
-### Windows JAWS Chrome
+### MacOS VoiceOver Safari
 
 <video controls>
   <source src="media/video/web/table/table_macos.webm" type="video/webm">
