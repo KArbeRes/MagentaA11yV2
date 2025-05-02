@@ -27,10 +27,14 @@ How to test a range slider input
    - State: Its current value
 
 <<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
+<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
 =======
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form//range-slider)
 >>>>>>> 98c80da (Updated condensed and gherkin criteria):public/content/documentation/web/form/range-slider.md
+=======
+Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
+>>>>>>> 1571a7f (Fixing URL typos):public/content/documentation/web/form/range-slider.md
 
 ## Gherkin
 
@@ -66,6 +70,9 @@ GIVEN THAT I am on a page with a range slider input
    - THEN when I swipe up/down in iOS or use the volume buttons in Android I HEAR the value is changed one step
 
 <<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
+<<<<<<< HEAD:public/content/documentation/web/component/range-slider.md
+=======
+>>>>>>> 1571a7f (Fixing URL typos):public/content/documentation/web/form/range-slider.md
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider](https://www.magentaa11y.com/MagentaA11yV2#/public/content/documentation/web/form/range-slider)
 
 ## Code examples
