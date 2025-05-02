@@ -14,7 +14,7 @@ How to test a sticky element
 
 2. Test mobile screenreader gestures
 
-  - Swipe: Content and controls within the sticky element appear in a logical order in relation to the whole page
+    - Swipe: Content and controls within the sticky element appear in a logical order in relation to the whole page
 
 3. Listen to screenreader output on all devices
 
