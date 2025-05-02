@@ -44,8 +44,7 @@ GIVEN THAT I am on a page with an iframe
 
 3. Mobile screenreader
 
-   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-      - I swipe to content in the iframe
+   - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to content in the iframe
       - I HEAR the title of the iframe is read if the iframe contains content 
       - I HEAR if the iframe does not contain content, the iframe is ignored
 
