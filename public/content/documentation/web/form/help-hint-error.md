@@ -171,7 +171,7 @@ This is preferred because the DOM is cleaner.
 
 #### Option 2: Leave the empty hint element in the DOM
 
-This technique shouldn't have any significant side effects; however it does additional elements in the DOM which is unnecessary.
+This technique shouldn't have any significant side effects; however it does leave additional elements in the DOM which is unnecessary.
 
 ```html
 <label for="favorite-snack">
