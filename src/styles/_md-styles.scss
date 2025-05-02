@@ -5,6 +5,10 @@
   }
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 .keyboard-key {
   padding: 3px 6px;
   background: #eee;
@@ -36,6 +40,10 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   main {
     min-height: auto;
     display: block;
+  }
+
+  table {
+    background: var(--color-text-on-primary);
   }
 
   // search input example
