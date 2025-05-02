@@ -77,7 +77,7 @@ describe('TopNav Component - Content & Accessibility Tests', () => {
 
   test('menu button has correct accessible labels', () => {
     window.matchMedia = jest.fn().mockImplementation((query) => ({
-      matches: query === '(max-width: 768px)',
+      matches: query === '(max-width: 936px)',
       media: query,
       onchange: null,
       addListener: jest.fn(),
@@ -108,7 +108,7 @@ describe('TopNav Component - Interaction Tests', () => {
   beforeEach(() => {
     // Mock matchMedia for mobile behavior
     window.matchMedia = jest.fn().mockImplementation((query) => ({
-      matches: query === '(max-width: 768px)',
+      matches: query === '(max-width: 936px)',
       media: query,
       onchange: null,
       addListener: jest.fn(),
@@ -291,7 +291,7 @@ describe('TopNav Component - Navigation Behavior Tests', () => {
 
 test('menu button does not render on desktop view', () => {
   window.matchMedia = jest.fn().mockImplementation((query) => ({
-    matches: query !== '(max-width: 768px)',
+    matches: query !== '(max-width: 936px)',
     media: query,
     onchange: null,
     addListener: jest.fn(),
