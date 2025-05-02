@@ -35,7 +35,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
   };
 
   useEffect(() => {
-    if (!viewportContext.isMobile) return;
+    if (!viewportContext.isLargeTablet) return;
 
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -47,10 +47,10 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [viewportContext.isMobile]);
+  }, [viewportContext.isLargeTablet]);
 
   useEffect(() => {
-    if (!viewportContext.isMobile) return;
+    if (!viewportContext.isLargeTablet) return;
 
     const handleTabKey = (event: KeyboardEvent) => {
       if (!expanded) return;
@@ -83,7 +83,7 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
     return () => {
       document.removeEventListener('keydown', handleTabKey);
     };
-  }, [expanded, viewportContext.isMobile]);
+  }, [expanded, viewportContext.isLargeTablet]);
 
   return (
     <div className="MagentaA11y__navbar" data-theme="dark" ref={navRef}>
@@ -97,10 +97,10 @@ const TopNav: React.FC<TopNavProps> = ({ navItems }) => {
         </NavLink>
       </div>
 
-      {viewportContext.isMobile && (
+      {viewportContext.isLargeTablet && (
         <IconButton
           a11yLabel={
-            viewportContext.isMobile && expanded
+            viewportContext.isLargeTablet && expanded
               ? 'Close'
               : `Menu${
                   notificationCount

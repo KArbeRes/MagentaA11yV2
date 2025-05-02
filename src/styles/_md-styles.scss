@@ -96,3 +96,46 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 .bad-example {
   color: var(--color-error);
 }
+
+// sticky content example
+.promo-bar {
+  background: #fff;
+  padding: 1rem 0 1rem 1rem;
+  border-radius: 2px;
+  box-shadow: 0 0 3px 1px rgba(#000, .1);
+
+  * {
+    margin: 0 !important;
+    display: inline-block;
+  }
+
+  p {
+    padding: 0 0 0 1rem;
+  }
+}
+
+.sticky-wrapper {
+  position: relative;
+  overflow-y: scroll;
+  height: 100%;
+  max-height: 80vh;
+}
+
+.vertical-spacer {
+  height: 100vh;
+  padding: 2rem;
+  background: var(--color-background-secondary);
+
+  &--less {
+    height: 50vh;
+  }
+}
+
+.sticky {
+  position: sticky;
+  bottom: 0;
+
+  &.top {
+    top: 0;
+  }
+}

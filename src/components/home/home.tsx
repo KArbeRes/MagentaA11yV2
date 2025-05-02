@@ -30,12 +30,14 @@ const Home: React.FC = () => {
   return (
     <div className="MagentaA11y--home-page">
       <div className="MagentaA11y--home-page__header">
-        <h1 className="MagentaA11y--home-page__header--title">
-          <span>Unlock the power of accessibility</span>
-          <span>MagentaA11y</span>
-        </h1>
-        <div className="MagentaA11y--home-page__header--logo">
-          <img src={TmoLogo} alt="T-Mobile logo" />
+        <div className="MagentaA11y--home-page__header--wrapper">
+          <h1 className="MagentaA11y--home-page__header--title">
+            <span>Unlock the power of accessibility</span>
+            <span>MagentaA11y</span>
+          </h1>
+          <div className="MagentaA11y--home-page__header--logo">
+            <img src={TmoLogo} alt="T-Mobile logo" />
+          </div>
         </div>
       </div>
       <div className="MagentaA11y--home-page__content MagentaA11y--home-page__content--beige">
