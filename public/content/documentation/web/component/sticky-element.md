@@ -120,6 +120,8 @@ It uses only CSS (no JavaScript) to float content as desired.
   <button class="secondary">See more</button>
   <p>Content that is <em>not</em> sticky</p>
 </div>
+<div class="vertical-spacer vertical-spacer--less">
+</div>
 <div class="sticky-wrapper">
   <div class="vertical-spacer">
     <p><a href="/checklist-web/html/">Web page content</a>
@@ -153,6 +155,8 @@ It uses only CSS (no JavaScript) to float content as desired.
 <div class="promo-bar">
   <button class="Magentaa11y-button Magentaa11y-button--primary">See more</button>
   <p>Content that is <em>not</em> sticky</p>
+</div>
+<div class="vertical-spacer vertical-spacer--less">
 </div>
 <div class="sticky-wrapper">
   <div class="vertical-spacer">

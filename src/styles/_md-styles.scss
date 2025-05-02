@@ -97,10 +97,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   color: var(--color-error);
 }
 
-// sticky content begins
-
-// TODO Need to come back to figure out what's up with sticky elements not sticking
-
+// sticky content example
 .promo-bar {
   background: #fff;
   padding: 1rem 0 1rem 1rem;
@@ -119,31 +116,26 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 
 .sticky-wrapper {
   position: relative;
-
-  /* Adds margin around focusable items
-  Prevents elements from being hidden by sticky content */
-
-  *:focus-visible {
-    scroll-margin: 10rem 0;
-  }
+  overflow-y: scroll;
+  height: 100%;
+  max-height: 80vh;
 }
 
 .vertical-spacer {
-  height: 80vh;
+  height: 100vh;
   padding: 2rem;
-  margin: 1rem 0;
+  background: var(--color-background-secondary);
 
-  // background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC);
-
+  &--less {
+    height: 50vh;
+  }
 }
 
 .sticky {
   position: sticky;
-  bottom: 0 !important;
+  bottom: 0;
 
   &.top {
-    bottom: auto !important;
-    top: 0 !important;
-
+    top: 0;
   }
 }
