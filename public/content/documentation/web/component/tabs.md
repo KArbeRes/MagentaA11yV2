@@ -40,7 +40,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 How to test tabs
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with tabs
 
 1. Keyboard for mobile & desktop
 
@@ -99,7 +99,7 @@ However, tab groups can also pose challenges for accessibility and usability whe
 
 Instead of using tab groups, consider these alternatives:
 
-   - Breaking the page into clear sections with consice copywriting.
+   - Breaking the page into clear sections with concise copywriting.
    - Use expandable sections (accordions) for better organization.
    - Create separate pages for different topics
 
@@ -115,9 +115,9 @@ You can find additional guidance as well as examples of automatic and manually a
 ### Code considerations
 
    - **Tablist**: The main container for tabs requires `role="tablist"`.
-   - **Tabs**: Each tab within the tablist requires `role="tab"`.
+   - **Tabs**: Each tab within the `tablist` requires `role="tab"`.
    - **Content Panels**: Each content area for a tab is called a `role="tabpanel"`.
-   - **Labels**: Each `tabpanels` needs to have an `aria-labelledby` attribute that points to the corresponding `tab` label. 
+   - **Labels**: Each `tabpanel` needs to have an `aria-labelledby` attribute that points to the corresponding `tab` label. 
    - **Control Association**: Each `tab` has an `aria-controls` attribute linking it to its corresponding `tabpanel`.
    - **Active Tab**: The currently selected tab has `aria-selected` set to true; all other tabs have it set to false.
    - **Orientation**: If the tablist is vertical, it has `aria-orientation` set to vertical. By default, it is horizontal.
