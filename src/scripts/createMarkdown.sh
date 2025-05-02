@@ -58,7 +58,7 @@ if [ -f "$FILE_PATH" ]; then
 fi
 
 # Define section for native files
-NATIVE_SECTIONS=$(cat <<'EOF'
+NATIVE_SECTIONS=$(cat <<EOF
 
 ## Condensed
 
@@ -141,7 +141,7 @@ EOF
 )
 
 # Define section for web files
-WEB_SECTIONS=$(cat <<'EOF'
+WEB_SECTIONS=$(cat <<EOF
 
 ## Condensed
 
