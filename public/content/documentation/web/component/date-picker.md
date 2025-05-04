@@ -55,10 +55,10 @@ GIVEN THAT I am on a page with a date picker dialog
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
    - I use the tab key to move focus to the date dialog button
-    - I HEAR the purpose of each control is clear
-    - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
-    - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
-    - I HEAR date options express state (pressed, selected, disabled/dimmed)
+      - I HEAR the purpose of each control is clear
+      - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
+      - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
+      - I HEAR date options express state (pressed, selected, disabled/dimmed)
    - THEN when I use the spacebar and/or enter key I HEAR the date picker dialog appears
    - THEN when I use the arrow keys I HEAR the selection moves through next/previous dates
    - THEN when I use the home/end key I HEAR the selection moves to the first/last day of the current week
@@ -71,10 +71,10 @@ GIVEN THAT I am on a page with a date picker dialog
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
    - I swipe to focus on the date dialog button
-    - I HEAR the purpose of each control is clear
-    - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
-    - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
-    - I HEAR fate options express state (pressed, selected, disabled/dimmed)
+      - I HEAR the purpose of each control is clear
+      - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
+      - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
+      - I HEAR fate options express state (pressed, selected, disabled/dimmed)
    - THEN when I doubletap with the button in focus I HEAR the date picker dialog appears
    - THEN when I swipe through the dialog I HEAR the date options and controls come into focus
 
@@ -102,7 +102,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/d
 
 #### Date grid table
 
-   - Use `aria-labelledby="month-year-heading-id"` to label the table
+   - Use `aria-labelledby="month-year-heading-id"` to label the table and `id="month-year-heading-id"` to the element doing the labelling 
 
 #### Date picker buttons
 
