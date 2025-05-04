@@ -2,14 +2,6 @@
 
 How to test a stepper input
 
-## Videos
-
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
-
 ## Condensed
 
 ### #a11y - Web Accessibility Acceptance Criteria
@@ -81,8 +73,83 @@ GIVEN THAT I am on a page with a stepper input
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/stepper-input](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/stepper-input)
 
-## Developer Notes
+## Code examples
 
-### Name
+### Speciality stepper integer input
+Before using this pattern, consider if using a plain [select dropdown](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/select/) might be more clear and simple for all users. A `<select>` does everything that the stepper input does, and with less code. Additionally, a `<select>` is a native HTML component and inherently accessible.
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+The stepper input component is useful for *small range increments*. If the max character count is more than 20, consider use of a [text Input](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/text-input/) field as this component will be cumbersome for people using a mouse.
+
+```html
+<div class="stepper">
+  <label for="stepper">
+    Quantity
+  </label>
+  <button class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
+  <select id="stepper"
+          name="stepper-input"
+          min="1"
+          max="11"
+          data-selected="1">
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+  </select>
+  <button class="button plus" aria-label="Increase Quantity"></button>
+  <!-- live container where "Quantity updated, [number]" will be dynamically updated -->
+  <div aria-live="polite" class="hidden" id="stepper-status-target"></div>
+</div>
+```
+
+<!-- TODO: Styling and JS needed to made increment/decrement + dropdown buttons functional
+
+<example>
+<div class="stepper">
+  <label for="stepper">
+    Quantity
+  </label>
+  <button class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
+  <select id="stepper"
+          name="stepper-input"
+          min="1"
+          max="11"
+          data-selected="1">
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+  </select>
+  <button class="button plus" aria-label="Increase Quantity"></button>
+  live container where "Quantity updated, [number]" will be dynamically updated (comment out when code example is functional)
+  <div aria-live="polite" class="hidden" id="stepper-status-target"></div>
+</div>
+</example> -->
+
+## Developer notes
+
+   - This stepper example provides both `button` and `select` elements for users to change a value.
+
+   - A non-visual live container with `aria-live="polite"` is present in the DOM on page load. When the `button` element is activated, this non-visual live container is updated with dynamic content that screen reader users will hear announced as they increment or decrement the value. This dynamic text is then removed from the DOM after a few seconds (but not the actual container with `aria-live="polite"`) so the message is not discovered by screen reader users after interaction. The content of this message dynamically created based on the `Label` for the `Select` and the current value of the `Select`, e.g. "Quantity updated, 4".
+
+   - The value of the `select` element naturally communicates the updated value to screen reader users so the live container is not updated when interacting with that form element.
+
+   - The `button` and `aria-label` values should be plain text and should include context of what they affect when activated (typically the label for the `select`), e.g. "Increase Quantity" or "Add Quantity".
+
+   - The buttons will need `aria-disabled="true"` applied when either end of the range is reached.
+
+   - Related alternative patterns: [Select dropdown](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/select/) or an [WAI-ARIA Spin Button](https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/examples/datepicker-spinbuttons/).
