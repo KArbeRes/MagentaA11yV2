@@ -106,7 +106,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/d
 
 #### Date picker buttons
 
-   - Use `aria-selected="true"` to indicate state
+   - Use `aria-selected="true"` to indicate state of individual date buttons
 
 ## Videos
 
