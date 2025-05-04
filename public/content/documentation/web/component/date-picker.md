@@ -110,8 +110,37 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/d
 
 ## Videos
 
-- Videos go here
+### iOS VoiceOver
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/web/date-picker/date-picker_IosVoiceOver.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Android Talkback
+
+<video controls>
+  <source src="media/video/web/date-picker/date-picker_AndroidTalkback.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Windows JAWS Chrome
+
+<video controls>
+  <source src="media/video/web/date-picker/date-picker_WindowsJawsChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Windows NVDA Chrome
+
+<video controls>
+  <source src="media/video/web/date-picker/date-picker_WindowsNvdaChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### MacOS VoiceOver Safari
+
+<video controls>
+  <source src="media/video/web/date-picker/date-picker_MacOsVoiceOverSafari.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
