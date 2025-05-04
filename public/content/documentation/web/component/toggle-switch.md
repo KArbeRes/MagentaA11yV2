@@ -4,9 +4,33 @@ How to test a toggle switch
 
 ## Videos
 
-- Videos go here
+<!-- TODO: We don't have an Android Talkback example and should! -->
+
+### iOS VoiceOver
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/web/toggle-switch/toggle-switch_IosVoiceOver.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Windows JAWS Chrome
+
+<video controls>
+  <source src="media/video/web/toggle-switch/toggle-switch_WindowsJawsChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Windows NVDA Chrome
+
+<video controls>
+  <source src="media/video/web/toggle-switch/toggle-switch_WindowsNvdaChrome.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### MacOS VoiceOver Safari
+
+<video controls>
+  <source src="media/video/web/toggle-switch/toggle-switch_MacOsVoiceOverSafari.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
