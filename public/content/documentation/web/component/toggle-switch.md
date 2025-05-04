@@ -70,8 +70,161 @@ GIVEN THAT I am on a page with a toggle switch
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/toggle-switch](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/toggle-switch)
 
-## Developer Notes
+## Code examples
+
+### Use as much semantic HTML as possible
+
+   - This semantic HTML contains all accessibility features by default, and only requires the addition of `role="switch"`. 
+   - It uses [CSS pseudo attributes](https://github.com/tmobile/magentaA11y/blob/main/_sass/modules/_input-switch.scss) to create the toggle switch indicator, no Javascript
+
+```html
+<fieldset>
+  <legend>Privacy settings:</legend>
+  <input type="checkbox" role="switch" id="locationSwitch">
+  <label for="locationSwitch">Share my location</label>
+
+  <input type="checkbox" role="switch" id="emailSwitch">
+  <label for="emailSwitch">Share my email</label>
+
+  <input type="checkbox"
+         role="switch"
+         id="photosSwitch"
+         checked>
+  <label for="photosSwitch">Share my photos</label>
+</fieldset>
+```
+
+<!-- TODO: needs additional JS/styling to operate like a toggle switch
+
+<example>
+<fieldset>
+  <legend>Privacy settings:</legend>
+  <input type="checkbox" role="switch" id="locationSwitch">
+  <label for="locationSwitch">Share my location</label>
+
+  <input type="checkbox" role="switch" id="emailSwitch">
+  <label for="emailSwitch">Share my email</label>
+
+  <input type="checkbox"
+         role="switch"
+         id="photosSwitch"
+         checked>
+  <label for="photosSwitch">Share my photos</label>
+</fieldset>
+</example> -->
+
+### Disabled and focusable
+
+If it's helpful for screenreaders to perceive a disabled toggle, use `aria-disabled="true"` and prevent click events with scripting.
+
+```html
+<fieldset>
+  <legend>Choose your cookies</legend>
+
+  <input type="checkbox"
+        role="switch" 
+        id="mandatoryCookies" 
+        aria-disabled="true" 
+        checked>
+  <label for="mandatoryCookies">Cookies required for the site to function</label>
+  
+  <input type="checkbox" role="switch" id="raisinCookies" aria-disabled="true" >
+  <label for="raisinCookies">Raisin cookies</label>
+
+  <input type="checkbox" role="switch" id="optionalCookies" checked>
+  <label for="optionalCookies">Optional marketing cookies</label>
+
+</fieldset>
+```
+
+<!-- TODO: needs additional JS/styling to operate like a toggle switch
+
+<example>
+<fieldset>
+  <legend>Choose your cookies</legend>
+
+  <input type="checkbox"
+        role="switch" 
+        id="mandatoryCookies" 
+        aria-disabled="true" 
+        checked>
+  <label for="mandatoryCookies">Cookies required for the site to function</label>
+  
+  <input type="checkbox" role="switch" id="raisinCookies" aria-disabled="true" >
+  <label for="raisinCookies">Raisin cookies</label>
+
+  <input type="checkbox" role="switch" id="optionalCookies" checked>
+  <label for="optionalCookies">Optional marketing cookies</label>
+
+</fieldset>
+</example> -->
+
+### Disabled and not focusable
+
+Using the `disabled` attribute will prevent the input from being clickable, but will also prevent it from being focusable, making it more difficult to discover for screenreaders.
+
+```html
+<input type="checkbox"
+        role="switch"
+        id="deltaSwitch"
+        disabled
+        checked>
+<label for="deltaSwitch">Delta</label>
+```
+
+### Using a `<button>` as a switch
+
+This `<button>` toggle has focus and keyboard criteria built in. It requires the addition of `role="switch"` and scripting to toggle `aria-checked="true/false"`.
+
+```html
+<button role="switch" aria-checked="true">
+  Alpha
+</button>
+```
+
+### When you can't use semantic HTML
+
+This custom switch requires extra attributes and keyboard event listeners.
+
+```html
+<div role="switch" tabindex="0" aria-checked="true">
+  Alpha
+</div>
+```
+
+## Developer notes
 
 ### Name
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+   - `label` text should describe the input purpose
+   - Use `aria-describedby="hint-id"` for hints or additional descriptions
+   - `aria-label="Switch [purpose]"` can also be used (as a last resort)
+
+### Role
+
+   - Use `role="switch"`
+
+### Group
+
+   - Semantic HTML
+      - `<fieldset>` should wrap a switch group
+      - `<legend>` should describe the group's purpose
+      - Each `<label>` must include `for="input-id"` to be associated with its input
+   - Custom elements
+      - Use `role="group"` in the place of fieldset
+      - Use `aria-labelledby="label-id"` to associate an element as a label
+      - `aria-label="Group purpose"` can also be used if there's no label with an `id`
+
+### State
+
+   - Semantic HTML
+      - Use `checked` for native HTML
+      - Use the `disabled` state for inactive switches
+   - Custom element
+      - Use `aria-checked="true/false"` to express state
+      - Use `aria-disabled="true"` to declare inactive elements
+      - Use `aria-readonly="true"` to declare a switch can't be edited
+
+### Focus
+
+   - Focus must be visible
