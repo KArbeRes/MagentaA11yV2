@@ -43,48 +43,70 @@ GIVEN THAT I am on a page with a date picker dialog
 1. Keyboard for mobile & desktop
 
    - WHEN I use the tab key to move focus to the date dialog button I SEE focus is strongly visually indicated
-- THEN when I use the spacebar and/or enter key I SEE the date picker dialog appears
-- THEN when I use the arrow keys I SEE the selection moves through next/previous dates
-- THEN when I use the home/end key I SEE the selection moves to the first/last day of the current week
-- THEN when I use the page up/down key I SEE the grid of dates moves to the next/previous month
-- THEN when I use shift key + page up/down I SEE the grid of dates moves to the next/previous year
-- THEN when I use the spacebar and/or enter key I SEE the button or selection is activated
-- THEN when I use the escape key I SEE the date picker dialog disappears and focus returns to the date dialog button
+   - THEN when I use the spacebar and/or enter key I SEE the date picker dialog appears
+   - THEN when I use the arrow keys I SEE the selection moves through next/previous dates
+   - THEN when I use the home/end key I SEE the selection moves to the first/last day of the current week
+   - THEN when I use the page up/down key I SEE the grid of dates moves to the next/previous month
+   - THEN when I use shift key + page up/down I SEE the grid of dates moves to the next/previous year
+   - THEN when I use the spacebar and/or enter key I SEE the button or selection is activated
+   - THEN when I use the escape key I SEE the date picker dialog disappears and focus returns to the date dialog button
 
 2. Desktop screenreader
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
-- I use the tab key to move focus to the date dialog button
-  - I HEAR The purpose of each control is clear
-  - I HEAR Buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
-  - I HEAR The launch button indicates it has a popup, menu or dialog; days are announced with month and year
-  - I HEAR Date options express state (pressed, selected, disabled/dimmed)
-- THEN when I use the spacebar and/or enter key I HEAR the date picker dialog appears
-- THEN when I use the arrow keys I HEAR the selection moves through next/previous dates
-- THEN when I use the home/end key I HEAR the selection moves to the first/last day of the current week
-- THEN when I use the page up/down key I HEAR the grid of dates moves to the next/previous month
-- THEN when I use shift key + page up/down I HEAR the grid of dates moves to the next/previous year
-- THEN when I use the spacebar and/or enter key I HEAR the button or selection is activated
-- THEN when I use the escape key I HEAR the date picker dialog disappears and focus returns to the date dialog button
+   - I use the tab key to move focus to the date dialog button
+    - I HEAR the purpose of each control is clear
+    - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
+    - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
+    - I HEAR date options express state (pressed, selected, disabled/dimmed)
+   - THEN when I use the spacebar and/or enter key I HEAR the date picker dialog appears
+   - THEN when I use the arrow keys I HEAR the selection moves through next/previous dates
+   - THEN when I use the home/end key I HEAR the selection moves to the first/last day of the current week
+   - THEN when I use the page up/down key I HEAR the grid of dates moves to the next/previous month
+   - THEN when I use shift key + page up/down I HEAR the grid of dates moves to the next/previous year
+   - THEN when I use the spacebar and/or enter key I HEAR the button or selection is activated
+   - THEN when I use the escape key I HEAR the date picker dialog disappears and focus returns to the date dialog button
 
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
-
-   - I swipe to focusable elements in the header
-
-   - I HEAR It is discoverable with screenreader shortcuts as header/banner landmark
-
-   - I HEAR It typically contains the name and primary navigation of the website
-
+   - I swipe to focus on the date dialog button
+    - I HEAR the purpose of each control is clear
+    - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
+    - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
+    - I HEAR fate options express state (pressed, selected, disabled/dimmed)
+   - THEN when I doubletap with the button in focus I HEAR the date picker dialog appears
+   - THEN when I swipe through the dialog I HEAR the date options and controls come into focus
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/date-picker](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/date-picker)
 
 ## Developer Notes
 
-### Name
+[Full WAI-ARIA requirements](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html)
 
-- Typically doesn’t have a name or description since there must be only one instance per page.
+### An accessible date picker will have the following components:
+
+#### Launch button
+
+   - This button opens the date picker
+   - Focus returns to this button upon closing the date picker dialog
+
+#### Date picker popup dialog
+
+   - The dialog itself should be labelled by the month and year with `aria-labelledby="month-year-heading-id"`
+   - Use `aria-live="polite"` for the dialog, `aria-live="polite"` for month/year heading
+
+#### Calendar navigation buttons
+
+   - Use `aria-label="Previous"` and `aria-label="Next"` to name the "<" and ">" buttons, respectively
+
+#### Date grid table
+
+   - Use `aria-labelledby="month-year-heading-id"` to label the table
+
+#### Date picker buttons
+
+   - Use `aria-selected="true"` to indicate state
 
 ## Videos
 
