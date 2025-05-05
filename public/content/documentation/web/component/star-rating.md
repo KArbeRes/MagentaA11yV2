@@ -112,31 +112,33 @@ This radio group uses CSS to reverse the visual order of the radio inputs while 
 </fieldset>
 ```
 
+TODO - come back and work on why the order is reversed plus work on styling
+
 <example>
   <fieldset>
     <legend>
       Rate this product
     </legend>
-    <div class="star-rating">
-      <input type="radio" class="hidden-visually star" name="star" id="star-1">
+    <div class="star-rating" role="radiogroup">
+      <input type="radio" class="hidden-visually star" name="star" id="star-1">      
       <label for="star-1">
-        <span class="hidden">1 star</span>
+        <span class="hidden-visually">1 star</span>
       </label>
-      <input type="radio" class="hidden-visually star" name="star" id="star-2">
+      <input type="radio" class="hidden-visually star" name="star" id="star-2" data-icon="tablet">
       <label for="star-2">
-        <span class="hidden">2 star</span>
+        <span class="hidden-visually">2 stars</span>
       </label>
       <input type="radio" class="hidden-visually star" name="star" id="star-3">
       <label for="star-3">
-        <span class="hidden">3 star</span>
+        <span class="hidden-visually">3 stars</span>
       </label>
       <input type="radio" class="hidden-visually star" name="star" id="star-4">
       <label for="star-4">
-        <span class="hidden">4 star</span>
+        <span class="hidden-visually">4 stars</span>
       </label>
       <input type="radio" class="hidden-visually star" name="star" id="star-5">
       <label for="star-5">
-        <span class="hidden">5 star</span>
+        <span class="hidden-visually">5 stars</span>
       </label>
     </div>
   </fieldset>
