@@ -77,6 +77,7 @@ GIVEN THAT I am on a page with a date picker dialog
       - I HEAR fate options express state (pressed, selected, disabled/dimmed)
    - THEN when I doubletap with the button in focus I HEAR the date picker dialog appears
    - THEN when I swipe through the dialog I HEAR the date options and controls come into focus
+   - THEN when I doubletap with the selection or button in focus I HEAR the intended action occurs
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/date-picker](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/date-picker)
 
