@@ -12,9 +12,9 @@ How to test a stepper input
 
    - Tab: Focus moves to either the select field or buttons.
    - Enter or spacebar: 
-    - If select is focused, expands the select and places focus on the currently selected option in the list. 
-    - If focus is in the options, collapses the select and keeps the currently selected option.
-    - If focus is on one of the buttons, it will either increment or decrement the value.
+      - If select is focused, expands the select and places focus on the currently selected option in the list. 
+      - If focus is in the options, collapses the select and keeps the currently selected option.
+      - If focus is on one of the buttons, it will either increment or decrement the value.
    - Arrow-keys: If select is focused, moves focus to and selects the next option.
    - Escape: If the select is displayed, collapses the select and moves focus to the button.
    - Home: If the select is displayed, moves focus to and selects the first option.
