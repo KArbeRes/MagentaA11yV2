@@ -604,6 +604,19 @@
           "developerNotes": ""
         },
         {
+          "label": "Date Time Picker",
+          "name": "date-time-picker",
+          "type": "file",
+          "generalNotes": "How to test a date time picker",
+          "gherkin": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a date time picker\n\nGIVEN THAT I am on a screen with a date time picker\n\n1. Scenario: Test keyboard actions\n\n   * WHEN the user presses \"TAB\", Arrow Keys, or \"CTRL+TAB\"\n     * THEN the focus must visibly move to the picker\n   * WHEN the user presses \"SPACEBAR\" on iOS or Android\n     * THEN the time/date picker must be selected and opened\n   * WHEN the user presses \"ENTER\" on Android\n     * THEN the time/date picker must be selected and opened\n\n2. Scenario: Test mobile screen reader gestures\n\n   * WHEN the user swipes to the picker\n     * THEN the screen reader must announce the picker’s Name, Role, and Value\n   * WHEN the user performs a double-tap gesture\n     * THEN the time/date picker must be selected and opened\n   * WHEN the user swipes up or down on iOS or Android\n     * THEN the focus must move to the next item in the picker (iOS) or next item in the column (Android)\n       * AND the screen reader must announce the Name and Role of the next item\n\n3. Scenario: Test screen reader output on all devices\n\n   * WHEN the user swipes to the picker\n     * THEN the time/date picker must be announced with the following attributes:\n       * AND the Name must clearly describe the purpose and match any visible label\n       * AND the Role must be identified as \"Button/Adjustable\" in iOS and \"Button\" or \"Double tap to activate\" in Android\n       * AND the Group must be marked as not applicable (N/A)\n       * AND the State must announce the picker’s state (e.g., DISABLED/DIMMED)\n\n4. Scenario: Test device OS settings for text resize\n\n   * WHEN the user adjusts text resizing settings up to 200%\n     * THEN all text must remain readable without loss of information\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/inputs/date-time-picker>",
+          "condensed": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a date time picker\n\n1. Test keyboard only, then screen reader + keyboard actions\n\n   * Tab, arrow keys or ctl+tab: Focus visibly moves to the picker\n   * Spacebar: Selects and opens the picker on iOS and Android\n   * Enter: Selects and opens the picker on Android\n\n2. Test mobile screenreader gestures\n\n   * Swipe: Focus moves to the element, expresses its name, role, value\n   * Doubletap: Selects and opens picker\n   * Swipe up or down: Focus moves to next item in picker (iOS) or next item in column (Android), expresses its name, role\n\n3. Listen to screenreader output on all devices\n\n   * Name: Purpose is clear and matches any visible label\n   * Role: Identifies itself as a button/adjustable in iOS and button or \"double tap to activate\" in Android\n   * Group: n/a\n   * State: Expresses its state (disabled/dimmed)\n\n4. Test device settings\n\n   * Text resize: Text can resize up to 200% without losing information\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/inputs/date-time-picker>",
+          "criteria": null,
+          "videos": null,
+          "androidDeveloperNotes": "### General Notes\n\n* android developer notes go here",
+          "iosDeveloperNotes": "### General Notes\n\n* ios developer notes go here",
+          "developerNotes": ""
+        },
+        {
           "label": "Link",
           "name": "link",
           "type": "file",
