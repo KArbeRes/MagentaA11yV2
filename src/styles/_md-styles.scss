@@ -85,7 +85,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         display: none !important;
       }
     }
-    
+
     button {
       display: block;
       position: relative;
@@ -146,4 +146,9 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   &.top {
     top: 0;
   }
+}
+
+.scrolling-container {
+  height: 250px;
+  overflow: auto;
 }

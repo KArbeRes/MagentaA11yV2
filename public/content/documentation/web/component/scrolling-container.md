@@ -47,7 +47,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/scrol
 ## Code Examples
 
 <example class="example example--contains-icon">
-<div role="region" aria-label="Screenreader browser pairing table" class="scrolling-container" tabindex="0" style="height: 250px;overflow: auto">
+<div role="region" aria-label="Screenreader browser pairing table" class="scrolling-container" tabindex="0">
      <table class="comparison text-center" style="height: 250px;overflow: auto">
   <caption class="center-text h-charlie">
     Screen reader and browser pairings
