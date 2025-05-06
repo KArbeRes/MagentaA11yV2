@@ -6,8 +6,6 @@ How to test a password input
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
-
 1. Test keyboard only, then screen reader + keyboard actions
    - Tab: Focus moves visibly to the input or show password checkbox
    - Spacebar: Toggles the show password checkbox
@@ -28,9 +26,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a password input
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with a password input
 
 1. Keyboard for mobile & desktop
 
@@ -40,19 +38,19 @@ GIVEN THAT I am on a page with a header landmark
 
 2. Desktop screenreader
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the tab key to move focus to the password input
-     - I HEAR Its purpose is clear
-     - I HEAR It identifies itself as a text input
-     - I HEAR Hints or errors are read after the label (Ex: Password formatting)
-     - I HEAR It expresses if the password is being shown and if applicable: required, disabled / dimmed / unavailable
+     - I HEAR its purpose is clear
+     - I HEAR it identifies itself as a text input
+     - I HEAR hints or errors are read after the label (Ex: Password formatting)
+     - I HEAR it expresses if the password is being shown and if applicable: required, disabled / dimmed / unavailable
    - THEN when I use the tab key to move focus to the show/hide password feature I HEAR its name, role and state
    - THEN when I use the show/hide password feature I HEAR the state of the password visibility (with or without characters entered)
 
 3. Mobile screenreader
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to focus on a password input
-     - I HEAR Its purpose is clear
-     - I HEAR It identifies itself as a text input
-     - I HEAR Hints or errors are read after the label (Ex: Password formatting)
-     - I HEAR It expresses if the password is being shown and if applicable: required, disabled / dimmed / unavailable
+     - I HEAR its purpose is clear
+     - I HEAR it identifies itself as a text input
+     - I HEAR hints or errors are read after the label (Ex: Password formatting)
+     - I HEAR it expresses if the password is being shown and if applicable: required, disabled / dimmed / unavailable
 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/password-input](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/password-input)
@@ -89,6 +87,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 </form>
 ```
 
+[\\]: # (TODO The show/hide button does not hide the password.)
 <example>
 <form class="password-container">
   <label for="password">
@@ -115,10 +114,10 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 </example>
 
 ### Button variant
-   - The button leads the input so screen reader and keyboard-only users can change the state before interacting with the field.
-   - The password field type toggles between type of password and text.
-   - A live region role="status" is used to automatically announce to screen reader users the current visibility of the password value. For example, “Password is currently visible”.
-     - Avoid adding aria-hidden="true" or CSS display: none; to the live region container that receives the dynamic update as this may impact screen reader support.
+   - The show/hide button recieves focus before the input so screen reader and keyboard-only users can change the state before interacting with the field.
+   - The `password` field type toggles between type of password and `text`.
+   - A live region `role="status"` is used to automatically announce to screen reader users the current visibility of the password value. For example, “Password is currently visible”.
+     - Avoid adding `aria-hidden="true"` or CSS `display: none;` to the live region container that receives the dynamic update as this may impact screen reader support.
      - Ensure the dynamic text, that is added to the live region, is removed from the DOM after a short amount of time so screen reader users do not encounter this text while navigating beyond the form field.
 
 ```html
@@ -159,7 +158,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
   </form>
 ```
 
-<example>
+<!-- <example>
 <form class="password-container button-variant" data-show-password="false" onsubmit="return false;">
     <label for="password-b">
       Password
@@ -190,17 +189,20 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
     <div id="password-hint" class="hint">
       Use any length of characters including emojis.
     </div>
-    <!-- this is dynamically announced by the screen reader when updated but content is removed after a pause so it can't be discovered -->
+    
+TODO: Below is a comment. Remember to include this when unhiding the component.
+this is dynamically announced by the screen reader when updated but content is removed after a pause so it can't be discovered 
+
     <div class="password-live-region hidden" role="status">
         <div id="password-state-status"></div>
     </div>
   </form>
-</example>
+</example> --->
 
 ## Developer Notes
 
 ### Name
-   - Include `for="input-id` in each <label> label to associate it with the input
+   - Include `for="input-id"` in each <label> label to associate it with the input
    - Use `aria-label="Input name"` as a last resort if a `<label>` can’t be used
 
 ### Role
@@ -210,8 +212,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 -  The show password checkbox must indicate its state on focus
 
 ### Group
-   - Include for="input-id in each `<label>` label to associate it with the input
-   - Use `<fieldset>` and `<legend>` to name a group of inputs.
+   - Include `for="input-id"` in each `<label>` label to associate it with the input
+   - Use `<fieldset>` and `<legend>` to name a group of inputs
 
 ### Focus
    - Focus must be visible
