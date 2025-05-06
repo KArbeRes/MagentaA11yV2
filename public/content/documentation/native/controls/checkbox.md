@@ -128,8 +128,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 - Group the units such that the label, role, and state of the checkbox is announced in a single announcement.
 
 - **UIKit**
-  1. Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
-  2. Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
+  - Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
+  - Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
   - If frame does not exist, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
     - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
   - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
