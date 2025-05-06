@@ -85,7 +85,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         display: none !important;
       }
     }
-    
+
     button {
       display: block;
       position: relative;
@@ -230,3 +230,9 @@ input.star + label {
   input.star:focus {
     outline: red;
   }
+
+
+.scrolling-container {
+  height: 250px;
+  overflow: auto;
+}
