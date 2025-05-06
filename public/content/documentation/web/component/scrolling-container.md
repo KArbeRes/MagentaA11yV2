@@ -23,7 +23,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/scrol
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with a scrolling container
 
 1. Keyboard for mobile & desktop
    - WHEN I use the tab key to move focus to the container I SEE focus is strongly visually indicated
@@ -31,14 +31,14 @@ GIVEN THAT I am on a page with a header landmark
 
 2. Desktop screenreader
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the tab key to move focus to the container
-        - I HEAR Its purpose is clear
-        - I HEAR It identifies its role as region
+        - I HEAR its purpose is clear
+        - I HEAR it identifies its role as region
    - THEN when I use the up/down arrow keys I HEAR the content is browsed up/down
 
 3. Mobile screenreader
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe move browse to the container
-     - I HEAR Its purpose is clear
-     - I HEAR It identifies its role as region
+     - I HEAR its purpose is clear
+     - I HEAR it identifies its role as region
    - THEN when I swipe move browse to the content I HEAR the content is read
 
 
@@ -46,9 +46,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/scrol
 
 ## Code Examples
 
-<example>
-<div role="region" aria-label="Screenreader browser pairing table" class="scrolling-container" tabindex="0">
-     <table class="comparison">
+<example class="example example--contains-icon">
+<div role="region" aria-label="Screenreader browser pairing table" class="scrolling-container" tabindex="0" style="height: 250px;overflow: auto">
+     <table class="comparison text-center" style="height: 250px;overflow: auto">
   <caption class="center-text h-charlie">
     Screen reader and browser pairings
   </caption>
