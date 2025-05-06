@@ -133,9 +133,11 @@ GIVEN THAT I am on a screen with a button
 Full information: [$FULL_LINK]($FULL_LINK)
 
 ## iOS Developer Notes
+### General Notes
 - ios developer notes go here
 
 ## Android Developer Notes
+### General Notes
 - android developer notes go here
 EOF
 )

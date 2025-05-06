@@ -6,13 +6,13 @@ How to test a checkbox
 
 ### iOS VoiceOver
 <video controls>
-  <source src="media/video/native/checkbox/checkboxVoiceOver.mp4" type="video/webm">
+  <source src="media/video/native/checkbox/checkboxVoiceOver.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 ### Andriod Talkback
 <video controls>
-  <source src="media/video/native/checkbox/checkboxTalkback.mp4" type="video/webm">
+  <source src="media/video/native/checkbox/checkboxTalkback.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -71,7 +71,7 @@ GIVEN THAT I am on a screen with a checkbox
    - WHEN I double-tap the checkbox 
       - THEN the checkbox should toggle between CHECKED and NOT CHECKED states 
 
-3. Test screen reader output on all devices
+3. Scenario: Test screen reader output on all devices
 
    - WHEN a screen reader reads the checkbox 
       - THEN its name should describe the purpose of the control and match the visible label 
@@ -87,9 +87,10 @@ GIVEN THAT I am on a screen with a checkbox
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/checkbox](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/checkbox)
 
 ## iOS Developer Notes
+### General Notes
 - A check box lets the user choose between two opposite states, actions or values  
 - You should use a native app control when at all possible vs a custom element, as it will automatically and correctly announce the role without additional development effort
-- A check box should just toggle between checked and unchecked.  It should not automatically navigate the user to another field or screen when activated, as that may cause a change of context.  Revealing new information on the same screen as a result of activating a checkbox is usually ok, as it is not a change of context
+- A check box should toggle between checked and unchecked. It should not automatically navigate the user to another field or screen when activated, as that may cause a change of context. Revealing new information on the same screen as a result of activating a checkbox is usually ok, as it is not a change of context
 - Name, Role, State must be announced when focus is on the control. Announcing the label only in a separate swipe before the checkbox does not meet this requirement
 
 ### Name
@@ -177,9 +178,10 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 - "Label, not checked, button"  (both "not checked" or "unselected" are acceptable)
 
 ## Android Developer Notes
+### General Notes
 - A check box lets the user choose between two opposite states, actions or values  
 - You should use a native control when at all possible vs a custom element, as it will automatically and correctly announce the role without additional development effort
-- A check box should just toggle between checked and unchecked.  It should not automatically navigate the user to another field or screen when activated, as that may cause a change of context.  Revealing new information on the same screen as a result of activating a checkbox is usually ok, as it is not a change of context.
+- A check box should toggle between checked and unchecked. It should not automatically navigate the user to another field or screen when activated, as that may cause a change of context. Revealing new information on the same screen as a result of activating a checkbox is usually ok, as it is not a change of context.
 - Name, Role, State must be announced when focus is on the control. Announcing the label only in a separate swipe before the checkbox does not meet this requirement.
 
 #### Code example
@@ -217,7 +219,7 @@ Row(
   - `android:text` XML attribute
   - Optional: use `contentDescription` for a more descriptive name, depending on type of view and for elements (icons) without a visible label
   - `contentDescription` overrides `android:text`  
-  - Use `labelFor` attribute to associate the visible label with the control (Best practice)
+  - Use `labelFor` attribute to associate the visible label with the control (best practice)
 - **Jetpack Compose**
   - By default, the simple checkbox composable is readout & focused separately from its label text, which makes it hard to understand the context. 
   - Use `Row` composable and `toggleable(role = Role.Checkbox)` with inner element as `Checkbox` composable (recommended practice) to have entire row including its label focused for selection, so it allows screenreader to read the name and role together. 
