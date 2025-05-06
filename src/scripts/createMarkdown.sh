@@ -100,11 +100,11 @@ How to test a button
 
 GIVEN THAT I am on a screen with a button
 
-1. Keyboard for mobile & desktop
+1. Scenario: Test keyboard actions
 
    - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
 
-2. Desktop screenreader
+2. Scenario: Test mobile screen reader gestures
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND
 
@@ -114,7 +114,7 @@ GIVEN THAT I am on a screen with a button
 
    - I HEAR It typically contains the name and primary navigation of the website
 
-3. Mobile screenreader
+3. Scenario: Test screen reader output on all devices
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND
 
@@ -133,9 +133,11 @@ GIVEN THAT I am on a screen with a button
 Full information: [$FULL_LINK]($FULL_LINK)
 
 ## iOS Developer Notes
+### General Notes
 - ios developer notes go here
 
 ## Android Developer Notes
+### General Notes
 - android developer notes go here
 EOF
 )
