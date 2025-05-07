@@ -104,7 +104,7 @@ npm run create-md -- <filename> "<relative-path>" <template-type>
 #### Examples
 
 ```bash
-npm run create-md -- textarea "native/inputs" criteria
+npm run create-md -- textarea "native/controls" criteria
 ```
 
 ```bash
@@ -123,7 +123,7 @@ public/content/documentation/<section>/<category>/<filename>.md
 ```
 
 - `<section>` could be something like `native`, `web`, or `how-to-test`
-- `<category>` groups related content such as `inputs`, `components`, or any custom grouping
+- `<category>` groups related content such as `components`, `notifications`, or any custom grouping
 - `<filename>.md` is the name of the actual Markdown file
 
 📁 This structure helps the app dynamically parse and render content correctly in the UI. The script `create-md` automatically respects and creates this structure based on the path you provide.
@@ -131,7 +131,7 @@ public/content/documentation/<section>/<category>/<filename>.md
 These commands will create:
 
 ```
-public/content/documentation/native/inputs/textarea.md
+public/content/documentation/native/controls/textarea.md
 ```
 
 ```
