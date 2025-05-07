@@ -133,12 +133,10 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   // search input example
   form[role="search"] {
     display: flex;
-    max-width: auto;
     padding: 1rem;
     transition: 0.7s;
     border-radius: 0.125rem;
     box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary), 0.1);
-    background: var(--color-background-secondary);
 
     /* stylelint-disable no-descending-specificity */
     &:focus-within,
@@ -179,7 +177,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       height: 2.375rem;
       width: 2.25rem;
       background: var(--color-on-primary);
-      border: 3px solid var(--color-input-border);
+      border: 2px solid black;
       border-left: none;
     }
   }
