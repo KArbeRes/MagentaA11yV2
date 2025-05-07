@@ -45,6 +45,32 @@ export const getMarkdownFunctionMap = (
     }
   },
 
+  goToNext: () => {
+    const dest = document.getElementById('destination');
+    const list = document.querySelector('.slide-list'); // Select the ul element
+    const currentSlide = document.querySelector('.visible');
+
+    if (list) {
+      const listItems = list.querySelectorAll('li'); // Select all li elements inside the ul
+      let currentIndex = Array.from(list.children).findIndex(item => item === currentSlide); // find which index we are at
+
+      listItems[currentIndex].classList.toggle('visible'); // hide first slide
+
+      if (currentIndex < listItems.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; //loop back to the first element, if desired
+      }
+
+      listItems[currentIndex].classList.toggle('visible'); // show next slide
+
+      if (dest) {
+        dest.focus();
+      }
+
+    }
+  },
+
   alertSuccess: () => {
     const alertDiv = document.getElementById('alertSuccessExample');
     if (alertDiv) {
