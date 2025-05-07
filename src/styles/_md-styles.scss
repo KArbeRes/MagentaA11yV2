@@ -346,40 +346,37 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 .star-rating {
   display: flex;
   align-items: center;
+  flex-direction: row-reverse;
   justify-content: space-around;
 }
 
- /* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-descending-specificity */
 input.star + label {
-    padding: 1rem 0;
+  padding: 1rem 0;
+  height: 4rem;
+  line-height: 1;
+  width: fit-content;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .5;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 4rem;
     height: 4rem;
-    line-height: 1;
-    width: fit-content;
-    cursor: pointer;
-
-    &:hover {
-      opacity: .5;
-    }
-
-    &::before {
-      content: "";
-      display: block;
-      width: 4rem;
-      height: 4rem;
-      border: none;
-      background: url("../assets/svgs/star-outlined.svg") no-repeat 0 0;
-      transition: background-color .2s;
-    }
+    border: none;
+    background: url("../assets/svgs/star-outlined.svg") no-repeat 0 0;
+    transition: background-color .2s;
   }
+}
 
-  input[type="radio"]:checked ~ label::before {
-    background: url("../assets/svgs/star-filled.svg") no-repeat 0 0;
-  }
-
-  input.star:focus {
-    outline: red;
-  }
-  /* stylelint-enable no-descending-specificity */
+input[type="radio"]:checked ~ label::before {
+  background: url("../assets/svgs/star-filled.svg") no-repeat 0 0;
+}
+/* stylelint-enable no-descending-specificity */
 
 .scrolling-container {
   height: 250px;
@@ -393,3 +390,11 @@ input.star + label {
   display: block;
   border-radius: 2px;
 }
+
+input.star:focus + label,
+input.star:focus-visible + label {
+  outline: .5rem auto Highlight;
+  outline: -webkit-focus-ring-color auto 1px;
+  outline-offset: 4px;
+}
+
