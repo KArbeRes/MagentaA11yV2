@@ -115,7 +115,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### Button variant
    - The show/hide button recieves focus before the input so screen reader and keyboard-only users can change the state before interacting with the field.
-   - The `password` field type toggles between type of password and `text`.
+   - The `password` field type toggles between type of `password` and `text`.
    - A live region `role="status"` is used to automatically announce to screen reader users the current visibility of the password value. For example, “Password is currently visible”.
      - Avoid adding `aria-hidden="true"` or CSS `display: none;` to the live region container that receives the dynamic update as this may impact screen reader support.
      - Ensure the dynamic text, that is added to the live region, is removed from the DOM after a short amount of time so screen reader users do not encounter this text while navigating beyond the form field.
@@ -202,7 +202,7 @@ this is dynamically announced by the screen reader when updated but content is r
 ## Developer Notes
 
 ### Name
-   - Include `for="input-id"` in each <label> label to associate it with the input
+   - Include `for="input-id"` in each `<label>` label to associate it with the input
    - Use `aria-label="Input name"` as a last resort if a `<label>` can’t be used
 
 ### Role
