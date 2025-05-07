@@ -46,7 +46,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     background: var(--color-text-on-primary);
   }
 
-<<<<<<< HEAD
   /* stylelint-disable no-descending-specificity */
   .switch {
     max-width: 450px;
@@ -111,7 +110,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   }
   /* stylelint-enable no-descending-specificity */
   
-=======
   .stepper {
     display: inline-grid;
     grid-template-columns: 39px 1fr 39px;
@@ -126,7 +124,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     position: relative;
     background-color: var(--color-on-primary);
   }
->>>>>>> 6aae30c (styles and interaction: getting css and js in place for stepper, added another non-select example)
 
   // search input example
   form[role="search"] {
@@ -301,6 +298,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   justify-content: space-around;
 }
 
+ /* stylelint-disable no-descending-specificity */
 input.star + label {
     padding: 1rem 0;
     height: 4rem;
@@ -330,7 +328,7 @@ input.star + label {
   input.star:focus {
     outline: red;
   }
-
+  /* stylelint-enable no-descending-specificity */
 
 .scrolling-container {
   height: 250px;
