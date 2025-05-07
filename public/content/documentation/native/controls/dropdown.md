@@ -4,9 +4,15 @@ How to test a dropdown
 
 ## Videos
 
-- Videos go here
+### iOS Voiceover
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/dropdown/dropdown-iOSVoiceOver.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+### Android Talkback
+<video controls>
+  <source src="media/video/native/dropdown/dropdown-AndroidTalkback.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -115,6 +121,7 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
     - To do this in Interface Builder, set the label using the Identity Inspector
   - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
   - To hide labels from VoiceOver using Interface Builder, uncheck `Accessibility Enabled` in the Identity Inspector.
+
 **SwiftUI**
   - If no visible label, use view modifier `accessibilityLabel(_:)`.
   - If button has icon(s), hide the icon(s) from VoiceOver by using view modifier `accessibilityHidden(true)`.
@@ -126,6 +133,7 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 **UIKit**
   - Use `UIButton`
   - If necessary, set `accessibilityTraits` to `.button`.
+
 **SwiftUI**
   - Use native `Button` view
   - If necessary, use view modifier `accessibilityAddTraits(.isButton)` to assign the role as Button.
@@ -153,6 +161,7 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
   - For enabled dropdown items: Set `isEnabled` to `true`.
   - For disabled dropdown items: Set `isEnabled` to `false`. Announcement for disabled is "Dimmed".
     - If necessary, you may change the accessibility trait of the dropdown item to `notEnabled`, but this may overwrite the current accessibility role of the dropdown item.
+
 **SwiftUI**
   - If applicable, dropdown items should be announced whether they are selected/unselected, in the cases of radio buttons or checkboxes. 
   - For selected dropdown items, use `accessibilityAddTraits(.isSelected)`.
@@ -188,5 +197,141 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 
 
 ## Android Developer Notes
-### General Notes
-- android developer notes go here
+
+- A dropdown or spinner is a button that opens a list of options.  When an option is chosen, it displays in the field (replaces the current option or placeholder)
+- The screen reader focus moves directly to first option in dropdown/spinner upon double tapping the dropdown button and is confined in the list.
+- Sometimes, a hidden "dismiss context menu" button after the last item is available to close it.
+- Focus should go back to the triggering dropdown/spinner button, displaying the new option
+- There must be a visible label for the dropdown field that is not a placeholder and it describes the purpose of the dropdown.
+- The screen reader focus also remains confined in the dropdown list
+- The state of expanded or collapsed should be announced
+
+### Name
+- Name describes the purpose of the control, with additional label description if needed.
+
+**Android Views**
+  - `android:text` XML attribute
+  - Use `contentDescription`, depending on type of view and for elements (icons) without a visible label
+  - `contentDescription` overrides `android:text`
+  - Use `labelFor` attribute to associate the visible label with the control
+
+**Jetpack Compose**
+  - Compose uses semantics properties to pass information to accessibility services
+  - The built-in `ExposedDropdownMenuBox`, `ExposedDropdownMenu` and `DropdownMenuItem` components will fill the semantics properties with information inferred from the composable by default
+  - Optional: use `contentDescription` for a more descriptive name to override the default text label of the `DropdownMenuItem` composable
+  - Example specification of contentDescription in compose: `modifier = Modifier.semantics { contentDescription = "" }`
+
+### Role
+- Required: Screen reader user is confined inside a dropdown when it opens
+- When not using native app controls (custom controls), roles will need to be manually coded.
+
+**Android Views**
+  - `Spinner` Class
+  - "pop up window" or "dropdown list" can be the role  
+
+**Jetpack Compose**
+  - `ExposedDropdownMenuBox`, `ExposedDropdownMenu`, `DropdownMenuItem`
+
+### Groupings
+- Visible label, if any, is grouped with the dropdown item in a single swipe as an option for a programmatic name for the spinner
+
+**Android Views**
+  - `ViewGroup`
+  - Set the container object's `android:screenReaderFocusable` attribute to true, and each inner object's `android:focusable` attribute to false. In doing so, accessibility services can present the inner elements' `contentDescription` or names, one after the other, in a single announcement.
+
+**Jetpack Compose**
+  - When use built-in Composable `DropdownMenuItem`, `ExposedDropdownMenu` in `ExposedDropdownMenuBox`, then it has the default grouping with the elements inside.
+  - Use `Modifier.semantics(mergeDescendants = true) {}` when work on the customized dropdown items
+  - `FocusRequester.createRefs()` helps to request focus to inner elements with in the group
+
+### State
+- Expandable dropdowns
+  - State must be announced - expands/collapses, opens/closes. Add logic and announcement to the programmatic name for the state
+  - If "opens" or "closes" is not included in the name, the expanded/collapsed state must be announced
+
+**Android Views**
+  - Active: `android:enabled=true`
+  - Disabled: `android:enabled=false`. Announcement: disabled
+
+**Jetpack Compose**
+  - Active: default state is active and enabled. Use `DropdownMenuItem(enabled = true)` to specify explicitly
+  - Disabled:  `DropdownMenuItem(enabled = false)` announces as disabled
+  - Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
+  - Use `modifier = Modifier.semantics { stateDescription = "" }` to have a customized state announcement
+
+### Focus
+- Only manage focus when needed. Primarily, let the device manage default focus
+- Consider how focus should be managed between child elements and their parent views
+- External keyboard tab order often follows the screen reader focus, but sometimes needs focus management
+- Moving focus into the dropdown tells the screen reader user there is a dropdown available
+- When a dropdown is closed, the focus should return to the triggering element.
+
+**Android Views**
+  - `importantForAccessibility` makes the element visible to the Accessibility API
+  - `android:focusable`
+  - `android=clickable`
+  - Implement an `onClick( )` event handler for keyboard, as well as `onTouch( )`
+  - `nextFocusDown`
+  - `nextFocusUp`
+  - `nextFocusRight`
+  - `nextFocusLeft`
+  - `accessibilityTraversalBefore` (or after)
+  - To move screen reader focus to newly revealed content: `Type_View_Focused`
+  - To NOT move focus, but dynamically announce new content: `accessibilityLiveRegion`(set to polite or assertive)
+  - To hide controls: `importantForAccessibility=false`
+  - For a `ViewGroup`, set `screenReaderFocusable=true` and each inner object’s attribute to keyboard focus (`focusable=false`)
+
+**Jetpack Compose**
+  - `Modifier.focusTarget()` makes the component focusable
+  - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
+  - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
+  - `FocusRequester` allows to request focus to individual elements with in a group of merged descendant views
+  - Example: To customize the focus events
+    - step 1: define the focus requester prior. `val (first, second) = FocusRequester.createRefs()`
+    - step 2: update the modifier to set the order. `modifier = Modifier.focusOrder(first) { this.down = second }`
+    - focus order accepts following values: up, down, left, right, previous, next, start, end
+    - step 3: use `second.requestFocus()` to gain focus
+  
+### Code Example
+
+**Jetpack Compose**
+```java
+val items = listOf("Item 1", "Item 2", "Item 3")
+var expanded by remember { mutableStateOf(false) }
+var selectedItemText by remember { mutableStateOf(items[0]) }
+ExposedDropdownMenuBox(
+    expanded = expanded,
+    onExpandedChange = { expanded = !expanded },
+) {
+    TextField(
+        // The `menuAnchor` modifier must be passed to the text field for correctness.
+        modifier = Modifier.menuAnchor(),
+        readOnly = true,
+        value = selectedItemText,
+        onValueChange = {},
+        label = { Text("Label") },
+        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+        colors = ExposedDropdownMenuDefaults.textFieldColors(),
+    )
+    ExposedDropdownMenu(
+        expanded = expanded,
+        onDismissRequest = { expanded = false },
+    ) {
+        items.forEach { selectionOption ->
+            DropdownMenuItem(
+                text = { Text(selectionOption) },
+                onClick = {
+                    selectedItemText = selectionOption
+                    expanded = false
+                },
+                contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
+            )
+        }
+    }
+}
+```
+
+### Announcement examples (vary with devices and OS)
+- "Label, button, selected option label, in list, collapsed, double tap to activate"  (Opens drop down menu)
+- "Selected, selected option label, index, double tap to activate"  (Selected list item)
+- "Other option label, double tap to activate"  (Other list item)
