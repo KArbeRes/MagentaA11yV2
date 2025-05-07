@@ -1,6 +1,6 @@
 ## General Notes
 
-How to test a figure
+How to test a figure: maps, charts, and graphics
 
 ## Condensed
 
@@ -27,9 +27,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
-
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with a figure: maps, charts, and graphics
 
 1. Keyboard for mobile & desktop
 
