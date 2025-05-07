@@ -342,9 +342,8 @@ DropdownMenu(
 
 ### Announcement examples
 
-- Options for announcements below depend on framework and versions. Announcement order can vary. 
-
-- "Open navigation drawer, button, double tap to activate"
-- "More options, button, double tap to activate"
-- "Open main menu, button, double tap to activate"
-- "More options button, disabled" (disabled state)
+  - Options for announcements below depend on framework and versions. Announcement order can vary.
+  - "Open navigation drawer, button, double tap to activate"
+  - "More options, button, double tap to activate"
+  - "Open main menu, button, double tap to activate"
+  - "More options button, disabled" (disabled state)
