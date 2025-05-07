@@ -85,6 +85,113 @@ export const getMarkdownFunctionMap = (
     }
   },
 
+  increaseNumber: () => {
+    const stepNumber = document.getElementById('step-number');
+    const liveRegion = document.getElementById('stepper-status-target');
+    const decreaseButton = document.getElementById('decrement-button');
+
+    if (stepNumber) {
+      let currentNumber = parseInt(stepNumber.innerHTML);
+      stepNumber.innerHTML = `${currentNumber + 1}`;
+
+      if (decreaseButton) {
+        if (currentNumber==1) {
+          decreaseButton.removeAttribute('aria-disabled');
+        } else if (currentNumber==0) {
+          decreaseButton.setAttribute('aria-disabled', 'true');
+        }
+      }
+
+      if (liveRegion) {
+        liveRegion.innerHTML = `Quantity updated, ${currentNumber + 1}`;
+
+        setTimeout(() => {
+          liveRegion.innerHTML = '';
+        }, 2000);
+      }
+    }
+  },
+
+  decreaseNumber: (event) => {
+    const stepNumber = document.getElementById('step-number');
+    const liveRegion = document.getElementById('stepper-status-target');
+    // const decreaseButton = event.currentTarget as HTMLButtonElement;
+
+    if (stepNumber) {
+      let currentNumber = parseInt(stepNumber.innerHTML);
+
+      if (currentNumber > 0) {
+        stepNumber.innerHTML = `${currentNumber - 1}`;
+      }
+
+      // if (decreaseButton) {
+      //   if (currentNumber==1) {
+      //     decreaseButton.removeAttribute('aria-disabled');
+      //   } else if (currentNumber==0) {
+      //     decreaseButton.setAttribute('aria-disabled', 'true');
+      //   }
+      // }
+
+      if (liveRegion) {
+        liveRegion.innerHTML = `Quantity updated, ${currentNumber + 1}`;
+
+        setTimeout(() => {
+          liveRegion.innerHTML = '';
+        }, 2000);
+      }
+    }
+  },
+
+  increaseSelectStepper: () => {
+    const liveRegion = document.getElementById('stepper-status-target-1');
+    const stepperSelect = document.getElementById('stepper') as HTMLSelectElement;
+
+    if (!stepperSelect || stepperSelect.tagName.toLowerCase() !== 'select') {
+      return; // Exit if the provided element is not a select element
+    }
+  
+    let currentIndex = stepperSelect.selectedIndex;
+    let nextIndex = currentIndex + 1;
+  
+    if (nextIndex < stepperSelect.options.length) {
+      stepperSelect.selectedIndex = nextIndex;
+
+      if (liveRegion) {
+        liveRegion.innerHTML = `Quantity updated, ${nextIndex+1}`;
+  
+        setTimeout(() => {
+          liveRegion.innerHTML = '';
+        }, 2000);
+      }
+    }
+  },
+
+  decreaseSelectStepper: () => {
+    const liveRegion = document.getElementById('stepper-status-target-1');
+    const stepperSelect = document.getElementById('stepper') as HTMLSelectElement;
+
+    if (!stepperSelect || stepperSelect.tagName.toLowerCase() !== 'select') {
+      return; // Exit if the provided element is not a select element
+    }
+  
+    let currentIndex = stepperSelect.selectedIndex;
+    let nextIndex = currentIndex - 1;
+  
+    if (currentIndex==0) {
+      return; // do nothing if at 0
+    } else if (nextIndex < stepperSelect.options.length) {
+      stepperSelect.selectedIndex = nextIndex;
+
+      if (liveRegion) {
+        liveRegion.innerHTML = `Quantity updated, ${currentIndex}`;
+  
+        setTimeout(() => {
+          liveRegion.innerHTML = '';
+        }, 2000);
+      }
+    }
+  },
+
   scrollAndFocusMain: () => {
     const main = document.querySelector('main');
     if (main) {

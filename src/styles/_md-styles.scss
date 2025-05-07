@@ -46,6 +46,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     background: var(--color-text-on-primary);
   }
 
+<<<<<<< HEAD
   /* stylelint-disable no-descending-specificity */
   .switch {
     max-width: 450px;
@@ -110,6 +111,22 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   }
   /* stylelint-enable no-descending-specificity */
   
+=======
+  .stepper {
+    display: inline-grid;
+    grid-template-columns: 39px 1fr 39px;
+    grid-template-rows: 38px;
+    -moz-column-gap: var(--magentaa11y-spacing-size-4);
+    column-gap: var(--magentaa11y-spacing-size-4);
+    border-radius: var(--magentaa11y-border-radius-size-24);
+    border: var(--magentaa11y-border-weight-size-1) solid var(--color-input-border);
+    place-items: center;
+    height: var(--magentaa11y-spacing-size-40);
+    width: 120px;
+    position: relative;
+    background-color: var(--color-on-primary);
+  }
+>>>>>>> 6aae30c (styles and interaction: getting css and js in place for stepper, added another non-select example)
 
   // search input example
   form[role="search"] {

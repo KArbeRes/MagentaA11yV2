@@ -81,64 +81,94 @@ Before using this pattern, consider if using a plain [select dropdown](https://w
 The stepper input component is useful for *small range increments*. If the max character count is more than 20, consider use of a [text Input](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/text-input/) field as this component will be cumbersome for people using a mouse.
 
 ```html
-<div class="stepper">
+<div>
   <label for="stepper">
     Quantity
   </label>
-  <button class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
-  <select id="stepper"
-          name="stepper-input"
-          min="1"
-          max="11"
-          data-selected="1">
-    <option value="1" selected>1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-  </select>
-  <button class="button plus" aria-label="Increase Quantity"></button>
+  <div class="stepper">
+      <button class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
+      <select id="stepper"
+               name="stepper-input"
+               min="1"
+               max="11"
+               data-selected="1">
+         <option value="1" selected>1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="8">8</option>
+         <option value="9">9</option>
+         <option value="10">10</option>
+         <option value="11">11</option>
+      </select>
+      <button class="button plus" aria-label="Increase Quantity"></button>
+   </div>
   <!-- live container where "Quantity updated, [number]" will be dynamically updated -->
   <div aria-live="polite" class="hidden" id="stepper-status-target"></div>
 </div>
 ```
 
-<!-- TODO: Styling and JS needed to made increment/decrement + dropdown buttons functional
-
+<!-- TODO disabling buttons -->
 <example>
+   <div>
+      <label for="stepper">
+         Quantity
+      </label>
+      <div class="stepper">
+            <button data-fn="decreaseSelectStepper" data-icon="minus" class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
+            <select id="stepper"
+                     name="stepper-input"
+                     min="1"
+                     max="11"
+                     data-selected="1">
+               <option value="1" selected>1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+               <option value="7">7</option>
+               <option value="8">8</option>
+               <option value="9">9</option>
+               <option value="10">10</option>
+               <option value="11">11</option>
+            </select>
+            <button data-fn="increaseSelectStepper" data-icon="plus" class="button plus" aria-label="Increase Quantity"></button>
+         </div>
+      <!-- live container where "Quantity updated, [number]" will be dynamically updated -->
+      <div aria-live="polite" class="hidden" id="stepper-status-target-1"></div>
+   </div>
+</example>
+
+### No-select stepper
+
+* Uses buttons to increment/decrement
+* Has an updating aria-live region to provide updates
+* Buttons should be disabled when the stepper hits its min or max value.
+
+```html
 <div class="stepper">
-  <label for="stepper">
-    Quantity
-  </label>
-  <button class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
-  <select id="stepper"
-          name="stepper-input"
-          min="1"
-          max="11"
-          data-selected="1">
-    <option value="1" selected>1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-  </select>
-  <button class="button plus" aria-label="Increase Quantity"></button>
-  live container where "Quantity updated, [number]" will be dynamically updated (comment out when code example is functional)
-  <div aria-live="polite" class="hidden" id="stepper-status-target"></div>
+   <button id="decrement-button" data-fn="decreaseNumber" data-icon="minus" class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
+   <span id="step-number">0</span>
+   <button data-icon="plus"  data-fn="increaseNumber" class="button plus" aria-label="Increase Quantity"></button>
+   <!-- live container where "Quantity updated, [number]" will be dynamically updated -->
+   <div aria-live="polite" class="hidden" id="stepper-status-target"></div>
 </div>
-</example> -->
+```
+
+<!-- TODO disabling buttons -->
+<example>
+   <div class="stepper">
+      <button id="decrement-button" data-fn="decreaseNumber" data-icon="minus" class="button minus" aria-label="Decrease Quantity" aria-disabled="true"></button>
+      <span id="step-number">0</span>
+      <button data-icon="plus"  data-fn="increaseNumber" class="button plus" aria-label="Increase Quantity"></button>
+      <!-- live container where "Quantity updated, [number]" will be dynamically updated -->
+      <div aria-live="polite" class="hidden" id="stepper-status-target"></div>
+   </div>
+</example>
 
 ## Developer notes
 
