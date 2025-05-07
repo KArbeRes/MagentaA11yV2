@@ -104,13 +104,14 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 ```html
 <fieldset>
   <legend>Privacy settings:</legend>
-  <input type="checkbox" role="switch" id="locationSwitch">
+  <input class="hidden-visually" type="checkbox" role="switch" id="locationSwitch">
   <label for="locationSwitch">Share my location</label>
 
-  <input type="checkbox" role="switch" id="emailSwitch">
+  <input class="hidden-visually" type="checkbox" role="switch" id="emailSwitch">
   <label for="emailSwitch">Share my email</label>
 
-  <input type="checkbox"
+  <input class="hidden-visually"
+         type="checkbox"
          role="switch"
          id="photosSwitch"
          checked>
@@ -118,24 +119,21 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 </fieldset>
 ```
 
-<!-- TODO: needs additional JS/styling to operate like a toggle switch
-
 <example>
-<fieldset>
-  <legend>Privacy settings:</legend>
-  <input type="checkbox" role="switch" id="locationSwitch">
-  <label for="locationSwitch">Share my location</label>
-
-  <input type="checkbox" role="switch" id="emailSwitch">
-  <label for="emailSwitch">Share my email</label>
-
-  <input type="checkbox"
-         role="switch"
-         id="photosSwitch"
-         checked>
-  <label for="photosSwitch">Share my photos</label>
-</fieldset>
-</example> -->
+   <fieldset class="switch">
+      <legend>Privacy settings:</legend>
+      <input class="hidden-visually" type="checkbox" role="switch" id="locationSwitch">
+      <label for="locationSwitch">Share my location</label>
+      <input class="hidden-visually" type="checkbox" role="switch" id="emailSwitch">
+      <label for="emailSwitch">Share my email</label>
+      <input class="hidden-visually"
+               type="checkbox"
+               role="switch"
+               id="photosSwitch"
+               checked>
+      <label for="photosSwitch">Share my photos</label>
+   </fieldset>
+</example>
 
 ### Disabled and focusable
 
@@ -145,43 +143,39 @@ If it's helpful for screenreaders to perceive a disabled toggle, use `aria-disab
 <fieldset>
   <legend>Choose your cookies</legend>
 
-  <input type="checkbox"
+  <input class="hidden-visually"
+         type="checkbox"
         role="switch" 
         id="mandatoryCookies" 
         aria-disabled="true" 
         checked>
   <label for="mandatoryCookies">Cookies required for the site to function</label>
   
-  <input type="checkbox" role="switch" id="raisinCookies" aria-disabled="true" >
+  <input class="hidden-visually" type="checkbox" role="switch" id="raisinCookies" aria-disabled="true" >
   <label for="raisinCookies">Raisin cookies</label>
 
-  <input type="checkbox" role="switch" id="optionalCookies" checked>
+  <input class="hidden-visually" type="checkbox" role="switch" id="optionalCookies" checked>
   <label for="optionalCookies">Optional marketing cookies</label>
 
 </fieldset>
 ```
-
-<!-- TODO: needs additional JS/styling to operate like a toggle switch
-
+<!-- TODO need to preventDefaut for aria-disabed and figure out why checked state cannot be changed -->
 <example>
-<fieldset>
-  <legend>Choose your cookies</legend>
-
-  <input type="checkbox"
-        role="switch" 
-        id="mandatoryCookies" 
-        aria-disabled="true" 
-        checked>
-  <label for="mandatoryCookies">Cookies required for the site to function</label>
-  
-  <input type="checkbox" role="switch" id="raisinCookies" aria-disabled="true" >
-  <label for="raisinCookies">Raisin cookies</label>
-
-  <input type="checkbox" role="switch" id="optionalCookies" checked>
-  <label for="optionalCookies">Optional marketing cookies</label>
-
-</fieldset>
-</example> -->
+   <fieldset class="switch">
+      <legend>Choose your cookies</legend>
+      <input class="hidden-visually"
+            type="checkbox"
+            role="switch" 
+            id="mandatoryCookies" 
+            aria-disabled="true" 
+            checked>
+      <label for="mandatoryCookies">Cookies required for the site to function</label>    
+      <input class="hidden-visually" type="checkbox" role="switch" id="raisinCookies" aria-disabled="true">
+      <label for="raisinCookies">Raisin cookies</label>
+      <input class="hidden-visually" type="checkbox" role="switch" id="optionalCookies" checked>
+      <label for="optionalCookies">Optional marketing cookies</label>
+   </fieldset>
+</example>
 
 ### Disabled and not focusable
 
