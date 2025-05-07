@@ -4,9 +4,9 @@ How to test a chip
 
 ## Videos
 
-- Videos go here
+### Andriod Talkback
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/chip/chip-AndroidTalkback.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -105,8 +105,8 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
 - See Button, Dropdown or checkbox components for guidance
   
 ### Announcement example  (will vary with implementation)
-- "Selected, label, filter, button, list start"   (selected state)
-- "Not selected, label, filter, button"   (unselected state) 
+- "Selected, label, filter, button, list start" (selected state)
+- "Not selected, label, filter, button" (unselected state) 
 
 ## Android Developer Notes
 ### General Notes
@@ -193,7 +193,7 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
   
 ### Code Example
 - **Jetpack Compose**
-{% highlight kotlin %}
+```java
 AssistChip(
     onClick = { /* Do something! */ },
     label = { Text("Assist Chip") },
@@ -205,7 +205,7 @@ AssistChip(
         )
     }
 )
-{% endhighlight %}
+```
 
 
 ### Announcement example  (will vary with implementation, version and device)
