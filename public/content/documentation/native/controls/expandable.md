@@ -6,13 +6,13 @@ How to test an expandable region
 
 ### iOS Voiceover
 <video controls>
-  <source src="media/video/native/expandable/expandable-iOSVoiceOver.mp4" type="video/webm">
+  <source src="media/video/native/expandable/expandable-iOSVoiceOver.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 <video controls>
-  <source src="media/video/native/expandable/expandable-AndroidTalkback.mp4" type="video/webm">
+  <source src="media/video/native/expandable/expandable-AndroidTalkback.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
