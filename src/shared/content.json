@@ -617,6 +617,19 @@
           "developerNotes": ""
         },
         {
+          "label": "Dropdown",
+          "name": "dropdown",
+          "type": "file",
+          "generalNotes": "How to test a dropdown",
+          "gherkin": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a dropdown\n\nGIVEN THAT I am on a screen with a dropdown\n\n1. Scenario: Test keyboard actions\n\n   * WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components\n\n2. Scenario: Test mobile screen reader gestures\n\n   * WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND\n\n   * I use the tab key to enter the web browser window\n\n   * I HEAR It is discoverable with screenreader shortcuts as header/banner landmark\n\n   * I HEAR It typically contains the name and primary navigation of the website\n\n3. Scenario: Test screen reader output on all devices\n\n   * WHEN I use a mobile screenreader (Talkback, VoiceOver) AND\n\n   * I swipe to focusable elements in the header\n\n   * I HEAR It is discoverable with screenreader shortcuts as header/banner landmark\n\n   * I HEAR It typically contains the name and primary navigation of the website\n\n4. Scenario: Test device OS settings for text resize\n\n   * WHEN I adjust the device text resize setting to 200%\n\n     * THEN the text on the button should resize up to 200% without losing information\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/dropdown>",
+          "condensed": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a dropdown\n\n1. Test keyboard only, then screen reader + keyboard actions\n\n   * Tab, arrow keys or ctl+tab: Focus visibly moves to the Dropdown\n   * Spacebar: Selects and opens the Dropdown on iOS and Android\n   * Enter: Selects and opens the Dropdown on Android\n\n2. Test mobile screenreader gestures\n\n   * Swipe: Focus moves to the element, expresses its name, role, value & state (expanded or collapsed)\n   * Doubletap: Selects and opens Dropdown\n\n3. Listen to screenreader output on all devices\n\n   * Name: Purpose is clear and matches any visible label\n   * Role: Identifies itself as a button in iOS and \"double tap to activate\" in Android\n   * Group: Visible label is grouped or associated with the Dropdown in a single swipe\n   * State: Expresses its state (disabled/dimmed). Expanded/collapsed states are announced on the elements that close or open the dropdown\n\n4. Test device settings\n\n   * Text resize: Text can resize up to 200% without losing information\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/dropdown>",
+          "criteria": null,
+          "videos": "* Videos go here\n  <video controls>\n  <source src=\"media/video/native/button/buttonIosVoiceover.webm\" type=\"video/webm\">\n  Your browser does not support the video tag.\n\n</video>",
+          "androidDeveloperNotes": "### General Notes\n\n* android developer notes go here",
+          "iosDeveloperNotes": "### General Notes\n\n* ios developer notes go here",
+          "developerNotes": ""
+        },
+        {
           "label": "Link",
           "name": "link",
           "type": "file",
