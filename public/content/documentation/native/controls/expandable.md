@@ -4,11 +4,18 @@ How to test an expandable region
 
 ## Videos
 
-- Videos go here
+### iOS Voiceover
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/expandable/expandable-iOSVoiceOver.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
+
+### Android Talkback
+<video controls>
+  <source src="media/video/native/expandable/expandable-AndroidTalkback.mp4" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
 
 ## Condensed
 
@@ -91,7 +98,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
 - When the row is activated to expand, the focus stays on that row and does not automatically move to the new content.
 - Name, Role, State must be stated in a single announcement when focus is on the control area (caret icon should not gain focus alone).
 
-## Name
+### Name
 - Programmatic name describes the purpose of the control.
 - If visible text label exists, the programmatic name should match the visible text label.
     - **Note:** Setting a programmatic name while a visible text label exists may cause VoiceOver to duplicate the announcement of the name. If this happens, hide the visible text label from VoiceOver recognition.
@@ -166,6 +173,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
 - “Amenities, 2 Hotel amenities selected, collapsed, double tap to activate”  (Label, data, state, role/action)
 
 ## Android Developer Notes
+### General Notes
 - An expandable region is a view that shows items in a two-level list; groups which can individually be expanded to show its children.
 - The expand/collapses indicator (caret) is not focused separately.  As part of a table row/list view, the label, images and other non-interactive content in the row are usually announced together. The caret shows the state, which should be announced as part of the whole row announcement.
 - When the row is activated to expand, the focus stays on that row and does not automatically move to the new content.
