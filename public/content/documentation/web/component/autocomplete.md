@@ -6,8 +6,6 @@ How to test an autocomplete input with listbox
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
-
 1. Test keyboard only, then screen reader + keyboard actions
 
    - Tab: Focus moves visibly to the text input
@@ -33,13 +31,12 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a header
+How to test a autocomplete input with listbox
 
-GIVEN THAT I am on a page with a header landmark
+GIVEN THAT I am on a page with an autocomplete input with listbox
 
 1. Keyboard for mobile & desktop
 
-   - WHEN I use the tab key to enter the web browser window I SEE focus is strongly visually indicated on interactive components
    - WHEN I use the tab key to move focus to the text input I SEE focus is strongly visually indicated
    - THEN when I use the arrow keys to select an option I SEE the selected option is the new text input value
    - THEN when I use the enter key I SEE the selected option is changed and focus returns to the text input
@@ -49,9 +46,9 @@ GIVEN THAT I am on a page with a header landmark
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the tab key to move focus to the text input
       - I HEAR Its purpose is clear
-      - I HEAR It identifies itself as a select, popup, menu/submenu, listbox or combobox
-      - I HEAR Its label is read and selected options are read
-      - I HEAR It indicates the value of the text input
+      - I HEAR it identifies itself as a select, popup, menu/submenu, listbox or combobox
+      - I HEAR its label is read and selected options are read
+      - I HEAR it indicates the value of the text input
    - THEN when I use the arrow keys to select an option I HEAR the selected option is the new text input value
    - THEN when I use the enter key I HEAR the selected option is changed and focus returns to the text input
    - THEN when I use the escape key when the select is open I HEAR it collapses and focus moves to the text input
@@ -60,9 +57,9 @@ GIVEN THAT I am on a page with a header landmark
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to focus on a select
       - I HEAR Its purpose is clear
-      - I HEAR It identifies itself as a select, popup, menu/submenu, listbox or combobox
-      - I HEAR Its label is read and selected options are read
-      - I HEAR It indicates the value of the text input
+      - I HEAR it identifies itself as a select, popup, menu/submenu, listbox or combobox
+      - I HEAR its label is read and selected options are read
+      - I HEAR it indicates the value of the text input
    - THEN when I doubletap with the select in focus I HEAR the selected option is changed
 
 
@@ -73,7 +70,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 ### Custom listbox with autocomplete
 Custom listboxes are notoriously difficult to build in an accessible fashion for screenreaders.
 
-- [WCAG Examples](https://w3c.github.io/aria-practices/examples/combobox/combobox-autocomplete-list.html)
+- [WCAG Examples](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/)
 
 ### Semantic input with datalist autocomplete
 
