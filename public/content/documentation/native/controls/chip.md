@@ -119,12 +119,12 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
 ### Name
 -   Programmatic name describes the purpose of the control and matches the visible label, if there is one
 
-- **Android Views**
+**Android Views**
   - `android:text` XML attribute
   - Optional: use `contentDescription` for a more descriptive name, depending on type of view and for elements (icons) without a visible label
   - `contentDescription` overrides `android:text`
   - Use `labelFor` attribute to associate the visible label with the control
-- **Jetpack Compose**
+**Jetpack Compose**
   - Compose uses semantics properties to pass information to accessibility services.
   - The built-in Chip composable will fill the semantics properties with information inferred from the composable by default.
   - Optional: use `contentDescription` for a more descriptive name to override the default visible label of the Chip text.
@@ -133,9 +133,9 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
 ### Role
 - When not using native controls (custom controls), roles will need to be manually coded.
 - By default the role is button for chips with actions like AssistChip and SuggestionChip. If the chips are selectable as FilterChip or InputChip, the role is checkbox
-- **Android Views**
+**Android Views**
   - Material `Chip`
-- **Jetpack Compose**
+**Jetpack Compose**
   - `AssistChip`, `ElevatedAssistChip`
   - `FilterChip`, `ElevatedFilterChip`
   - `InputChip`
@@ -144,18 +144,18 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
 ### Groupings
 - Sometimes a visible label is provided.  Associate or group label with chip to provide a programmatic name
 
-- **Android Views**
+**Android Views**
   - `ViewGroup`
   - Set the container object's `android:screenReaderFocusable` attribute to true, and each inner object's `android:focusable` attribute to false. In doing so, accessibility services can present the inner elements' `contentDescription` or names, one after the other, in a single announcement.
-- **Jetpack Compose**
+**Jetpack Compose**
   - `Modifier.semantics(mergeDescendants = true) {}` is equivalent to `importantForAccessibility` when compared to android views
   - `FocusRequester.createRefs()` helps to request focus to inner elements with in the group
 
 ### State
-- **Android Views**
+**Android Views**
   - Active: `android:enabled=true`
   - Disabled: `android:enabled=false`. Announcement: disabled
-- **Jetpack Compose**
+**Jetpack Compose**
   - Active: default state is active and enabled. Use `AssistChip(enabled = true)` to specify explicitly
   - Disabled:  `AssistChip(enabled = false)` announces as disabled
   - Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
@@ -166,7 +166,7 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
 - Consider how focus should be managed between child elements and their parent views
 - External keyboard tab order often follows the screen reader focus, but sometimes needs focus management
 
-- **Android Views**
+**Android Views**
   - `importantForAccessibility` makes the element visible to the Accessibility API
   - `android:focusable`
   - `android=clickable`
@@ -180,7 +180,7 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
   - To NOT move focus, but dynamically announce new content: `accessibilityLiveRegion`(set to polite or assertive)
   - To hide controls: `importantForAccessibility=false`
   - For a `ViewGroup`, set `screenReaderFocusable=true` and each inner object’s attribute to keyboard focus (`focusable=false`)
-- **Jetpack Compose**
+**Jetpack Compose**
   - `Modifier.focusTarget()` makes the component focusable
   - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
   - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
@@ -192,7 +192,7 @@ There is no native chip element for iOS.  The notes below are suggestions and ac
     - step 3: use `second.requestFocus()` to gain focus
   
 ### Code Example
-- **Jetpack Compose**
+**Jetpack Compose**
 ```java
 AssistChip(
     onClick = { /* Do something! */ },
