@@ -31,7 +31,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 ### #a11y - Web Accessibility Acceptance Criteria
 
-How to test a autocomplete input with listbox
+How to test an autocomplete input with listbox
 
 GIVEN THAT I am on a page with an autocomplete input with listbox
 
@@ -45,7 +45,7 @@ GIVEN THAT I am on a page with an autocomplete input with listbox
 2. Desktop screenreader
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the tab key to move focus to the text input
-      - I HEAR Its purpose is clear
+      - I HEAR its purpose is clear
       - I HEAR it identifies itself as a select, popup, menu/submenu, listbox or combobox
       - I HEAR its label is read and selected options are read
       - I HEAR it indicates the value of the text input
@@ -56,7 +56,7 @@ GIVEN THAT I am on a page with an autocomplete input with listbox
 3. Mobile screenreader
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to focus on a select
-      - I HEAR Its purpose is clear
+      - I HEAR its purpose is clear
       - I HEAR it identifies itself as a select, popup, menu/submenu, listbox or combobox
       - I HEAR its label is read and selected options are read
       - I HEAR it indicates the value of the text input
