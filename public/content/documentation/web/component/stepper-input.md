@@ -145,9 +145,9 @@ The stepper input component is useful for *small range increments*. If the max c
 
 ### No-select stepper
 
-* Uses buttons to increment/decrement
-* Has an updating aria-live region to provide updates
-* Buttons should be disabled when the stepper hits its min or max value.
+   - Uses buttons to increment/decrement
+   - Has an updating `aria-live` region to provide updates
+   - Buttons should be disabled when the stepper hits its minimum or maximum value.
 
 ```html
 <div class="stepper">
@@ -174,7 +174,7 @@ The stepper input component is useful for *small range increments*. If the max c
 
    - This stepper example provides both `button` and `select` elements for users to change a value.
 
-   - A non-visual live container with `aria-live="polite"` is present in the DOM on page load. When the `button` element is activated, this non-visual live container is updated with dynamic content that screen reader users will hear announced as they increment or decrement the value. This dynamic text is then removed from the DOM after a few seconds (but not the actual container with `aria-live="polite"`) so the message is not discovered by screen reader users after interaction. The content of this message dynamically created based on the `Label` for the `Select` and the current value of the `Select`, e.g. "Quantity updated, 4".
+   - A non-visual live container with `aria-live="polite"` is present in the DOM on page load. When the `button` element is activated, this non-visual live container is updated with dynamic content that screen reader users will hear announced as they increment or decrement the value. This dynamic text is then removed from the DOM after a few seconds (but not the actual container with `aria-live="polite"`) so the message is not discovered by screen reader users after interaction. The content of this message dynamically created based on the `label` for the `select` and the current value of the `select`, e.g. "Quantity updated, 4".
 
    - The value of the `select` element naturally communicates the updated value to screen reader users so the live container is not updated when interacting with that form element.
 
