@@ -4,9 +4,16 @@ How to test a slider
 
 ## Videos
 
-- Videos go here
+### iOS Voiceover
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/slider/slider-iOSVoiceover.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+### Android Talkback
+<video controls>
+  <source src="media/video/native/slider/slider-AndroidTalkback.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -105,7 +112,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
     - To do this in Interface Builder, set the label using the Identity Inspector
   - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
   - To hide labels from VoiceOver using Interface Builder, uncheck `Accessibility Enabled` in the Identity Inspector.
-  
+
 **SwiftUI**
   - If no visible label, use view modifier `accessibilityLabel(_:)`.
   - If button has icon(s), hide the icon(s) from VoiceOver by using view modifier `accessibilityHidden(true)`.
@@ -116,7 +123,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 **UIKit**
   - Use `UISlider`
   - If necessary, set `accessibilityTraits` to `.adjustable`.
-  
+
 **SwiftUI**
   - Use native `Slider` view
   - If applicable, use view modifier `accessibilityRemoveTraits(:)` to remove unwanted traits.  
@@ -126,7 +133,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
   
 **UIKit**
   - As long as you set the `accessibilityLabel` of the slider itself, it is not necessary to group the visible text label and the slider. (This will cause duplicate announcement of the programmatic name)
-  
+
 **SwiftUI**
   - As long as you set the `accessibilityLabel` of the slider itself, it is not necessary to group the visible text label and the slider. (This will cause duplicate announcement of the programmatic name)
 
@@ -136,7 +143,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
   - For enabled: Set `isEnabled` to `true`.
   - For disabled: Set `isEnabled` to `false`. Announcement for disabled is "Dimmed".
     - If necessary, you may change the accessibility trait of the slider to `notEnabled`, but this may overwrite the current accessibility role of the slider.
-    
+
 **SwiftUI**
   - By default, the value of the slider is announced. If not, set the `accessibilityValue` to the correct value.
   - For disabled, use view modifier `disabled()`.
