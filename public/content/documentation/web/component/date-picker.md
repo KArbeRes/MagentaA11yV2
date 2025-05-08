@@ -74,7 +74,7 @@ GIVEN THAT I am on a page with a date picker dialog
       - I HEAR the purpose of each control is clear
       - I HEAR buttons identify as buttons, dialog identifies itself dialog or modal, date grid table may identify itself as table or grid
       - I HEAR the launch button indicates it has a popup, menu or dialog; days are announced with month and year
-      - I HEAR fate options express state (pressed, selected, disabled/dimmed)
+      - I HEAR date options express state (pressed, selected, disabled/dimmed)
    - THEN when I doubletap with the button in focus I HEAR the date picker dialog appears
    - THEN when I swipe through the dialog I HEAR the date options and controls come into focus
    - THEN when I doubletap with the selection or button in focus I HEAR the intended action occurs
