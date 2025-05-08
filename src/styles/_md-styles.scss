@@ -346,15 +346,45 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 .star-rating {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  
+  // flex-direction: row-reverse; /* Keep row-reverse for visual order */
   justify-content: space-around;
 }
 
+<<<<<<< HEAD
 /* stylelint-disable no-descending-specificity */
 input.star + label {
+=======
+// .star-rating label {
+//   position: relative;
+//   padding: 1rem 0;
+//   height: 4rem;
+//   line-height: 1;
+//   width: fit-content;
+//   cursor: pointer;
+//   transition: opacity .2s;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+
+.star-rating input.star {
+  position: absolute; /* Keep radio buttons off-screen */
+  opacity: 0;
+}
+
+input.star:focus + label,
+input.star:focus-visible + label {
+  outline: .5rem auto Highlight;
+  outline: -webkit-focus-ring-color auto 1px;
+  outline-offset: 4px;
+}
+
+.star-rating input.star + label {
+>>>>>>> f2f2576 (rework star rating styles)
   padding: 1rem 0;
   height: 4rem;
-  line-height: 1;
   width: fit-content;
   cursor: pointer;
 
@@ -368,11 +398,12 @@ input.star + label {
     width: 4rem;
     height: 4rem;
     border: none;
-    background: url("../assets/svgs/star-outlined.svg") no-repeat 0 0;
+    background: url("../assets/svgs/star-outlined.svg") no-repeat center center;
     transition: background-color .2s;
   }
 }
 
+<<<<<<< HEAD
 input[type="radio"]:checked ~ label::before {
   background: url("../assets/svgs/star-filled.svg") no-repeat 0 0;
 }
@@ -390,11 +421,18 @@ input[type="radio"]:checked ~ label::before {
   display: block;
   border-radius: 2px;
 }
+=======
+.star-rating input.star:checked ~ label::before {
+    background: url("../assets/svgs/star-filled.svg") no-repeat center center;
+  }
+>>>>>>> f2f2576 (rework star rating styles)
 
-input.star:focus + label,
-input.star:focus-visible + label {
-  outline: .5rem auto Highlight;
-  outline: -webkit-focus-ring-color auto 1px;
-  outline-offset: 4px;
-}
 
+
+
+/* Reverse the visual order of the labels */
+.star-rating input.star#star-1 + label { order: 5; }
+.star-rating input.star#star-2 + label { order: 4; }
+.star-rating input.star#star-3 + label { order: 3; }
+.star-rating input.star#star-4 + label { order: 2; }
+.star-rating input.star#star-5 + label { order: 1; }
