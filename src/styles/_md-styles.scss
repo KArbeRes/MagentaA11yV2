@@ -110,6 +110,20 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   }
   /* stylelint-enable no-descending-specificity */
   
+  .stepper {
+    display: inline-grid;
+    grid-template-columns: 39px 1fr 39px;
+    grid-template-rows: 38px;
+    -moz-column-gap: var(--magentaa11y-spacing-size-4);
+    column-gap: var(--magentaa11y-spacing-size-4);
+    border-radius: var(--magentaa11y-border-radius-size-24);
+    border: var(--magentaa11y-border-weight-size-1) solid var(--color-input-border);
+    place-items: center;
+    height: var(--magentaa11y-spacing-size-40);
+    width: 120px;
+    position: relative;
+    background-color: var(--color-on-primary);
+  }
 
   // search input example
   form[role="search"] {
@@ -284,6 +298,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   justify-content: space-around;
 }
 
+ /* stylelint-disable no-descending-specificity */
 input.star + label {
     padding: 1rem 0;
     height: 4rem;
@@ -313,7 +328,7 @@ input.star + label {
   input.star:focus {
     outline: red;
   }
-
+  /* stylelint-enable no-descending-specificity */
 
 .scrolling-container {
   height: 250px;
