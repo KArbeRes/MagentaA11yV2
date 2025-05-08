@@ -75,7 +75,7 @@ The `type="number"` input is intended for **integers** and includes features we 
 
 ### Use `type="text"` for number inputs
 
-Use `type=text` with `inputmode="numeric"` with an input pattern and JS to filter out non-numeric characters.
+Use `type=text` with `inputmode="numeric"` with an input pattern and JavaScript to filter out non-numeric characters.
 
 ```html
 <label for="pin">
@@ -124,7 +124,8 @@ Use `type=text` with `inputmode="numeric"` with an input pattern and JS to filte
 </div>
 ```
 
-<example>
+<!-- TODO need to preventDefault / make it appear disabled, also this is allowing letters AND numbers despite pattern -->
+<!-- <example>
    <label for="security-id">
    Security ID number
    </label>
@@ -137,7 +138,7 @@ Use `type=text` with `inputmode="numeric"` with an input pattern and JS to filte
    <div id="security-id-hint" class="hint">
    The Security ID number will expire after 1 hour
    </div>
-</example>
+</example> -->
 
 ### Fully disabled number input (avoid)
 
@@ -183,6 +184,7 @@ Use `type=text` with `inputmode="numeric"` with an input pattern and JS to filte
 </div>
 ```
 
+<!-- TODO this is allowing letters -->
 <example>
    <label for="phone">
    Phone number
@@ -200,7 +202,7 @@ Use `type=text` with `inputmode="numeric"` with an input pattern and JS to filte
 ## Developer notes
 
 - [Why the GOV.UK Design System team changed the input type for numbers](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/)
-- [Stepper/counter input example](/checklist-web/stepper-input/)
+- [Stepper/counter input example](/web-criteria/component/stepper-input)
 
 ### Name
 - Include `for="input-id` in each `<label>` label to associate it with the input
