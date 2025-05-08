@@ -124,6 +124,11 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     position: relative;
     background-color: var(--color-on-primary);
   }
+  
+  input[aria-disabled="true"],
+  input[disabled] {
+    background: var(--color-background-secondary);
+  }
 
   // search input example
   form[role="search"] {
