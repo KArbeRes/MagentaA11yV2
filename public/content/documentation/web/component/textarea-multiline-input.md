@@ -75,7 +75,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 <!-- TODO - make sure to adjust .hljs-keyword styling -->
 
-``` js
+```javascript
 const textarea = document.getElementById('message');
 if(textarea) {
     const chars = document.getElementById('currentChars');
@@ -94,7 +94,7 @@ if(textarea) {
 }
 ```
 
-``` html
+```html
 <label for="message">
   Your message
 </label>
@@ -117,7 +117,7 @@ if(textarea) {
   </div>
 </div>
 ```
-
+<!-- TODO JS for countdown of characters -->
 <example>
    <label for="message">
    Your message
