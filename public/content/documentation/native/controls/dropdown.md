@@ -58,13 +58,10 @@ GIVEN THAT I am on a screen with a dropdown
 
    - WHEN I press the "TAB", "ARROW KEYS", or "CTRL+TAB" keys 
       - THEN the focus should visibly move to the dropdown 
-
    - WHEN I press the "ESCAPE" key 
       - THEN the dropdown should close and return focus to the button that launched it 
-
    - WHEN I press the "SPACEBAR" key 
       - THEN the dropdown should be selected and opened on iOS and Android 
-
    - WHEN I press the "ENTER" key 
       - THEN the dropdown should be selected and opened on Android 
 
