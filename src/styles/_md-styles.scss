@@ -148,6 +148,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     background: var(--color-background-secondary);
   }
 
+  // text input styles within examples
   textarea, 
   input[type="text"], 
   input[type="email"], 
@@ -166,7 +167,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 
   input[type="text"]:disabled,
   input[type="text"][aria-disabled="true"] {
-    background: var(--magentaa11y-color-brand-grayscale-400);
+    background: var(--magentaa11y-color-brand-grayscale-300);
   }
 
   // search input example
