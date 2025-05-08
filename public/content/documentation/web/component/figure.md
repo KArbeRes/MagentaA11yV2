@@ -39,8 +39,8 @@ GIVEN THAT I am on a page with a figure: maps, charts, and graphics
 
    - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND I use the arrow key to browse to a figure.
       - I HEAR Content is described by a heading, alt text or named on focus
-     - I HEAR It identifies as a common HTML element (image, list, table)
-     - I HEAR An alternative method of consumption or interaction is available
+     - I HEAR it identifies as a common HTML element (image, list, table)
+     - I HEAR an alternative method of consumption or interaction is available
    - THEN when I use the tab key to move focus to figure controls (toggle, show/hide, etc) I HEAR the control is in focus 
    - THEN when I use the spacebar or enter key I HEAR the intended action occurs
 
@@ -48,8 +48,8 @@ GIVEN THAT I am on a page with a figure: maps, charts, and graphics
 
    - WHEN I use a mobile screenreader (Talkback, VoiceOver) AND I swipe to browse to an image
      - I HEAR Content is described by a heading, alt text or named on focus
-     - I HEAR It identifies as a common HTML element (image, list, table)
-     - I HEAR An alternative method of consumption or interaction is available
+     - I HEAR it identifies as a common HTML element (image, list, table)
+     - I HEAR an alternative method of consumption or interaction is available
 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/figure](https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/figure)
@@ -116,14 +116,14 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 
 
 ### Provide alternative ways to consume visual content
-If there is one primary message for an chart that is displayed as an image file, describe it in the alt attribute.
+If there is one primary message for an chart that is displayed as an image file, describe it in the `alt` attribute.
 
 ```html
 <img src="media/images/web/figure/pie-chart.png" 
      alt="Usage shows a large jump in May to 91%">
 ```
 ### Provide alternative ways to consume data
-If you have a figure that can’t be described by alt text, place the content in a different format.
+If you have a figure that can’t be described by `alt` text, place the content in a different format.
 
 <example>
 <figure>
