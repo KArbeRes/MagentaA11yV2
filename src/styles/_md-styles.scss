@@ -109,6 +109,24 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     }
   }
   /* stylelint-enable no-descending-specificity */
+
+  .spa {
+    .slide-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .slide {
+      list-style: none;
+      background: var(--color-on-primary);
+      padding: 1rem;
+      margin-top: 1rem;
+
+      &:not(.visible) {
+        display: none;
+      }
+    }
+  }
   
   .stepper {
     display: inline-grid;
@@ -130,38 +148,46 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     background: var(--color-background-secondary);
   }
 
+  textarea, 
+  input[type="text"], 
+  input[type="email"], 
+  input[type="date"], 
+  input[type="tel"], 
+  input[type="number"], 
+  input[type="password"], 
+  input[type="button"] {
+    border: 2px solid var(--color-on-background);
+    border-radius: 2px;
+    display: block;
+    font-size: 1.125rem;
+    padding: .75rem .5rem;
+    width: auto;
+  }
+
+  input[type="text"]:disabled,
+  input[type="text"][aria-disabled="true"] {
+    background: var(--magentaa11y-color-brand-grayscale-400);
+  }
+
   // search input example
   form[role="search"] {
+    box-shadow: 0 0 0 3px var(--color-on-primary);
     display: flex;
-    padding: 1rem;
     transition: 0.7s;
     border-radius: 0.125rem;
-    box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary), 0.1);
-
-    /* stylelint-disable no-descending-specificity */
-    &:focus-within,
-    &:hover {
-      background: var(--color-on-primary);
-      box-shadow: 0 1px 4px 1px rgba(var(--color-on-tertiary), 0.3);
-    }
-    /* stylelint-enable no-descending-specificity */
 
     input[type="search"] {
+      background-color: var(--color-on-primary);
+      border: 2px solid var(--color-on-background);
+      border-radius: 0;
       border-right: none;
-      position: relative;
       display: block;
-      width: 100%;
-      text-indent: 0.5rem;
       line-height: 0;
       margin: 0;
       padding: 0;
-      border-radius: 0;
-      box-shadow: none;
-      background-color: var(--color-on-primary);
-
-      &:focus {
-        z-index: 99;
-      }
+      position: relative;
+      text-indent: 0.5rem;
+      width: 100%;
 
       &::-webkit-calendar-picker-indicator {
         display: none !important;
@@ -169,21 +195,20 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     }
 
     button {
+      background: var(--color-on-primary);
+      border: 2px solid var(--color-on-tertiary);;
+      border-left: none;
       display: block;
-      position: relative;
+      height: 2.375rem;
       line-height: 0;
       margin: 0;
       padding: 0;
-      height: 2.375rem;
+      position: relative;
       width: 2.25rem;
-      background: var(--color-on-primary);
-      border: 2px solid black;
-      border-left: none;
     }
   }
 
   .tidbit {
-    /* stylelint-disable no-descending-specificity */
     display: grid;
     grid-template-columns: 40px 1fr;
     align-content: start;
@@ -218,7 +243,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         fill: var(--color-success);
       }
     }
-    /* stylelint-enable no-descending-specificity */
 
     h2 {
       margin: 0;
@@ -231,22 +255,19 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     }
   }
 
-  .spa {
-    .slide-list {
-      margin: 0;
-      padding: 0;
-    }
+  label {
+    display: block;
+    font: var(--content-details-label-font);
+    margin: 0 0 .5rem;
+    position: relative;
+  }
 
-    .slide {
-      list-style: none;
-      background: var(--color-on-primary);
-      padding: 1rem;
-      margin-top: 1rem;
-
-      &:not(.visible) {
-        display: none;
-      }
-    }
+  .hint {
+    margin: 0.675rem 0 1rem;
+    padding: 0;
+    color: var(--color-text-disabled);
+    display: block;
+    border-radius: 2px;
   }
 }
 
@@ -259,7 +280,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   background: #fff;
   padding: 1rem 0 1rem 1rem;
   border-radius: 2px;
-  box-shadow: 0 0 3px 1px rgba(#000, .1);
+  box-shadow: 0 0 3px 1px var(--color-on-tertiary);
 
   * {
     margin: 0 !important;
@@ -269,6 +290,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   p {
     padding: 0 0 0 1rem;
   }
+  
 }
 
 .sticky-wrapper {
@@ -301,7 +323,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 .stars {
   display: inline-block;
   padding: 1rem 1.25rem;
-  background: #fff;
+  background: var(--color-on-primary);
   font-size: 2rem;
   letter-spacing: .25rem;
   margin-bottom: 3rem;
@@ -346,43 +368,13 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 .star-rating {
   display: flex;
   align-items: center;
-  
+
   // flex-direction: row-reverse; /* Keep row-reverse for visual order */
   justify-content: space-around;
 }
 
-<<<<<<< HEAD
 /* stylelint-disable no-descending-specificity */
 input.star + label {
-=======
-// .star-rating label {
-//   position: relative;
-//   padding: 1rem 0;
-//   height: 4rem;
-//   line-height: 1;
-//   width: fit-content;
-//   cursor: pointer;
-//   transition: opacity .2s;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-
-.star-rating input.star {
-  position: absolute; /* Keep radio buttons off-screen */
-  opacity: 0;
-}
-
-input.star:focus + label,
-input.star:focus-visible + label {
-  outline: .5rem auto Highlight;
-  outline: -webkit-focus-ring-color auto 1px;
-  outline-offset: 4px;
-}
-
-.star-rating input.star + label {
->>>>>>> f2f2576 (rework star rating styles)
   padding: 1rem 0;
   height: 4rem;
   width: fit-content;
@@ -403,7 +395,6 @@ input.star:focus-visible + label {
   }
 }
 
-<<<<<<< HEAD
 input[type="radio"]:checked ~ label::before {
   background: url("../assets/svgs/star-filled.svg") no-repeat 0 0;
 }
@@ -413,20 +404,9 @@ input[type="radio"]:checked ~ label::before {
   height: 250px;
   overflow: auto;
 }
-
-.hint {
-  margin: 0 0 1rem;
-  padding: 0;
-  color: var(--color-on-surface);
-  display: block;
-  border-radius: 2px;
-}
-=======
 .star-rating input.star:checked ~ label::before {
-    background: url("../assets/svgs/star-filled.svg") no-repeat center center;
-  }
->>>>>>> f2f2576 (rework star rating styles)
-
+  background: url("../assets/svgs/star-filled.svg") no-repeat center center;
+}
 
 
 
