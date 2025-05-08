@@ -246,7 +246,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 }
 
 // stars
-
 .stars {
   display: inline-block;
   padding: 1rem 1.25rem;
@@ -333,4 +332,12 @@ input.star + label {
 .scrolling-container {
   height: 250px;
   overflow: auto;
+}
+
+.hint {
+  margin: 0 0 1rem;
+  padding: 0;
+  color: var(--color-on-surface);
+  display: block;
+  border-radius: 2px;
 }
