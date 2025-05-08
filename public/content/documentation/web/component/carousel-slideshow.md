@@ -96,11 +96,57 @@ Some alternative components to a Carousel to consider are:
 
 ### Use semantic HTML
 
-This is one example of an accessible carousel.
-- It is not the only way to build a carousel, but it meets all the criteria:
-  - The group has a name
-  - New slides titles are announced
-  - Arrow keys advance the slides
+This is one example of an accessible carousel that uses HTML semantics and ARIA:
+
+   - The carousel is grouped and has a name
+   - The ordered list structure provides context for how many slides and which number slide someone is on.
+   - No focus management is happening. We have chosen to NOT move a user from the next/previous buttons and allow them to browse at their own pace.
+   - This example does not make use of a live announcing region, but in some cases, that may be helpful.
+
+```html
+<h2 id="headingCarousel">Phones available</h2>
+<section id="carousel" aria-label="Carousel" aria-labelledby="headingCarousel carousel" class="carousel">
+
+  <div class="flex">
+      <div>
+         <button class="Magentaa11y-button Magentaa11y-button--primary button-control button-control--left"><span aria-hidden="true">&lt;&lt;</span>
+            <span class="hidden-visually">Previous 3 slides</span>
+         </button>
+         <button class="Magentaa11y-button Magentaa11y-button--primary button-control button-control--right"><span aria-hidden="true">&gt;&gt;</span>
+            <span class="hidden-visually">Next 3 slides</span>
+         </button>
+      </div>
+    <ol class="list" role="list"> 
+<!--  Need role="list" because of weird Voiceover bug: https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html      -->
+      <li><img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGlwaG9uZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="iPhone 14" /></li>
+      <li><img src="https://images.unsplash.com/photo-1583574333311-3a86605c76b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2068&q=80" alt="Samsung Galaxy phone" /></li>
+      <li><img src="https://images.unsplash.com/photo-1612442443556-09b5b309e637?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Google Pixel phone" /></li>
+    </ol>
+  </div>
+</section>
+```
+
+<example>
+   <h2 id="headingCarousel">Phones available</h2>
+   <section id="carousel" aria-label="Carousel" aria-labelledby="headingCarousel carousel" class="carousel">
+      <div class="flex">
+         <div class="button-container">
+            <button class="Magentaa11y-button Magentaa11y-button--primary button-control button-control--left"><span aria-hidden="true">&lt;&lt;</span>
+               <span class="hidden-visually">Previous 3 slides</span>
+            </button>
+            <button class="Magentaa11y-button Magentaa11y-button--primary button-control button-control--right"><span aria-hidden="true">&gt;&gt;</span>
+               <span class="hidden-visually">Next 3 slides</span>
+            </button>
+         </div>
+         <ol class="list" role="list"> 
+      <!--  Need role="list" because of weird Voiceover bug: https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html      -->
+            <li><img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGlwaG9uZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="iPhone 14" /></li>
+            <li><img src="https://images.unsplash.com/photo-1583574333311-3a86605c76b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2068&q=80" alt="Samsung Galaxy phone" /></li>
+            <li><img src="https://images.unsplash.com/photo-1612442443556-09b5b309e637?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Google Pixel phone" /></li>
+         </ol>
+      </div>
+   </section>
+</example>
 
 ## Related WCAG
 - [WCAG 1.3.1 Info and Relationships (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
