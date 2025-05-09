@@ -116,188 +116,186 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
    - **SwiftUI**
 
-    - The visible label for any interactive element is the programmatic name for it.
-    - If no visible label, use view modifier `accessibilityLabel(_:)`.
+      - The visible label for any interactive element is the programmatic name for it.
+      - If no visible label, use view modifier `accessibilityLabel(_:)`.
 
 ### Role
+
    - Required: Screen reader user is confined inside the modal, communicating a modal is present
 
    - **UIKit**
 
-        - Set the `modalPresentationStyle` of the `UIViewController` to a `UIModalPresentationStyle` of your choice
+      - Set the `modalPresentationStyle` of the `UIViewController` to a `UIModalPresentationStyle` of your choice
 
    - **SwiftUI**
 
-    - Use view modifier for modal, such as `.sheet`, `.fullScreenCover`, `.popover`. Apply view modifiers to adjust the size of the modal accordingly.
+      - Use view modifier for modal, such as `.sheet`, `.fullScreenCover`, `.popover`. Apply view modifiers to adjust the size of the modal accordingly.
 
 ### Groupings
 
-- Group content to minimize swipes and give context to the user
+   - Group content to minimize swipes and give context to the user
 
-- **UIKit**
+   - **UIKit**
 
-  - Since a modal is a presentation of another view, follow logical grouping and reading order within the view.
-  1. Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
-  2. Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
-  - If frame does not exist due to custom alert, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
-    - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
-  - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
-  - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
+      - Since a modal is a presentation of another view, follow logical grouping and reading order within the view.
+      - Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
+      - Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
+      - If frame does not exist due to custom alert, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
+      - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
+      - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
+      - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
 
-- **SwiftUI**
+   - **SwiftUI**
 
-  - Since a modal is a presentation of another view, follow logical grouping and reading order within the view.
-  - Use view modifier `accessibilityElement(children: .combine)` to merge the child accessibility element’s properties into the new accessibilityElement.
+      - Since a modal is a presentation of another view, follow logical grouping and reading order within the view.
+      - Use view modifier `accessibilityElement(children: .combine)` to merge the child accessibility element’s properties into the new accessibilityElement.
 
 ### State 
 
-- Modals that may have an open/close or expands/collapses state must be announced. Add logic and announcement to the programmatic name for the state
+   - Modals that may have an open/close or expands/collapses state must be announced. Add logic and announcement to the programmatic name for the state
 
+   - **UIKit**
 
-- **UIKit**
+      - When the modal appears, the initial focus on the Close button will imply to the user that they are in a modal.
+      - For disabled content within the modal: Set the content's `isEnabled` to `false`. Announcement for disabled is "Dimmed".
 
-  - When the modal appears, the initial focus on the Close button will imply to the user that they are in a modal.
-  - For disabled content within the modal: Set the content's `isEnabled` to `false`. Announcement for disabled is "Dimmed".
+   - **SwiftUI**
 
-- **SwiftUI**
-
-  - When the modal appears, the initial focus on the Close button will imply to the user that they are in a modal.
-  - For disabled content, use view modifier `disabled()`.
+      - When the modal appears, the initial focus on the Close button will imply to the user that they are in a modal.
+      - For disabled content, use view modifier `disabled()`.
 
 ### Focus
 
-- Use the default focus functionality of the modal
-- The screen reader focus **must** be confined within the alert or modal. When the modal appears, the initial focus should be to a logical place or to where the default focus is for the device within the modal.
-- Within the modal, ensure the content is following logical reading order. Follow suggested accessibility guidance for content containing buttons, links, etc.
+   - Use the default focus functionality of the modal
+   - The screen reader focus **must** be confined within the alert or modal. When the modal appears, the initial focus should be to a logical place or to where the default focus is for the device within the modal.
+   - Within the modal, ensure the content is following logical reading order. Follow suggested accessibility guidance for content containing buttons, links, etc.
 
+   - **UIKit**
 
-- **UIKit**
+      - If VoiceOver is not reaching a particular element, set the element's `isAccessibilityElement` to `true`
+          - **Note:** You may need to adjust the programmatic name, role, state, and/or value after doing this, as this action may overwrite previously configured accessibility.
+      - Use `accessibilityViewIsModal` to contain the screen reader focus inside the modal.
+      - To move screen reader focus to newly revealed content, use `UIAccessibility.post(notification:argument:)` that takes in `.screenChanged` and the newly revealed content as the parameter arguments.
+      - To NOT move focus, but dynamically announce new content: use `UIAccessibility.post(notification:argument:)` that takes in `.announcement` and the announcement text as the parameter arguments.
+      - `UIAccessibilityContainer` protocol: Have a table of elements that defines the reading order of the elements. 
 
-  - If VoiceOver is not reaching a particular element, set the element's `isAccessibilityElement` to `true`
-    - **Note:** You may need to adjust the programmatic name, role, state, and/or value after doing this, as this action may overwrite previously configured accessibility.
-  - Use `accessibilityViewIsModal` to contain the screen reader focus inside the modal.
-  - To move screen reader focus to newly revealed content, use `UIAccessibility.post(notification:argument:)` that takes in `.screenChanged` and the newly revealed content as the parameter arguments.
-  - To NOT move focus, but dynamically announce new content: use `UIAccessibility.post(notification:argument:)` that takes in `.announcement` and the announcement text as the parameter arguments.
-  - `UIAccessibilityContainer` protocol: Have a table of elements that defines the reading order of the elements. 
+   - **SwiftUI**
 
-- **SwiftUI**
-
-  - For general focus management that impacts both screen readers and non-screen readers, use the property wrapper `@FocusState` to assign an identity of a focus state.
-    - Use the property wrapper `@FocusState` in conjunction with the view modifier `focused(_:)` to assign focus on a view with `@FocusState` as the source of truth.
-    - Use the property wrapper `@FocusState`in conjunction with the view modifier `focused(_:equals:)` to assign focus on a view, when the view is equal to a specific value.
-  - If necessary, use property wrapper `@AccessibilityFocusState` to assign identifiers to specific views to manually shift focus from one view to another as the user interacts with the screen with VoiceOver on.
+      - For general focus management that impacts both screen readers and non-screen readers, use the property wrapper `@FocusState` to assign an identity of a focus state.
+          - Use the property wrapper `@FocusState` in conjunction with the view modifier `focused(_:)` to assign focus on a view with `@FocusState` as the source of truth.
+          - Use the property wrapper `@FocusState`in conjunction with the view modifier `focused(_:equals:)` to assign focus on a view, when the view is equal to a specific value.
+      - If necessary, use property wrapper `@AccessibilityFocusState` to assign identifiers to specific views to manually shift focus from one view to another as the user interacts with the screen with VoiceOver on.
 
 ### Modal announcements
 
-- Initial focus areas
-    - Close button "Close, button"
-    - Or
-    - Invisible button at the top of the screen default announcement: "Double tap to close modal"
+   - Initial focus areas
+   - Close button "Close, button" or
+   - Invisible button at the top of the screen default announcement: "Double tap to close modal"
 
 ## Android Developer Notes
 ### General Notes
 
    - Modal dialogs draw attention to an important, narrowly scoped task, usually appearing over an existing screen
-- Options to close the modal for the screen reader user: 
-  - An invisible close button announced for the screen reader only
-  - Two/three finger swipe
-  - A close button
-  - A CTA that navigates the user and closes the modal
-- Tapping outside the modal to close can not be the only option for screen reader users when the modal covers other content
+   - Options to close the modal for the screen reader user: 
+      - An invisible close button announced for the screen reader only
+      - Two/three finger swipe
+      - A close button
+      - A Call To Action (CTA) that navigates the user and closes the modal
+      - Tapping outside the modal to close can not be the only option for screen reader users when the modal covers other content
 
 ### Name
 
-- Programmatic name describes the purpose of the modal or any interactive element
+   - Programmatic name describes the purpose of the modal or any interactive element
 
-- **Android Views**
+   - **Android Views**
 
-  - Use Android view component `AlertDialog` for the modal, its default accessibility behavior will cover the programmatic name by using the title text.
+      - Use Android view component `AlertDialog` for the modal, its default accessibility behavior will cover the programmatic name by using the title text.
 
-- **Jetpack Compose** 
+   - **Jetpack Compose** 
 
-  - Use composable `AlertDialog`, `ModalBottomSheet` or other native composable as modal. A title view need to used as the programmatic name.
+      - Use composable `AlertDialog`, `ModalBottomSheet` or other native composable as modal. A title view need to used as the programmatic name.
 
 ### Role
 
-- Required: Screen reader user is confined inside a modal, communicating an modal is present.
+   - Required: Screen reader user is confined inside a modal, communicating an modal is present.
 
-- **Android Views**
+   - **Android Views**
 
-  - Android view component `AlertDialog` has the dialog role defined for using as modal
+      - Android view component `AlertDialog` has the dialog role defined for using as modal
 
-- **Jetpack Compose** 
+   - **Jetpack Compose** 
 
-  - Composable `AlertDialog` has default role defined
-  - Composable `ModalBottomSheet` has default role defined
+      - Composable `AlertDialog` has default role defined
+      - Composable `ModalBottomSheet` has default role defined
 
 ### Groupings
 
-- If you are implementing a native app modal, do not modify native grouping logic
-- If you require a custom modal, follow the steps below.
+   - If you are implementing a native app modal, do not modify native grouping logic
+   - If you require a custom modal, follow the steps below.
 
-- **Android Views**
+   - **Android Views**
 
-  - `ViewGroup`
-  - Set the container object's `android:screenReaderFocusable` attribute to true, and each inner object's `android:focusable` attribute to false. In doing so, accessibility services can present the inner elements' `contentDescription` or names, one after the other, in a single announcement.
+    - `ViewGroup`
+    - Set the container object's `android:screenReaderFocusable` attribute to true, and each inner object's `android:focusable` attribute to false. In doing so, accessibility services can present the inner elements' `contentDescription` or names, one after the other, in a single announcement.
 
-- **Jetpack Compose** 
+   - **Jetpack Compose** 
 
-  - `Modifier.semantics(mergeDescendants = true) {}` for the child elements grouping/merging
-  - `FocusRequester.createRefs()` helps to request focus to inner elements with in the group
+    - `Modifier.semantics(mergeDescendants = true) {}` for the child elements grouping/merging
+    - `FocusRequester.createRefs()` helps to request focus to inner elements with in the group
 
 ### State
 
-- Follow button state guidance if applicable
-- Modals that have an open/close or expands/collapses state must be announced. Add logic and announcement to the programmatic name for the state
+   - Follow button state guidance if applicable
+   - Modals that have an open/close or expands/collapses state must be announced. Add logic and announcement to the programmatic name for the state
 
-- **Android View** 
+   - **Android View** 
 
-  - Active: `android:enabled=true`
-  - Disabled: `android:enabled=false`
+      - Active: `android:enabled=true`
+      - Disabled: `android:enabled=false`
 
-- **Jetpack Compose**
+   - **Jetpack Compose**
 
-  - Active: default state is active and enabled. Use `Button(enabled = true)` to specify explicitly
-  - Disabled:  `Button(enabled = false)` announces as disabled
-  - Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
+      - Active: default state is active and enabled. Use `Button(enabled = true)` to specify explicitly
+      - Disabled: `Button(enabled = false)` announces as disabled
+      - Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
 
 ### Focus
 
-- Use the default focus functionality of the modal
-- The screen reader focus **must** be confined within the modal. When the modal appears, the initial focus should be to a logical place or to where the default focus is for the device within the modal
-- Android initially focuses on the CTA ("Close" button) in the modal, not the text or title unless the close CTA is not designed at the first focus order in modal
-- Android often takes one swipe to bring focus inside the modal
+   - Use the default focus functionality of the modal
+   - The screen reader focus **must** be confined within the modal. When the modal appears, the initial focus should be to a logical place or to where the default focus is for the device within the modal
+   - Android initially focuses on the CTA ("Close" button) in the modal, not the text or title unless the close CTA is not designed at the first focus order in modal
+   - Android often takes one swipe to bring focus inside the modal
 
-- **Android View**
+   - **Android View**
 
-	- `importantForAccessibility` makes the element visible to the Accessibility API
-	- `android:focusable`
-	- `android=clickable`
-	- Implement an `onClick( )` event handler for keyboard, as well as `onTouch( )`
-	- `nextFocusDown`
-	- `nextFocusUp`
-	- `nextFocusRight`
-	- `nextFocusLeft`
-	- `accessibilityTraversalBefore` (or after)
-	- To move screen reader focus to newly revealed content: `Type_View_Focused`
-	- To NOT move focus, but dynamically announce new content: `accessibilityLiveRegion`(set to polite or assertive)
-	- To hide controls: `Important_For_Accessibility_false`
+      - `importantForAccessibility` makes the element visible to the Accessibility API
+      - `android:focusable`
+      - `android=clickable`
+      - Implement an `onClick( )` event handler for keyboard, as well as `onTouch( )`
+      - `nextFocusDown`
+      - `nextFocusUp`
+      - `nextFocusRight`
+      - `nextFocusLeft`
+      - `accessibilityTraversalBefore` (or after)
+      - To move screen reader focus to newly revealed content: `Type_View_Focused`
+      - To NOT move focus, but dynamically announce new content: `accessibilityLiveRegion`(set to polite or assertive)
+      - To hide controls: `Important_For_Accessibility_false`
 
-- **Jetpack Compose**
+   - **Jetpack Compose**
 
-  - `Modifier.focusTarget()` makes the component focusable
-  - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
-  - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
-  - `FocusRequester` allows to request focus to individual elements with in a group of merged descendant views
-  - *Example:* To customize the focus events behaviour
-      - step 1: define the focus requester prior. `val (first, second) = FocusRequester.createRefs()`
-      - step 2: update the modifier to set the order. `modifier = Modifier.focusOrder(first) { this.down = second }`
-      - focus order accepts following values: up, down, left, right, previous, next, start, end
-      - step 3: use `second.requestFocus()` to gain focus
+      - `Modifier.focusTarget()` makes the component focusable
+      - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
+      - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
+      - `FocusRequester` allows to request focus to individual elements with in a group of merged descendant views
+      - *Example:* To customize the focus events behaviour
+          - step 1: define the focus requester prior. `val (first, second) = FocusRequester.createRefs()`
+          - step 2: update the modifier to set the order. `modifier = Modifier.focusOrder(first) { this.down = second }`
+          - focus order accepts following values: up, down, left, right, previous, next, start, end
+          - step 3: use `second.requestFocus()` to gain focus
 
 ### Code Example
 
-- **Jetpack Compose**
+   - **Jetpack Compose**
 
 ```java
 // Use AlerDialog as Modal with onDismissRequest action that enable dialog dismiss when user touch outside the dialog modal
@@ -332,5 +330,5 @@ ModalBottomSheet(
 
 ### Modal announcements
 
-- Initial focus area example: 
-    - Close button "Close, button, double tap to activate"
+   - Initial focus area example: 
+      - Close button "Close, button, double tap to activate"
