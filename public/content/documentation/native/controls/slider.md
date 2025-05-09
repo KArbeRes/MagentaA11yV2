@@ -60,10 +60,8 @@ GIVEN THAT I am on a screen with a slider
 
    - WHEN I press the "TAB", "CTRL+TAB", or "ARROW KEYS" 
       - THEN the focus should visibly move to the slider input 
-
    - WHEN I press the "RIGHT ARROW" key 
       - THEN the slider value should increase by one step 
-
    - WHEN I press the "LEFT ARROW" key 
       - THEN the slider value should decrease by one step 
 
@@ -71,10 +69,8 @@ GIVEN THAT I am on a screen with a slider
 
    - WHEN I swipe to navigate to the slider input 
       - THEN the focus should move to the slider input 
-
    - WHEN I swipe up or down on iOS or Android 
       - THEN the slider value should increase or decrease by one step 
-
    - WHEN I use the volume controls or swipe up/down on Android 
       - THEN the slider value should increase or decrease by one step 
 
