@@ -106,18 +106,20 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
    - If visible text label exists, the programmatic name should match the visible text label.
         - **Note:** Setting a programmatic name while a visible text label exists may cause VoiceOver to duplicate the announcement of the name. If this happens, hide the visible text label from VoiceOver recognition.
 
-   - **UIKit**
+<!-- WHAT IS WRONG WITH THIS SECTION? -->
+
+    - **UIKit**
 
     - The visible label for any interactive element is the programmatic name for it.
     - If a visible label is not applicable in your case, set the modal's `accessibilityLabel` to the label of your choice.
         - To do this in Interface Builder, set the label using the Identity Inspector
-    - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
+        - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
     - To hide labels from VoiceOver using Interface Builder, uncheck `Accessibility Enabled` in the Identity Inspector.
 
-   - **SwiftUI**
+    - **SwiftUI**
 
-      - The visible label for any interactive element is the programmatic name for it.
-      - If no visible label, use view modifier `accessibilityLabel(_:)`.
+      - The visible label for any interactive element is the programmatic name for it
+      - If no visible label, use view modifier `accessibilityLabel(_:)`
 
 ### Role
 
