@@ -111,15 +111,14 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
   - **Correct announcement:** "Submit, Button"
 - Placeholder or value text is NOT the programmatic name
 
-**UIKit**
+- **UIKit**
   - You can programmatically set the visible label with `setTitle()`.
     - The button’s title will overwrite the button’s `accessibilityLabel`.
   - If a visible label is not applicable in this case, set the button's `accessibilityLabel` to the label of your choice.
     - To do this in Interface Builder, set the label using the Identity Inspector
   - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
   - To hide labels from VoiceOver using Interface Builder, uncheck `Accessibility Enabled` in the Identity Inspector.
-
-**SwiftUI**
+- **SwiftUI**
   - If no visible label, use view modifier `accessibilityLabel(_:)`.
   - If button has icon(s), hide the icon(s) from VoiceOver by using view modifier `accessibilityHidden(true)`.
 
@@ -127,11 +126,10 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 - When using non-native controls (custom controls), roles will need to be manually coded.
 - One option is to use a table view and a button inside a UIStackView
 
-**UIKit**
+- **UIKit**
   - Use `UIButton`
   - If necessary, set `accessibilityTraits` to `.button`.
-
-**SwiftUI**
+- **SwiftUI**
   - Use native `Button` view
   - If necessary, use view modifier `accessibilityAddTraits(.isButton)` to assign the role as Button.
   - If applicable, use view modifier `accessibilityRemoveTraits(:)` to remove unwanted traits.  
@@ -139,27 +137,25 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 ### Groupings
 - Group visible label with button, if applicable, to provide a programmatic name for the button.
 
-**UIKit**
-  * Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
-  * Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
-  - If frame does not exist due to custom button, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
-    - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
-  - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
-  - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
-
-**SwiftUI**
+- **UIKit**
+  - Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
+  - Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
+    - If frame does not exist due to custom button, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
+      - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
+    - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
+    - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
+- **SwiftUI**
   - Use view modifier `accessibilityElement(children: .combine)` to merge the child accessibility element’s properties into the new accessibilityElement.
 
 ### State
 - In the case of expandable dropdowns, state of the dropdown must be announced (i.e. expanded/collapsed). Add logic and announcements to the programmatic name for the state.
 
-**UIKit**
+- **UIKit**
   - If applicable, dropdown items should be announced whether they are selected/unselected, in the cases of radio buttons or checkboxes. 
   - For enabled dropdown items: Set `isEnabled` to `true`.
   - For disabled dropdown items: Set `isEnabled` to `false`. Announcement for disabled is "Dimmed".
     - If necessary, you may change the accessibility trait of the dropdown item to `notEnabled`, but this may overwrite the current accessibility role of the dropdown item.
-
-**SwiftUI**
+- **SwiftUI**
   - If applicable, dropdown items should be announced whether they are selected/unselected, in the cases of radio buttons or checkboxes. 
   - For selected dropdown items, use `accessibilityAddTraits(.isSelected)`.
   - For disabled dropdown items, use view modifier `disabled()`.
@@ -171,15 +167,14 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 - Initial focus on a screen should land in a logical place, such as back button, screen title, first text field, or first heading.
 - When a menu, picker, or modal is closed, the focus should return to the triggering element.
 
-**UIKit**
+- **UIKit**
   - If VoiceOver is not reaching a particular element, set the element's `isAccessibilityElement` to `true`
     - **Note:** You may need to adjust the programmatic name, role, state, and/or value after doing this, as this action may overwrite previously configured accessibility.
   - Use `accessibilityViewIsModal` to contain the screen reader focus inside the modal.
   - To move screen reader focus to newly revealed content, use `UIAccessibility.post(notification:argument:)` that takes in `.screenChanged` and the newly revealed content as the parameter arguments.
   - To NOT move focus, but dynamically announce new content: use `UIAccessibility.post(notification:argument:)` that takes in `.announcement` and the announcement text as the parameter arguments.
   - `UIAccessibilityContainer` protocol: Have a table of elements that defines the reading order of the elements.  
-
-**SwiftUI**
+- **SwiftUI**
   - For general focus management that impacts both screen readers and non-screen readers, use the property wrapper `@FocusState` to assign an identity of a focus state.
     - Use the property wrapper `@FocusState` in conjunction with the view modifier `focused(_:)` to assign focus on a view with `@FocusState` as the source of truth.
     - Use the property wrapper `@FocusState`in conjunction with the view modifier `focused(_:equals:)` to assign focus on a view, when the view is equal to a specific value.
@@ -206,13 +201,12 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 ### Name
 - Name describes the purpose of the control, with additional label description if needed.
 
-**Android Views**
+- **Android Views**
   - `android:text` XML attribute
   - Use `contentDescription`, depending on type of view and for elements (icons) without a visible label
   - `contentDescription` overrides `android:text`
   - Use `labelFor` attribute to associate the visible label with the control
-
-**Jetpack Compose**
+- **Jetpack Compose**
   - Compose uses semantics properties to pass information to accessibility services
   - The built-in `ExposedDropdownMenuBox`, `ExposedDropdownMenu` and `DropdownMenuItem` components will fill the semantics properties with information inferred from the composable by default
   - Optional: use `contentDescription` for a more descriptive name to override the default text label of the `DropdownMenuItem` composable
@@ -221,22 +215,20 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 ### Role
 - Required: Screen reader user is confined inside a dropdown when it opens
 - When not using native app controls (custom controls), roles will need to be manually coded.
-
-**Android Views**
+- **Android Views**
   - `Spinner` Class
   - "pop up window" or "dropdown list" can be the role  
-
-**Jetpack Compose**
+- **Jetpack Compose**
   - `ExposedDropdownMenuBox`, `ExposedDropdownMenu`, `DropdownMenuItem`
 
 ### Groupings
 - Visible label, if any, is grouped with the dropdown item in a single swipe as an option for a programmatic name for the spinner
 
-**Android Views**
+- **Android Views**
   - `ViewGroup`
   - Set the container object's `android:screenReaderFocusable` attribute to true, and each inner object's `android:focusable` attribute to false. In doing so, accessibility services can present the inner elements' `contentDescription` or names, one after the other, in a single announcement.
 
-**Jetpack Compose**
+- **Jetpack Compose**
   - When use built-in Composable `DropdownMenuItem`, `ExposedDropdownMenu` in `ExposedDropdownMenuBox`, then it has the default grouping with the elements inside.
   - Use `Modifier.semantics(mergeDescendants = true) {}` when work on the customized dropdown items
   - `FocusRequester.createRefs()` helps to request focus to inner elements with in the group
@@ -245,12 +237,10 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 - Expandable dropdowns
   - State must be announced - expands/collapses, opens/closes. Add logic and announcement to the programmatic name for the state
   - If "opens" or "closes" is not included in the name, the expanded/collapsed state must be announced
-
-**Android Views**
+- **Android Views**
   - Active: `android:enabled=true`
   - Disabled: `android:enabled=false`. Announcement: disabled
-
-**Jetpack Compose**
+- **Jetpack Compose**
   - Active: default state is active and enabled. Use `DropdownMenuItem(enabled = true)` to specify explicitly
   - Disabled:  `DropdownMenuItem(enabled = false)` announces as disabled
   - Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
@@ -263,7 +253,7 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
 - Moving focus into the dropdown tells the screen reader user there is a dropdown available
 - When a dropdown is closed, the focus should return to the triggering element.
 
-**Android Views**
+- **Android Views**
   - `importantForAccessibility` makes the element visible to the Accessibility API
   - `android:focusable`
   - `android=clickable`
@@ -277,8 +267,7 @@ There is no native dropdown element for iOS.  The notes below are suggestions an
   - To NOT move focus, but dynamically announce new content: `accessibilityLiveRegion`(set to polite or assertive)
   - To hide controls: `importantForAccessibility=false`
   - For a `ViewGroup`, set `screenReaderFocusable=true` and each inner object’s attribute to keyboard focus (`focusable=false`)
-
-**Jetpack Compose**
+- **Jetpack Compose**
   - `Modifier.focusTarget()` makes the component focusable
   - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
   - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
