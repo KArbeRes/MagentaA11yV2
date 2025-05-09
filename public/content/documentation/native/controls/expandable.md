@@ -103,7 +103,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
 - If visible text label exists, the programmatic name should match the visible text label.
     - **Note:** Setting a programmatic name while a visible text label exists may cause VoiceOver to duplicate the announcement of the name. If this happens, hide the visible text label from VoiceOver recognition.
 
-**UIKit**
+- **UIKit**
   - You can programmatically set the visible label with `setTitle()`.
     - The expandable region title will overwrite the expandable region `accessibilityLabel`.
   - If a visible label is not applicable in this case, set the expandable region `accessibilityLabel` to the label of your choice.
@@ -111,42 +111,41 @@ There is no native expandable or accordion element for iOS.  The notes below are
   - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
   - To hide labels from VoiceOver using Interface Builder, uncheck `Accessibility Enabled` in the Identity Inspector.
 
-**SwiftUI**
+- **SwiftUI**
   - If no visible label, use view modifier `accessibilityLabel(_:)`.
 
 
 ### Role
 - When using non-native controls (custom controls), roles will need to be manually coded.
 
-**UIKit**
+- **UIKit**
   -   Use `UIButton`
 
-**SwiftUI**
+- **SwiftUI**
   - Use native `DisclosureGroup` view
 
 ### Groupings
 - Group visible label with button, if applicable, to provide a programmatic name for the button.
 
-**UIKit**
-* Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
-* Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
-  - If frame does not exist due to custom button, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
-    - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
-  - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
-  - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
-
-**SwiftUI**
+- **UIKit**
+  - Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
+  - Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
+    - If frame does not exist due to custom button, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
+      - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
+    - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
+    - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
+- **SwiftUI**
   - Use view modifier `accessibilityElement(children: .combine)` to merge the child accessibility element’s properties into the new accessibilityElement.
 
 ### State 
 - Append “expanded” or “collapsed” to the accessibilityLabel or accessibilityValue of the button (with logic)
 
-**UIKit**  
+- **UIKit**  
   - For enabled: Set `isEnabled` to `true`.
   - For disabled: Set `isEnabled` to `false`. Announcement for disabled is "Dimmed".
     - If necessary, you may change the accessibility trait of the button to `notEnabled`, but this may overwrite the current accessibility role of the button.
    
-**SwiftUI**
+- **SwiftUI**
   - For selected, use `accessibilityAddTraits(.isSelected)`.
   - For disabled, use view modifier `disabled()`.
 
@@ -155,7 +154,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
 - Consider how focus should be managed between child elements and their parent views.
 - External keyboard tab order often follows the screen reader focus, but sometimes this functionality requires additional development to manage focus.
 
-**UIKit**
+- **UIKit**
   - If VoiceOver is not reaching a particular element, set the element's `isAccessibilityElement` to `true`
     - **Note:** You may need to adjust the programmatic name, role, state, and/or value after doing this, as this action may overwrite previously configured accessibility.
   - Use `accessibilityViewIsModal` to contain the screen reader focus inside the modal.
@@ -163,7 +162,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
   - To NOT move focus, but dynamically announce new content: use `UIAccessibility.post(notification:argument:)` that takes in `.announcement` and the announcement text as the parameter arguments.
   - `UIAccessibilityContainer` protocol: Have a table of elements that defines the reading order of the elements. 
 
-**SwiftUI**
+- **SwiftUI**
   - For general focus management that impacts both screen readers and non-screen readers, use the property wrapper `@FocusState` to assign an identity of a focus state.
     - Use the property wrapper `@FocusState` in conjunction with the view modifier `focused(_:)` to assign focus on a view with `@FocusState` as the source of truth.
     - Use the property wrapper `@FocusState`in conjunction with the view modifier `focused(_:equals:)` to assign focus on a view, when the view is equal to a specific value.
@@ -183,43 +182,42 @@ There is no native expandable or accordion element for iOS.  The notes below are
 - Name describes the purpose of the control
 - Programmatic name matches the visible text label (if any)
 
-**Android Views**
+- **Android Views**
   - `android:text` XML attribute
   - Optional: use `contentDescription` for a more descriptive name, depending on type of view and for elements (icons) without a visible label
   - `contentDescription` overrides `android:text`
   - Use `labelFor` attribute to associate the visible label with the control
 
-**Jetpack Compose**
+- **Jetpack Compose**
   - Compose uses semantics properties to pass information to accessibility services.
   - Example specification of contentDescription in compose: `modifier = Modifier.semantics { contentDescription = "" }`
 
 ### Role
 - When not using native controls (custom controls), roles will need to be manually coded.
 
-**Android Views**
+- **Android Views**
   - use native `Button`
 
-**Jetpack Compose**
+- **Jetpack Compose**
   - use foundation views to create an expandable list ([Source](https://proandroiddev.com/expandable-lists-in-jetpack-compose-b0b78c767b4))
 
 ### Groupings
 - Group visible label with button, if applicable, to provide a programmatic name for the button.
-
-**Android Views**
+- **Android Views**
   - `ViewGroup`
   - Set the container object's `android:screenReaderFocusable` attribute to true, and each inner object's `android:focusable` attribute to false. In doing so, accessibility services can present the inner elements' `contentDescription` or names, one after the other, in a single announcement.
 
-**Jetpack Compose**
+- **Jetpack Compose**
   - `Modifier.semantics(mergeDescendants = true) {}` is equivalent to `importantForAccessibility` when compared to android views
   - `FocusRequester.createRefs()` helps to request focus to inner elements with in the group
 
 ### State
 
-**Android Views**
+- **Android Views**
 - Use `AccessibilityNodeInfoCompat.ACTION_EXPAND` 
 - Use `AccessibilityNodeInfoCompat.ACTION_COLLAPSE`
 
-**Jetpack Compose**
+- **Jetpack Compose**
   - `expandedState`
 
 ### Focus
@@ -227,7 +225,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
 - Consider how focus should be managed between child elements and their parent views
 - External keyboard tab order often follows the screen reader focus, but sometimes needs focus management
 
-**Android Views**
+- **Android Views**
   - `importantForAccessibility` makes the element visible to the Accessibility API
   - `android:focusable`
   - `android=clickable`
@@ -242,7 +240,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
   - To hide controls: `importantForAccessibility=false`
   - For a `ViewGroup`, set `screenReaderFocusable=true` and each inner object’s attribute to keyboard focus (`focusable=false`)
 
-**Jetpack Compose**
+- **Jetpack Compose**
   - `Modifier.focusTarget()` makes the component focusable
   - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
   - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
