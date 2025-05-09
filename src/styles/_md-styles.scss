@@ -177,58 +177,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     background-color: var(--color-on-primary);
   }
 
-  // search input example
-  form[role="search"] {
-    display: flex;
-    max-width: auto;
-    padding: 1rem;
-    transition: 0.7s;
-    border-radius: 0.125rem;
-    box-shadow: 0 1px 2px 1px rgba(var(--color-on-tertiary), 0.1);
-    background: var(--color-background-secondary);
-
-    &:focus-within,
-    &:hover {
-      background: var(--color-on-primary);
-      box-shadow: 0 1px 4px 1px rgba(var(--color-on-tertiary), 0.3);
-    }
-
-    input[type="search"] {
-      border-right: none;
-      position: relative;
-      display: block;
-      width: 100%;
-      text-indent: 0.5rem;
-      line-height: 0;
-      margin: 0;
-      padding: 0;
-      border-radius: 0;
-      box-shadow: none;
-      background-color: var(--color-on-primary);
-
-      &:focus {
-        z-index: 99;
-      }
-
-      &::-webkit-calendar-picker-indicator {
-        display: none !important;
-      }
-    }
-
-    button {
-      display: block;
-      position: relative;
-      line-height: 0;
-      margin: 0;
-      padding: 0;
-      height: 2.375rem;
-      width: 2.25rem;
-      background: var(--color-on-primary);
-      border: 3px solid var(--color-input-border);
-      border-left: none;
-    }
-  }
-
   .spa {
     .slide-list {
       margin: 0;
@@ -245,21 +193,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         display: none;
       }
     }
-  }
-  
-  .stepper {
-    display: inline-grid;
-    grid-template-columns: 39px 1fr 39px;
-    grid-template-rows: 38px;
-    -moz-column-gap: var(--magentaa11y-spacing-size-4);
-    column-gap: var(--magentaa11y-spacing-size-4);
-    border-radius: var(--magentaa11y-border-radius-size-24);
-    border: var(--magentaa11y-border-weight-size-1) solid var(--color-input-border);
-    place-items: center;
-    height: var(--magentaa11y-spacing-size-40);
-    width: 120px;
-    position: relative;
-    background-color: var(--color-on-primary);
   }
   
   input[aria-disabled="true"],
