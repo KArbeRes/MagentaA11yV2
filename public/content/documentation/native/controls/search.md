@@ -4,9 +4,17 @@ How to test a search
 
 ## Videos
 
-- Videos go here
+### iOS VoiceOver
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/search/search_IosVoiceover.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Android Talkback
+
+<video controls>
+  <source src="media/video/native/search/search_AndroidTalkback.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
