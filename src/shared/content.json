@@ -812,6 +812,19 @@
           "developerNotes": ""
         },
         {
+          "label": "Text Input",
+          "name": "text-input",
+          "type": "file",
+          "generalNotes": "How to test a text input",
+          "gherkin": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a text input\n\nGIVEN THAT I am on a screen with a text input\n\n1. Scenario: Test keyboard actions\n\n   * WHEN I press the \"TAB\", \"ARROW KEYS\", or \"CTRL+TAB\"\n     * THEN the focus should visibly move to and from the text input\n   * WHEN I press the \"SPACEBAR\" key\n     * THEN the user should be placed in editing mode inside the text input\n\n2. Scenario: Test mobile screen reader gestures\n\n   * WHEN I swipe to navigate to the text input\n     * THEN the focus should move to the text input\n       * AND the text input's name, role, input value, and state (if disabled) should be expressed\n   * WHEN I double-tap the text input\n     * THEN the keyboard should appear to allow editing\n\n3. Scenario: Test screen reader output on all devices\n\n   * WHEN a screen reader reads the text input\n     * THEN its name should clearly describe its purpose and match the visible label\n       * AND its role should be identified as a text field on iOS and as an edit box on Android\n       * AND its visible label should be grouped or associated with the text input in a single swipe\n       * AND its state (DISABLED/DIMMED) should be expressed if applicable\n\n4. Scenario: Test device OS settings for text resize\n\n   * WHEN I adjust the device text resize setting to 200%\n     * THEN the text within the text input should resize up to 200% without losing information\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/text-input>",
+          "condensed": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a text input\n\n1. Test keyboard only, then screen reader + keyboard actions\n\n   * Tab, arrow keys or ctl+tab: Focus visibly moves to and from the text input\n   * Space bar: Places the user in editing mode inside the input\n\n2. Test mobile screenreader gestures\n\n   * Swipe: Focus moves to the element, expresses its name, role, input value and state - if disabled\n   * Doubletap: Keyboard appears to edit\n\n3. Listen to screenreader output on all devices\n\n   * Name: Purpose is clear and matches visible label\n   * Role: Identifies itself as text field on iOS, edit box on Android\n   * Group: Visible label is grouped or associated with the text input in a single swipe\n   * State: The input can be disabled/dimmed\n\n4. Test device settings\n\n   * Text resize: Text can resize up to 200% without losing information\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/text-input>",
+          "criteria": null,
+          "videos": "* Videos go here\n  <video controls>\n  <source src=\"media/video/native/button/buttonIosVoiceover.webm\" type=\"video/webm\">\n  Your browser does not support the video tag.\n\n</video>",
+          "androidDeveloperNotes": "### General Notes\n\n* android developer notes go here",
+          "iosDeveloperNotes": "### General Notes\n\n* ios developer notes go here",
+          "developerNotes": ""
+        },
+        {
           "label": "Time Picker",
           "name": "time-picker",
           "type": "file",
