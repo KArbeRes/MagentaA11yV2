@@ -47,6 +47,59 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     background: var(--color-text-on-primary);
   }
 
+  .carousel {
+    margin-top: 1rem;
+
+    button {
+      min-width: 50px;
+      margin-left:1rem;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .flex {
+      display: flex;
+      flex-direction: row-reverse;
+
+      @media (max-width: 936px) {
+        align-items: center;
+        flex-direction: column-reverse;
+      }
+    }
+  
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 200px;
+      column-gap: 2rem;
+      padding: 0;
+      margin: 0;
+  
+      li {
+        list-style-type: none;
+        padding-left: 0;
+
+        &::before {
+          content: "";
+          position: relative;
+          background: none;
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px black solid;
+    }
+  } 
+
   .switch {
     max-width: 450px;
     margin: 0;
@@ -108,6 +161,21 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       }
     }
   }
+  
+  .stepper {
+    display: inline-grid;
+    grid-template-columns: 39px 1fr 39px;
+    grid-template-rows: 38px;
+    -moz-column-gap: var(--magentaa11y-spacing-size-4);
+    column-gap: var(--magentaa11y-spacing-size-4);
+    border-radius: var(--magentaa11y-border-radius-size-24);
+    border: var(--magentaa11y-border-weight-size-1) solid var(--color-input-border);
+    place-items: center;
+    height: var(--magentaa11y-spacing-size-40);
+    width: 120px;
+    position: relative;
+    background-color: var(--color-on-primary);
+  }
 
   .spa {
     .slide-list {
@@ -125,21 +193,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         display: none;
       }
     }
-  }
-  
-  .stepper {
-    display: inline-grid;
-    grid-template-columns: 39px 1fr 39px;
-    grid-template-rows: 38px;
-    -moz-column-gap: var(--magentaa11y-spacing-size-4);
-    column-gap: var(--magentaa11y-spacing-size-4);
-    border-radius: var(--magentaa11y-border-radius-size-24);
-    border: var(--magentaa11y-border-weight-size-1) solid var(--color-input-border);
-    place-items: center;
-    height: var(--magentaa11y-spacing-size-40);
-    width: 120px;
-    position: relative;
-    background-color: var(--color-on-primary);
   }
   
   input[aria-disabled="true"],
