@@ -4,9 +4,17 @@ How to test a table row button / list item
 
 ## Videos
 
-- Videos go here
+### iOS VoiceOver
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/table-row-button/table-row-button_IosVoiceOver.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Android Talkback
+
+<video controls>
+  <source src="media/video/native/table-row-button/table-row-button_AndroidTalkback.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
