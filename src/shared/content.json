@@ -965,6 +965,19 @@
           "androidDeveloperNotes": null,
           "iosDeveloperNotes": null,
           "developerNotes": ""
+        },
+        {
+          "label": "Webview",
+          "name": "webview",
+          "type": "file",
+          "generalNotes": "How to test a webview",
+          "gherkin": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a webview\n\nGIVEN THAT I am on a screen with a webview\n\n1. Scenario: Test keyboard actions\n\n   * WHEN I press the \"TAB\" key, \"ARROW\" keys, or \"CTRL+TAB\"\n     * THEN the focus should move to all interactive elements in the navigation bar and webview\n   * WHEN I press the \"SPACEBAR\" key\n     * THEN the interactive element should be activated on iOS and Android\n   * WHEN I press the \"ENTER\" key\n     * THEN the interactive element should be activated on Android\n\n2. Scenario: Test mobile screen reader gestures\n\n   * WHEN I swipe to navigate\n     * THEN the focus should move to each element\n       * AND express its name and role\n       * AND express its state if applicable\n   * WHEN I double-tap an interactive element\n     * THEN the element should be activated\n\n3. Scenario: Test screen reader output on all devices\n\n   * WHEN a screen reader is active\n     * THEN the initial focus should move to all elements in the navigation bars\n       * AND native and webview elements should be included in the swipe order\n\n4. Scenario: Test device OS settings for text resize\n\n   * WHEN I have increased text size in device settings\n     * THEN text resize is N/A for webview sections and native navigation bar text\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/patterns/webview>",
+          "condensed": "### #a11y - Native Accessibility Acceptance Criteria\n\nHow to test a webview\n\n1. Test keyboard only, then screen reader + keyboard actions\n\n   * Tab, arrow keys or ctl+tab: Moves to all interactive elements in navigation bar and webview\n   * Spacebar: Activates on iOS and Android\n   * Enter: Activates on Android\n\n2. Test mobile screenreader gestures\n\n   * Swipe: Focus moves to the element, expresses its name, role (state, if applicable)\n   * Doubletap: Activates the interactive element\n\n3. Listen to screenreader output on all devices\n\n   * Focus: Initial focus should go to all elements in the navigation bars\n   * Navigation: Native and webview elements are all in the swipe order\n\n4. Test device settings\n\n   * Text resize: N/A only for webview sections and native navigation bar text\n\nFull information: <https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/patterns/webview>",
+          "criteria": null,
+          "videos": "* Videos go here\n  <video controls>\n  <source src=\"media/video/native/button/buttonIosVoiceover.webm\" type=\"video/webm\">\n  Your browser does not support the video tag.\n\n</video>",
+          "androidDeveloperNotes": "### General Notes\n\n* android developer notes go here",
+          "iosDeveloperNotes": "### General Notes\n\n* ios developer notes go here",
+          "developerNotes": ""
         }
       ]
     }
