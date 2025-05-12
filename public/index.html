@@ -14,10 +14,6 @@
       if (!window.location.hash && window.location.pathname !== "/") {
         let path = window.location.pathname;
 
-        if (window.location.hostname === "localhost") {
-          path = path.replace(/^\/MagentaA11yV2/, "");
-        }
-
         window.location.replace(window.location.origin + "/#" + path);
       }
     </script>
