@@ -140,9 +140,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
       - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
       - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
 
-**SwiftUI**
+   - **SwiftUI**
 
-   - Use view modifier `accessibilityElement(children: .combine)` to merge label and field into a new accessibilityElement.
+      - Use view modifier `accessibilityElement(children: .combine)` to merge label and field into a new accessibilityElement.
 
 ### State 
 
