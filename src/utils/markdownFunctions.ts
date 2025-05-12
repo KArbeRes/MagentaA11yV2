@@ -95,9 +95,9 @@ export const getMarkdownFunctionMap = (
       stepNumber.innerHTML = `${currentNumber + 1}`;
 
       if (decreaseButton) {
-        if (currentNumber==1) {
+        if (currentNumber===1) {
           decreaseButton.removeAttribute('aria-disabled');
-        } else if (currentNumber==0) {
+        } else if (currentNumber===0) {
           decreaseButton.setAttribute('aria-disabled', 'true');
         }
       }
@@ -177,7 +177,7 @@ export const getMarkdownFunctionMap = (
     let currentIndex = stepperSelect.selectedIndex;
     let nextIndex = currentIndex - 1;
   
-    if (currentIndex==0) {
+    if (currentIndex===0) {
       return; // do nothing if at 0
     } else if (nextIndex < stepperSelect.options.length) {
       stepperSelect.selectedIndex = nextIndex;
