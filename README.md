@@ -32,24 +32,27 @@ npm install
 ## Creating a PR
 
 - start in the main branch, you can check you are there by running `git branch`
-- Run a  `git fetch` to ensure you have the latest
+- Run a `git fetch` to ensure you have the latest
 - If there is new code, pull it down: `git pull origin main`
 - Start a new branch, I recommend using the issue number, such as `ARC-101--details` or the feat/fix/revert/chore/style convention such as `fix--lindsay-400-menu`:
-   - feat or feature: (new feature for the user, not a new feature for build script)
-   - fix: (bug fix for the user, not a fix to a build script)
-   - docs: (changes to the documentation)
-   - style: (formatting, missing semi colons, etc; no production code change)
-   - refactor: (refactoring production code, eg. renaming a variable)
-   - test: (adding missing tests, refactoring tests; no production code change)
-   - chore: (updating grunt tasks etc; no production code change)
+  - feat or feature: (new feature for the user, not a new feature for build script)
+  - fix: (bug fix for the user, not a fix to a build script)
+  - docs: (changes to the documentation)
+  - style: (formatting, missing semi colons, etc; no production code change)
+  - refactor: (refactoring production code, eg. renaming a variable)
+  - test: (adding missing tests, refactoring tests; no production code change)
+  - chore: (updating grunt tasks etc; no production code change)
 - Create the new branch with `git checkout -b ARC-101--criteria-button`
 
 ### Pushing your work
-While you are working, make sure you to pull and rebase on main as you go: 
-  - `git fetch`
-  - `git rebase origin/main`
+
+While you are working, make sure you to pull and rebase on main as you go:
+
+- `git fetch`
+- `git rebase origin/main`
 
 To push your work:
+
 - `git diff .` // check what has changed in all the files you worked on
 - `git add .` // adds all new files
 - `git commit -m "fix: x message with updates"` // add commit message
@@ -83,7 +86,6 @@ To push your work:
 
 - **`npm run parse-md-files`**: Generates updates to Markdown files.
 
-
 #### What the Script Does
 
 1. **Creates Markdown files**:
@@ -104,7 +106,7 @@ npm run create-md -- <filename> "<relative-path>" <template-type>
 #### Examples
 
 ```bash
-npm run create-md -- textarea "native/inputs" criteria
+npm run create-md -- textarea "native/controls" criteria
 ```
 
 ```bash
@@ -123,7 +125,7 @@ public/content/documentation/<section>/<category>/<filename>.md
 ```
 
 - `<section>` could be something like `native`, `web`, or `how-to-test`
-- `<category>` groups related content such as `inputs`, `components`, or any custom grouping
+- `<category>` groups related content such as `components`, `notifications`, or any custom grouping
 - `<filename>.md` is the name of the actual Markdown file
 
 📁 This structure helps the app dynamically parse and render content correctly in the UI. The script `create-md` automatically respects and creates this structure based on the path you provide.
@@ -131,7 +133,7 @@ public/content/documentation/<section>/<category>/<filename>.md
 These commands will create:
 
 ```
-public/content/documentation/native/inputs/textarea.md
+public/content/documentation/native/controls/textarea.md
 ```
 
 ```
@@ -165,6 +167,8 @@ The app is deployed via GitHub Pages. Follow these steps to deploy:
    ```
    https://<username>.github.io/<repository-name>
    ```
+
+   https://karberes.github.io/MagentaA11yV2/#/home
 
 ---
 
