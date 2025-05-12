@@ -1,8 +1,8 @@
 import AboutUs from "components/about-us/about-us";
-import InaccessibleDemo from "components/inaccessible-demo/inaccessible-demo";
 import AccessibleDemo from "components/accessible-demo/accessible-demo";
 import Criteria from "components/criteria/criteria";
 import Home from "components/home/home";
+import InaccessibleDemo from "components/inaccessible-demo/inaccessible-demo";
 import MyCriteria from "components/my-criteria/my-criteria";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
