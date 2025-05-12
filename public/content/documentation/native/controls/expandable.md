@@ -59,10 +59,8 @@ GIVEN THAT I am on a screen with an expandable region
 
    - WHEN I press the "TAB", "ARROW KEYS", or "CTRL+TAB" keys 
       - THEN the focus should visibly move to the expandable region 
-
    - WHEN I press the "SPACEBAR" key 
       - THEN the expandable region should be activated on iOS and Android 
-
    - WHEN I press the "ENTER" key 
       - THEN the expandable region should be activated on Android 
 
@@ -71,7 +69,6 @@ GIVEN THAT I am on a screen with an expandable region
    - WHEN I swipe to navigate to the expandable region 
       - THEN the focus should move to the expandable region 
          - AND the expandable region's name, role, and state (if applicable) should be expressed 
-
    - WHEN I double-tap the expandable region 
       - THEN the expandable region should be activated 
 
