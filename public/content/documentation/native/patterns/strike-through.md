@@ -2,14 +2,6 @@
 
 How to test a strike-through text
 
-## Videos
-
-- Videos go here
-<video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
-
 ## Condensed
 
 ### #a11y - Native Accessibility Acceptance Criteria
