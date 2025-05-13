@@ -1,9 +1,7 @@
 /* Base styles for code blocks */
 pre {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.6;
-  padding: 1rem;
   margin: 1rem 0;
   border-radius: 6px;
   background-color: var(--color-code-block); /* Adapts to theme */
@@ -12,8 +10,17 @@ pre {
 }
 
 code {
-  font-family: "Courier New", Courier, monospace;
-  font-style: italic;
+  font-family: monospace;
+  color: var(--color-text-secondary);
+
+}
+
+:not(pre) > code {
+  background: var(--color-background-secondary);
+  padding: 0.15em 0.33em 0.1em;
+  border: solid var(--color-background-tertiary);
+  border-width: 1px;
+  border-radius: 8px;
 }
 
 /* Syntax Highlighting with hljs classes */
@@ -37,7 +44,6 @@ code {
 /* Tag attributes (e.g., id, class) */
 .hljs-attr {
   color: var(--color-info); /* Tertiary color for attributes */
-  font-style: italic;
 }
 
 /* Attribute values (e.g., "example-header") */
@@ -49,7 +55,7 @@ code {
 /* Comments */
 .hljs-comment {
   color: var(--color-text-secondary); /* Muted color for comments */
-  font-style: italic;
+
 }
 
 /* Punctuation (e.g., <> and =) */
