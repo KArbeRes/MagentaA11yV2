@@ -104,7 +104,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 - Programmatic name describes the purpose of any interactive element in the modal or the title of the modal
 - If visible text label exists, the programmatic name should match the visible text label.
-   - **Note:** Setting a programmatic name while a visible text label exists may cause VoiceOver to duplicate the announcement of the name. If this happens, hide the visible text label from VoiceOver recognition#### UIKit
+   - **Note:** Setting a programmatic name while a visible text label exists may cause VoiceOver to duplicate the announcement of the name. If this happens, hide the visible text label from VoiceOver recognition
+   
+#### UIKit
 
 - The visible label for any interactive element is the programmatic name for it.
 - If a visible label is not applicable in your case, set the modal's `accessibilityLabel` to the label of your choice.
@@ -136,12 +138,12 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 #### UIKit
 
 - Since a modal is a presentation of another view, follow logical grouping and reading order within the view.
-- Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
-- Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
-- If frame does not exist due to custom alert, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
-- You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
-- Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
-- Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
+   - Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
+   - Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
+      - If frame does not exist due to custom alert, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
+         - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
+      - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
+      - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
 
 #### SwiftUI
 
