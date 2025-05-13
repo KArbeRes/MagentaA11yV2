@@ -1,6 +1,6 @@
 ## General Notes
 
-How to test a text input
+How to test an alert dialog
 
 ## Videos
 
@@ -22,7 +22,7 @@ How to test a text input
 
 ### #a11y - Native Accessibility Acceptance Criteria
 
-How to test a text input
+How to test an alert dialog
 
 1. Test keyboard only, then screen reader + keyboard actions
 
@@ -53,9 +53,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/no
 
 ### #a11y - Native Accessibility Acceptance Criteria
 
-How to test a text input
+How to test an alert dialog
 
-GIVEN THAT I am on a screen with a text input
+GIVEN THAT I am on a screen with an alert dialog
 
 1. Scenario: Test keyboard actions
 
