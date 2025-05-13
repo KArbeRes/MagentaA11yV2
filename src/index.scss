@@ -68,7 +68,7 @@ p,
 li,
 ul,
 ol {
-  line-height: var(--magentaa11y-line-height-20);
+  line-height: var(--magentaa11y-line-height-24);
 }
 
 ul,
@@ -87,9 +87,8 @@ button {
 }
 
 pre {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-  padding: 1em;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  padding: 2em;
   overflow-x: auto;
   border-radius: 4px;
   width: -webkit-fill-available;
