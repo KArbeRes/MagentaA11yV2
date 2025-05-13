@@ -132,10 +132,10 @@ There is no native expandable or accordion element for iOS.  The notes below are
     - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
     - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
 - **SwiftUI**
-  - Use view modifier `accessibilityElement(children: .combine)` to merge the child accessibility element’s properties into the new accessibilityElement.
+  - Use view modifier `accessibilityElement(children: .combine)` to merge the child accessibility element’s properties into the new `accessibilityElement`.
 
 ### State 
-- Append “expanded” or “collapsed” to the accessibilityLabel or accessibilityValue of the button (with logic)
+- Append “expanded” or “collapsed” to the `accessibilityLabel` or `accessibilityValue` of the button (with logic)
 
 - **UIKit**  
   - For enabled: Set `isEnabled` to `true`.
@@ -187,7 +187,7 @@ There is no native expandable or accordion element for iOS.  The notes below are
 
 - **Jetpack Compose**
   - Compose uses semantics properties to pass information to accessibility services.
-  - Example specification of contentDescription in compose: `modifier = Modifier.semantics { contentDescription = "" }`
+  - Example specification of `contentDescription` in compose: `modifier = Modifier.semantics { contentDescription = "" }`
 
 ### Role
 - When not using native controls (custom controls), roles will need to be manually coded.
@@ -211,8 +211,8 @@ There is no native expandable or accordion element for iOS.  The notes below are
 ### State
 
 - **Android Views**
-- Use `AccessibilityNodeInfoCompat.ACTION_EXPAND` 
-- Use `AccessibilityNodeInfoCompat.ACTION_COLLAPSE`
+  - Use `AccessibilityNodeInfoCompat.ACTION_EXPAND` 
+  - Use `AccessibilityNodeInfoCompat.ACTION_COLLAPSE`
 
 - **Jetpack Compose**
   - `expandedState`
