@@ -4,9 +4,10 @@ How to test a loading icon
 
 ## Videos
 
-- Videos go here
+### iOS VoiceOver
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/loading-icon/loading-icon_IosVoiceOver.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
