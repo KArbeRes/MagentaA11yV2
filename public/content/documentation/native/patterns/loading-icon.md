@@ -161,7 +161,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/pa
    - **Jetpack Compose**
 
       - `Modifier.focusTarget()` makes the component focusable
-      - `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
+      - `Modifier.focusOrder()` needs to be used in combination with `FocusRequester` to define focus order
       - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
       - `FocusRequester` allows to request focus to individual elements with in a group of merged descendant views
       - Example: To customize the focus events
