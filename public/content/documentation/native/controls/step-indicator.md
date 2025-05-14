@@ -10,25 +10,23 @@ How to test a step indicator
 
 1. Test keyboard only, then screen reader + keyboard actions
 
-   - Tab, arrow keys or ctl+tab: Focus visibly moves to the expandable region
-   - Spacebar: Activates on iOS and Android
-   - Enter: Activates on Android
+    - Tab, arrow keys or ctl+tab: Focus visibly moves to the part of the control that is interactive
+    - Spacebar: Activates on iOS and Android
+    - Enter: Activates on Android
 
 2. Test mobile screenreader gestures
 
-   - Swipe: Focus moves to the element, expresses its name, role (state, if applicable)
-   - Doubletap: Activates the expandable region
+    - Swipe: Focus moves to the control, expresses its name, role, state (if applicable)
+    - Doubletap: Activates the control
 
 3. Listen to screenreader output on all devices
 
-   - Name: Purpose is clear and matches visible label
-   - Role: Identifies as an expandable region in iOS and expandable region or "double tap to activate" in Android
-   - Group: Visible label is grouped or associated with the expandable region in a single swipe
-   - State: Expresses its state (expanded/collapsed)
+    - Name: Purpose is clear (ex: "Step 6 of 7, Account")
+    - Role: Identifies itself as a button or dropdown
 
 4. Test device settings
 
-   - Text resize: Text can resize up to 200% without losing information
+    - Text resize: Text can resize up to 200% without losing information
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/step-indicator](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/step-indicator)
 
@@ -153,6 +151,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 - The graphic must meet color contrast ratios for the sections that are currently active
 
 ### Name  
+
 - **Android Views**  
   - `android:text` XML attribute
   - Optional: use `contentDescription` for a more descriptive name, depending on type of view and for elements (icons) without a visible label
@@ -166,9 +165,9 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
   - Example specification of contentDescription in compose: `modifier = Modifier.semantics { contentDescription = "" }`
 
 ### Role
-- When not using native controls (custom controls), roles may need to be manually coded.
-- **Android Views**
-  - `public class ProgressBar`
+  - When not using native controls (custom controls), roles may need to be manually coded.
+  - **Android Views**
+    - `public class ProgressBar`
 
 - **Jetpack Compose**
   - `LinearProgressIndicator` or `CircularProgressIndicator` composables
