@@ -7,14 +7,12 @@
       // Get the current path (excluding domain, including leading slash)
       const currentPath = window.location.pathname;
 
-      // If we're already at the MagentaA11yV2 path, don't redirect
-      if (currentPath.startsWith("/MagentaA11yV2")) {
-        // Already at the correct base path, do nothing
-      } else {
-        // Take the current path and convert it to a hash route
-        // Remove the leading slash for the hash portion
-        const hashPath = currentPath === "/" ? "/" : currentPath;
-        window.location.replace("/MagentaA11yV2/#" + hashPath);
+      if (!window.location.hash) {
+        // Get the current path
+        const currentPath = window.location.pathname;
+
+        // Redirect to the same path but as a hash route
+        window.location.replace("/#" + currentPath);
       }
     </script>
   </head>
