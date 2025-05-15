@@ -6,8 +6,6 @@
     <script>
       // Get the current path (excluding domain, including leading slash)
       const currentPath = window.location.pathname;
-      console.log("window.location:", window.location);
-      console.log({ currentPath });
 
       if (!window.location.hash) {
         // Check if MagentaA11yV2 is in the path
@@ -23,8 +21,6 @@
           // If MagentaA11yV2 is not in the path, use the standard redirect
           window.location.replace("/#" + currentPath);
         }
-
-        alert("Redirecting to: " + window.location);
       }
     </script>
   </head>
