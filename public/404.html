@@ -10,12 +10,21 @@
       console.log({ currentPath });
 
       if (!window.location.hash) {
-        // Get the current path
-        const currentPath = window.location.pathname;
-        alert("window.location:", window.location);
+        // Check if MagentaA11yV2 is in the path
+        if (currentPath.includes("MagentaA11yV2")) {
+          // Split the path at MagentaA11yV2
+          const pathParts = currentPath.split("MagentaA11yV2");
+          // Take everything after MagentaA11yV2 as the hash route
+          const hashPath = pathParts[1] || "/";
 
-        // Redirect to the same path but as a hash route
-        window.location.replace("/#" + currentPath);
+          // Redirect to MagentaA11yV2 with the rest as hash
+          window.location.replace("/MagentaA11yV2/#" + hashPath);
+        } else {
+          // If MagentaA11yV2 is not in the path, use the standard redirect
+          window.location.replace("/#" + currentPath);
+        }
+
+        alert("Redirecting to: " + window.location);
       }
     </script>
   </head>
