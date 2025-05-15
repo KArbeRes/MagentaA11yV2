@@ -10,6 +10,7 @@
       if (!window.location.hash) {
         // Get the current path
         const currentPath = window.location.pathname;
+        alert("Current path:", currentPath);
 
         // Redirect to the same path but as a hash route
         window.location.replace("/#" + currentPath);
