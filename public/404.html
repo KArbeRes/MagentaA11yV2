@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
-    <!-- <script>
-      // Redirect to the index.html while preserving hash fragments
-      if (window.location.hash) {
-        // Redirect to the root of your app with the current hash
-        window.location.replace("/MagentaA11yV2" + window.location.hash);
+    <script>
+      // Get the current path (excluding domain, including leading slash)
+      const currentPath = window.location.pathname;
+
+      // If we're already at the MagentaA11yV2 path, don't redirect
+      if (currentPath.startsWith("/MagentaA11yV2")) {
+        // Already at the correct base path, do nothing
       } else {
-        // Redirect to the root of your app if no hash
-        window.location.replace("/MagentaA11yV2/#/");
+        // Take the current path and convert it to a hash route
+        // Remove the leading slash for the hash portion
+        const hashPath = currentPath === "/" ? "/" : currentPath;
+        window.location.replace("/MagentaA11yV2/#" + hashPath);
       }
-    </script> -->
+    </script>
   </head>
   <body>
     <h1>Redirecting...</h1>
