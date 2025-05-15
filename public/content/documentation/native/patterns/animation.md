@@ -4,9 +4,12 @@ How to test an animation
 
 ## Videos
 
-- Videos go here
+<!-- TODO: add in an iOS example! -->
+
+### Android Talkback
+
 <video controls>
-  <source src="media/video/native/button/buttonIosVoiceover.webm" type="video/webm">
+  <source src="media/video/native/animation/animation_AndroidTalkback.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
