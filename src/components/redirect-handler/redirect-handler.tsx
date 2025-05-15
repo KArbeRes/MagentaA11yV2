@@ -10,6 +10,7 @@ const RedirectHandler: React.FC = () => {
     // Check if current path needs redirection
     const redirectPath = getRedirectPath(location.pathname);
     if (redirectPath) {
+      console.log(`Redirecting from ${location.pathname} to ${redirectPath}`);
       navigate(redirectPath, { replace: true });
     }
   }, [location.pathname, navigate]);
