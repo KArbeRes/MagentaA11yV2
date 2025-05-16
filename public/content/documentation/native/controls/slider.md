@@ -6,14 +6,14 @@ How to test a slider
 
 ### iOS Voiceover
 <video controls>
-  <source src="media/video/native/slider/slider-iOSVoiceover.mp4" type="video/mp4">
+  <source src="media/video/native/slider/slider-iOSVoiceover.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 
 ### Android Talkback
 <video controls>
-  <source src="media/video/native/slider/slider-AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/slider/slider-AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

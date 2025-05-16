@@ -7,14 +7,14 @@ How to test a heading
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/headings/headings_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/native/headings/headings_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/headings/headings_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/headings/headings_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

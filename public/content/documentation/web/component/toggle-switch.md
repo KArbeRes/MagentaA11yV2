@@ -9,28 +9,28 @@ How to test a toggle switch
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/web/toggle-switch/toggle-switch_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/web/toggle-switch/toggle-switch_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows JAWS Chrome
 
 <video controls>
-  <source src="media/video/web/toggle-switch/toggle-switch_WindowsJawsChrome.mp4" type="video/mp4">
+  <source src="media/video/web/toggle-switch/toggle-switch_WindowsJawsChrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows NVDA Chrome
 
 <video controls>
-  <source src="media/video/web/toggle-switch/toggle-switch_WindowsNvdaChrome.mp4" type="video/mp4">
+  <source src="media/video/web/toggle-switch/toggle-switch_WindowsNvdaChrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### MacOS VoiceOver Safari
 
 <video controls>
-  <source src="media/video/web/toggle-switch/toggle-switch_MacOsVoiceOverSafari.mp4" type="video/mp4">
+  <source src="media/video/web/toggle-switch/toggle-switch_MacOsVoiceOverSafari.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

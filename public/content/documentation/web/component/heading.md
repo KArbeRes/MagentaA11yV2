@@ -149,35 +149,35 @@ This custom heading requires extra attributes.
 ### Windows NVDA Chrome
 
 <video controls>
-  <source src="media/video/web/heading/headingNVDA.mp4" type="video/webm">
+  <source src="media/video/web/heading/headingNVDA.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows JAWS Chrome
 
 <video controls>
-  <source src="media/video/web/heading/headingJAWS.mp4" type="video/webm">
+  <source src="media/video/web/heading/headingJAWS.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### MacOS Voiceover Safari
 
 <video controls>
-  <source src="media/video/web/heading/headingMacOS.mp4" type="video/webm">
+  <source src="media/video/web/heading/headingMacOS.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/web/heading/headingAndroid.mp4" type="video/webm">
+  <source src="media/video/web/heading/headingAndroid.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/web/heading/headingiOS.mp4" type="video/webm">
+  <source src="media/video/web/heading/headingiOS.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

@@ -7,14 +7,14 @@ How to test a reorder data row
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/reorder-data-row/reorder-data-row_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/native/reorder-data-row/reorder-data-row_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/reorder-data-row/reorder-data-row_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/reorder-data-row/reorder-data-row_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

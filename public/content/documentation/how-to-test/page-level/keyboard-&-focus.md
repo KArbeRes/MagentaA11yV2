@@ -127,7 +127,7 @@ Manual testing is not difficult or time consuming once a team understands keyboa
 ### Video Example
 
 <video controls>
-  <source src="media/video/how-to-test/how-to-keyboard.mp4" type="video/mp4">
+  <source src="media/video/how-to-test/how-to-keyboard.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

@@ -7,14 +7,14 @@ How to test a search
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/search/search_IosVoiceover.mp4" type="video/mp4">
+  <source src="media/video/native/search/search_IosVoiceover.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/search/search_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/search/search_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

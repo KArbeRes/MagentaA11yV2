@@ -110,7 +110,7 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/web/informative-image/Android-Talkback.mp4" type="video/webm">
+  <source src="media/video/web/informative-image/Android-Talkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -132,14 +132,14 @@ If you are using a `<use />` element, add `aria-hidden="true"` to it.
 ### Windows NVDA Chrome
 
 <video controls>
-  <source src="media/video/web/informative-image/Windows-NVDA-Chrome.mp4" type="video/webm">
+  <source src="media/video/web/informative-image/Windows-NVDA-Chrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### MacOS Voiceover Safari 
 
 <video controls>
-  <source src="media/video/web/informative-image/Android-Talkback.mp4" type="video/webm">
+  <source src="media/video/web/informative-image/Android-Talkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
