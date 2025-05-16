@@ -114,34 +114,34 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/web/d
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/web/date-picker/date-picker_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/web/date-picker/date-picker_IosVoiceOver.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/web/date-picker/date-picker_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/web/date-picker/date-picker_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows JAWS Chrome
 
 <video controls>
-  <source src="media/video/web/date-picker/date-picker_WindowsJawsChrome.mp4" type="video/mp4">
+  <source src="media/video/web/date-picker/date-picker_WindowsJawsChrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows NVDA Chrome
 
 <video controls>
-  <source src="media/video/web/date-picker/date-picker_WindowsNvdaChrome.mp4" type="video/mp4">
+  <source src="media/video/web/date-picker/date-picker_WindowsNvdaChrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### MacOS VoiceOver Safari
 
 <video controls>
-  <source src="media/video/web/date-picker/date-picker_MacOsVoiceOverSafari.mp4" type="video/mp4">
+  <source src="media/video/web/date-picker/date-picker_MacOsVoiceOverSafari.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>

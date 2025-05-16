@@ -81,14 +81,14 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 ### iOS Voiceover
 
 <video controls>
-  <source src="media/video/native/link/linkIosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/native/link/linkIosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/link/linkAndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/link/linkAndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

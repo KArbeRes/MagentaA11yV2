@@ -62,28 +62,28 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/compo
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/web/button/buttonTalkback.mp4" type="video/webm">
+  <source src="media/video/web/button/buttonTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/web/button/buttonVoiceover.mp4" type="video/webm">
+  <source src="media/video/web/button/buttonVoiceover.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows NVDA Chrome
 
 <video controls>
-  <source src="media/video/web/button/buttonNVDA.mp4" type="video/webm">
+  <source src="media/video/web/button/buttonNVDA.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows JAWS Chrome
 
 <video controls>
-  <source src="media/video/web/button/buttonJaws.mp4" type="video/webm">
+  <source src="media/video/web/button/buttonJaws.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

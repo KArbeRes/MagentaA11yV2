@@ -440,20 +440,20 @@ This custom button requires extra scripting work for roving tabindex and event l
 ### iOS Voiceover
 
 <video controls>
-  <source src="media/video/web/radio/radioiOSVoiceover.mp4" type="video/webm">
+  <source src="media/video/web/radio/radioiOSVoiceover.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/web/radio/radioAndroidTalkback.mp4" type="video/webm">
+  <source src="media/video/web/radio/radioAndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### MacOS Voiceover Safari
 
 <video controls>
-  <source src="media/video/web/radio/radioMacOSVoiceoverSafari.mp4" type="video/webm">
+  <source src="media/video/web/radio/radioMacOSVoiceoverSafari.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>

@@ -7,14 +7,14 @@ How to test a graphic/visual element
 ### iOS VoiceOver 
 
 <video controls>
-  <source src="media/video/native/graphics-visual-elements/graphics-visual-elements_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/native/graphics-visual-elements/graphics-visual-elements_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback 
 
 <video controls>
-  <source src="media/video/native/graphics-visual-elements/graphics-visual-elements_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/graphics-visual-elements/graphics-visual-elements_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
