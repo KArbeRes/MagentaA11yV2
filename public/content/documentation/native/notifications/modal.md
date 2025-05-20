@@ -98,7 +98,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
    - An invisible close button announced for the screen reader only
    - A close button
    - A Call To Action (CTA) that navigates the user and closes the modal
-   - Tapping outside the modal to close **cannot** be the only option for screen reader users when the modal covers other content
+- Tapping outside the modal to close **cannot** be the only option for screen reader users when the modal covers other content
 
 ### Name
 
@@ -140,10 +140,10 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 - Since a modal is a presentation of another view, follow logical grouping and reading order within the view.
    - Ensure that the child elements of the overarching view you want to group in has their `isAccessibilityElement` properties set to false.
    - Set `isAccessibilityElement` to `true` for the parent view. Then, adjust `accessibilityLabel` and `accessibilityTraits` accordingly.
-      - If frame does not exist due to custom alert, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
-         - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
-      - Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
-      - Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
+- If frame does not exist due to custom alert, use `accessibilityFrameInContainer` to set the custom control’s frame to the parent view’s container or view of your choice.
+   - You can also unionize two frames with `frame.union` (i.e. `titleLabel.frame.union(subtitleLabel.frame)`).
+- Use `shouldGroupAccessibilityElement` for a precise order if the native order should be disrupted.
+- Use `shouldGroupAccessibilityChildren` to indicate whether VoiceOver must group its children views. This allows making unique vocalizations or define a particular reading order for a part of the page.
 
 #### SwiftUI
 
@@ -188,7 +188,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 ### Modal announcements
 
-- Initial focus areas
+Initial focus areas:
 - Close button "Close, button" or
 - Invisible button at the top of the screen default announcement: "Double tap to close modal"
 
@@ -201,7 +201,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
    - Two/three finger swipe
    - A close button
    - A Call To Action (CTA) that navigates the user and closes the modal
-   - Tapping outside the modal to close can not be the only option for screen reader users when the modal covers other content
+- Tapping outside the modal to close can not be the only option for screen reader users when the modal covers other content
 
 ### Name
 
@@ -256,8 +256,8 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 #### Jetpack Compose
 
 - Active: default state is active and enabled. Use `Button(enabled = true)` to specify explicitly
-- Disabled: `Button(enabled = false)` announces as disabled
-- Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as disabled
+- Disabled: `Button(enabled = false)` announces as "disabled"
+- Alternatively can use `modifier = Modifier.semantics { disabled() }` to announce as "disabled"
 
 ### Focus
 
@@ -284,7 +284,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 #### Jetpack Compose
 
 - `Modifier.focusTarget()` makes the component focusable
-- `Modifier.focusOrder()` needs to be used in combination with FocusRequesters to define focus order
+- `Modifier.focusOrder()` needs to be used in combination with `FocusRequester` to define focus order
 - `Modifier.onFocusEvent()`, `Modifier.onFocusChanged()` can be used to observe the changes to focus state
 - `FocusRequester` allows to request focus to individual elements with in a group of merged descendant views
 - *Example:* To customize the focus events behaviour
@@ -330,5 +330,5 @@ ModalBottomSheet(
 
 ### Modal announcements
 
-- Initial focus area example: 
-   - Close button "Close, button, double tap to activate"
+Initial focus area example: 
+ - Close button "Close, button, double tap to activate"
