@@ -2,17 +2,17 @@
 
 1. **Types of images**
 
-There are many types of images. The type of image can be determined by the context of the page being tested. These different types of images have different testing steps.
+    There are many types of images. The type of image can be determined by the context of the page being tested. These different types of images have different testing steps.
 
--  **Informative Images:** These are visuals like pictures, photos, and illustrations that convey important information or concepts. To make them accessible, we need to include a brief description in text form that captures the key content of the image.
+    -  **Informative Images:** These are visuals like pictures, photos, and illustrations that convey important information or concepts. To make them accessible, we need to include a brief description in text form that captures the key content of the image.
 
--  **Decorative Images:** Sometimes, images are used purely for aesthetic purposes and don't convey meaningful information. In such cases, it's best to provide an empty text alternative `alt=""` to indicate that the image serves a decorative role and doesn't require a description.
+    -  **Decorative Images:** Sometimes, images are used purely for aesthetic purposes and don't convey meaningful information. In such cases, it's best to provide an empty text alternative `alt=""` to indicate that the image serves a decorative role and doesn't require a description.
 
--  **Functional Images:** Images that serve as links or buttons should have text alternatives that describe their function rather than just their appearance. For example, if you have an image of a printer icon that initiates a printing action, the alt text should convey this functionality, like "Print."
+    -  **Functional Images:** Images that serve as links or buttons should have text alternatives that describe their function rather than just their appearance. For example, if you have an image of a printer icon that initiates a printing action, the alt text should convey this functionality, like "Print."
 
--  **Images of Text:** Images of text should be avoided whenever possible. In fact, some images of text can violate [WCAG 1.4.5 Images of Text](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html). However, if you must use images with text, ensure that the alt text contains the exact same words as the text within the image to maintain consistency.
+    -  **Images of Text:** Images of text should be avoided whenever possible. In fact, some images of text can violate [WCAG 1.4.5 Images of Text](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html). However, if you must use images with text, ensure that the alt text contains the exact same words as the text within the image to maintain consistency.
 
--  **Complex Images such as Graphs and Diagrams:** When using images to present complex data or detailed information, it's crucial to provide a comprehensive text description that conveys all the data and details found in the image. This allows individuals who cannot see the image to still access and understand its content.
+    -  **Complex Images such as Graphs and Diagrams:** When using images to present complex data or detailed information, it's crucial to provide a comprehensive text description that conveys all the data and details found in the image. This allows individuals who cannot see the image to still access and understand its content.
 
 
 2. **How to test**
