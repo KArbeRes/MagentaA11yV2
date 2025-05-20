@@ -1,16 +1,19 @@
+## Developer Notes
+
 1. **Types of images**
 
-    There are many types of images. The type of image can be determined by the context of the page being tested. These different types of images have different testing steps.
+There are many types of images. The type of image can be determined by the context of the page being tested. These different types of images have different testing steps.
 
-    - **Informative Images:** These are visuals like pictures, photos, and illustrations that convey important information or concepts. To make them accessible, we need to include a brief description in text form that captures the key content of the image.
+-  **Informative Images:** These are visuals like pictures, photos, and illustrations that convey important information or concepts. To make them accessible, we need to include a brief description in text form that captures the key content of the image.
 
-    - **Decorative Images:** Sometimes, images are used purely for aesthetic purposes and don't convey meaningful information. In such cases, it's best to provide an empty text alternative (alt="") to indicate that the image serves a decorative role and doesn't require a description.
+-  **Decorative Images:** Sometimes, images are used purely for aesthetic purposes and don't convey meaningful information. In such cases, it's best to provide an empty text alternative `alt=""` to indicate that the image serves a decorative role and doesn't require a description.
 
-    - **Functional Images:** Images that serve as links or buttons should have text alternatives that describe their function rather than just their appearance. For example, if you have an image of a printer icon that initiates a printing action, the alt text should convey this functionality, like "Print."
+-  **Functional Images:** Images that serve as links or buttons should have text alternatives that describe their function rather than just their appearance. For example, if you have an image of a printer icon that initiates a printing action, the alt text should convey this functionality, like "Print."
 
-    - **Images of Text:** Images of text should be avoided whenever possible. In fact, some images of text can violate [WCAG 1.4.5 Images of Text](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html). However, if you must use images with text, ensure that the alt text contains the exact same words as the text within the image to maintain consistency.
+-  **Images of Text:** Images of text should be avoided whenever possible. In fact, some images of text can violate [WCAG 1.4.5 Images of Text](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html). However, if you must use images with text, ensure that the alt text contains the exact same words as the text within the image to maintain consistency.
 
-    - **Complex Images such as Graphs and Diagrams:** When using images to present complex data or detailed information, it's crucial to provide a comprehensive text description that conveys all the data and details found in the image. This allows individuals who cannot see the image to still access and understand its content.
+-  **Complex Images such as Graphs and Diagrams:** When using images to present complex data or detailed information, it's crucial to provide a comprehensive text description that conveys all the data and details found in the image. This allows individuals who cannot see the image to still access and understand its content.
+
 
 2. **How to test**
 
@@ -65,7 +68,7 @@
     <img alt="" src="../some-image.png" ...>
     ```
 
-5. **Functional Images**
+4. **Functional Images**
 
     - Ensure the <code>alt</code> attribute is present and owns a value that includes <strong>all</strong> of the text found in the image.
     - Functional images are typically links or buttons so the alt text should define the purpose of the link instead of describing the image.
@@ -80,7 +83,7 @@
     </button>
     ```
 
-6. **Images of Text**
+5. **Images of Text**
 
     - Sometimes text can't be easily created with HTML and CSS and an image must contain text. In this case, ensure the <code>alt</code> attribute is present and owns a value that includes <strong>all</strong> of the text found in the image. 
     - Typically, the text is the most important part of the image. There is no need for the image itself to be described unless it adds value to the content of the page. 
@@ -91,7 +94,7 @@
     ```html
     <img src="apple-iphone-15-pro.png" alt="Titanium Apple iPhone 15 Pro">
     ```
-7. **Complex Images**
+6. **Complex Images**
 
     - Data visualizations, charts, and graphs can be very difficult to author alternative text for. Some features like charts and graphs may not be accessible themselves but there can be text alternatives nearby that can act as an accessible alternative.
     - For complex images that are <code>img</code> elements, ensure that the image has an <code>alt</code> attribute and that its value communicates the general purpose of the image. This alt text does not need to contain all of the visual information as that may be too long for an appropriate alt text value. If the alt text does not describe all content in the image ensure there is content nearby, or linked to, that does contain all of the visual information in text form. 
@@ -118,7 +121,7 @@
     </table>
     ```
 
-8. **What to test for**
+7. **What to test for**
 
     <div class="how-to-test-checklist-item">
     <h3>✓ Ensure meaningful images have alt text</h3>
@@ -214,18 +217,18 @@
     </table>
     </div>
 
-    ## Related WCAG
+    ### Related WCAG
     - 1.1.1 Non-text Content
     - 1.4.5 Images of Text
     - 2.4.4 Link Purpose
     - 2.5.3 Label in Name
     - 4.1.2 Name, Role, Value
 
-    ## Resources
+    ### Resources
     - [W3C Images Tutorial](https://www.w3.org/WAI/tutorials/images/)
     - [WebAIM Alternative Text](https://webaim.org/techniques/alttext/)
 
 
 ## General Notes
 
-Learn how to test and provide appropriate alternative text for different image types—including informative, decorative, and complex images—to ensure they are accessible to all users. Covers both automated tools and manual inspection techniques.
+Learn how to test and provide appropriate alternative text for different image types—including informative, decorative, and complex images.
