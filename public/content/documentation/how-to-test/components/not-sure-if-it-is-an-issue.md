@@ -1,7 +1,5 @@
 ## General Notes
 
-Contains developer-specific information, including expected behaviors, implementation details, and
-best practices.
 When conducting accessibility testing, testers may come across barriers that could be accessibility-related issues, or they could be unrelated. If you're unsure whether the problem you've identified is a genuine accessibility issue, the following steps can help you verify it.
 
 ## Developer Notes
@@ -12,7 +10,7 @@ To thoroughly test web accessibility, a combination of manual and automated test
 
 By combining both approaches, we can identify and address accessibility barriers comprehensively, improving the overall user experience and inclusivity of our digital products.
 
-1. **Test against MagentaA11y.com**
+## 1. **Test against MagentaA11y.com**
 
   A good first step is to test against MagentaA11y.com patterns. Each pattern includes a How to Test section, code samples, notes about expected functionality, and clear acceptance criteria.
 
@@ -35,7 +33,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-2. **Design System** 
+## 2. **Design System** 
 
   If you are testing an experience that is created from a formal design system, you can reference that design system’s documentation. Design systems will provide functional components and detailed information on how components should be implemented and function. 
 
@@ -58,7 +56,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-3. **Automated testing** 
+## 3. **Automated testing** 
 
   Often, accessibility barriers are related to code issues. Automated testing can quickly detect code-related issues that may create barriers for assistive technology users. 
 
@@ -88,7 +86,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-4. **Code Inspection** 
+## 4. **Code Inspection** 
 
   Automated testing does not catch everything. You can have code that is “correct” or valid and it can still create accessibility issues. Manual inpsection of code can often identify what the issue is.
 
@@ -111,7 +109,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-5. **HTML Validation**
+## 5. **HTML Validation**
 
   Code validity and proper use of HTML is an important factor with accessibility. You can use the Nu Html Checker to validate code. You can also reference the HTML Living Standard for guidelines on proper HTML use.
 
@@ -135,7 +133,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-6. **Verify you are correctly using the screen reader or keyboard**
+## 6. **Verify you are correctly using the screen reader or keyboard**
 
   Before you log an issue, make sure that you have tested it correctly. Refer to the MagentaAlly sections on How to test [Keyboard & focus](https://www.magentaa11y.com/MagentaA11yV2#/how-to-test/page-level/keyboard-&-focus/) and [Screen readers](https://www.magentaa11y.com/MagentaA11yV2#/how-to-test/page-level/screen-readers/) for guidance on system settings and methodology. 
 
@@ -158,7 +156,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-7. **Verify with other screen reader and browser combinations** 
+## 7. **Verify with other screen reader and browser combinations** 
 
   Sometimes there are bugs that exist with different screen reader and browser combinations, so it is important to test with several browsers and ideally different screen readers.
 
@@ -181,7 +179,7 @@ By combining both approaches, we can identify and address accessibility barriers
   </div>
 </div>
 
-8. **Document the accessibility issue** 
+## 8. **Document the accessibility issue** 
 
   Make it easy for others to review and fix your issue. 
 
