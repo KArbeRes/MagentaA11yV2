@@ -111,7 +111,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 - The visible label for any interactive element is the programmatic name for it.
 - If a visible label is not applicable in your case, set the modal's `accessibilityLabel` to the label of your choice.
    - To do this in Interface Builder, set the label using the Identity Inspector
-   - To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
+- To hide labels from VoiceOver programmatically, set the label's `isAccessibilityElement` property to `false`
 - To hide labels from VoiceOver using Interface Builder, uncheck `Accessibility Enabled` in the Identity Inspector.
 
 #### SwiftUI
