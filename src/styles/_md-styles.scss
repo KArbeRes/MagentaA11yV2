@@ -348,6 +348,10 @@ example, /* stylelint-disable-line selector-type-no-unknown */
     margin: 0.5rem 0 1rem;
   }
 
+  .product-heading a {
+    font-size: 1.5rem;
+  }
+
   .product-image-container {
     display: grid;
     grid-row: 1;
@@ -364,9 +368,13 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   }
 
   .offer-container {
-    display: grid;
-    min-height: 4rem;
-    align-self: start;
+    font-size: 1.25rem;
+    min-height: 3rem;
+    text-align: center;
+
+      svg {
+        margin-right: .25rem;
+      }
 
       .offer-btn {
         text-decoration: none;
@@ -376,8 +384,8 @@ example, /* stylelint-disable-line selector-type-no-unknown */
         transition: background 1s;
         border-radius: 2px;
         padding: 0.25rem 3rem 1.25rem 2rem;
-        font-size: 1.25rem;
         border: none;
+        font-size: 1.25rem;
         font-weight: bold;
         cursor: pointer;
 
@@ -404,6 +412,12 @@ example, /* stylelint-disable-line selector-type-no-unknown */
           transition: all 0.15s ease-in-out;
         }
       }
+  }
+
+  .big-links a {
+    text-decoration: inherit;
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
   .product-list-item {
@@ -496,7 +510,6 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       grid-column: span 2;
     }
   }
-  
 }
 
 .bad-example {

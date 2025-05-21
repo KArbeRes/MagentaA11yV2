@@ -302,7 +302,7 @@ Sometimes the design will call for multiple links with the same text label. In a
                </span>
          </h3>
          <div class="product-image-container">
-            <img class="product-image" src="/assets/images/products/mobile-phone.png" alt=""/>
+            <img class="product-image" src="media/images/mobile-phone.png" alt=""/>
          </div>
          <ul id="meta" class="product-meta">
             <li class="rating" id="prod-0-meta-rating">4.8 Stars</li>
@@ -349,8 +349,6 @@ Sometimes the design will call for multiple links with the same text label. In a
    </div>
    </div>
 </example>
-
-
 
 ```html
 <h2 class="h-bravo">Product Card with multiple controls</h2>
