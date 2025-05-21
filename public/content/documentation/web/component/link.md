@@ -215,7 +215,7 @@ Sometimes the design will call for multiple links with the same text label. In a
 </a>
 ```
 
-<!-- ### Complex examples
+### Complex examples
 
 <example>
    <h2 class="h-bravo">Product Card with multiple controls</h2>
@@ -349,9 +349,9 @@ Sometimes the design will call for multiple links with the same text label. In a
    </div>
    </div>
 </example>
--->
 
-<!-- 
+
+
 ```html
 <h2 class="h-bravo">Product Card with multiple controls</h2>
 <p>This example demonstrates an approach taken for when the card may have multiple controls within it.</p>
@@ -363,7 +363,7 @@ Sometimes the design will call for multiple links with the same text label. In a
       </button>
     </div>
     <div class="link-container">
-   <!-- The link DOES NOT wrap the entire description
+   <!-- The link DOES NOT wrap the entire description -->
       <h3 class="product-heading">
         <a class="product-link" href="/demos/">
           <span class="brand">
@@ -484,7 +484,7 @@ Sometimes the design will call for multiple links with the same text label. In a
   </div>
 </div>
 ``` 
--->
+
 
 ## Further Reading
 - [WCAG 1.4.1 Use of Color (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color)

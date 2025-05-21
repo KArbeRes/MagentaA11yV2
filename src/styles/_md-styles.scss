@@ -326,6 +326,10 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 
 .bad-example {
   color: var(--color-error);
+
+    + pre {
+        border: 2px solid var(--color-error);
+    }
 }
 
 // sticky content example
