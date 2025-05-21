@@ -51,7 +51,7 @@ GIVEN THAT I am on a screen with a captcha
 
     - WHEN the user swipes to interactive elements 
         - THEN focus must move sequentially to the captcha button 
-         - AND the screen reader must announce the state of the captcha button (e.g., enabled or disabled) 
+             - AND the screen reader must announce the state of the captcha button (e.g., enabled or disabled) 
     - WHEN the user performs a double-tap gesture 
         - THEN the captcha button must activate 
 

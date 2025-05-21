@@ -86,7 +86,7 @@ GIVEN THAT I am on a screen with a slider
 4. Scenario: Test device OS settings for text resize
 
    - WHEN I adjust the device text resize setting to 200%
-      - THEN the text on the button should resize up to 200% without losing information
+      - THEN the text label should resize up to 200% without losing information 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/slider](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/slider)
 

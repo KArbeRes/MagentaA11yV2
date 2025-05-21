@@ -58,62 +58,40 @@ GIVEN THAT I am on a screen with a carousel
 
 1. Scenario: Test keyboard actions
 
-      - WHEN the user presses "TAB", Arrow Keys, or "CTRL+TAB" 
-
-         - THEN the focus must visibly move to the next carousel item 
-
-      - WHEN the user presses "SPACEBAR" on iOS or Android 
-
-         - THEN the button or interactive slide must activate 
-
-      - WHEN the user presses "ENTER" on Android 
-
-         - THEN the button or interactive slide must activate 
+    - WHEN the user presses "TAB", Arrow Keys, or "CTRL+TAB" 
+        - THEN the focus must visibly move to the next carousel item 
+    - WHEN the user presses "SPACEBAR" on iOS or Android 
+        - THEN the button or interactive slide must activate 
+    - WHEN the user presses "ENTER" on Android 
+        - THEN the button or interactive slide must activate 
 
 2. Scenario: Test mobile screen reader gestures
 
-      - WHEN the user swipes right 
-
-         - THEN focus must move to the next interactive element 
-
-      - WHEN the user performs a 3-finger swipe on iOS 
-
-         - THEN focus must move to the next slide 
-
-      - WHEN the user performs a 2-finger swipe on Android 
-
-         - THEN focus must move to the next slide 
-
-      - WHEN the user performs a 1-finger swipe up or down or a custom action on iOS 
-
-         - THEN focus must move to the next slide 
-
-      - WHEN the user performs a double-tap 
-
-         - THEN the button must activate 
+    - WHEN the user swipes right 
+        - THEN focus must move to the next interactive element 
+    - WHEN the user performs a 3-finger swipe on iOS 
+        - THEN focus must move to the next slide 
+    - WHEN the user performs a 2-finger swipe on Android 
+        - THEN focus must move to the next slide 
+    - WHEN the user performs a 1-finger swipe up or down or a custom action on iOS 
+        - THEN focus must move to the next slide 
+    - WHEN the user performs a double-tap 
+        - THEN the button must activate 
 
 3. Scenario: Test screen reader output on all devices
 
-      - WHEN the user swipes through the elements 
-
-         - THEN each item must be announced with the following attributes: 
-
-            - AND the Name must clearly describe the purpose and match the visible text 
-
-            - AND the Role must be identified as "Button" in iOS and "Double tap to activate" in Android 
-
-            - AND the Role must be identified as "Adjustable" with custom actions in iOS 
-
-            - AND the Group must be marked as not applicable (N/A) 
-
-            - AND the State must announce the button’s state (e.g., DISABLED/DIMMED) 
- 
+    - WHEN the user swipes through the elements 
+        - THEN each item must be announced with the following attributes: 
+          - AND the Name must clearly describe the purpose and match the visible text 
+          - AND the Role must be identified as "Button" in iOS and "Double tap to activate" in Android 
+          - AND the Role must be identified as "Adjustable" with custom actions in iOS 
+          - AND the Group must be marked as not applicable (N/A) 
+          - AND the State must announce the button’s state (e.g., DISABLED/DIMMED) 
 
 4. Scenario: Test device OS settings for text resize
 
-      - WHEN a user adjusts text resizing settings up to 200% 
-
-         - THEN all text must remain readable without loss of information 
+    - WHEN a user adjusts text resizing settings up to 200% 
+        - THEN all text must remain readable without loss of information 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/carousel](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/carousel)
 

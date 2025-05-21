@@ -36,7 +36,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 ### #a11y - Native App Accessibility Acceptance Criteria
 
-How to test a radio butotn
+How to test a radio button
 
 GIVEN THAT I am on a screen with a radio button
 
