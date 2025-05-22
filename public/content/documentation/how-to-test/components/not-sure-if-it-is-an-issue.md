@@ -10,81 +10,79 @@ To thoroughly test web accessibility, a combination of manual and automated test
 
 By combining both approaches, we can identify and address accessibility barriers comprehensively, improving the overall user experience and inclusivity of our digital products.
 
-## 1. **Test against MagentaA11y.com**
+1. ## Test against MagentaA11y.com
 
-  A good first step is to test against MagentaA11y.com patterns. Each pattern includes a How to Test section, code samples, notes about expected functionality, and clear acceptance criteria.
+    A good first step is to test against MagentaA11y.com patterns. Each pattern includes a How to Test section, code samples, notes about expected functionality, and clear acceptance criteria.
+  
+    <div class="MagentaA11y-accordion">
+      <h2 class="MagentaA11y-accordion__heading">
+        <button
+          class="MagentaA11y-accordion__headline"
+          aria-expanded="false"
+          data-fn="toggleAccordionState"
+          aria-controls="list">
+          <span class="MagentaA11y-accordion__headline--text">Example: Toggle Switch</span>
+        </button>
+      </h2>
+      <div class="MagentaA11y-accordion__body" id="list">
+      <h3>Scenario</h3>
+      On the web page you are testing you encounter a toggle switch that does not work with the left and right arrow keys like you believe it should.
 
-<div class="MagentaA11y-accordion">
-  <h2 class="MagentaA11y-accordion__heading">
-    <button
-      class="MagentaA11y-accordion__headline"
-      aria-expanded="false"
-      data-fn="toggleAccordionState"
-      aria-controls="list">
-      <span class="MagentaA11y-accordion__headline--text">Example: Toggle Switch</span>
-    </button>
-  </h2>
-  <div class="MagentaA11y-accordion__body" id="list">
-  <h3>Scenario</h3>
-  On the web page you are testing you encounter a toggle switch that does not work with the left and right arrow keys like you believe it should.
+      <h3>What to do</h3>
+      To verify if arrow key support is expected for toggles on the web, you can first check MagentaA11y. Locate the <a href="https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/toggle-switch">Toggle Switch</a> component page and review the How to test section. Arrow key support is not mentioned so this is not a requirement for toggle Switch components and so this is not an accessibility issue. 
+      </div>
+    </div>
+   
+2. ## Design System
 
-  <h3>What to do</h3>
-  To verify if arrow key support is expected for toggles on the web, you can first check MagentaA11y. Locate the <a href="https://www.magentaa11y.com/MagentaA11yV2#/web-criteria/component/toggle-switch">Toggle Switch</a> component page and review the How to test section. Arrow key support is not mentioned so this is not a requirement for toggle Switch components and so this is not an accessibility issue. 
-  </div>
-</div>
+      If you are testing an experience that is created from a formal design system, you can reference that design system’s documentation. Design systems will provide functional components and detailed information on how components should be implemented and function. 
+        <div class="MagentaA11y-accordion">
+          <h2 class="MagentaA11y-accordion__heading">
+            <button
+              class="MagentaA11y-accordion__headline"
+              aria-expanded="false"
+              data-fn="toggleAccordionState"
+              aria-controls="list">
+              <span class="MagentaA11y-accordion__headline--text">Example: Interactive Table</span>
+            </button>
+          </h2>
+          <div class="MagentaA11y-accordion__body" id="list">
+          <h3>Scenario</h3>
+          You are testing a page that consists of an interactive table. When you send keyboard focus to the table, focus skips the table headers and jumps to the second row. You are not sure if this is a focus order issue.
+          <h3>What to do</h3>
+          You know this project uses the brand-new design system, so you check the documentation for the interactive table. You learn that the table is implemented as an ARIA Grid and learn that this is the expected behavior, so this is not an accessibility issue. 
+          </div>
+        </div>
 
-## 2. **Design System** 
+3. ## Automated testing
 
-  If you are testing an experience that is created from a formal design system, you can reference that design system’s documentation. Design systems will provide functional components and detailed information on how components should be implemented and function. 
+    Often, accessibility barriers are related to code issues. Automated testing can quickly detect code-related issues that may create barriers for assistive technology users. 
 
-<div class="MagentaA11y-accordion">
-  <h2 class="MagentaA11y-accordion__heading">
-    <button
-      class="MagentaA11y-accordion__headline"
-      aria-expanded="false"
-      data-fn="toggleAccordionState"
-      aria-controls="list">
-      <span class="MagentaA11y-accordion__headline--text">Example: Interactive Table</span>
-    </button>
-  </h2>
-  <div class="MagentaA11y-accordion__body" id="list">
-  <h3>Scenario</h3>
-  You are testing a page that consists of an interactive table. When you send keyboard focus to the table, focus skips the table headers and jumps to the second row. You are not sure if this is a focus order issue.
+    <div class="MagentaA11y-accordion">
+      <h2 class="MagentaA11y-accordion__heading">
+        <button
+          class="MagentaA11y-accordion__headline"
+          aria-expanded="false"
+          data-fn="toggleAccordionState"
+          aria-controls="list">
+          <span class="MagentaA11y-accordion__headline--text">Example: Nested Buttons</span>
+        </button>
+      </h2>
+      <div class="MagentaA11y-accordion__body" id="list">
+      <h3>Scenario</h3>
+      You are testing a button that when activated, presents a list of options. For some reason, the screen reader will not interact with the button correctly. 
 
-  <h3>What to do</h3>
-  You know this project uses the brand-new design system, so you check the documentation for the interactive table. You learn that the table is implemented as an ARIA Grid and learn that this is the expected behavior, so this is not an accessibility issue. 
-  </div>
-</div>
+      <h3>What to do</h3>
+      You have ran some automated accessibility tests and in the results there is an issue identified that indicates the author has nested a button element inside of another button element and that is not only invalid HTML, it is creating the barrier with the screen reader so this is an issue.
 
-## 3. **Automated testing** 
+      ```html
+      <div role="button" tabindex="0">
+        <button>Click Me</button>
+      </div>
+      ```
 
-  Often, accessibility barriers are related to code issues. Automated testing can quickly detect code-related issues that may create barriers for assistive technology users. 
-
-<div class="MagentaA11y-accordion">
-  <h2 class="MagentaA11y-accordion__heading">
-    <button
-      class="MagentaA11y-accordion__headline"
-      aria-expanded="false"
-      data-fn="toggleAccordionState"
-      aria-controls="list">
-      <span class="MagentaA11y-accordion__headline--text">Example: Nested Buttons</span>
-    </button>
-  </h2>
-  <div class="MagentaA11y-accordion__body" id="list">
-  <h3>Scenario</h3>
-  You are testing a button that when activated, presents a list of options. For some reason, the screen reader will not interact with the button correctly. 
-
-  <h3>What to do</h3>
-  You have ran some automated accessibility tests and in the results there is an issue identified that indicates the author has nested a button element inside of another button element and that is not only invalid HTML, it is creating the barrier with the screen reader so this is an issue.
-
-  ```html
-  <div role="button" tabindex="0">
-    <button>Click Me</button>
-  </div>
-  ```
-
-  </div>
-</div>
+      </div>
+    </div>
 
 ## 4. **Code Inspection** 
 
