@@ -7,14 +7,14 @@ How to test a pagination control
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/pagination-control/pagination-control_IosVoiceover.mp4" type="video/mp4">
+  <source src="media/video/native/pagination-control/pagination-control_IosVoiceover.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/pagination-control/pagination-control_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/pagination-control/pagination-control_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

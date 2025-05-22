@@ -7,14 +7,14 @@ How to test a sidebar navigation menu
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/sidebar-menu/sidebar-menu_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/native/sidebar-menu/sidebar-menu_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/sidebar-menu/sidebar-menu_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/sidebar-menu/sidebar-menu_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -96,7 +96,7 @@ GIVEN THAT I am on a screen with a sidebar navigation menu
 4. Scenario: Test device OS settings for text resize
 
    - WHEN I adjust the device text resize setting to 200%
-      - THEN the text on the button should resize up to 200% without losing information
+      - THEN the text should resize up to 200% without losing information 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/sidebar-menu](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/sidebar-menu)
 

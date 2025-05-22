@@ -7,14 +7,14 @@ How to test a search
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/search/search_IosVoiceover.mp4" type="video/mp4">
+  <source src="media/video/native/search/search_IosVoiceover.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/search/search_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/search/search_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -81,8 +81,8 @@ GIVEN THAT I am on a screen with a search
 
 4. Scenario: Test device OS settings for text resize
 
-   - WHEN I adjust the device text resize setting to 200%
-      - THEN the text on the button should resize up to 200% without losing information
+   - WHEN I adjust the device text resize setting to 200% 
+      - THEN the text within the search field should resize up to 200% without losing information 
 
 Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/search](https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/controls/search)
 

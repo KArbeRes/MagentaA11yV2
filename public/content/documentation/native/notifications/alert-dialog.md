@@ -7,14 +7,14 @@ How to test an alert dialog
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/alert-dialog/alert-dialog_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/native/alert-dialog/alert-dialog_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/native/alert-dialog/alert-dialog_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/alert-dialog/alert-dialog_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

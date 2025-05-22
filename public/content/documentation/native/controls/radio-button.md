@@ -36,7 +36,7 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 
 ### #a11y - Native App Accessibility Acceptance Criteria
 
-How to test a radio butotn
+How to test a radio button
 
 GIVEN THAT I am on a screen with a radio button
 
@@ -77,13 +77,13 @@ Full information: [https://www.magentaa11y.com/MagentaA11yV2#/native-criteria/co
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/native/radio-button/radioButtonIosVoiceover.mp4" type="video/mp4">
+  <source src="media/video/native/radio-button/radioButtonIosVoiceover.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 <video controls>
-  <source src="media/video/native/radio-button/radioButtonAndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/native/radio-button/radioButtonAndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

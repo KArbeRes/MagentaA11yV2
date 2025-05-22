@@ -321,34 +321,34 @@ After the screenreader focuses on each input, it will read the group name "Enter
 ### iOS VoiceOver
 
 <video controls>
-  <source src="media/video/web/text-input/text-input_IosVoiceOver.mp4" type="video/mp4">
+  <source src="media/video/web/text-input/text-input_IosVoiceOver.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Android Talkback
 
 <video controls>
-  <source src="media/video/web/text-input/text-input_AndroidTalkback.mp4" type="video/mp4">
+  <source src="media/video/web/text-input/text-input_AndroidTalkback.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows JAWS Chrome
 
 <video controls>
-  <source src="media/video/web/text-input/text-input_WindowsJawsChrome.mp4" type="video/mp4">
+  <source src="media/video/web/text-input/text-input_WindowsJawsChrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### Windows NVDA Chrome
 
 <video controls>
-  <source src="media/video/web/text-input/text-input_WindowsNvdaChrome.mp4" type="video/mp4">
+  <source src="media/video/web/text-input/text-input_WindowsNvdaChrome.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ### MacOS VoiceOver Safari
 
 <video controls>
-  <source src="media/video/web/text-input/text-input_MacOSVoiceOverSafari.mp4" type="video/mp4">
+  <source src="media/video/web/text-input/text-input_MacOSVoiceOverSafari.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
