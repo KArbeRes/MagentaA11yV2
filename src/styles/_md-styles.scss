@@ -471,4 +471,10 @@ input.star:focus-visible + label {
 .star-rating input.star#star-4 + label { order: 2; }
 .star-rating input.star#star-5 + label { order: 1; }
 
+/* styling for example of a button with bad color contrast on hover for How to Test Color Contrast */
+.bad-contrast-button:hover {
+    color: #e20074;
+}
+
+
 /* stylelint-enable no-descending-specificity */
