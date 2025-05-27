@@ -1,4 +1,8 @@
+## General Notes
+
 Testing color contrast is a simple yet crucial step in ensuring content is perceivable for users with low vision and color blindness.
+
+## Developer Notes
 
 1. **General requirements**
 
@@ -226,3 +230,6 @@ Testing color contrast is a simple yet crucial step in ensuring content is perce
     ## Resources
     
     - [WebAIM Color Contrast](https://webaim.org/articles/contrast/evaluating)
+
+
+
