@@ -215,7 +215,7 @@ Sometimes the design will call for multiple links with the same text label. In a
 </a>
 ```
 
-<!-- ### Complex examples
+### Complex examples
 
 <example>
    <h2 class="h-bravo">Product Card with multiple controls</h2>
@@ -223,12 +223,12 @@ Sometimes the design will call for multiple links with the same text label. In a
    <div class="product-list multiple-controls">
    <div class="product-list-item">
       <div class="offer-container">
-         <button type="button" class="tertiary" aria-label="Save $400 with offer for mPhone Universe Max Extra Phabulous">
+         <button type="button" class="offer-btn" aria-label="Save $400 with offer for mPhone Universe Max Extra Phabulous">
          Save $400 with offer
          </button>
       </div>
       <div class="link-container">
-         <!-- The link DOES NOT wrap the entire description
+         <!-- The link DOES NOT wrap the entire description -->
          <h3 class="product-heading">
          <a class="product-link" href="/demos/">
             <span class="brand">
@@ -240,7 +240,7 @@ Sometimes the design will call for multiple links with the same text label. In a
          </a>
          </h3>
          <div class="product-image-container">
-         <img class="product-image" src="/assets/images/products/mobile-phone.png" alt="mPhone Universe Max Extra Phabulous"/>
+         <img class="product-image" src="media/images/mobile-phone.png" alt="mPhone Universe Max Extra Phabulous"/>
          </div>
          <ul id="meta" class="product-meta">
          <li class="rating">4.8 Stars</li>
@@ -302,7 +302,7 @@ Sometimes the design will call for multiple links with the same text label. In a
                </span>
          </h3>
          <div class="product-image-container">
-            <img class="product-image" src="/assets/images/products/mobile-phone.png" alt=""/>
+            <img class="product-image" src="media/images/mobile-phone.png" alt=""/>
          </div>
          <ul id="meta" class="product-meta">
             <li class="rating" id="prod-0-meta-rating">4.8 Stars</li>
@@ -310,8 +310,8 @@ Sometimes the design will call for multiple links with the same text label. In a
          </ul>
          <div class="end-cap">
             <span id="prod-0-colors" class="hidden-visually">Four colors available</span>
-            <!-- hide colors - use visually hidden text x colors avialable 
-            <!-- reduces verbosity and all colors are available on PDP 
+            <!-- hide colors - use visually hidden text x colors avialable -->
+            <!-- reduces verbosity and all colors are available on PDP -->
             <ul id="colors" class="product-colors" aria-hidden="true">
                <li class="red"></li>
                <li class="gold"></li>
@@ -349,9 +349,7 @@ Sometimes the design will call for multiple links with the same text label. In a
    </div>
    </div>
 </example>
--->
 
-<!-- 
 ```html
 <h2 class="h-bravo">Product Card with multiple controls</h2>
 <p>This example demonstrates an approach taken for when the card may have multiple controls within it.</p>
@@ -363,7 +361,7 @@ Sometimes the design will call for multiple links with the same text label. In a
       </button>
     </div>
     <div class="link-container">
-   <!-- The link DOES NOT wrap the entire description
+      <!-- The link DOES NOT wrap the entire description -->
       <h3 class="product-heading">
         <a class="product-link" href="/demos/">
           <span class="brand">
@@ -375,7 +373,7 @@ Sometimes the design will call for multiple links with the same text label. In a
         </a>
       </h3>
       <div class="product-image-container">
-        <img class="product-image" src="/assets/images/products/mobile-phone.png" alt="mPhone Universe Max Extra Phabulous"/>
+        <img class="product-image" src="../assets/images/products/mobile-phone.png" alt="mPhone Universe Max Extra Phabulous"/>
       </div>
       <ul id="meta" class="product-meta">
         <li class="rating">4.8 Stars</li>
@@ -445,8 +443,8 @@ Sometimes the design will call for multiple links with the same text label. In a
         </ul>
         <div class="end-cap">
           <span id="prod-0-colors" class="hidden-visually">Four colors available</span>
-          <!-- hide colors - use visually hidden text x colors avialable
-          <!-- reduces verbosity and all colors are available on PDP
+          <!-- hide colors - use visually hidden text x colors avialable -->
+          <!-- reduces verbosity and all colors are available on PDP -->
           <ul id="colors" class="product-colors" aria-hidden="true">
             <li class="red"></li>
             <li class="gold"></li>
@@ -484,7 +482,7 @@ Sometimes the design will call for multiple links with the same text label. In a
   </div>
 </div>
 ``` 
--->
+
 
 ## Further Reading
 - [WCAG 1.4.1 Use of Color (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color)
