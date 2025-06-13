@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/MagentaA11yV2/static/css/main.b0228551.css",
+    "main.js": "/MagentaA11yV2/static/js/main.61892737.js",
+    "static/js/453.0bdec75c.chunk.js": "/MagentaA11yV2/static/js/453.0bdec75c.chunk.js",
+    "static/media/teleneoweb-bold.woff2": "/MagentaA11yV2/static/media/teleneoweb-bold.1b7fe473df0f87cc56a5.woff2",
+    "static/media/teleneoweb-regular.woff2": "/MagentaA11yV2/static/media/teleneoweb-regular.003938824a945c247da6.woff2",
+    "static/media/teleneoweb-extrabold.woff2": "/MagentaA11yV2/static/media/teleneoweb-extrabold.cc806106975453c2028b.woff2",
+    "static/media/brand-logo-white.svg": "/MagentaA11yV2/static/media/brand-logo-white.89a105aa5e733f20869d.svg",
+    "index.html": "/MagentaA11yV2/index.html",
+    "static/media/t-digit-logo.svg": "/MagentaA11yV2/static/media/t-digit-logo.33091521e07d63f31f4e516e27b5186e.svg",
+    "static/media/star-outlined.svg": "/MagentaA11yV2/static/media/star-outlined.ea81ad4276736adce200.svg",
+    "static/media/star-filled.svg": "/MagentaA11yV2/static/media/star-filled.7b5d5cfa6f74b7a13a5c.svg",
+    "static/media/chevron-down.svg": "/MagentaA11yV2/static/media/chevron-down.9683ff47cfce0b97f2e8.svg",
+    "static/media/chevron-right.svg": "/MagentaA11yV2/static/media/chevron-right.c7465c5cc689e553be2b.svg",
+    "static/media/bookmark-outlined.svg": "/MagentaA11yV2/static/media/bookmark-outlined.92bcfcdd1a5a462820989e78674011f8.svg",
+    "main.b0228551.css.map": "/MagentaA11yV2/static/css/main.b0228551.css.map",
+    "main.61892737.js.map": "/MagentaA11yV2/static/js/main.61892737.js.map",
+    "453.0bdec75c.chunk.js.map": "/MagentaA11yV2/static/js/453.0bdec75c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b0228551.css",
+    "static/js/main.61892737.js"
+  ]
+}
