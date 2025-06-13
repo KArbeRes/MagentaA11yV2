@@ -379,7 +379,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
       .offer-btn {
         text-decoration: none;
         background-color: transparent;
-        color: var(--magentaa11y-color-brand-grayscale-700);
+        color: var(--color-on-tertiary);
         background-position: center center;
         transition: background 1s;
         border-radius: var(--magentaa11y-border-radius-size-2);
@@ -421,7 +421,7 @@ example, /* stylelint-disable-line selector-type-no-unknown */
   }
 
   .product-list-item {
-    background: var(--magentaa11y-color-brand-grayscale-white);
+    background: var(--color-text-on-primary);
     border-radius: var(--magentaa11y-border-radius-size-12);
     padding: 1.5rem;
     max-width: 400px;
@@ -515,10 +515,10 @@ example, /* stylelint-disable-line selector-type-no-unknown */
 }
 
 .bad-example {
-  color: var(--color-error);
+  color: var(--color-error-container);
 
     + pre {
-        border: var(--magentaa11y-border-weight-size-2) solid var(--color-error);
+        border: var(--magentaa11y-border-weight-size-2) solid var(--color-error-container);
     }
 }
 
