@@ -11,7 +11,15 @@
 
 ---
 
+## Contributting to MagentaA11y
+
+Welcome! We're thrilled you're considering contributing to **MagentaA11y**, an open-source tool built by T-Mobile's Accessibility Resource Center (ARC), that is committed to improving digital accessibility. Whether you're a designer, developer, tester, or writer — there's a place for you here.
+
 ## Getting Started
+
+## Code of Conduct
+
+<!-- > - TODO: Need to see if TMO has an established code of conduct for open source contributions. -->
 
 ### Prerequisites
 
@@ -29,12 +37,15 @@ npm install
 
 ---
 
-## Creating a PR
+## Creating a Pull Request
 
-- start in the main branch, you can check you are there by running `git branch`
-- Run a `git fetch` to ensure you have the latest
+- start in the main branch, you can check you are in the correct branch by running `git branch`
+- Run a `git fetch` to ensure you have the latest branches
 - If there is new code, pull it down: `git pull origin main`
-- Start a new branch, I recommend using the issue number, such as `ARC-101--details` or the feat/fix/revert/chore/style convention such as `fix--lindsay-400-menu`:
+- Start a new branch, I recommend using the issue number, such as `ARC-101--details` or the feat/fix/revert/chore/style convention such as `#190-fix--menu-button`:
+
+TODO: Add details for branching strategy 
+
   - feat or feature: (new feature for the user, not a new feature for build script)
   - fix: (bug fix for the user, not a fix to a build script)
   - docs: (changes to the documentation)
@@ -55,8 +66,74 @@ To push your work:
 
 - `git diff .` // check what has changed in all the files you worked on
 - `git add .` // adds all new files
-- `git commit -m "fix: x message with updates"` // add commit message
+- `git commit -m "fix: x message with updates"` // add commit message that describes what changes or additions were made
 - `git push origin ARC101--criteria-button`
+
+## Approval Process for Merging
+
+- TODO: In order for a PR to be merged, two ARC coached need to approve the PR.
+
+## Ways to Contribute
+There are many valuable ways to help MagentaA11y grow and improve — whether you're a developer, accessibility expert, designer, writer, or newcomer. Here's how you can get involved:
+
+### Report Bugs
+Have you found something broken or unexpected? Please report it!
+
+- Open a bug report issue (TODO: hyperlink to report an issue)
+
+Include:
+
+- Steps to reproduce
+- What you expected to happen
+- Screenshots or screen recordings (if helpful)
+- Browser and OS information
+
+TODO: Review Accessibility Defect Template for other sections
+
+### Fix Bugs or Add Features
+Want to contribute code? Great!
+
+Look for issues labeled `good first issue` or `help wanted`
+
+We especially welcome:
+
+- Fixes for accessibility gaps (e.g., missing ARIA attributes, missing captions)
+- UI enhancements (focus visibility, keyboard navigation)
+- Refactoring or component cleanup
+- New features that improve usability or inclusivity
+
+### Improve Documentation
+Clear documentation helps others use and contribute to MagentaA11y.
+You can help by:
+
+- Improving setup instructions or clarifying parts of the README
+- Writing usage guides for components
+- Creating diagrams, architecture overviews, or accessibility checklists
+
+
+### Suggest or Review Accessibility Improvements
+Accessibility is at the heart of MagentaA11y — and your expertise matters!
+
+File issues or PRs that improve:
+
+- Keyboard navigation
+- Screen reader support
+- Color contrast
+- Semantic HTML usage
+- Suggest additions to our accessibility How to Test pages
+- Share real-world feedback from assistive tech users
+
+### Design & UX Contributions
+
+
+### Spread the Word
+Even if you’re not ready to code, you can still help by:
+
+- Sharing MagentaA11y on social media or dev communities
+- Writing blog posts or tutorials about using or contributing to it
+- Include MagentaA11y as a resource at conferences
+- Hosting or joining accessibility hackathons or meetups
+
 
 ## Available Scripts
 
@@ -172,8 +249,14 @@ The app is deployed via GitHub Pages. Follow these steps to deploy:
 
 ---
 
+## Video Tutorials on Getting Started
+
+1. Installing the repo
+
+2. Making a Pull Request
+
+3. 
+
 ## Support
 
-For issues, suggestions, or contributions, please open a GitHub issue or submit a pull request.
-
----
+For issues, suggestions, or contributions, please open a GitHub issue or submit a pull request. Or reachout to us at MagentaA11y@t-mobile.com
